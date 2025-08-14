@@ -1,0 +1,280 @@
+/* ========== Menu Hambúrguer ========== */
+#menuToggle {
+  display: block;
+  position: fixed;
+  top: 65px;
+  left: 40px;
+  z-index: 2;
+  user-select: none;
+}
+
+#menuToggle input {
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 3;
+}
+
+#menuToggle span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  background: #333;
+  border-radius: 3px;
+  z-index: 2;
+  transform-origin: 4px 0px;
+  transition: transform 0.5s, background 0.5s, opacity 0.5s;
+}
+
+#menuToggle input:checked ~ span:nth-child(1) {
+  transform: rotate(45deg) translate(-2px, -1px);
+}
+#menuToggle input:checked ~ span:nth-child(2) {
+  opacity: 0;
+}
+#menuToggle input:checked ~ span:nth-child(3) {
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+#menu {
+  position: relative;
+  width: 250px;
+  margin: -100px 0 0 -40px;
+  padding: 100px 20px 20px 40px;
+  background: #94bfa9;
+  list-style: none;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+  height: 100vh;
+  z-index: 1;
+}
+
+#menu li {
+  padding: 10px 0;
+  font-size: 20px;
+}
+
+#menu li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+#menuToggle input:checked ~ ul {
+  transform: none;
+}
+
+/* ========== Estilos Gerais ========== */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #232323;
+}
+
+a {
+  color: #232323;
+  text-decoration: none;
+}
+
+header {
+  background-color: #b2e5d9;
+  padding: 20px;
+  margin-left: 10px; /* espaço p/ menu hamburguer */
+}
+
+.topbar {
+  display: flex;
+  align-items:flex-end;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 70px;
+}
+
+.user-icon {
+  font-size: 22px;
+  color: #232323;
+}
+
+/* Campo de busca */
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  position: relative;
+}
+
+#search {
+  width: 80%;
+  padding: 10px 35px 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  right: 11%;
+  color: #777;
+}
+
+/* Botões de filtro */
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 15px;
+  margin-left: 60px;
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  border: 2px solid #b2e5d9;
+  background-color: transparent;
+  color: #232323;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+  background-color: #94bfa9;
+  color: white;
+  border-color: #94bfa9;
+}
+
+/* Lista de serviços */
+#service-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  margin-left: 50px;
+}
+
+.service-card {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  padding: 15px;
+  width: 100%;
+  max-width: 450px;
+  gap: 15px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.06);
+}
+
+.service-card img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.service-info {
+  flex: 1;
+}
+
+.service-info strong {
+  font-size: 1.1em;
+}
+
+button.contact-btn {
+  background-color: #ffc107;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .service-card {
+    width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  header, nav, #service-list {
+    margin-left: 0;
+  }
+
+  .topbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-wrapper {
+    width: 100%;
+  }
+
+  #search {
+    width: 90%;
+  }
+
+  .search-icon {
+    right: 8%;
+  }
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #f1f1f1;
+}
+
+footer img {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -250px; 
+  width: 250px;
+  height: 100%;
+  background-color: #B2E5D9;
+  padding: 30px 20px;
+  transition: right 0.3s ease;
+  z-index: 1001;
+}
+
+.side-menu.open {
+  right: 0; 
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  z-index: 999;
+}

@@ -1,0 +1,122 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #ffffff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  background: var(--branco);
+  padding: 3rem;
+  border-radius: 15px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+  max-width: 450px;
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: 360px;
+  padding: 20px;
+  text-align: center;
+}
+
+.logo {
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+}
+
+.subtitulo {
+  color: #71ad9b;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 25px;
+  color: #000;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group .icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #444;
+}
+
+input {
+  width: 100%;
+  padding: 10px 10px 10px 35px;
+  font-size: 14px;
+  border: none;
+  border-bottom: 1px solid #444;
+  outline: none;
+  background-color: transparent;
+}
+
+.esqueci-senha {
+  text-align: right;
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
+.esqueci-senha a {
+  font-size: 12px;
+  text-decoration: none;
+  color: #555;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 12px;
+  cursor: pointer;
+}
+
+.btn.verde {
+  background-color: #8ac5ae;
+  color: white;
+}
+
+.ou {
+  margin: 20px 0 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+.btn.google {
+  background-color: #d9f5ed;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.google-icon {
+  width: 18px;
+  height: 18px;
+}

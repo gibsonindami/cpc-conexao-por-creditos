@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Conexão por Créditos - Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/app/public/css/login.css">
+  <link rel="icon" href="/app/public/img/img Logo-cpc.jpeg" type="image/x-icon">
+</head>
+<body>
+    <div class="login-box">
+  <div class="container">
+    <img src="/app/public/img/img Logo-cpc.jpeg" alt="Logo" class="logo">
+    <h2 class="subtitulo">Conexão por créditos</h2>
+
+    <h1>Entrar</h1>
+
+    <form id="loginForm">
+      <div class="input-group">
+        <span class="icon">@</span>
+        <input type="email" id="email" placeholder="Digite seu email" required>
+      </div>
+
+      <div class="input-group">
+        <span class="icon">🔒</span>
+        <input type="password" id="senha" placeholder="Digite sua senha" required>
+      </div>
+
+      <div class="esqueci-senha">
+        <a href="recuperar-senha.ejs">Esqueceu a senha?</a>
+      </div>
+
+      <button type="submit" class="btn verde" onclick="window.location.href='home.ejs'">Acessar</button>
+    </form>
+
+    <p class="ou">OU</p>
+
+    <button class="btn google" onclick="window.location.href='https://accounts.google.com/'">
+      <img src="/app/public/img/img google.png" alt="Google" class="google-icon">
+      Entrar com Google
+    </button>
+
+    <button class="btn verde" onclick="window.location.href='cadastro.ejs'">Cadastre-se</button>
+  </div>
+</div>
+</body>
+</html>
+

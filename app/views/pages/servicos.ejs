@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CPC Trocas</title>
+  <link rel="stylesheet" href="servicos.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="/app/public/img/img logo.png" class="logo" alt="Logo">
+    </div>
+    <div class="icons">
+      <img src="/app/public/img/img perfil.png" alt="Perfil">
+      <img src="/app/public/img/img menu.png" id="btnMenu" alt="Abrir Menu">
+    </div>
+  </header>
+
+  <!-- MENU LATERAL -->
+  <nav class="side-menu" id="side-menu">
+    <a href="conta.ejs">MINHA CONTA</a>
+    <a href="home.ejs">INÍCIO</a>
+    <a href="sobrenos.ejs">SOBRE NÓS</a>
+    <a href="comofunciona.ejs">COMO FUNCIONA</a>
+    <a href="servicos.ejs">SERVIÇOS DE TROCA</a>
+    <a href="saibamais.ejs">SAIBA MAIS</a>
+    <a href="noticias.ejs">NOTÍCIAS</a>
+  </nav>
+  <!-- SOBREPOSIÇÃO DO MENU (FUNDO ESCURO) -->
+  <div id="overlay" class="overlay"></div>
+
+  <main>
+    <h1>Troque produtos e Serviços<br>com a nossa Comunidade</h1>
+
+    <section class="botoes">
+      <a href="todos.ejs" class="btn servicos">
+        <img src="profissional.png" alt="">
+        <span>SERVIÇOS DE<br>PROFISSIONAIS</span>
+      </a>
+
+      <a href="" class="btn alimentos">
+        <img src="alimentos.png" alt="">
+        <span>ALIMENTOS &<br>BEBIDAS</span>
+      </a>
+
+      <a href="" class="btn criancas">
+        <img src="criancas.png" alt="">
+        <span>ITENS PARA<br>CRIANÇAS</span>
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <img src="/app/public/img/img Logo-cpc.jpeg" alt="Logo CPC">
+    <div class="menu-footer">
+      <p><strong>INSTITUCIONAL</strong></p>
+      <p>Sobre nós</p>
+      <p>Como funciona</p>
+      <p>Serviço de trocas</p>
+    </div>
+  </footer>
+
+  <script src="/app/public/js/menu.js"></script>
+
+</body>
+</html>

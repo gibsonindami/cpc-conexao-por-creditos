@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Serviços de Trocas</title>
+  <link rel="stylesheet" href="/app/public/css/todos.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+</head>
+<body>
+  <!-- Menu hambúrguer -->
+  <nav role="navigation">
+    <div id="menuToggle">
+      <input type="checkbox" />
+      <span></span>
+      <span></span>
+      <span></span>
+
+      <ul id="menu">
+        <li><a href="home.ejs">Home</a></li>
+        <li><a href="#">Info</a></li>
+        <li><a href="#">Produtos</a></li>
+        <li><a href="#">Sobre</a></li>
+        <li><a href="#">Contato</a></li>
+        <li><a href="#">Mostrar mais</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Cabeçalho -->
+  <header>
+    <div class="topbar"><img src="/app/public/img/img logo.png" alt="Logo" class="logo"/>
+      <h1>Serviços de Trocas</h1>
+      <i class="fas fa-user user-icon"></i>
+    </div>
+    <div class="search-wrapper">
+      <input type="text" id="search" placeholder="Busque seu profissional" />
+      <i class="fas fa-search search-icon"></i>
+    </div>
+  </header>
+  
+
+  <!-- Filtros -->
+  <nav>
+    <button class="filter-btn active" data-filter="todos">Todos</button>
+    <button class="filter-btn" data-filter="infantil">Infantil</button>
+    <button class="filter-btn" data-filter="profissionais">Profissionais</button>
+    <button class="filter-btn" data-filter="alimentação">Alimentação</button>
+  </nav>
+
+  <!-- Lista de serviços -->
+  <section id="service-list"></section>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <img src="/app/public/img/img Logo-cpc.jpeg" alt="Logo rodapé">
+    <div class="footer-links">
+      <a href="#">Sobre nós</a>
+      <a href="#">Como funciona</a>
+      <a href="servicos.ejs">Serviço de trocas</a>
+    </div>
+  </footer>
+
+  <script src="/app/public/js/todos.js"></script>
+</body>
+</html>
