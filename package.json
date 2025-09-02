@@ -1,7 +1,5 @@
 {
   "dependencies": {
-    "ejs": "^3.1.10",
-    "espress": "^0.0.0",
     "express": "^5.1.0",
     "express-validator": "^7.2.1"
   }
