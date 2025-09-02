@@ -1,12 +1,18 @@
-var express = require('express');
-var app = express();
-var router = require('./routes'); 
-
-app.set('view engine', 'ejs');
-app.use('/', router);
-app.get('/home', function (req, res) {
-    res.render('home');
-});
-app.listen(3000, function () {
-    console.log('Servidor rodando na porta 3000');
-});
+const express = require("express");
+const app = express();
+const port = 3000;
+ 
+app.use(express.urlencoded({ extended: true }));
+ 
+app.use(express.static("./app/public"));
+ 
+app.set("view engine", "ejs");
+app.set("views","./app/views");
+ 
+const rotaPrincipal = require("./app/routes/router");
+app.use("/", rotaPrincipal);
+ 
+ 
+app.listen(port, ()=>{
+    console.log(`Servidor online\nhttp://localhost:${port}`);
+})
