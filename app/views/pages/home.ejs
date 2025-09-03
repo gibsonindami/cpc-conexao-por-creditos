@@ -9,14 +9,9 @@
 </head>
 <body>
 
- <header class="header">
-  <img src="../img/logo.png" class="logo" alt="Logo">
-  
-  <div class="icons">
-    <img src="../img/img perfil.png" alt="Perfil">
-    <img src="../img/img menu.png" id="btnMenu" alt="Abrir menu">
-  </div>
-</header>
+ 
+
+<%- include('../partials/header.ejs') %>
 <body>
   <!-- MENU LATERAL -->
   <nav class="side-menu" id="side-menu">
@@ -96,17 +91,8 @@
     </form>
   </section>
 
-  <!-- RODAPÉ -->
-  <footer>
-    <img src="../img/img Logo-cpc.jpeg" alt="Logo rodapé">
-    <div class="footer-links">
-      <a href="#">Sobre nós</a>
-      <a href="#">Como funciona</a>
-      <a href="/servicos">Serviço de trocas</a>
-    </div>
-  </footer>
-
   <script src="../js/menu.js"></script>
 
 </body>
+<%- include('../partials/footer.ejs') %>
 </html>
