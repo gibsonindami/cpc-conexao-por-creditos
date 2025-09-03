@@ -1,18 +1,19 @@
 const express = require("express");
 const app = express();
 const port = 3000;
-const { body, validationResult } = require("express-validator");
-app.use(express.static("app/public"));
+
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("./app/public"));
 
 app.set("view engine", "ejs");
-app.set("views", "../app/views");
+app.set("views", "./app/views");
 
-app.use(express.json()); 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-var rotas = require("../app/routes/router");
-app.use("/", rotas);
+const rotaPrincipal = require("./app/routes/router");
+app.use("/", rotaPrincipal);
 
-app.listen(port, () => {
-  console.log(`Servidor ouvindo na porta ${port}\nhttp://localhost:${port}`);
+app.listen(port, () =>{
+  console.log(`Servidor online\nhttp://localhost:${port}`);
 });
