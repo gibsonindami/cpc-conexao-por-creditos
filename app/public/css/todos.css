@@ -85,25 +85,11 @@ a {
   text-decoration: none;
 }
 
-header {
-  background-color: #b2e5d9;
-  padding: 20px;
-  margin-left: 10px; /* espaço p/ menu hamburguer */
-}
 
 .topbar {
   display: flex;
   align-items:flex-end;
   justify-content: space-between;
-}
-
-.logo {
-  height: 70px;
-}
-
-.user-icon {
-  font-size: 22px;
-  color: #232323;
 }
 
 /* Campo de busca */
@@ -232,49 +218,4 @@ button.contact-btn {
   .search-icon {
     right: 8%;
   }
-}
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #f1f1f1;
-}
-
-footer img {
-  width: 80px;
-  margin-bottom: 10px;
-}
-
-.footer-links a {
-  display: block;
-  text-decoration: none;
-  color: black;
-  margin-top: 5px;
-  font-size: 14px;
-}
-
-.side-menu {
-  position: fixed;
-  top: 0;
-  right: -250px; 
-  width: 250px;
-  height: 100%;
-  background-color: #B2E5D9;
-  padding: 30px 20px;
-  transition: right 0.3s ease;
-  z-index: 1001;
-}
-
-.side-menu.open {
-  right: 0; 
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
-  display: none;
-  z-index: 999;
 }
