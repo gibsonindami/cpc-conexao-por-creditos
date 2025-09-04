@@ -8,17 +8,36 @@ router.post("/html", function (req, res) {
 router.get("/login", function (req, res) {
     res.render("pages/login")
 });
+
 router.get("/", function (req, res) {
-    res.render("pages/home")
+    res.render("pages/login")
 });
 router.get("/cadastro", function (req, res) {
     res.render("pages/cadastro")
 });
-router.get("/doe", function (req, res) {
-    res.render("pages/doe")
+router.get("/home", function (req, res) {
+    res.render("pages/home")
+});
+router.get("/saibamais", function (req, res) {
+    res.render("pages/saibamais")
 });
 router.get("/servicos", function (req, res) {
     res.render("pages/servicos")
+});
+router.get("/noticia", function (req, res) {
+    res.render("pages/noticia")
+});
+router.get("/sobrenos", function (req, res) {
+    res.render("pages/sobrenos")
+});
+router.get("/comofunciona", function (req, res) {
+    res.render("pages/comofunciona")
+});
+router.get("/conta", function (req, res) {
+    res.render("pages/conta")
+});
+router.get("/doe", function (req, res) {
+    res.render("pages/doe")
 });
 router.get("/todos", function (req, res) {
     res.render("pages/todos")

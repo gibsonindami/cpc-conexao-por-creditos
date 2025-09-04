@@ -8,6 +8,37 @@
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
+<body>
+  <!-- Menu hambúrguer -->
+  <nav role="navigation">
+    <div id="menuToggle">
+      <input type="checkbox" />
+      <span></span>
+      <span></span>
+      <span></span>
+      
+ <!-- MENU LATERAL -->
+ <nav class="side-menu" id="side-menu">
+  <a href="/conta">MINHA CONTA</a>
+  <a href="/home">INÍCIO</a>
+  <a href="/sobrenos">SOBRE NÓS</a>
+  <a href="/comofunciona">COMO FUNCIONA</a>
+  <a href="/servicos">SERVIÇOS DE TROCA</a>
+  <a href="/saibamais">SAIBA MAIS</a>
+  <a href="/noticias">NOTÍCIAS</a>
+</nav>
+
+  <!-- Cabeçalho -->
+  <header>
+    <div class="topbar"><img src="../app/public/img/img logo.png" alt="Logo" class="logo"/>
+      <h1>Serviços de Trocas</h1>
+      <i class="fas fa-user user-icon"></i>
+    </div>
+    <div class="search-wrapper">
+      <input type="text" id="search" placeholder="Busque seu profissional" />
+      <i class="fas fa-search search-icon"></i>
+    </div>
+  </header>
 
 <%- include('../partials/header.ejs') %>
 <body>
