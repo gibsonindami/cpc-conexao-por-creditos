@@ -57,25 +57,41 @@ body {
 
 .banner {
   position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px; /* Espaço do cabeçalho */
+}
+
+.banner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px; /* Distância do topo */
 }
 
 .banner img {
-  width: 100%;
+  width: 60%;
   height: auto;
   display: block;
+  border-radius: 12px; /* Arredondamento */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Envolve o texto dentro da área da imagem */
 .banner-text {
   position: absolute;
-  bottom: 15px;
-  left: 15px;
-  background: rgba(0, 0, 0, 0.4);
+  bottom: 30px;
+  left: 37%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.5); 
   color: #fff;
-  padding: 10px;
+  padding: 15px 16px;
   border-radius: 8px;
-  max-width: 70%;
+  max-width: 80%;
+  text-align: left;
 }
 
+/* Botão */
 .btn-banner {
   margin-top: 8px;
   background: orange;
@@ -92,11 +108,12 @@ body {
 }
 
 .boas-vindas h2 {
+  text-align: center;
   margin-bottom: 10px;
 }
 
 .boas-vindas p {
-  text-align: justify;
+  text-align: center;
   font-size: 14px;
   line-height: 1.5;
 }
@@ -221,4 +238,19 @@ footer img {
   background: rgba(0, 0, 0, 0.4);
   display: none;
   z-index: 999;
+}
+
+.search-bar input {
+  width: 400px;
+  max-width: 90%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.search-bar input:focus {
+  border-color: #999;
 }
