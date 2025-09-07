@@ -5,10 +5,6 @@ router.post("/html", function (req, res) {
     res.json(req.body);
 })
 
-router.get("/login", function (req, res) {
-    res.render("pages/login")
-});
-
 router.get("/", function (req, res) {
     res.render("pages/login")
 });
