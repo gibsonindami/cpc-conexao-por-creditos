@@ -38,6 +38,15 @@ router.get("/doe", function (req, res) {
 router.get("/todos", function (req, res) {
     res.render("pages/todos")
 });
+router.get("/kids", function (req, res) {
+    res.render("pages/infantil")
+});
+router.get("/alimentos", function (req, res) {
+    res.render("pages/alimentos")
+});
+router.get("/profissionais", function (req, res) {
+    res.render("pages/profissionais")
+});
 
 
 module.exports = router;

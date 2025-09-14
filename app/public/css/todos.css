@@ -8,40 +8,7 @@
 body {
   font-family: 'Poppins', sans-serif;
 }
-.side-menu {
-  position: fixed;
-  right: -100%;
-  background: #155a37;
-  width: 200px;
-  height: 100px;
-  padding: 200px;
-  transition: right 0.3s ease-in;
-  display: flex;
-  flex-direction: column;
-}
 
-.side-menu.open {
-  text-align: start;
-  right:0;
-  background-color: #87B79F;
-}
-
-.side-menu a {
-  text-decoration: none;
-  color: #FFFFFF;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.overlay {
-  position: fixed;
-  left: 0;
-  right: 100%;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
-  display: none;
-  z-index: 1001;
-}
 /* Campo de busca */
 .search-wrapper {
   display: flex;
@@ -94,50 +61,57 @@ nav {
 }
 
 /* Lista de serviços */
-#service-list {
+.service-card img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+}
+
+.service-list {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: column;
   gap: 20px;
-  justify-content: center;
-  padding: 20px;
-  margin-left: 50px;
+  max-width: 400px;
+  margin: auto;
 }
 
 .service-card {
   display: flex;
   align-items: center;
-  background-color: #f5f5f5;
-  border-radius: 12px;
+  background: #fff;
+  border-radius: 10px;
   padding: 15px;
-  width: 100%;
-  max-width: 450px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   gap: 15px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.06);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
 }
 
-.service-card img {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  object-fit: cover;
+.service-info h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
 }
 
-.service-info {
-  flex: 1;
+.service-info p {
+  margin: 5px 0 10px;
+  font-size: 14px;
+  color: #555;
 }
 
-.service-info strong {
-  font-size: 1.1em;
-}
-
-button.contact-btn {
-  background-color: #ffc107;
+.btn-contato {
+  background: #FFB703;
   border: none;
-  padding: 6px 14px;
+  padding: 8px 15px;
   border-radius: 6px;
-  font-weight: bold;
   cursor: pointer;
-  margin-top: 5px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-contato:hover {
+  background: #ffa500;
 }
 
 /* Responsividade */

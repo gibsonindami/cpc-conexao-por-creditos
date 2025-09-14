@@ -20,8 +20,10 @@
     width: 20px;
     cursor: pointer;
   }
+
   /* MENU LATERAL */
 .side-menu {
+  text-align: start;
   position: fixed;
   right: -100%;
   background: #155a37;
@@ -35,8 +37,6 @@
 }
 
 .side-menu.open {
-  text-align: start;
-  right:0;
   background-color: #87B79F;
   margin-top: 10px;
 }
@@ -57,6 +57,7 @@
   display: none;
   z-index: 999;
 }
+
   /* Responsividade */
 @media (max-width: 1024px) {
   .service-card {
