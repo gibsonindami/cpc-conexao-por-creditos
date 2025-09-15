@@ -7,29 +7,16 @@
   <link rel="stylesheet" href="../css/home.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?familly=Poppins:wght@400;600;700&display=swap">
 </head>
-<body>
-
- 
 
 <%- include('../partials/header.ejs') %>
 <body>
-  <!-- MENU LATERAL -->
-  <nav class="side-menu" id="side-menu">
-    <a href="/conta">MINHA CONTA</a>
-    <a href="/home">INÍCIO</a>
-    <a href="/sobrenos">SOBRE NÓS</a>
-    <a href="/comofunciona">COMO FUNCIONA</a>
-    <a href="/servicos">SERVIÇOS DE TROCA</a>
-    <a href="/saibamais">SAIBA MAIS</a>
-    <a href="noticias">NOTÍCIAS</a>
-  </nav>
 
   <!-- SOBREPOSIÇÃO DO MENU (FUNDO ESCURO) -->
   <div id="overlay" class="overlay"></div>
 
   <!-- BANNER -->
   <section class="banner">
-    <img src="../img/img-home.jpeg" alt="Banner principal">
+    <img src="../img/img-banner.jpeg" alt="Banner principal">
     <div class="banner-text">
       <h1>Junte-se a nós e construa conexões valiosas!</h1>
       <button class="btn-banner">SAIBA MAIS</button>
@@ -46,19 +33,22 @@
   <!-- ÍCONES -->
   <section class="icones">
     <div class="icone">
-      <img src="../img/img kids.jpeg" alt="Área Kids">
+      <a href="/kids"><img src="../img/img kids.jpeg" alt="Área Kids"></a>
       <p>Área Kids</p>
     </div>
+
     <div class="icone">
-      <a href="/todos"><img src="../img/servicos.jpeg" alt="Serviços"></a>
+      <a href="/profissionais"><img src="../img/servicos.jpeg" alt="Serviços"></a>
       <p>Serviços</p>
     </div>
+
     <div class="icone">
-      <img src="../img/img alimentacao.jpeg" alt="Alimentação">
+      <a href="/alimentos"><img src="../img/img alimentacao.jpeg" alt="Alimentação"></a>
       <p>Alimentação</p>
     </div>
+
     <div class="icone">
-      <img src="../img/img noticias.jpeg" alt="Notícias">
+      <a href="/doe"><img src="../img/img noticias.jpeg" alt="Notícias"></a>
       <p>Notícias</p>
     </div>
   </section>
@@ -87,12 +77,12 @@
     <form>
       <input type="text" placeholder="Primeiro nome" required>
       <input type="email" placeholder="Email" required>
-      <button type="submit">CADASTRAR</button>
+      <a href="/doe"><button type="submit">CADASTRAR</button></a>
     </form>
-  </section>
+  </section><br>
 
   <script src="../js/menu.js"></script>
-
+<br>
 </body>
 <%- include('../partials/footer.ejs') %>
 </html>
