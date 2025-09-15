@@ -121,6 +121,7 @@ body {
 }
 
 .fique-por-dentro button {
+  width: 100%;
   background: orange;
   color: white;
   font-weight: bold;
@@ -164,7 +165,6 @@ footer img {
 .side-menu.open {
   right: 0; 
 }
-
 .overlay {
   position: fixed;
   top: 0;

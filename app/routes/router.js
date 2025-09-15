@@ -47,6 +47,9 @@ router.get("/alimentos", function (req, res) {
 router.get("/profissionais", function (req, res) {
     res.render("pages/profissionais")
 });
+router.get("/contato", function (req, res) {
+    res.render("pages/contato-troca")
+});
 
 
 module.exports = router;
