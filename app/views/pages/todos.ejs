@@ -1,87 +1,59 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Serviços de Troca</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Serviços de Trocas</title>
   <link rel="stylesheet" href="../css/todos.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?familly=Poppins:wght@400;600;700&display=swap">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
+<body>
+  <!-- Menu hambúrguer -->
+  <nav role="navigation">
+    <div id="menuToggle">
+      <input type="checkbox" />
+      <span></span>
+      <span></span>
+      <span></span>
+      
+ <!-- MENU LATERAL -->
+ <nav class="side-menu" id="side-menu">
+  <a href="/conta">MINHA CONTA</a>
+  <a href="/home">INÍCIO</a>
+  <a href="/sobrenos">SOBRE NÓS</a>
+  <a href="/comofunciona">COMO FUNCIONA</a>
+  <a href="/servicos">SERVIÇOS DE TROCA</a>
+  <a href="/saibamais">SAIBA MAIS</a>
+  <a href="/noticias">NOTÍCIAS</a>
+</nav>
+
+  <!-- Cabeçalho -->
+  <header>
+    <div class="topbar"><img src="../app/public/img/img logo.png" alt="Logo" class="logo"/>
+      <h1>Serviços de Trocas</h1>
+      <i class="fas fa-user user-icon"></i>
+    </div>
+    <div class="search-wrapper">
+      <input type="text" id="search" placeholder="Busque seu profissional" />
+      <i class="fas fa-search search-icon"></i>
+    </div>
+  </header>
 
 <%- include('../partials/header.ejs') %>
 <body>
-  
   <!-- Filtros -->
   <nav>
-    <a href="/todos"><button class="filter-btn active" data-filter="todos">Todos</button></a>
-    <a href="/kids"><button class="filter-btn" data-filter="infantil">Infantil</button></a>
-    <a href="/profissionais"><button class="filter-btn" data-filter="profissionais">Profissionais</button></a>
-    <a href="/alimentos"><button class="filter-btn" data-filter="alimentos">Alimentação</button></a>
+    <button class="filter-btn active" data-filter="todos">Todos</button>
+    <button class="filter-btn" data-filter="infantil">Infantil</button>
+    <button class="filter-btn" data-filter="profissionais">Profissionais</button>
+    <button class="filter-btn" data-filter="alimentação">Alimentação</button>
   </nav>
 
-
   <!-- Lista de serviços -->
-<div class="service-list">
-    
-    <br><div class="service-card active">
-      <img src="../img/img malcon.png" alt="Foto" class="avatar">
-      <div class="service-info">
-        <h3>Berço</h3>
-        <p>Malcolm, Barueri-SP</p>
-        <a href="/contato"><button class="btn-contato">Contato</button></a>
-      </div>
-    </div><br>
-
-    <div class="service-card">
-      <img src="../img/img malcon.png" alt="Foto" class="avatar">
-      <div class="service-info">
-        <h3>Limpeza</h3>
-        <p>Malcolm, Barueri-SP</p>
-        <a href="/contato"><button class="btn-contato">Contato</button></a>
-      </div>
-    </div><br>
-
-    <div class="service-card">
-      <img src="../img/img malcon.png" alt="Foto" class="avatar">
-      <div class="service-info">
-        <h3>Pedreiro</h3>
-        <p>Malcolm, Barueri-SP</p>
-        <a href="/contato"><button class="btn-contato">Contato</button></a>
-      </div>
-    </div><br>
-
-    <div class="service-card">
-      <img src="../img/img malcon.png" alt="Foto" class="avatar">
-      <div class="service-info">
-        <h3>Cadeirinha</h3>
-        <p>Malcolm, Barueri-SP</p>
-        <a href="/contato"><button class="btn-contato">Contato</button></a>
-      </div>
-    </div><br>
-
-    <div class="service-card">
-      <img src="../img/img malcon.png" alt="Foto" class="avatar">
-      <div class="service-info">
-        <h3>Sal</h3>
-        <p>Malcolm, Barueri-SP</p>
-        <a href="/contato"><button class="btn-contato">Contato</button></a>
-      </div>
-    </div><br>
-
-    <div class="service-card">
-      <img src="../img/img malcon.png" alt="Foto" class="avatar">
-      <div class="service-info">
-        <h3>Macarrão</h3>
-        <p>Malcolm, Barueri-SP</p>
-        <a href="/contato"><button class="btn-contato">Contato</button></a>
-      </div>
-    </div><br>
-
-  </div><br>
-</section>
+  <section id="service-list"></section>
 
 
-  <script src="../js/menu.js"></script>
   <script src="../app/public/js/todos.js"></script>
 </body>
 <%- include('../partials/footer.ejs') %>

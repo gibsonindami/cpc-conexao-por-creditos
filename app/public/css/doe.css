@@ -103,32 +103,5 @@
     font-size: 18px;
     color: #2d5c51;
   }
-/* Responsividade */
-@media (max-width: 1024px) {
-  .service-card {
-    width: 90%;
-  }
-}
-
-@media (max-width: 600px) {
-  header, nav, #service-list {
-    margin-left: 0;
-  }
-
-  .topbar {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .search-wrapper {
-    width: 100%;
-  }
-
-  #search {
-    width: 90%;
-  }
-
-  .search-icon {
-    right: 8%;
-  }
-}
+  
+  
