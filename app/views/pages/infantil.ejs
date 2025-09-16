@@ -3,29 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Serviços de Troca</title>
-  <link rel="stylesheet" href="../css/todos.css">
+  <title>Serviços Infantis</title>
+  <link rel="stylesheet" href="../css/todos.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?familly=Poppins:wght@400;600;700&display=swap">
 </head>
 
 <%- include('../partials/header.ejs') %>
 <body>
-
+  
+  <!-- SOBREPOSIÇÃO DO MENU (FUNDO ESCURO) -->
+  <div id="overlay" class="overlay"></div>
   <!-- Filtros -->
   <nav>
-    <a href="/todos"><button class="filter-btn active" data-filter="todos">Todos</button></a>
-    <a href="/kids"><button class="filter-btn" data-filter="infantil">Infantil</button></a>
+    <a href="/todos"><button class="filter-btn" data-filter="todos">Todos</button></a>
+    <a href="/kids"><button class="filter-btn active" data-filter="infantil">Infantil</button></a>
     <a href="/profissionais"><button class="filter-btn" data-filter="profissionais">Profissionais</button></a>
     <a href="/alimentos"><button class="filter-btn" data-filter="alimentos">Alimentação</button></a>
   </nav>
 
   <!-- Lista de serviços -->
-   <div class="service-list">
+<div class="service-list">
     
-    <br><div class="service-card active">
+    <br><div class="service-card">
       <img src="../img/img malcon.png" alt="Foto" class="avatar">
       <div class="service-info">
-        <h3>Berço</h3>
+        <h3>Macacão</h3>
         <p>Malcolm, Barueri-SP</p>
         <a href="/contato"><button class="btn-contato">Contato</button></a>
       </div>
@@ -34,16 +36,7 @@
     <div class="service-card">
       <img src="../img/img malcon.png" alt="Foto" class="avatar">
       <div class="service-info">
-        <h3>Limpeza</h3>
-        <p>Malcolm, Barueri-SP</p>
-        <a href="/contato"><button class="btn-contato">Contato</button></a>
-      </div>
-    </div><br>
-
-    <div class="service-card">
-      <img src="../img/img malcon.png" alt="Foto" class="avatar">
-      <div class="service-info">
-        <h3>Pedreiro</h3>
+        <h3>Lencinho</h3>
         <p>Malcolm, Barueri-SP</p>
         <a href="/contato"><button class="btn-contato">Contato</button></a>
       </div>
@@ -58,10 +51,19 @@
       </div>
     </div><br>
 
-    <div class="service-card">
+    <div class="service-card active">
       <img src="../img/img malcon.png" alt="Foto" class="avatar">
       <div class="service-info">
-        <h3>Sal</h3>
+        <h3>Berço</h3>
+        <p>Malcolm, Barueri-SP</p>
+        <a href="/contato"><button class="btn-contato">Contato</button></a>
+      </div>
+    </div><br>
+
+    <div class="service-card active">
+      <img src="../img/img malcon.png" alt="Foto" class="avatar">
+      <div class="service-info">
+        <h3>Mamadeira</h3>
         <p>Malcolm, Barueri-SP</p>
         <a href="/contato"><button class="btn-contato">Contato</button></a>
       </div>
@@ -70,14 +72,15 @@
     <div class="service-card">
       <img src="../img/img malcon.png" alt="Foto" class="avatar">
       <div class="service-info">
-        <h3>Macarrão</h3>
+        <h3>Chupeta</h3>
         <p>Malcolm, Barueri-SP</p>
         <a href="/contato"><button class="btn-contato">Contato</button></a>
       </div>
     </div><br>
 
   </div><br>
-</section>
+
+  </section>
 
   <script src="../js/menu.js"></script>
   <script src="../app/public/js/todos.js"></script>

@@ -1,15 +1,14 @@
-
 footer {
     text-align: center;
     padding: 20px;
     background: #f1f1f1;
   }
-  
+
   footer img {
     width: 80px;
     margin-bottom: 10px;
   }
-  
+
   .footer-links a {
     display: block;
     text-decoration: none;
@@ -17,7 +16,7 @@ footer {
     margin-top: 5px;
     font-size: 14px;
   }
-  
+
   .side-menu {
     position: fixed;
     top: 0;
@@ -29,11 +28,11 @@ footer {
     transition: right 0.3s ease;
     z-index: 1001;
   }
-  
+
   .side-menu.open {
     right: 0; 
   }
-  
+
   .overlay {
     position: fixed;
     top: 0;
@@ -44,3 +43,32 @@ footer {
     display: none;
     z-index: 999;
   }  
+  /* Responsividade */
+@media (max-width: 1024px) {
+  .service-card {
+    width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  header, nav, #service-list {
+    margin-left: 0;
+  }
+
+  .topbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-wrapper {
+    width: 100%;
+  }
+
+  #search {
+    width: 90%;
+  }
+
+  .search-icon {
+    right: 8%;
+  }
+}

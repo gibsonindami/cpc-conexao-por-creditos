@@ -8,30 +8,6 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-.side-menu {
-  position: fixed;
-  right: -100%;
-  top: 0;
-  background: #87B79F;
-  width: 200px;
-  height: 100%;
-  padding: 20px;
-  transition: right 0.3s ease-in;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.side-menu.open {
-  right:0;
-}
-
-.side-menu a {
-  text-decoration: none;
-  color: #FFFFFF;
-  font-weight: bold;
-}
-
 .banner {
   position: relative;
 }
@@ -145,6 +121,7 @@ body {
 }
 
 .fique-por-dentro button {
+  width: 100%;
   background: orange;
   color: white;
   font-weight: bold;
@@ -198,4 +175,34 @@ footer img {
   background: rgba(0, 0, 0, 0.4);
   display: none;
   z-index: 999;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .service-card {
+    width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  header, nav, #service-list {
+    margin-left: 0;
+  }
+
+  .topbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-wrapper {
+    width: 100%;
+  }
+
+  #search {
+    width: 90%;
+  }
+
+  .search-icon {
+    right: 8%;
+  }
 }

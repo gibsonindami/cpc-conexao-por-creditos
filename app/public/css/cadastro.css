@@ -3,7 +3,7 @@
     padding: 0;
     box-sizing: border-box;
   }
-  
+
   body {
     font-family: "Segoe UI", sans-serif;
     background-color: #b8e5dc;
@@ -18,7 +18,7 @@
     display: block;
     margin: 0 auto;
   }
-  
+
   h3 {
     margin: 10px 0 20px;
     text-align: center;
@@ -31,27 +31,27 @@
   max-width: 450px;
   width: 100%;
 }
-  
+
   .container {
     width: 100%;
     max-width: 360px;
     padding: 20px;
     text-align: center;
   }
-  
+
   h1 {
     font-size: 18px;
     margin-bottom: 30px;
     font-weight: bold;
     color: #000;
   }
-  
+
   form {
     display: flex;
     flex-direction: column;
     gap: 15px;
   }
-  
+
   input {
     padding: 10px;
     border: none;
@@ -59,7 +59,7 @@
     font-size: 14px;
     outline: none;
   }
-  
+
   button {
     background-color: #f6a600;
     color: #000;
@@ -71,8 +71,36 @@
     font-size: 14px;
     transition: background-color 0.3s ease;
   }
-  
+
   button:hover {
     background-color: #e29400;
   }
-  
+  /* Responsividade */
+@media (max-width: 1024px) {
+  .service-card {
+    width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  header, nav, #service-list {
+    margin-left: 0;
+  }
+
+  .topbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-wrapper {
+    width: 100%;
+  }
+
+  #search {
+    width: 90%;
+  }
+
+  .search-icon {
+    right: 8%;
+  }
+}

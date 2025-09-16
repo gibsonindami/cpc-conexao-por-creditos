@@ -5,10 +5,6 @@ router.post("/html", function (req, res) {
     res.json(req.body);
 })
 
-router.get("/login", function (req, res) {
-    res.render("pages/login")
-});
-
 router.get("/", function (req, res) {
     res.render("pages/login")
 });
@@ -42,6 +38,17 @@ router.get("/doe", function (req, res) {
 router.get("/todos", function (req, res) {
     res.render("pages/todos")
 });
-
+router.get("/kids", function (req, res) {
+    res.render("pages/infantil")
+});
+router.get("/alimentos", function (req, res) {
+    res.render("pages/alimentos")
+});
+router.get("/profissionais", function (req, res) {
+    res.render("pages/profissionais")
+});
+router.get("/contato", function (req, res) {
+    res.render("pages/contato-troca")
+});
 
 module.exports = router;

@@ -8,12 +8,34 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 /*BODY*/
+.espaço{
+    width: 529px;
+    height: 150px;
+    background-color: lightgray;
+}
+
+.conteudo-preview, h2 {
+  padding: 25px 20px;
+  text-align: center;
+}
+
+#conteudo-sobre img {
+    display: block;
+  padding-left: 80px;
+  max-width: 88%;
+  margin-top: 15px;
+}
+#conteudo-sobre, h3{
+    padding: 10px;
+    font-size: 16px;
+    text-align:justify;
+}
 
 .profile {
     display: flex;
     align-items: center;
     padding: 20px 15px;
-    background-color: #B2E5D9;
+    background-color: #ffffff;
 }
 
 .avatar {
@@ -26,40 +48,14 @@ body {
     margin-left: 27px;
 }
 
-.credits {
-    margin: 15px;
-    padding: 10px;
-    background-color: #fcbf2f;
-    text-align: center;
-    border-radius: 35px;
-    font-weight: bold;
+.iniciar-troca button {
+  margin-left: 215px ;
+  background: orange;
+  color: black;
+  border: none;
+  padding: 12px;
+  border-radius: 20px;
 }
-
-.ultimas-trocas h2, .active-offers h2{
-  text-align: center;
-    padding: 15px;
-    background-color: #a6d5d0;
-    border-radius: 5px;
-}
-
-.transaction, .offer {
-  padding: 7px;
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 20px;
-}
-
-.status {
-    padding: 2px 15px;
-    border-radius: 4px;
-    color: white;
-    font-weight: bold;
-}
-
-.andamento { padding-top: 20px; color: black; background-color: #fcbf2f; }
-.concluido { padding-top: 20px; background-color: #28a745; }
-.inativa { padding-top: 20px; background-color: #dc3545; }
-.ativa { padding-top: 15px; padding-bottom: 15px; ; background-color: #007bff; }
 
 /*MENU LATERAL*/
 .side-menu {
