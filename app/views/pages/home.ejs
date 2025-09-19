@@ -5,22 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Página Inicial - CPC</title>
   <link rel="stylesheet" href="../css/home.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?familly=Poppins:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
 </head>
 <body>
 
- <header class="header">
-  <img src="../img/logo.png" class="logo" alt="Logo">
-
-  <div class="search-bar">
-    <input type="text" placeholder="Pesquisar...">
-  </div>
-  
-  <div class="icons">
-    <img src="../img/img perfil.png" alt="Perfil">
-    <img src="../img/img menu.png" id="btnMenu" alt="Abrir menu">
-  </div>
-</header>
+  <%- include('../partials/header.ejs') %>
 
   <!-- MENU LATERAL -->
   <nav class="side-menu" id="side-menu">
@@ -47,28 +36,28 @@
 
   <!-- BOAS-VINDAS -->
   <section class="boas-vindas">
-    <h2>Bem vindo ao CPC:</h2>
+    <h2>Bem-vindo ao CPC:</h2>
     <p>No mundo atual, muitas pessoas enfrentam dificuldades. Através das redes colaborativas e da educação, podemos mudar essa realidade. <br>
-      O CPC é uma organização que promove inclusão, solidariedade e transformação social. 
+    O CPC é uma organização que promove inclusão, solidariedade e transformação social. 
     Somos uma organização que trabalha pelo fim da pobreza.</p>
   </section>
 
   <!-- ÍCONES -->
   <section class="icones">
     <div class="icone">
-      <img src="../img/img kids.jpeg" alt="Área Kids">
+      <img src="../img/img kids.jpeg" alt="Imagem da área infantil com crianças brincando">
       <p>Área Kids</p>
     </div>
     <div class="icone">
-      <a href="/todos"><img src="../img/servicos.jpeg" alt="Serviços"></a>
+      <a href="/todos"><img src="../img/servicos.jpeg" alt="Ícone representando serviços disponíveis"></a>
       <p>Serviços</p>
     </div>
     <div class="icone">
-      <img src="../img/img alimentacao.jpeg" alt="Alimentação">
+      <img src="../img/img alimentacao.jpeg" alt="Imagem representando alimentação saudável">
       <p>Alimentação</p>
     </div>
     <div class="icone">
-      <img src="../img/img noticias.jpeg" alt="Notícias">
+      <img src="../img/img noticias.jpeg" alt="Imagem representando notícias e informações">
       <p>Notícias</p>
     </div>
   </section>
@@ -76,47 +65,32 @@
   <!-- ABAS -->
   <div class="abas">
     <button id="btn-sobre" class="aba ativa">Sobre</button>
-    <a href="doe"><button id="btn-doe" class="aba">Doe</button></a>
+    <a href="/doe"><button id="btn-doe" class="aba">Doe</button></a>
   </div>
 
   <!-- CONTEÚDO DAS ABAS -->
   <section id="conteudo-aba">
     <div id="conteudo-sobre">
       <h3>Sobre a organização</h3>
-      <p>Nosso objetivo é criar uma rede solidária onde as pessoas podem trocar serviços e produtos sem a necessidade de dinheiro. 
-        Aqui você pode oferecer suas habilidades, ajudar quem precisa e receber apoio em troca, tudo de uma forma simples e acessível.
-        Ideal para quem busca se conectar, compartilhar e transformar vidas na comunidade, nosso espaço é um ponto de encontro para aqueles em situação de vunerabilidade e para todos que desejam fazer a diferença. 
-        Junte-se a nós e descubra o poder da colaboração!</p>
-      <img src="../img/img2-home.jpeg" alt="Foto da organização">
-    </div>
-
-    <div id="conteudo-doe" style="display:block;">
-      <h3>Faça parte da mudança</h3>
-      <p>Com sua ajuda, podemos construir uma comunidade mais justa e sustentável. Doe produtos, tempo ou habilidades!</p>
-      <img src="img/doacao.jpg" alt="Imagem doação">
-      <button class="btn-doe">Doe</button>
+      <p>Nosso objetivo é criar uma rede solidária onde as pessoas podem trocar serviços e produtos sem a necessidade de dinheiro.<br>
+      Aqui você pode oferecer suas habilidades, ajudar quem precisa e receber apoio em troca, tudo de uma forma simples e acessível.<br>
+      Ideal para quem busca se conectar, compartilhar e transformar vidas na comunidade, nosso espaço é um ponto de encontro para aqueles em situação de <strong>vulnerabilidade</strong> e para todos que desejam fazer a diferença.<br>
+      Junte-se a nós e descubra o poder da colaboração!</p>
+      <img src="../img/img2-home.jpeg" alt="Foto da organização CPC em atividade">
     </div>
   </section>
 
   <!-- FIQUE POR DENTRO -->
   <section class="fique-por-dentro">
     <h2>FIQUE POR DENTRO</h2>
-    <form>
-      <input type="text" placeholder="Primeiro nome" required>
-      <input type="email" placeholder="Email" required>
+    <form action="/cadastro-newsletter" method="POST">
+      <input type="text" name="nome" placeholder="Primeiro nome" required>
+      <input type="email" name="email" placeholder="Email" required>
       <button type="submit">CADASTRAR</button>
     </form>
   </section>
 
-  <!-- RODAPÉ -->
-  <footer>
-    <img src="img Logo-cpc.jpeg" alt="Logo rodapé">
-    <div class="footer-links">
-      <a href="#">Sobre nós</a>
-      <a href="#">Como funciona</a>
-      <a href="servicos.ejs">Serviço de trocas</a>
-    </div>
-  </footer>
+  <%- include('../partials/footer.ejs') %>
 
   <script src="../js/menu.js"></script>
 

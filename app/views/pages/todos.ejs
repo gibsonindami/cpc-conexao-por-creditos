@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Serviços de Trocas</title>
   <link rel="stylesheet" href="../css/todos.css" />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-  />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
 <body>
   <!-- Menu hambúrguer -->
@@ -41,8 +39,9 @@
       <i class="fas fa-search search-icon"></i>
     </div>
   </header>
-  
 
+<%- include('../partials/header.ejs') %>
+<body>
   <!-- Filtros -->
   <nav>
     <button class="filter-btn active" data-filter="todos">Todos</button>
@@ -54,16 +53,8 @@
   <!-- Lista de serviços -->
   <section id="service-list"></section>
 
-  <!-- RODAPÉ -->
-  <footer>
-    <img src="../app/public/img/img Logo-cpc.jpeg" alt="Logo rodapé">
-    <div class="footer-links">
-      <a href="#">Sobre nós</a>
-      <a href="#">Como funciona</a>
-      <a href="servicos.ejs">Serviço de trocas</a>
-    </div>
-  </footer>
 
   <script src="../app/public/js/todos.js"></script>
 </body>
+<%- include('../partials/footer.ejs') %>
 </html>

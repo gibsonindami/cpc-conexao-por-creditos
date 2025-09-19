@@ -8,29 +8,6 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-.header {
-  background: #B2E5D9;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 15px;
-}
-
-.logo {
-  height: 70px;
-}
-
-.icons {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.icons img {
-  width: 20px;
-  cursor: pointer;
-}
-
 .side-menu {
   position: fixed;
   right: -100%;
