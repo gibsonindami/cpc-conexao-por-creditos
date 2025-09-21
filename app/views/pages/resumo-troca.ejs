@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resumo Troca</title>
+  <link rel="stylesheet" href="../css/resumo-troca.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?familly=Poppins:wght@400;600;700&display=swap">
+</head>
+
+<%- include('../partials/header.ejs') %>
+<body>
+    <!-- Conteúdo -->
+  <main>
+    <h1>Resumo de Troca</h1>
+
+    <div class="info">
+      <p><strong>Troca:</strong> Marceneiro & Leite Infantil</p>
+      <p><strong>Item 1:</strong> Marceneiro = 30 PONTOS</p>
+      <p><strong>Item 2:</strong> Leite Infantil = 8 PONTOS</p>
+    </div>
+
+    <div class="diferenca">
+      <p><strong>Diferença: </strong></p> <h1>30 PONTOS - 8 PONTOS<br>
+      22*5 = R$ 110,00<br>
+      <p>R$ 110,00 - Taxa = R$100,00</h1></p>
+    </div>
+
+    <div class="produtos">
+      <img src="../img/img malcon.png" alt="Item 1">
+      <img src="../img/leite.webp" alt="Item 2">
+    </div>
+
+    <div class="descricao">
+      Você está trocando Serviço de Marcenaria por Leite Infantil. O valor de 100,00 R$ será creditado na sua conta assim que o usuário realizar a transferência.
+    </div>
+
+    <div class="termos">
+      Ao fazer essa troca você concorda com os <a href="#">Termos de uso do Conexão por Créditos</a>.
+    </div>
+
+  <br><section class="iniciar-troca">
+  <a href="/doe"><button type="submit">Confirmar Troca</button></a>
+
+    <br><div class="aviso"><br>
+      Os usuários têm até 30 dias para efetuar os serviços. Ao realizar a troca você concorda com todos os termos de uso da plataforma e com o Contrato de troca.
+    </div>
+  </main>
+
+  </section>
+
+  <script src="../js/menu.js"></script>
+  <br>
+  <br>
+  <br>
+</body>
+<%- include('../partials/footer.ejs') %>
+</html>

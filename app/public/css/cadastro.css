@@ -12,6 +12,12 @@
     justify-content: center;
     align-items: center;
   }
+  
+span.msgErro {
+  color: red;
+  font-size: 0.9em;
+  margin-left: 10px;
+}
 
   .logo {
     width: 100px;
