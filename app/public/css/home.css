@@ -13,9 +13,9 @@ body {
 }
 
 .banner img {
-  width: 80%;
-  height: auto;
-  display: block;
+  width: 100%;
+  height: center;
+  display: flex;
 }
 
 .banner-text {

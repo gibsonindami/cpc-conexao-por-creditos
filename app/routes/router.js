@@ -14,6 +14,9 @@ router.get("/cadastro", function (req, res) {
 router.get("/home", function (req, res) {
     res.render("pages/home")
 });
+router.get("/home2", function (req, res) {
+    res.render("pages/home2")
+});
 router.get("/saibamais", function (req, res) {
     res.render("pages/saibamais")
 });
