@@ -13,7 +13,7 @@ body {
 }
 
 .banner img {
-  width: 100%;
+  width: 80%;
   height: auto;
   display: block;
 }
@@ -209,12 +209,12 @@ footer img {
   }
 }
 
-@media (max-width: 768px) {
-  .banner-text {
-    bottom: 10px;
-    left: 10px;
+@media (max-width: 600px) {
+.banner-text {
     max-width: 90%;
     font-size: 1rem;
     padding: 8px;
+    left: 10px;
+    bottom: 10px;
   }
 }
