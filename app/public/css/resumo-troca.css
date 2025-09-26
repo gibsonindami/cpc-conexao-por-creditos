@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.iniciar-troca button {
+  margin-left: 170px ;
+  background: orange;
+  color: black;
+  border: none;
+  padding: 12px;
+  border-radius: 20px;
+}
+
+/* ===== Container principal ===== */
+main {
+  background: #fff;
+  margin: 15px;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.info {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.diferenca {
+  padding-top: 20px;
+  font-size: 16px;
+}
+
+.info strong {
+  display: inline-block;
+  width: 80px;
+}
+
+.diferenca h1{
+  line-height: 20px;
+  font-style: normal;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* ===== Produtos ===== */
+.produtos {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 25px 0;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.produtos img {
+  max-width: 160px;
+}
+
+/* ===== Descrição ===== */
+.descricao {
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: justify;
+  margin-bottom: 20px;
+}
+
+.termos {
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.termos a {
+  color: #3c9e5a;
+  text-decoration: none;
+}
+
+/*MENU LATERAL*/
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -250px; 
+  width: 250px;
+  height: 100%;
+  background-color: #B2E5D9;
+  padding: 30px 20px;
+  transition: right 0.3s ease;
+  z-index: 1001;
+}
+
+.side-menu.open {
+  right: 0; 
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  z-index: 999;
+}
+/* Responsividade */
+@media (max-width: 1024px) {
+  .service-card {
+    width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  header, nav, #service-list {
+    margin-left: 0;
+  }
+
+  .topbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-wrapper {
+    width: 100%;
+  }
+
+  #search {
+    width: 90%;
+  }
+
+  .search-icon {
+    right: 8%;
+  }
+}
