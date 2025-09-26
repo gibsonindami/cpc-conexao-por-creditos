@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Página Inicial - CPC</title>
-  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/home2.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?familly=Poppins:wght@400;600;700&display=swap">
 </head>
-
 
 <%- include('../partials/header.ejs') %>
 <body>
@@ -56,35 +55,30 @@
 
   <!-- ABAS -->
   <div class="abas">
-    <button id="btn-sobre" class="aba ativa">Sobre</button>
-    <a href="/home2"><button id="btn-doe" class="aba">Doe</button></a>
+    <a href="/home"><button id="btn-sobre" class="aba">Sobre</button></a>
+    <button id="btn-doe" class="aba ativa">Doe</button>
   </div>
 
-  <!-- CONTEÚDO DAS ABAS -->
   <section id="conteudo-aba">
     <div id="conteudo-sobre">
-      <h3>Sobre a organização</h3>
-      <p>Nosso objetivo é criar uma rede solidária onde as pessoas podem trocar serviços e produtos sem a necessidade de dinheiro. 
-        Aqui você pode oferecer suas habilidades, ajudar quem precisa e receber apoio em troca, tudo de uma forma simples e acessível.
-        Ideal para quem busca se conectar, compartilhar e transformar vidas na comunidade, nosso espaço é um ponto de encontro para aqueles em situação de vunerabilidade e para todos que desejam fazer a diferença. 
-        Junte-se a nós e descubra o poder da colaboração!</p>
-      <img src="../img/img2-home.jpeg" alt="Foto da organização">
+      <h3>Faça parte da mudança</h3>
+      <p>
+        Com sua ajuda, podemos continuar a construir uma comunidade mais justa e sustentável, 
+        onde todos tenham a chance de participar e prosperar. Doe produtos, tempo ou habilidades e faça parte dessa transformação.
+      </p>
+      <img src="../img/img home-2.png" alt="Foto da organização" class="imagem-doacao">
+      <div class="fique-por-dentro">
+        <a href="/doe">
+          <button type="submit">Doe</button>
+        </a>
+      </div>
     </div>
-  </section>
-
-  <!-- FIQUE POR DENTRO -->
-  <section class="fique-por-dentro">
-    <h2>FIQUE POR DENTRO</h2>
-    <form>
-      <input type="text" placeholder="Primeiro nome" required>
-      <input type="email" placeholder="Email" required>
-      <a href="/doe"><button type="submit">CADASTRAR</button></a>
-    </form>
-  </section><br>
+  </section>  
 
   <script src="../js/menu.js"></script>
   <br>
 
+  
 </body>
 <%- include('../partials/footer.ejs') %>
 </html>

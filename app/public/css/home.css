@@ -14,9 +14,10 @@ body {
 
 .banner img {
   width: 100%;
-  height: auto;
-  display: block;
+  height: center;
+  display: flex;
 }
+
 
 .banner-text {
   position: absolute;
@@ -27,6 +28,8 @@ body {
   padding: 10px;
   border-radius: 8px;
   max-width: 70%;
+  font-size: 1.2rem;
+  line-height: 1.4;
 }
 
 .btn-banner {
@@ -204,5 +207,15 @@ footer img {
 
   .search-icon {
     right: 8%;
+  }
+}
+
+@media (max-width: 600px) {
+.banner-text {
+    max-width: 90%;
+    font-size: 1rem;
+    padding: 8px;
+    left: 10px;
+    bottom: 10px;
   }
 }
