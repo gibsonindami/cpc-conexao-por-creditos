@@ -10,27 +10,36 @@ body {
 }
 
 /* Campo de busca */
-.search-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-  position: relative;
+input label {
+  border: none;
+  background-color: transparent;
 }
 
-#search {
-  width: 80%;
-  padding: 10px 35px 10px 15px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  outline: none;
+#divBusca {
+  border: none;
+  margin-top: 25px;
+  margin-left: 90px;
+  background-color: #E2E2E2;
+  border-radius: 10px;
+  width: 66%;
 }
 
-.search-icon {
-  position: absolute;
-  right: 11%;
-  color: #777;
+#txtBusca {
+  background-color: transparent;
+  padding-left: 15px;
+  font-style: italic;
+  font-size: 18px;
+  border: none;
+  height: 32px;
+  width: 260px;
+}
+
+#btnBusca {
+  border: none;
+  padding-top: 1px;
+  float: right;
+  height: 25px;
+  width: 27px;
 }
 
 /* Botões de filtro */
