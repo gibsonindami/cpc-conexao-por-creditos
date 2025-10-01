@@ -12,5 +12,5 @@ const rotaPrincipal = require("./app/routes/router");
 app.use("/", rotaPrincipal);
 
 app.listen(porta, () => {
-  console.log("Servidor online\nhttp://localhost:${porta}");
+    console.log(`Servidor online\nhttp://localhost:${porta}`);
 });
