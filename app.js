@@ -11,10 +11,6 @@ app.set("views", "./app/views");
 const rotaPrincipal = require("./app/routes/router");
 app.use("/", rotaPrincipal);
 
-app.listen(porta, () => {
-    console.log(`Servidor online\nhttp://localhost:${porta}`);
-});
-
 app.listen(process.env.APP_PORT, () => {
   console.log(`Servidor ouvindo na porta${process.env.APP_PORT}\nhttp://localhost:${process.env.APP_PORT}`);
 });
