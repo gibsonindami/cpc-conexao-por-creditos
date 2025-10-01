@@ -44,7 +44,10 @@ router.get("/kids", function (req, res) {
     res.render("pages/infantil")
 });
 router.get("/alimentos", function (req, res) {
+  
+    res.render("pages/alimentos")});
     res.render("pages/alimentos")
+
 const usuarios = [];
 });
 
@@ -181,9 +184,8 @@ router.post("/login", (req, res) => {
       valores: {
         usuarioDigitado: usuarioDigitado,
         senhaDigitada: senhaDigitada,
-      },
+      }})
+    }
     });
-  }
-});
 
-module.exports = router;
+    module.exports = router;
