@@ -1,2 +1,2 @@
-const { search } = require("../../routes/router");
+const { search } = require("../routes/router");
 searchTerms = mySearch.value;

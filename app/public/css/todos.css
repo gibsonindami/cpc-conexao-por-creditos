@@ -25,7 +25,8 @@ input label {
 }
 
 #txtBusca {
-  background-color: transparent;
+  outline: none;
+  background: transparent;
   padding-left: 15px;
   font-style: italic;
   font-size: 18px;
@@ -35,11 +36,24 @@ input label {
 }
 
 #btnBusca {
+  background: transparent;
   border: none;
   padding-top: 1px;
   float: right;
   height: 25px;
   width: 27px;
+}
+
+#btnBusca img {
+  background: transparent;
+  border: none;
+  height: auto;
+  width: 100%;
+}
+
+input[type="search"] {
+    border: none; /* Remove a borda */
+    background: transparent; /* Remove o fundo */
 }
 
 /* Botões de filtro */
