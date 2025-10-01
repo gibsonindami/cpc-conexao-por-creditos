@@ -49,7 +49,7 @@ router.get("/alimentos", function (req, res) {
     res.render("pages/alimentos")
 
 const usuarios = [];
-});
+
 
 // -------------------- ROTAS GET --------------------
 router.get("/login", (req, res) => {
