@@ -1,15 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const { body, validationResult } = require("express-validator");
+const { append } = require("express/lib/response");
 
 
-router.get("/", function (req, res) {
+router.get("/login", function (req, res) {
     res.render("pages/login")
 });
 router.get("/cadastro", function (req, res) {
     res.render("pages/cadastro")
 });
-router.get("/home", function (req, res) {
+router.get("/", function (req, res) {
     res.render("pages/home")
 });
 router.get("/home2", function (req, res) {
@@ -43,9 +44,12 @@ router.get("/kids", function (req, res) {
     res.render("pages/infantil")
 });
 router.get("/alimentos", function (req, res) {
+  
     res.render("pages/alimentos")});
+    res.render("pages/alimentos")
 
 const usuarios = [];
+});
 
 // -------------------- ROTAS GET --------------------
 router.get("/login", (req, res) => {
@@ -56,7 +60,6 @@ router.get("/login", (req, res) => {
       senhaDigitada: "",
     },
   });
-
 });
 
 router.get("/cadastro", (req, res) => {
@@ -75,6 +78,7 @@ router.get("/cadastro", (req, res) => {
 });
 
 router.get("/", (req, res) => res.render("pages/home"));
+router.get("/home-doe", (req, res) => res.render("pages/home2"));
 router.get("/saibamais", (req, res) => res.render("pages/saibamais"));
 router.get("/servicos", (req, res) => res.render("pages/servicos"));
 router.get("/noticia", (req, res) => res.render("pages/noticia"));

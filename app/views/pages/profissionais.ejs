@@ -13,7 +13,17 @@
   
   <!-- SOBREPOSIÇÃO DO MENU (FUNDO ESCURO) -->
   <div id="overlay" class="overlay"></div>
-  <!-- Filtros -->
+ 
+  <!--Campo de Busca-->
+<div id="divBusca">
+  <label for="txtBusca"></label>
+  <input type="search" id="txtBusca" placeholder="Busque seu Profissional...">
+  <button id="btnBusca" type="button"><img src="../img/img lupa.png" alt="Buscar"></button>
+</div><br>
+<!-- Local onde o texto buscado vai aparecer -->
+<p id="resultadoBusca"></p>
+
+<!-- Filtros -->
   <nav>
     <a href="/todos"><button class="filter-btn" data-filter="todos">Todos</button></a>
     <a href="/kids"><button class="filter-btn" data-filter="infantil">Infantil</button></a>
@@ -82,9 +92,21 @@
 
   </section>
 
+<script> const termoBusca = document.getElementById("txtBusca").value.trim();
+document.getElementById("btnBusca").addEventListener("click", function() {
+        const termoBusca = document.getElementById("txtBusca").value.trim()
+        const resultado = document.getElementById("resultadoBusca")
 
+        if (termoBusca !== "") {
+            resultado.textContent = "Você buscou por: " + termoBusca
+        } else {
+            resultado.textContent = "Digite algo para buscar."
+        }
+    });
+</script>
+  <script src="../js/busca.js"></script>
   <script src="../js/menu.js"></script>
-  <script src="../app/public/js/todos.js"></script>
+  <script src="../js/todos.js"></script>
 </body>
 <%- include('../partials/footer.ejs') %>
 </html>

@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const porta = 3000;
+const dotenv = require("dotenv").config();
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static("./app/public"));
@@ -14,3 +14,8 @@ app.use("/", rotaPrincipal);
 app.listen(porta, () => {
     console.log(`Servidor online\nhttp://localhost:${porta}`);
 });
+
+app.listen(process.env.APP_PORT, () => {
+  console.log(`Servidor ouvindo na porta${process.env.APP_PORT}\nhttp://localhost:${process.env.APP_PORT}`);
+});
+
