@@ -1,206 +1,241 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.banner {
+  position: relative;
+}
+
+.banner img {
+  width: 100%;
+  height: center;
+  display: flex;
+}
+
+
+.banner-text {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 70%;
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+.btn-banner {
+  margin-top: 8px;
+  background: orange;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.boas-vindas {
+  padding: 20px;
+}
+
+.boas-vindas h2 {
+  margin-bottom: 10px;
+}
+
+.boas-vindas p {
+  text-align: justify;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.icones {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.icone {
+  text-align: center;
+  flex: 1 1 70px;
+}
+
+.icone img {
+  width: 85px;
+  height: 85px;
+}
+
+.abas {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  margin-top: 20px;
+}
+
+.aba {
+  padding: 10px;
+  border: none;
+  background: none;
+  font-weight: bold;
+}
+
+.aba.ativa {
+  color: orange;
+  border-bottom: 2px solid orange;
+}
+
+#conteudo-aba {
+  background: #B2E5D9;
+  padding: 20px;
+}
+
+#conteudo-aba img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  width: 80%;
+  max-width: 100%;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+  #conteudo-aba button {
+    text-align: center;
+  margin-left: 25%;
+  width: 50%;
+  background: orange;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+.fique-por-dentro {
+  padding: 25px 20px;
+  text-align: center;
+}
+
+.fique-por-dentro form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fique-por-dentro input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.fique-por-dentro button {
+  width: 100%;
+  background: orange;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #f1f1f1;
+}
+
+footer img {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #B2E5D9;
+  padding: 30px 20px;
+  transition: right 0.3s ease;
+  z-index: 1001;
+}
+
+.side-menu.open {
+  right: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  z-index: 999;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .service-card {
+    width: 90%;
   }
-  
-  body {
-    font-family: 'Poppins', sans-serif;
+}
+
+@media (max-width: 600px) {
+  header, nav, #service-list {
+    margin-left: 0;
   }
-  
-  .banner {
-    position: relative;
-  }
-  
-  .banner img {
-    width: 100%;
-    height: center;
-    display: flex;
-  }
-  
-  
-  .banner-text {
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-    background: rgba(0, 0, 0, 0.4);
-    color: #fff;
-    padding: 10px;
-    border-radius: 8px;
-    max-width: 70%;
-    font-size: 1.2rem;
-    line-height: 1.4;
-  }
-  
-  .btn-banner {
-    margin-top: 8px;
-    background: orange;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    font-weight: bold;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  
-  .boas-vindas {
-    padding: 20px;
-  }
-  
-  .boas-vindas h2 {
-    margin-bottom: 10px;
-  }
-  
-  .boas-vindas p {
-    text-align: justify;
-    font-size: 14px;
-    line-height: 1.5;
-  }
-  
-  .icones {
-    display: flex;
-    justify-content: space-around;
-    padding: 15px;
-    flex-wrap: wrap;
+
+  .topbar {
+    flex-direction: column;
     gap: 10px;
   }
-  
-  .icone {
-    text-align: center;
-    flex: 1 1 70px;
-  }
-  
-  .icone img {
-    width: 85px;
-    height: 85px;
-  }
-  
-  .abas {
-    display: flex;
-    justify-content: space-around;
-    border-bottom: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    margin-top: 20px;
-  }
-  
-  .aba {
-    padding: 10px;
-    border: none;
-    background: none;
-    font-weight: bold;
-  }
-  
-  .aba.ativa {
-    color: orange;
-    border-bottom: 2px solid orange;
-  }
-  
-  #conteudo-aba {
-    background: #B2E5D9;
-    padding: 20px;
-  }
-  
-  #conteudo-aba img {
-    max-width: 100%;
-    margin-top: 15px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .fique-por-dentro button {
+
+  .search-wrapper {
     width: 100%;
-    background: orange;
-    color: white;
-    font-weight: bold;
-    border: none;
-    padding: 10px;
-    border-radius: 20px;
-    cursor: pointer;
-    margin-top: 10px;
   }
-  
-  footer {
-    text-align: center;
-    padding: 20px;
-    background: #f1f1f1;
+
+  #search {
+    width: 90%;
   }
-  
-  footer img {
-    width: 80px;
-    margin-bottom: 10px;
+
+  .search-icon {
+    right: 8%;
   }
-  
-  .footer-links a {
-    display: block;
-    text-decoration: none;
-    color: black;
-    margin-top: 5px;
-    font-size: 14px;
+}
+
+@media (max-width: 600px) {
+.banner-text {
+    max-width: 90%;
+    font-size: 1rem;
+    padding: 8px;
+    left: 10px;
+    bottom: 10px;
   }
-  
-  .side-menu {
-    position: fixed;
-    top: 0;
-    right: -250px; 
-    width: 250px;
-    height: 100%;
-    background-color: #B2E5D9;
-    padding: 30px 20px;
-    transition: right 0.3s ease;
-    z-index: 1001;
-  }
-  
-  .side-menu.open {
-    right: 0; 
-  }
-  
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
-    display: none;
-    z-index: 999;
-  }
-  
-  /* Responsividade */
-  @media (max-width: 1024px) {
-    .service-card {
-      width: 90%;
-    }
-  }
-  
-  @media (max-width: 600px) {
-    header, nav, #service-list {
-      margin-left: 0;
-    }
-  
-    .topbar {
-      flex-direction: column;
-      gap: 10px;
-    }
-  
-    .search-wrapper {
-      width: 100%;
-    }
-  
-    #search {
-      width: 90%;
-    }
-  
-    .search-icon {
-      right: 8%;
-    }
-  }
-  
-  @media (max-width: 600px) {
-  .banner-text {
-      max-width: 90%;
-      font-size: 1rem;
-      padding: 8px;
-      left: 10px;
-      bottom: 10px;
-    }
-  }
+}
