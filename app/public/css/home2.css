@@ -112,15 +112,14 @@ body {
 }
 
   #conteudo-aba button {
-    text-align: center;
-  margin-left: 25%;
-  width: 50%;
+  width: 100%;
   background: orange;
   color: white;
   font-weight: bold;
   border: none;
   padding: 10px;
   border-radius: 20px;
+  cursor: pointer;
   margin-top: 10px;
 }
 
