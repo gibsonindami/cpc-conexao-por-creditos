@@ -1,162 +1,46 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-body {
-  font-family: 'Poppins', sans-serif;
-}
-
-/* ======== BANNER ======== */
-.banner img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ======== NOTÍCIA ======== */
-.noticia {
-  background-color: #fff;
-  padding: 20px;
-  border-top: 5px solid #c8ece8;
-}
-
-.noticia h2 {
-  text-align: center;
-  margin-bottom: 15px;
-  font-size: 1.6em;
-}
-
-.noticia h3 {
-  font-size: 1em;
-  font-weight: bold;
-  line-height: 1.4;
-  margin-bottom: 15px;
-}
-
-.noticia p {
-  font-size: 0.95em;
-  line-height: 1.6;
-  margin-bottom: 10px;
-  color: #222;
-}
-
-.noticia ul {
-  margin: 10px 0 20px 25px;
-  font-size: 0.95em;
-}
-
-.img-noticia {
-  text-align: center;
-  margin-top: 15px;
-}
-
-.img-noticia img {
-  width: 100%;
-  max-width: 350px;
-  border-radius: 8px;
-}
-
-.fique-por-dentro {
-  padding: 25px 20px;
-  text-align: center;
-}
-
-.fique-por-dentro form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.fique-por-dentro input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-}
-
-.fique-por-dentro button {
-  width: 100%;
-  background: orange;
-  color: black;
-  font-weight: bold;
-  border: none;
-  padding: 10px;
-  border-radius: 20px;
-  cursor: pointer;
-}
-
-/* ======== RODAPÉ ======== */
-.rodape {
-  background-color: #fff;
-  padding: 25px;
-  text-align: center;
-  border-top: 5px solid #c8ece8;
-}
-
-.logo-footer {
-  width: 90px;
-  margin-bottom: 10px;
-}
-
-.institucional h4 {
-  color: #7ea99b;
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
-.institucional ul {
-  list-style: none;
-}
-
-.institucional ul li {
-  margin: 4px 0;
-}
-
-.institucional ul li a {
-  text-decoration: none;
-  color: black;
-  font-size: 0.9em;
-}
-
-.institucional ul li a:hover {
-  text-decoration: underline;
-}
-
-/* ======== RESPONSIVIDADE ======== */
-@media (min-width: 768px) {
-  .noticia, .newsletter, .rodape {
-    max-width: 500px;
-    margin: 0 auto;
-    border-radius: 10px;
-  }
-}
-
+/* Responsividade */
 @media (max-width: 1024px) {
   .service-card {
     width: 90%;
   }
 }
-
+ 
+@media (max-width: 450px) {
+  .service-card {
+    width: 90%;
+  }
+}
+ 
 @media (max-width: 600px) {
   header, nav, #service-list {
     margin-left: 0;
   }
-
+ 
   .topbar {
     flex-direction: column;
     gap: 10px;
   }
-
+ 
   .search-wrapper {
     width: 100%;
   }
-
+ 
   #search {
     width: 90%;
   }
-
+ 
   .search-icon {
     right: 8%;
+  }
+}
+ 
+@media (max-width: 600px) {
+.banner-text {
+    max-width: 90%;
+    font-size: 1rem;
+    padding: 8px;
+    left: 10px;
+    bottom: 10px;
   }
 }
