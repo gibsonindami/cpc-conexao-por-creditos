@@ -49,6 +49,10 @@ router.get("/alimentos", function (req, res) {
  
 const usuarios = [];
  
+    
+
+const usuarios = [];
+
 // -------------------- ROTAS GET --------------------
 router.get("/login", (req, res) => {
   res.render("pages/login", {
@@ -186,5 +190,6 @@ router.post("/login", (req, res) => {
       }})
     }
     });
- 
+
+
     module.exports = router;
