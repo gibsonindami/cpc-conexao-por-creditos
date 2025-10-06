@@ -3,21 +3,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 15px;
+    padding: 5px 15px;
   }
 
   .logo {
-    height: 70px;
+    height: 75px;
   }
 
   .icons {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
   }
 
   .icons img {
-    width: 20px;
+    width: 23px;
     cursor: pointer;
   }
 

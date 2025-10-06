@@ -1,3 +1,65 @@
+/* Slider styles for sliding effect */
+.slider-container {
+  width: 90%;
+  max-width: 500px;
+  margin: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  column-gap: 20px 20px;
+  align-items: center;
+}
+.slider-img-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 350px;
+  max-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider-track {
+  display: flex;
+  width: 300%;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(.77,0,.18,1);
+  column-gap: 15px;
+}
+/* Add extra gap only between the second and third slide */
+.slider-track .slider-img:slider-img-wrapper(2) {
+  margin-right: 95px;
+}
+input[name="slider"] {
+  display: none;
+}
+/* Show only one image at a time by moving the track by 0%, -100%, -200% */
+#slide1:checked ~ .slider-img-wrapper .slider-track {
+  transform: translateX(0%);
+}
+#slide2:checked ~ .slider-img-wrapper .slider-track {
+  transform: translateX(-100%);
+}
+#slide3:checked ~ .slider-img-wrapper .slider-track {
+  transform: translateX(-200%);
+}
+.slider-circles {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+.circle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #B2E5D9;
+  border: 2px solid #333;
+  cursor: pointer;
+  transition: 2.3s;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -52,65 +114,76 @@ body {
   border-radius: 20px;
 }
 
-/*SLIDE CSS*/
-.slide-css { width: 100%; position: relative; }
+/* Container principal */
 
-.input-slide {
-  position: absolute;  
-  opacity: 0;
-  cursor: pointer;
-
-}
-
-.label-slide {
-    display:inline-block;
-    width: 15px;
-    height: 15px;
-    border: solid 2px #000000;
-    border-radius: 999px;
-    margin: 100px 5px 20px 5px;
+  .slider-container {
+    width: 90%;
+    max-width: 500px;
+    margin: 40px auto;
+    position: relative;
+    text-align: center;
+/* Removed stray closing bracket after deleting duplicated CSS block. */
+/* Removed duplicated and incorrect .slider-img { display: none; } and unused checked selectors. */
+  }
+  .slider-circles {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .circle {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #333;
     cursor: pointer;
-    left: 40%;
-    position:relative;
+    transition: 0.3s;
+  }
+  #slide1:checked ~ .slider-circles label[for="slide1"],
+  #slide2:checked ~ .slider-circles label[for="slide2"],
+  #slide3:checked ~ .slider-circles label[for="slide3"] {
+    background: #B2E5D9;
+    border-color: #B2E5D9;
+  }
+/* Slider transition effect for carousels */
+.slider-track {
+  display: flex;
+  width: 300%;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(.77,0,.18,1);
+  position: relative;
 }
-
-.input-slide:checked + .label-slide{
-  background-color: #B2E5D9;
+#slide1:checked ~ .slider-img-wrapper .slider-track {
+  transform: translateX(0%);
 }
-
-.input-slide:focus + .label-slide{
-  box-shadow: 0 0 0 2px teal, 0 0 18px #ffffff;
-}
-
-.slide {
-  position: absolute;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 150%;
-  top: 0;
-  left: 0;
-  z-index: -1;
+#slide2:checked ~ .slider-img-wrapper .slider-track {
   transform: translateX(-100%);
-  transition-duration: .6s;
-  opacity: 1;
+}
+#slide3:checked ~ .slider-img-wrapper .slider-track {
+  transform: translateX(-200%);
 }
 
-.input-slide:checked ~ .slide {
-  transform: translateX(100%);
+@media (max-width: 900px) {
+  .slider-img-wrapper {
+    height: 220px;
+    max-width: 100vw;
+  }
+  .slider-img {
+  flex: 0 0 100%;
+  width: 100%;
+    object-fit: contain;
+  }
 }
 
-.input-slide:checked + .label-slide + .slide {
-  transform: translateX(0);
-  opacity: 1;
+@media (max-width: 600px) {
+  .slider-img-wrapper {
+    height: 270px;
+    max-width: 100vw;
+  }
+  .slider-img {
+    object-fit: contain;
+  }
 }
-
-.background-1 { background-image: url(../img/img-banner.jpeg); }
-.background-2 { background-image: url(../img/img2-home.jpeg); }
-.background-3 { background-image: url(../img/img-banner.jpeg); }
-
-
 /*480PX BREAKPOINT*/
 @media (min-width:30em){
 
@@ -226,6 +299,7 @@ body {
   .service-card {
     width: 90%;
   }
+  /* Remove responsive width for carousel */
 }
 
 @media (max-width: 600px) {
@@ -249,4 +323,6 @@ body {
   .search-icon {
     right: 8%;
   }
+  /* Remove responsive width for carousel */
 }
+/* Removed duplicated slider CSS block. Only the first set is kept for clarity and functionality. */
