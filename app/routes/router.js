@@ -76,6 +76,7 @@ router.get("/cadastro", (req, res) => {
 
 router.get("/", (req, res) => res.render("pages/home"));
 router.get("/home-doe", (req, res) => res.render("pages/home2"));
+router.get("/cadastro", (req, res) => res.render("pages/cadastro"));
 router.get("/saibamais", (req, res) => res.render("pages/saibamais"));
 router.get("/servicos", (req, res) => res.render("pages/servicos"));
 router.get("/noticia", (req, res) => res.render("pages/noticia"));
