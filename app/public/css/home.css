@@ -101,6 +101,11 @@ body {
 }
 
 #conteudo-aba img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  width: 80%;
   max-width: 100%;
   margin-top: 15px;
   border-radius: 10px;
@@ -182,6 +187,12 @@ footer img {
 
 /* Responsividade */
 @media (max-width: 1024px) {
+  .service-card {
+    width: 90%;
+  }
+}
+
+@media (max-width: 450px) {
   .service-card {
     width: 90%;
   }

@@ -55,30 +55,36 @@
 
   <!-- ABAS -->
   <div class="abas">
-    <a href="/home"><button id="btn-sobre" class="aba">Sobre</button></a>
+    <a href="/"><button id="btn-sobre" class="aba">Sobre</button></a>
     <button id="btn-doe" class="aba ativa">Doe</button>
   </div>
 
+  <!-- CONTEÚDO DAS ABAS -->
   <section id="conteudo-aba">
     <div id="conteudo-sobre">
-      <h3>Faça parte da mudança</h3>
-      <p>
-        Com sua ajuda, podemos continuar a construir uma comunidade mais justa e sustentável, 
-        onde todos tenham a chance de participar e prosperar. Doe produtos, tempo ou habilidades e faça parte dessa transformação.
-      </p>
-      <img src="../img/img home-2.png" alt="Foto da organização" class="imagem-doacao">
-      <div class="fique-por-dentro">
-        <a href="/doe">
-          <button type="submit">Doe</button>
-        </a>
-      </div>
+      <h3>Faça parte da mudança!</h3>
+      <p>Com sua ajuda, podemos continuar a construir uma comunidade mais justa e sustentável, 
+        onde todos tenham a chance de participar e prosperar. Doe produtos, tempo ou habilidades e faça parte dessa transformação.</p>
+      <img src="../img/img home-2.png" alt="Foto da organização">
     </div>
-  </section>  
-
-  <script src="../js/menu.js"></script>
-  <br>
-
+    <a href="/doe">
+    <button type="submit">Doe</button>
+  </a>
+  </section>
   
+<!-- FIQUE POR DENTRO -->
+<section class="fique-por-dentro">
+  <h2>FIQUE POR DENTRO</h2>
+  <form>
+    <input type="text" placeholder="Primeiro nome" required>
+    <input type="email" placeholder="Email" required>
+    <a href="/doe"><button type="submit">CADASTRAR</button></a>
+  </form>
+</section><br>
+
+<script src="../js/menu.js"></script>
+<br>
+
 </body>
 <%- include('../partials/footer.ejs') %>
 </html>

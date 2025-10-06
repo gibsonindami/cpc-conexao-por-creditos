@@ -101,10 +101,44 @@
   }
   
   #conteudo-aba img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    width: 80%;
     max-width: 100%;
     margin-top: 15px;
     border-radius: 10px;
-    margin-bottom: 10px;
+  }
+
+    #conteudo-aba button {
+      text-align: center;
+    margin-left: 25%;
+    width: 50%;
+    background: orange;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    margin-top: 10px;
+  }
+ 
+  .fique-por-dentro {
+    padding: 25px 20px;
+    text-align: center;
+  }
+  
+  .fique-por-dentro form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .fique-por-dentro input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
   }
   
   .fique-por-dentro button {
@@ -118,7 +152,8 @@
     cursor: pointer;
     margin-top: 10px;
   }
-  
+
+
   footer {
     text-align: center;
     padding: 20px;
