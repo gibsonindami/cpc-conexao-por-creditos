@@ -1,12 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Como Funciona - CPC</title>
+  <link rel="stylesheet" href="../css/como-funciona.css">
 </head>
+
+<%- include('../partials/header.ejs') %>
 <body>
-    
+  <!-- IMAGEM PRINCIPAL -->
+  <section class="banner">
+    <img src="../img/como-funciona.png" alt="Banner explicativo">
+  </section>
+
+  <!-- SEÇÃO COMO FUNCIONA -->
+  <main>
+    <section class="funciona">
+      <h2>Como funciona?</h2>
+      <p>
+        Trocar produtos nunca foi tão fácil! Veja como você pode participar da nossa comunidade de forma simples e rápida.
+      </p>
+
+      <h3>Passo a passo</h3>
+
+      <div class="passos">
+        <div class="passo">
+          <img src="../img/passo1.png" alt="Ícone passo 1">
+          <h4>Passo 1 : Cadastre-se</h4>
+          <p>Crie sua conta em poucos minutos e faça parte de uma rede de pessoas dispostas a trocar produtos e serviços. O cadastro é rápido e simples.</p>
+        </div>
+        <div class="passo">
+          <img src="../img/passo2.png" alt="Ícone passo 2">
+          <h4>Passo 2 : Ofereça ou encontre Produtos e Serviços</h4>
+          <p>Navegue pelas categorias e encontre produtos que você tem a oferecer. Você pode colocar itens que não usa mais ou oferecer habilidades.</p>
+        </div>
+        <div class="passo">
+          <img src="../img/passo3.png" alt="Ícone passo 3">
+          <h4>Passo 3 : Ganhe créditos</h4>
+          <p>Cada vez que você oferece algo ou completa uma troca, você ganha créditos que podem ser usados para adquirir outros itens ou serviços. Quanto mais você participa, mais créditos acumula!</p>
+        </div>
+        <div class="passo">
+          <img src="../img/passo4.png" alt="Ícone passo 4">
+          <h4>Passo 4 : Complete a troca</h4>
+          <p>Quando encontrar o que precisa, basta utilizar seus créditos para realizar a troca. Entre em contato com o outro usuário para combinar a entrega ou envio do item desejado.</p>
+        </div>
+        <div class="passo">
+          <img src="../img/passo5.png" alt="Ícone passo 5">
+          <h4>Passo 5 : Avalie e fortaleça a comunidade</h4>
+          <p>Após a troca, avalie sua experiência. Isso ajuda a manter a confiança e segurança da plataforma. Usuários bem avaliados ganham mais visibilidade e benefícios.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="saiba-mais">
+        <img src="../img/saiba-mais.png" alt="">
+    </div>
+
+    <!-- SEÇÃO SISTEMA DE CRÉDITOS -->
+    <section class="creditos">
+      <h3>Como funciona o Sistema de Créditos?</h3>
+      <p>
+        No nosso sistema, você acumula créditos ao oferecer produtos, prestar serviços ou doar itens.
+        Esses créditos podem ser usados para adquirir o que você precisar de outros membros da comunidade.
+      </p>
+
+      <ul>
+        <li><strong>1 -</strong> Ganhe créditos: ao oferecer, doar ou trocar.</li>
+        <li><strong>2 -</strong> Use créditos: para resgatar recompensas.</li>
+      </ul>
+
+      <div class="botoes">
+        <a href="#" class="btn amarelo">CADASTRE-SE</a>
+        <a href="#" class="btn laranja">SERVIÇO DE TROCA</a>
+      </div>
+    </section>
+  </main>
+
+<%- include('../partials/footer.ejs') %>
+
 </body>
 </html>
