@@ -2,26 +2,63 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Arial", sans-serif;
 }
- 
+
 body {
-  font-family: 'Poppins', sans-serif;
+  background-color: #c8ece8;
 }
 
-.noticia img {
-  width: 70%;
-  height: center;
-  display: flex;
+/* ======== BANNER ======== */
+.banner img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
+/* ======== NOTÍCIA ======== */
 .noticia {
+  background-color: #fff;
   padding: 20px;
+  border-top: 5px solid #c8ece8;
 }
- 
+
 .noticia h2 {
-  margin-bottom: 10px;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 1.6em;
 }
- 
+
+.noticia h3 {
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+
+.noticia p {
+  font-size: 0.95em;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.noticia ul {
+  margin: 10px 0 20px 25px;
+  font-size: 0.95em;
+}
+
+.img-noticia {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.img-noticia img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 8px;
+}
+
 .fique-por-dentro {
   padding: 25px 20px;
   text-align: center;
@@ -49,42 +86,45 @@ body {
   border-radius: 20px;
   cursor: pointer;
 }
- 
-footer {
+
+/* ======== RODAPÉ ======== */
+.rodape {
+  background-color: #fff;
+  padding: 25px;
   text-align: center;
-  padding: 20px;
-  background: #f1f1f1;
+  border-top: 5px solid #c8ece8;
 }
- 
-footer img {
-  width: 80px;
+
+.logo-footer {
+  width: 90px;
   margin-bottom: 10px;
 }
- 
-.footer-links a {
-  display: block;
+
+.institucional h4 {
+  color: #7ea99b;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.institucional ul {
+  list-style: none;
+}
+
+.institucional ul li {
+  margin: 4px 0;
+}
+
+.institucional ul li a {
   text-decoration: none;
   color: black;
-  margin-top: 5px;
-  font-size: 14px;
+  font-size: 0.9em;
 }
- 
-.side-menu {
-  position: fixed;
-  top: 0;
-  right: -250px;
-  width: 250px;
-  height: 100%;
-  background-color: #B2E5D9;
-  padding: 30px 20px;
-  transition: right 0.3s ease;
-  z-index: 1001;
+
+.institucional ul li a:hover {
+  text-decoration: underline;
 }
- 
-.side-menu.open {
-  right: 0;
-}
- 
+
+
 /* Responsividade */
 @media (max-width: 1024px) {
   .service-card {
