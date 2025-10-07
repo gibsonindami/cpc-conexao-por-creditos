@@ -3,47 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Noticia - CPC</title>
+  <title>Notícias - CPC</title>
   <link rel="stylesheet" href="../css/noticia.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?familly=Poppins:wght@400;600;700&display=swap">
 </head>
-
 
 <%- include('../partials/header.ejs') %>
 <body>
 
-  <section class="noticia img">
-    <img src="../img/noticia.png" alt="noticia">
-    </div>
-  </section>
+  <main>
+    <!-- Imagem principal -->
+    <section class="banner">
+      <img src="../img/noticia.png" alt="Imagem principal da notícia">
+    </section>
 
-  <!-- Noticia -->
-  <section class="noticia">
-    <h2>Notícias</h2>
-    <p>No mundo atual, muitas pessoas enfrentam dificuldades. Através das redes colaborativas e da educação, podemos mudar essa realidade. O CPC é uma organização que promove inclusão, solidariedade e transformação social. 
-    Somos uma organização que trabalha pelo fim da pobreza.</p>
-  </section>
+    <!-- Bloco de notícia -->
+    <section class="noticia">
+      <h2>Notícias</h2>
+      <h3>
+        Número de pessoas na extrema pobreza cai 17% na cidade de SP, mas ainda atinge quase 500 mil famílias
+      </h3>
+      <p>
+        <strong>São Paulo</strong> é a maior e mais rica cidade do Brasil e possui famílias vivendo com até R$ 109 por mês.
+        <br><br>
+        Os bairros que mais concentram famílias em extrema pobreza encontram-se nas áreas destacadas da cidade:
+      </p>
+      <ul>
+        <li>Sé: 30.137 famílias</li>
+        <li>Itaquera: 27.717 famílias</li>
+        <li>São Mateus: 24.790 famílias</li>
+        <li>M’Boi Mirim: 25.265 famílias</li>
+        <li>Capela do Socorro: 24.800 famílias</li>
+      </ul>
+      <p>
+        Já os bairros mais próximos do Centro como Lapa e Pinheiros, na Zona Oeste, e Vila Mariana, na Zona Sul,
+        são os que têm o maior número de pessoas vivendo em situação de miséria.
+      </p>
+      <p>
+        Para a economista e pesquisadora de temas ligados às desigualdades socioeconômicas Regina Wohler,
+        a concentração da extrema pobreza está relacionada com a maneira como a cidade expandiu as suas atividades.
+      </p>
 
-  <!-- CONTEÚDO DAS NOTÍCIAS -->
-  <section id="conteudo-noti">
-    <div id="conteudo-not">
-      <h3>Sobre a organização</h3>
-      São Paulo é a maior e mais rica cidade do Brasil e possui famílias vivendo com até R$ 109 por mês.
-      Os bairros que mais concentram famílias em extrema pobreza encontram-se nas áreas periféricas da cidade, são eles:
-  Sé: 30.137 famílias
-  Itaquera: 27.117 famílias
-  São Matheus: 24.790 famílias
-  M'Boi Mirim: 25.265 famílias
-  Capela do Socorro: 24.800 famílias
-  
-  
-     Já os bairros mais próximos do Centro como Lapa e Pinheiros, na Zona Oeste, e Vila Mariana, na Zona Sul, são os que têm o maior número de pessoas vivendo em situação de miséria.
-  
-     Para a economista e pesquisadora de temas ligados às desigualdades socioeconômicas Regiane Wochler, a concentração da extrema pobreza está relacionada com a maneira como a cidade expandiu as suas atividades.
-    </div>
-  </section>
+      <!-- Imagem secundária -->
+      <div class="img-noticia">
+        <img src="../img/noticia2.png" alt="Imagem ilustrativa da notícia">
+      </div>
+    </section>
 
-  <!-- FIQUE POR DENTRO -->
+<!-- FIQUE POR DENTRO -->
   <section class="fique-por-dentro">
     <h2>FIQUE POR DENTRO</h2>
     <form>
@@ -56,6 +62,7 @@
   <script src="../js/menu.js"></script>
   <br>
 
+  </footer>
+  <%- include('../partials/footer.ejs') %>
 </body>
-<%- include('../partials/footer.ejs') %>
 </html>
