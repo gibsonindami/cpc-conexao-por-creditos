@@ -35,7 +35,7 @@ body {
 .btn-banner {
   margin-top: 8px;
   background: orange;
-  color: white;
+  color: black;
   border: none;
   padding: 6px 12px;
   font-weight: bold;
@@ -131,7 +131,7 @@ body {
 .fique-por-dentro button {
   width: 100%;
   background: orange;
-  color: white;
+  color: black;
   font-weight: bold;
   border: none;
   padding: 10px;

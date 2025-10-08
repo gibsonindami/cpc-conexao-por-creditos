@@ -4,55 +4,85 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resumo Troca</title>
-  <link rel="stylesheet" href="../css/resumo-troca.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?familly=Poppins:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="/css/resumo-troca.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
 </head>
 
 <%- include('../partials/header.ejs') %>
 <body>
-    <!-- Conteúdo -->
   <main>
-    <h1>Resumo de Troca</h1>
+    <!-- Cabeçalho da página -->
+    <header class="page-header">
+      <h1>Resumo de Troca</h1>
+    </header>
 
-    <div class="info">
-      <p><strong>Troca:</strong> Marceneiro & Leite Infantil</p>
-      <p><strong>Item 1:</strong> Marceneiro = 30 PONTOS</p>
-      <p><strong>Item 2:</strong> Leite Infantil = 8 PONTOS</p>
-    </div>
+    <!-- Seção de informações da troca -->
+    <section class="trade-info" aria-labelledby="trade-info-title">
+      <h2 id="trade-info-title" class="visually-hidden">Informações da Troca</h2>
+      <dl class="trade-details">
+        <dt>Troca:</dt>
+        <dd>Marceneiro & Leite Infantil</dd>
+        
+        <dt>Item 1:</dt>
+        <dd>Marceneiro = 30 PONTOS</dd>
+        
+        <dt>Item 2:</dt>
+        <dd>Leite Infantil = 8 PONTOS</dd>
+      </dl>
+    </section>
 
-    <div class="diferenca">
-      <p><strong>Diferença: </strong></p> <h1>30 PONTOS - 8 PONTOS<br>
-      22*5 = R$ 110,00<br>
-      <p>R$ 110,00 - Taxa = R$100,00</h1></p>
-    </div>
+    <!-- Seção de cálculo da diferença -->
+    <section class="calculation-section" aria-labelledby="calculation-title">
+      <h2 id="calculation-title">Diferença</h2>
+      <article class="calculation-details">
+        <p class="calculation-formula">30 PONTOS - 8 PONTOS</p>
+        <p class="calculation-conversion">22 × 5 = R$ 110,00</p>
+        <p class="calculation-final">R$ 110,00 - Taxa = <strong>R$ 100,00</strong></p>
+      </article>
+    </section>
 
-    <div class="produtos">
-      <img src="../img/img malcon.png" alt="Item 1">
-      <img src="../img/leite.webp" alt="Item 2">
-    </div>
+    <!-- Seção de produtos visuais -->
+    <section class="products-showcase" aria-labelledby="products-title">
+      <h2 id="products-title" class="visually-hidden">Produtos da Troca</h2>
+      <figure class="product-images">
+        <img src="../img/img malcon.png" alt="Serviço de Marcenaria - Malcolm" class="product-image">
+        <span class="exchange-symbol" aria-hidden="true">⇄</span>
+        <img src="../img/leite.webp" alt="Leite Infantil" class="product-image">
+        <figcaption class="visually-hidden">Troca entre Serviço de Marcenaria e Leite Infantil</figcaption>
+      </figure>
+    </section>
 
-    <div class="descricao">
-      Você está trocando Serviço de Marcenaria por Leite Infantil. O valor de 100,00 R$ será creditado na sua conta assim que o usuário realizar a transferência.
-    </div>
+    <!-- Seção de descrição da troca -->
+    <section class="trade-description" aria-labelledby="description-title">
+      <h2 id="description-title" class="visually-hidden">Descrição da Troca</h2>
+      <p>
+        Você está trocando Serviço de Marcenaria por Leite Infantil. O valor de R$ 100,00 será creditado na sua conta assim que o usuário realizar a transferência.
+      </p>
+    </section>
 
-    <div class="termos">
-      Ao fazer essa troca você concorda com os <a href="#">Termos de uso do Conexão por Créditos</a>.
-    </div>
+    <!-- Seção de termos e condições -->
+    <section class="terms-section" aria-labelledby="terms-title">
+      <h2 id="terms-title" class="visually-hidden">Termos e Condições</h2>
+      <p class="terms-text">
+        Ao fazer essa troca você concorda com os 
+        <a href="#" class="terms-link">Termos de uso do Conexão por Créditos</a>.
+      </p>
+    </section>
 
-  <br><section class="iniciar-troca">
-  <a href="/obrigado"><button type="submit">Confirmar Troca</button></a>
-
-    <br><div class="aviso"><br>
-      Os usuários têm até 30 dias para efetuar os serviços. Ao realizar a troca você concorda com todos os termos de uso da plataforma e com o Contrato de troca.
-    </div>
+    <!-- Seção de ação principal -->
+    <section class="action-section">
+      <a href="/obrigado" class="confirm-button-link">
+        <button type="button" class="confirm-button">Confirmar Troca</button>
+      </a>
+      
+      <aside class="warning-notice">
+        <p>
+          Os usuários têm até 30 dias para efetuar os serviços. Ao realizar a troca você concorda com todos os termos de uso da plataforma e com o Contrato de troca.
+        <br></p><br>
+      </aside>
+    </section>
   </main>
-
-  </section>
-
-  <script src="../js/menu.js"></script>
-  <br>
-  <br>
-  <br>
 </body>
-<%- include('../partials/footer.ejs') %>
+
+<br><br><br><%- include('../partials/footer.ejs') %>
 </html>
