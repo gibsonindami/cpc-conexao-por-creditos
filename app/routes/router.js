@@ -45,11 +45,6 @@ router.get("/kids", function (req, res) {
 });
 router.get("/alimentos", function (req, res) {
     res.render("pages/alimentos")});
-   
- 
-const usuarios = [];
- 
-    
 
 const usuarios = [];
 
