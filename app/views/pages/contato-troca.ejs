@@ -10,55 +10,94 @@
 
 <%- include('../partials/header.ejs') %>
 <body>
-    <div class="espaço">
+    <div class="espaço"></div>
+
+    <div class="profile">
+        <img src="../img/img malcon.png" alt="Foto do usuário" class="avatar">
+        <div class="user-info">
+            <p class="name"><strong> Malcolm Eliseu Ribeiro</p></strong>
+            <p class="details"><strong>Marceneiro </strong><br>
+            20 Trocas Realizadas</p>
         </div>
-
-        <div class="profile">
-            <img src="../img/img malcon.png" alt="Foto do usuário" class="avatar">
-            <div class="user-info">
-                <p class="name"><strong> Malcolm Eliseu Ribeiro</p></strong>
-                <p class="details"><strong>Marceneiro </strong><br>
-                20 Trocas Realizadas</p>
-            </div>
-        </div>
-        <br>
-
-        <!-- CONTEÚDO PREVIEW -->
-  <section id="conteudo-preview">
-        <h2>PREVIEW</h2>
-    <div id="conteudo-sobre">
-      <!--Slide-->
-      <div class="slide-css">
-
-        <input class="input-slide" type="radio" id="trigger1" name="slider" checked autofocus>
-        <label class="label-slide" for="trigger1">
-        </label>
-        <div class="slide background-1"></div>
-
-        <input class="input-slide" type="radio" id="trigger2" name="slider">
-        <label class="label-slide" for="trigger2">
-        </label>
-        <div class="slide background-2"></div>
-
-        <input class="input-slide" type="radio" id="trigger3" name="slider">
-        <label class="label-slide" for="trigger3">
-        </label>
-        <div class="slide background-3"></div>
     </div>
 
-    <br><br><br><br><h3><br>Descrição</h3>
+    <!-- Carousel Section -->
+    <div class="slider-container">
+      <input type="radio" name="slider" id="slide1" checked>
+      <input type="radio" name="slider" id="slide2">
+      <input type="radio" name="slider" id="slide3">
+      <div class="slider-img-wrapper">
+        <div class="slider-track">
+          <img src="../img/img2-home.jpeg" class="slider-img" alt="Imagem 1">
+          <img src="../img/img home-2.png" class="slider-img" alt="Imagem 2">
+          <img src="../img/img cpc-verde.jpeg" class="slider-img" alt="Imagem 3">
+        </div>
+      </div>
+      <div class="slider-circles">
+        <label for="slide1" class="circle"></label>
+        <label for="slide2" class="circle"></label>
+        <label for="slide3" class="circle"></label>
+      </div>
+    </div>
+
+  <br><br><br><h3>Descrição</h3>
       <p>Nosso objetivo é criar uma rede solidária onde as pessoas podem trocar serviços e produtos sem a necessidade de dinheiro. 
         Aqui você pode oferecer suas habilidades, ajudar quem precisa e receber apoio em troca, tudo de uma forma simples e acessível.
         Ideal para quem busca se conectar, compartilhar e transformar vidas na comunidade, nosso espaço é um ponto de encontro para aqueles em situação de vunerabilidade e para todos que desejam fazer a diferença. 
         Junte-se a nós e descubra o poder da colaboração!</p>
     </div>
-  </section>
-  
+
   <br><section class="iniciar-troca">
   <a href="/resumo"><button type="submit">Iniciar Troca</button></a>
   </section>
 
   <script src="../js/menu.js"></script>
+  <script>
+    // Auto-advance and swipe navigation for slider
+    const slides = [
+      document.getElementById('slide1'),
+      document.getElementById('slide2'),
+      document.getElementById('slide3')
+    ];
+    let current = slides.findIndex(s => s.checked);
+    setInterval(() => {
+      slides[current].checked = false;
+      current = (current + 1) % slides.length;
+      slides[current].checked = true;
+    }, 2300);
+
+    // Swipe navigation
+    const sliderWrapper = document.querySelector('.slider-img-wrapper');
+    let startX = null;
+    let isDragging = false;
+
+    function onStart(e) {
+      isDragging = true;
+      startX = e.type.startsWith('touch') ? e.touches[0].clientX : e.clientX;
+    }
+    function onEnd(e) {
+      if (!isDragging) return;
+      let endX = e.type.startsWith('touch') ? e.changedTouches[0].clientX : e.clientX;
+      let diff = endX - startX;
+      if (Math.abs(diff) > 50) {
+        slides[current].checked = false;
+        if (diff < 0) {
+          // Swipe left: next slide
+          current = (current + 1) % slides.length;
+        } else {
+          // Swipe right: previous slide
+          current = (current - 1 + slides.length) % slides.length;
+        }
+        slides[current].checked = true;
+      }
+      isDragging = false;
+      startX = null;
+    }
+    sliderWrapper.addEventListener('mousedown', onStart);
+    sliderWrapper.addEventListener('touchstart', onStart);
+    sliderWrapper.addEventListener('mouseup', onEnd);
+    sliderWrapper.addEventListener('touchend', onEnd);
+  </script>
   <br>
   <br>
   <br>

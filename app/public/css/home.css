@@ -191,13 +191,7 @@ footer img {
     width: 90%;
   }
 }
- 
-@media (max-width: 450px) {
-  .service-card {
-    width: 90%;
-  }
-}
- 
+
 @media (max-width: 600px) {
   header, nav, #service-list {
     margin-left: 0;

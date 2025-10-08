@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 const { body, validationResult } = require("express-validator");
 const { append } = require("express/lib/response");
-
-
+ 
+ 
 router.get("/login", function (req, res) {
     res.render("pages/login")
 });
@@ -22,8 +22,8 @@ router.get("/saibamais", function (req, res) {
 router.get("/servicos", function (req, res) {
     res.render("pages/servicos")
 });
-router.get("/noticia", function (req, res) {
-    res.render("pages/noticia")
+router.get("/noticias", function (req, res) {
+    res.render("pages/noticias")
 });
 router.get("/sobrenos", function (req, res) {
     res.render("pages/sobrenos")
@@ -48,7 +48,6 @@ router.get("/alimentos", function (req, res) {
 
 const usuarios = [];
 
-
 // -------------------- ROTAS GET --------------------
 router.get("/login", (req, res) => {
   res.render("pages/login", {
@@ -59,7 +58,7 @@ router.get("/login", (req, res) => {
     },
   });
 });
-
+ 
 router.get("/cadastro", (req, res) => {
   res.render("pages/cadastro", {
     erros: null,
@@ -74,12 +73,12 @@ router.get("/cadastro", (req, res) => {
     msgErro: {},
   });
 });
-
+ 
 router.get("/", (req, res) => res.render("pages/home"));
 router.get("/home-doe", (req, res) => res.render("pages/home2"));
 router.get("/saibamais", (req, res) => res.render("pages/saibamais"));
 router.get("/servicos", (req, res) => res.render("pages/servicos"));
-router.get("/noticia", (req, res) => res.render("pages/noticia"));
+router.get("/noticias", (req, res) => res.render("pages/noticias"));
 router.get("/sobrenos", (req, res) => res.render("pages/sobrenos"));
 router.get("/comofunciona", (req, res) => res.render("pages/comofunciona"));
 router.get("/conta", (req, res) => res.render("pages/conta"));
@@ -90,7 +89,8 @@ router.get("/alimentos", (req, res) => res.render("pages/alimentos"));
 router.get("/profissionais", (req, res) => res.render("pages/profissionais"));
 router.get("/contato", (req, res) => res.render("pages/contato-troca"));
 router.get("/resumo", (req, res) => res.render("pages/resumo-troca"));
-
+router.get("/obrigado", (req, res) => res.render("pages/obrigado"));
+ 
 // -------------------- CADASTRO --------------------
 router.post(
   "/cadastro",
@@ -103,14 +103,14 @@ router.post(
     .withMessage("*O Nome de usuário deve conter entre 3 e 50 caracteres!")
     .matches(/^[A-Za-zÀ-ú\s]+$/)
     .withMessage("*O nome deve conter apenas letras!"),
-
+ 
   body("email")
     .notEmpty()
     .withMessage("*Campo obrigatório!")
     .bail()
     .isEmail()
     .withMessage("*Endereço de email inválido!"),
-
+ 
   body("senha")
     .notEmpty()
     .withMessage("*Campo obrigatório!")
@@ -124,7 +124,7 @@ router.post(
     .withMessage(
       "*Sua senha deve conter pelo menos: uma letra maiúscula, um número e um caractere especial!"
     ),
-
+ 
   body("confirmarSenha")
     .notEmpty()
     .withMessage("*Campo obrigatório!")
@@ -134,18 +134,18 @@ router.post(
       }
       return true;
     }),
-
+ 
   (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       const erroValidacao = {};
       const msgErro = {};
-
+ 
       errors.array().forEach((erro) => {
         erroValidacao[erro.path] = "erro";
         msgErro[erro.path] = erro.msg;
       });
-
+ 
       return res.render("pages/cadastro", {
         erros: errors,
         valores: req.body,
@@ -154,25 +154,25 @@ router.post(
         msgErro,
       });
     }
-
+ 
     usuarios.push({
       nome: req.body.nome,
       email: req.body.email,
       senha: req.body.senha,
     });
-
+ 
     res.redirect("/");
   }
 );
-
+ 
 // -------------------- LOGIN --------------------
 router.post("/login", (req, res) => {
   const { usuarioDigitado, senhaDigitada } = req.body;
-
+ 
   const usuarioEncontrado = usuarios.find(
     (u) => u.email === usuarioDigitado && u.senha === senhaDigitada
   );
-
+ 
   if (usuarioEncontrado) {
     return res.render("pages/home");
   } else {
@@ -185,5 +185,6 @@ router.post("/login", (req, res) => {
       }})
     }
     });
+
 
     module.exports = router;

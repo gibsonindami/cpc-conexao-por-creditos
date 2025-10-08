@@ -51,11 +51,6 @@ input label {
   width: 100%;
 }
 
-input[type="search"] {
-    border: none; /* Remove a borda */
-    background: transparent; /* Remove o fundo */
-}
-
 /* Botões de filtro */
 nav {
   display: flex;
