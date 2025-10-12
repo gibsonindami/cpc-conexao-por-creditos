@@ -170,8 +170,8 @@ input[name="slider"] {
 }
 
 .description-section p {
-  font-size: 1rem;
-  text-align: justify;
+  font-size: 1.1rem;
+  text-align: justify;  /* Justifica o texto para melhor leitura*/
 }
 
 /* Seção de Ação Principal (Botão) */
@@ -194,7 +194,7 @@ input[name="slider"] {
   padding: 12px 30px;
   border-radius: 20px;
   font-size: 15px;
-  font-weight: 300;
+  font-weight: 350;
   cursor: pointer;
   transition: background 0.3s;
 }
@@ -247,7 +247,7 @@ input[name="slider"] {
   }
 
   .description-section p {
-    font-size: 0.95rem;
+    font-size: 0.77rem;
   }
 
   .start-trade-button {

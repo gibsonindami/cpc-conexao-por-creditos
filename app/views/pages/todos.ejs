@@ -10,10 +10,20 @@
 
 <%- include('../partials/header.ejs') %>
 <body>
+<script>
+  var services = [
+    { nome: "Berço", local: "Malcolm, Barueri-SP", categoria: "infantil", img: "../img/img malcon.png" },
+    { nome: "Limpeza", local: "Malcolm, Barueri-SP", categoria: "profissionais", img: "../img/img malcon.png" },
+    { nome: "Pedreiro", local: "Malcolm, Barueri-SP", categoria: "profissionais", img: "../img/img malcon.png" },
+    { nome: "Cadeirinha", local: "Malcolm, Barueri-SP", categoria: "infantil", img: "../img/img malcon.png" },
+    { nome: "Sal", local: "Malcolm, Barueri-SP", categoria: "alimentação", img: "../img/img malcon.png" },
+    { nome: "Macarrão", local: "Malcolm, Barueri-SP", categoria: "alimentação", img: "../img/img malcon.png" }
+  ];
+</script>
 
 <!--Campo de Busca-->
 <div id="divBusca">
-  <input type="text" id="txtBusca" placeholder="Buscar...">
+  <input type="text" id="txtBusca" placeholder="Buscar">
   <img src="../img/img lupa.png" id="btnBusca" alt="Buscar">
 </div><br>
 
@@ -26,67 +36,12 @@
   </nav>
 
   <!-- Lista de serviços -->
-   <div class="service-list">
-    
-    <br><div class="service-card active">
-      <img src="../img/img malcon.png" alt="Foto" class="avatar">
-      <div class="service-info">
-        <h3>Berço</h3>
-        <p>Malcolm, Barueri-SP</p>
-        <a href="/contato"><button class="btn-contato">Contato</button></a>
-      </div>
-    </div><br>
 
-    <div class="service-card">
-      <img src="../img/img malcon.png" alt="Foto" class="avatar">
-      <div class="service-info">
-        <h3>Limpeza</h3>
-        <p>Malcolm, Barueri-SP</p>
-        <a href="/contato"><button class="btn-contato">Contato</button></a>
-      </div>
-    </div><br>
-
-    <div class="service-card">
-      <img src="../img/img malcon.png" alt="Foto" class="avatar">
-      <div class="service-info">
-        <h3>Pedreiro</h3>
-        <p>Malcolm, Barueri-SP</p>
-        <a href="/contato"><button class="btn-contato">Contato</button></a>
-      </div>
-    </div><br>
-
-    <div class="service-card">
-      <img src="../img/img malcon.png" alt="Foto" class="avatar">
-      <div class="service-info">
-        <h3>Cadeirinha</h3>
-        <p>Malcolm, Barueri-SP</p>
-        <a href="/contato"><button class="btn-contato">Contato</button></a>
-      </div>
-    </div><br>
-
-    <div class="service-card">
-      <img src="../img/img malcon.png" alt="Foto" class="avatar">
-      <div class="service-info">
-        <h3>Sal</h3>
-        <p>Malcolm, Barueri-SP</p>
-        <a href="/contato"><button class="btn-contato">Contato</button></a>
-      </div>
-    </div><br>
-
-    <div class="service-card">
-      <img src="../img/img malcon.png" alt="Foto" class="avatar">
-      <div class="service-info">
-        <h3>Macarrão</h3>
-        <p>Malcolm, Barueri-SP</p>
-        <a href="/contato"><button class="btn-contato">Contato</button></a>
-      </div>
-    </div><br>
-
-  </div><br>
+  <div class="service-list"></div>
 </section>
 
   <script src="../js/menu.js"></script>
-  <script src="../app/public/js/todos.js"></script>
+  <script src="../js/busca.js"></script>
 </body>
 <%- include('../partials/footer.ejs') %>
 </html>

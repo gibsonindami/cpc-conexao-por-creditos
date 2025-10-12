@@ -221,10 +221,9 @@ main {
 /* Aviso */
 .warning-notice {
   background: #B2E5D9;
-  border: 1px solid #87B79F;
+  border: 2px solid #87B79F;
   border-radius: var(--border-radius);
-  padding: var(--spacing-md);
-  margin-top: var(--spacing-md);
+  padding-bottom: -18px;
 }
 
 .warning-notice p {
@@ -280,7 +279,13 @@ main {
   }
 
   .warning-notice {
-    padding: var(--spacing-sm);
+  background: #B2E5D9;
+  border: 2px solid #87B79F;
+  border-radius: var(--border-radius);
+  padding-top: var(--spacing-sm);
+  padding-left: var(--spacing-sm);
+  padding-right: var(--spacing-sm);
+  padding-bottom: -18px;
   }
 }
 

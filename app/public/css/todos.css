@@ -18,10 +18,17 @@ input label {
 #divBusca {
   border: none;
   margin-top: 25px;
-  margin-left: 90px;
+  margin-left: auto;
+  margin-right: auto;
   background-color: #E2E2E2;
   border-radius: 10px;
   width: 66%;
+  max-width: 400px;
+  min-width: 220px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-right: 40px;
 }
 
 #txtBusca {
@@ -32,7 +39,8 @@ input label {
   font-size: 18px;
   border: none;
   height: 32px;
-  width: 260px;
+    width: 100%;
+    padding-right: 36px;
 }
 
 #btnBusca {
@@ -42,6 +50,13 @@ input label {
   float: right;
   height: 25px;
   width: 27px;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
 }
 
 #btnBusca img {
@@ -54,20 +69,21 @@ input label {
 /* Botões de filtro */
 nav {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
-  gap: 10px;
-  padding: 15px;
-  margin-left: 60px;
+  gap: 6px;
+  padding: 10px 0 10px 0;
+  margin-left: 0;
 }
 
 .filter-btn {
-  padding: 8px 16px;
+  padding: 6px 12px;
   border: 2px solid #b2e5d9;
   background-color: transparent;
   color: #232323;
-  border-radius: 8px;
-  font-weight: bold;
+  border-radius: 7px;
+  font-weight: 500;
+  font-size: 0.97rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -91,7 +107,7 @@ nav {
   flex-direction: column;
   gap: 20px;
   max-width: 400px;
-  margin: auto;
+  margin: 40px auto 0 auto;
 }
 
 .service-card {
@@ -140,6 +156,22 @@ nav {
 }
 
 @media (max-width: 600px) {
+  nav {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 10px;
+    margin-left: 0;
+    padding: 8px 0;
+  }
+  .filter-btn {
+    width: auto;
+    min-width: 90px;
+    white-space: nowrap;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 8px;
+  }
   header, nav, #service-list {
     margin-left: 0;
   }
