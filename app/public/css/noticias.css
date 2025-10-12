@@ -2,11 +2,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Arial", sans-serif;
 }
 
 body {
-  background-color: #c8ece8;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* ======== BANNER ======== */
@@ -79,7 +78,7 @@ body {
 .fique-por-dentro button {
   width: 100%;
   background: orange;
-  color: white;
+  color: black;
   font-weight: bold;
   border: none;
   padding: 10px;

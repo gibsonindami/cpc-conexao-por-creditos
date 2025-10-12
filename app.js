@@ -18,12 +18,3 @@ const porta = process.env.APP_PORT || process.env.PORT || 3000;
 app.listen(process.env.APP_PORT, () => {
   console.log(`Servidor ouvindo na porta${process.env.APP_PORT}\nhttp://localhost:${process.env.APP_PORT}`);
 });
-
-// Definir porta via variável de ambiente APP_PORT ou 3000 como fallback
-const porta = process.env.APP_PORT || process.env.PORT || 3000;
-
-app.listen(porta, () => {
-  console.log(`Servidor ouvindo na porta ${porta}\nhttp://localhost:${porta}`);
-});
-
-

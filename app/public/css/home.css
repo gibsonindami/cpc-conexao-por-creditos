@@ -95,21 +95,21 @@ body {
   border-bottom: 2px solid orange;
 }
 
-#conteudo-aba {
-  background: #B2E5D9;
-  padding: 20px;
-}
-
-#conteudo-aba img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height: auto;
-  width: 80%;
-  max-width: 100%;
-  margin-top: 15px;
-  border-radius: 10px;
-}
+  #conteudo-aba {
+    background: #B2E5D9;
+    padding: 20px;
+  }
+  
+  #conteudo-aba img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    width: 88%;
+    max-width: 100%;
+    margin-top: 15px;
+    border-radius: 10px;
+  }
 
 .fique-por-dentro {
   padding: 25px 20px;

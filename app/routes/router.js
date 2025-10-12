@@ -48,10 +48,6 @@ router.get("/alimentos", function (req, res) {
    
  
 const usuarios = [];
- 
-    
-
-const usuarios = [];
 
 // -------------------- ROTAS GET --------------------
 router.get("/login", (req, res) => {
