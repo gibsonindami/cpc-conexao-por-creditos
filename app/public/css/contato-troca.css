@@ -18,7 +18,7 @@
 }
 
 body {
-  font-family: var(--font-family-poppins);
+  font-family: 'Poppins', sans-serif;
   color: var(--color-text-dark);
   background-color: #ffffff; /* Fundo branco para o corpo */
   line-height: 1.6;

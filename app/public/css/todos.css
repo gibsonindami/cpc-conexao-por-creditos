@@ -117,7 +117,7 @@ nav {
   border-radius: 10px;
   padding: 15px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  gap: 15px;
+  gap: 20px;
   border: 2px solid transparent;
   transition: border-color 0.3s;
 }
@@ -149,11 +149,82 @@ nav {
 }
 
 /* Responsividade */
-@media (max-width: 1024px) {
-  .service-card {
-    width: 90%;
-  }
+/*
+ * Código CSS de Responsividade para Desktop
+ * Objetivo: Fazer com que os cards (.service-card) sejam exibidos em múltiplas colunas
+ * em telas maiores que 768px, em vez da coluna única atual.
+ */
+
+/* 1. Ajuste para telas de Tablet/Desktop (a partir de 768px) */
+@media (min-width: 768px) {
+    /* Remove a limitação de largura do contêiner da lista para permitir múltiplas colunas */
+    .service-list {
+        max-width: 100%; /* Remove o max-width de 400px */
+        flex-direction: row; /* Permite que os cards fiquem lado a lado */
+        flex-wrap: wrap; /* Quebra os cards para a próxima linha se não couberem */
+        justify-content: center; /* Centraliza os cards na tela */
+        align-items: flex-start; /* Alinha os cards no topo */
+        padding: 0 20px; /* Adiciona um padding lateral para não colar nas bordas */
+    }
+
+    /* Ajusta a largura de cada card para que caibam 2 ou 3 por linha */
+    .service-card {
+        max-width: 400px; /* Mantém um tamanho máximo razoável para o card */
+        margin: 10px; /* Espaçamento entre os cards */
+    }
+
+    /* Ajusta o layout dos filtros para desktop */
+    nav {
+        justify-content: center; /* Centraliza os botões de filtro */
+        padding: 10px 0;
+        margin: 0 auto;
+        max-width: 900px; /* Limita a largura da navegação */
+    }
 }
+
+/* 2. Ajuste para telas de Desktop maiores (a partir de 1024px) */
+@media (min-width: 1024px) {
+    /* Permite 3 cards por linha */
+    .service-card {
+        max-width: 350px; /* Reduz um pouco o max-width para caberem melhor */
+    }
+
+    /* Centraliza o campo de busca em telas maiores */
+    #divBusca {
+        max-width: 600px;
+    }
+}
+
+/* 3. Ajuste para telas de Desktop muito grandes (a partir de 1440px) */
+@media (min-width: 1440px) {
+    /* Permite 4 cards por linha */
+    .service-card {
+        width: calc(25% - 20px); /* 4 cards por linha */
+        max-width: 300px;
+    }
+}
+
+/*
+ * NOTA DE IMPLEMENTAÇÃO:
+ * Para que este código funcione, você deve remover ou comentar a regra existente
+ * no seu CSS original que limita a largura do card em telas menores:
+ *
+ * @media (max-width: 1024px) {
+ *   .service-card {
+ *     width: 90%;
+ *   }
+ * }
+ *
+ * E a regra que limita a largura da lista:
+ *
+ * .service-list {
+ *   max-width: 400px;
+ *   margin: 40px auto 0 auto;
+ * }
+ *
+ * A regra max-width: 400px em .service-list deve ser mantida APENAS para mobile,
+ * ou removida, pois o novo código a sobrescreve a partir de 768px.
+ */
 
 @media (max-width: 600px) {
   nav {
