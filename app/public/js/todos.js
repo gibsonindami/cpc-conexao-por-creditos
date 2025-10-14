@@ -43,13 +43,24 @@ const services = [
   
   function renderServices(filtro = "todos", busca = "") {
     container.innerHTML = "";
-  
-    const filtrados = services.filter(serv => {
-      const matchCategoria = filtro === "todos" || serv.categoria === filtro;
-      const matchBusca = serv.nome.toLowerCase().includes(busca.toLowerCase());
-      return matchCategoria && matchBusca;
+
+    // Filtra por categoria
+    let filtrados = services.filter(serv => {
+      return filtro === "todos" || serv.categoria === filtro;
     });
-  
+
+    // Se houver busca, reordena colocando os que contém o termo primeiro
+    if (busca && busca.trim() !== "") {
+      const termo = busca.toLowerCase();
+      filtrados = filtrados.slice().sort((a, b) => {
+        const aMatch = a.nome.toLowerCase().includes(termo) ? 0 : 1;
+        const bMatch = b.nome.toLowerCase().includes(termo) ? 0 : 1;
+        if (aMatch !== bMatch) return aMatch - bMatch;
+        // Se ambos ou nenhum batem, mantém ordem original
+        return 0;
+      });
+    }
+
     filtrados.forEach(serv => {
       const card = document.createElement("div");
       card.className = "service-card";

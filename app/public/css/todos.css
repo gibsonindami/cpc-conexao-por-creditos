@@ -1,138 +1,89 @@
-/* ========== Menu Hambúrguer ========== */
-#menuToggle {
-  display: block;
-  position: fixed;
-  top: 65px;
-  left: 40px;
-  z-index: 2;
-  user-select: none;
-}
-
-#menuToggle input {
-  display: block;
-  width: 40px;
-  height: 32px;
-  position: absolute;
-  top: -7px;
-  left: -5px;
-  cursor: pointer;
-  opacity: 0;
-  z-index: 3;
-}
-
-#menuToggle span {
-  display: block;
-  width: 33px;
-  height: 4px;
-  margin-bottom: 5px;
-  position: relative;
-  background: #333;
-  border-radius: 3px;
-  z-index: 2;
-  transform-origin: 4px 0px;
-  transition: transform 0.5s, background 0.5s, opacity 0.5s;
-}
-
-#menuToggle input:checked ~ span:nth-child(1) {
-  transform: rotate(45deg) translate(-2px, -1px);
-}
-#menuToggle input:checked ~ span:nth-child(2) {
-  opacity: 0;
-}
-#menuToggle input:checked ~ span:nth-child(3) {
-  transform: rotate(-45deg) translate(0, -1px);
-}
-
-#menu {
-  position: relative;
-  width: 250px;
-  margin: -100px 0 0 -40px;
-  padding: 100px 20px 20px 40px;
-  background: #94bfa9;
-  list-style: none;
-  transform: translateX(-100%);
-  transition: transform 0.5s ease;
-  height: 100vh;
-  z-index: 1;
-}
-
-#menu li {
-  padding: 10px 0;
-  font-size: 20px;
-}
-
-#menu li a {
-  color: white;
-  text-decoration: none;
-  display: block;
-}
-
-#menuToggle input:checked ~ ul {
-  transform: none;
-}
-
 /* ========== Estilos Gerais ========== */
-body {
+* {
   margin: 0;
   padding: 0;
-  background-color: #ffffff;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #232323;
+  box-sizing: border-box;
 }
 
-a {
-  color: #232323;
-  text-decoration: none;
-}
-
-
-.topbar {
-  display: flex;
-  align-items:flex-end;
-  justify-content: space-between;
+body {
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Campo de busca */
-.search-wrapper {
+input label {
+  border: none;
+  background-color: transparent;
+}
+
+#divBusca {
+  border: none;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #E2E2E2;
+  border-radius: 10px;
+  width: 66%;
+  max-width: 400px;
+  min-width: 220px;
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-  position: relative;
+  padding-right: 40px;
 }
 
-#search {
-  width: 80%;
-  padding: 10px 35px 10px 15px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 16px;
+#txtBusca {
   outline: none;
+  background: transparent;
+  padding-left: 15px;
+  font-style: italic;
+  font-size: 18px;
+  border: none;
+  height: 32px;
+    width: 100%;
+    padding-right: 36px;
 }
 
-.search-icon {
-  position: absolute;
-  right: 11%;
-  color: #777;
+#btnBusca {
+  background: transparent;
+  border: none;
+  padding-top: 1px;
+  float: right;
+  height: 25px;
+  width: 27px;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+#btnBusca img {
+  background: transparent;
+  border: none;
+  height: auto;
+  width: 100%;
 }
 
 /* Botões de filtro */
 nav {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
-  gap: 10px;
-  padding: 15px;
-  margin-left: 60px;
+  gap: 6px;
+  padding: 10px 0 10px 0;
+  margin-left: 0;
 }
 
 .filter-btn {
-  padding: 8px 16px;
+  padding: 6px 12px;
   border: 2px solid #b2e5d9;
   background-color: transparent;
   color: #232323;
-  border-radius: 8px;
-  font-weight: bold;
+  border-radius: 7px;
+  font-weight: 500;
+  font-size: 0.97rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -144,60 +95,154 @@ nav {
 }
 
 /* Lista de serviços */
-#service-list {
+.service-card img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+}
+
+.service-list {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: column;
   gap: 20px;
-  justify-content: center;
-  padding: 20px;
-  margin-left: 50px;
+  max-width: 400px;
+  margin: 40px auto 0 auto;
 }
 
 .service-card {
   display: flex;
   align-items: center;
-  background-color: #f5f5f5;
-  border-radius: 12px;
+  background: #fff;
+  border-radius: 10px;
   padding: 15px;
-  width: 100%;
-  max-width: 450px;
-  gap: 15px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  gap: 20px;
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
 }
 
-.service-card img {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  object-fit: cover;
+.service-info h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
 }
 
-.service-info {
-  flex: 1;
+.service-info p {
+  margin: 5px 0 10px;
+  font-size: 14px;
+  color: #555;
 }
 
-.service-info strong {
-  font-size: 1.1em;
-}
-
-button.contact-btn {
-  background-color: #ffc107;
+.btn-contato {
+  background: #FFB703;
   border: none;
-  padding: 6px 14px;
+  padding: 8px 15px;
   border-radius: 6px;
-  font-weight: bold;
   cursor: pointer;
-  margin-top: 5px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-contato:hover {
+  background: #ffa500;
 }
 
 /* Responsividade */
-@media (max-width: 1024px) {
-  .service-card {
-    width: 90%;
-  }
+/*
+ * Código CSS de Responsividade para Desktop
+ * Objetivo: Fazer com que os cards (.service-card) sejam exibidos em múltiplas colunas
+ * em telas maiores que 768px, em vez da coluna única atual.
+ */
+
+/* 1. Ajuste para telas de Tablet/Desktop (a partir de 768px) */
+@media (min-width: 768px) {
+    /* Remove a limitação de largura do contêiner da lista para permitir múltiplas colunas */
+    .service-list {
+        max-width: 100%; /* Remove o max-width de 400px */
+        flex-direction: row; /* Permite que os cards fiquem lado a lado */
+        flex-wrap: wrap; /* Quebra os cards para a próxima linha se não couberem */
+        justify-content: center; /* Centraliza os cards na tela */
+        align-items: flex-start; /* Alinha os cards no topo */
+        padding: 0 20px; /* Adiciona um padding lateral para não colar nas bordas */
+    }
+
+    /* Ajusta a largura de cada card para que caibam 2 ou 3 por linha */
+    .service-card {
+        max-width: 400px; /* Mantém um tamanho máximo razoável para o card */
+        margin: 10px; /* Espaçamento entre os cards */
+    }
+
+    /* Ajusta o layout dos filtros para desktop */
+    nav {
+        justify-content: center; /* Centraliza os botões de filtro */
+        padding: 10px 0;
+        margin: 0 auto;
+        max-width: 900px; /* Limita a largura da navegação */
+    }
 }
 
+/* 2. Ajuste para telas de Desktop maiores (a partir de 1024px) */
+@media (min-width: 1024px) {
+    /* Permite 3 cards por linha */
+    .service-card {
+        max-width: 350px; /* Reduz um pouco o max-width para caberem melhor */
+    }
+
+    /* Centraliza o campo de busca em telas maiores */
+    #divBusca {
+        max-width: 600px;
+    }
+}
+
+/* 3. Ajuste para telas de Desktop muito grandes (a partir de 1440px) */
+@media (min-width: 1440px) {
+    /* Permite 4 cards por linha */
+    .service-card {
+        width: calc(25% - 20px); /* 4 cards por linha */
+        max-width: 300px;
+    }
+}
+
+/*
+ * NOTA DE IMPLEMENTAÇÃO:
+ * Para que este código funcione, você deve remover ou comentar a regra existente
+ * no seu CSS original que limita a largura do card em telas menores:
+ *
+ * @media (max-width: 1024px) {
+ *   .service-card {
+ *     width: 90%;
+ *   }
+ * }
+ *
+ * E a regra que limita a largura da lista:
+ *
+ * .service-list {
+ *   max-width: 400px;
+ *   margin: 40px auto 0 auto;
+ * }
+ *
+ * A regra max-width: 400px em .service-list deve ser mantida APENAS para mobile,
+ * ou removida, pois o novo código a sobrescreve a partir de 768px.
+ */
+
 @media (max-width: 600px) {
+  nav {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 10px;
+    margin-left: 0;
+    padding: 8px 0;
+  }
+  .filter-btn {
+    width: auto;
+    min-width: 90px;
+    white-space: nowrap;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 8px;
+  }
   header, nav, #service-list {
     margin-left: 0;
   }

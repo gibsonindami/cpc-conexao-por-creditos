@@ -1,8 +1,8 @@
 * {
     box-sizing: border-box;
-    font-family: 'Arial Rounded MT Bold', sans-serif;
+  font-family: 'Poppins', sans-serif;
   }
-  
+
   body {
     background-color: #B2E5D9;
     display: flex;
@@ -11,7 +11,7 @@
     height: 100vh;
     margin: 0;
   }
-  
+
   .container {
     background-color: #B2E5D9;
     width: 90%;
@@ -22,23 +22,23 @@
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     transition: all 0.5s ease-in-out;
   }
-  
+
   .logo {
     display: flex;
     justify-content: center;
     margin-bottom: 15px;
   }
-  
+
   .logo img {
     max-width: 120px;
     height: auto;
   }
-  
-  
+
+
   h2 {
     margin: 10px 0 20px;
   }
-  
+
   input {
     display: block;
     width: 100%;
@@ -49,7 +49,7 @@
     font-size: 16px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   }
-  
+
   button {
     width: 100%;
     padding: 12px;
@@ -62,21 +62,21 @@
     margin-top: 10px;
     transition: background-color 0.3s ease;
   }
-  
+
   button:hover {
     background-color: #ffb700;
   }
-  
+
   .voltar {
     background-color: #ccc;
   }
-  
+
   .checkbox {
     text-align: left;
     margin-top: 10px;
     font-size: 14px;
   }
-  
+
   .hidden {
     opacity: 0;
     max-height: 0;
@@ -84,24 +84,51 @@
     transform: translateY(-10px);
     transition: all 0.4s ease-in-out;
   }
-  
+
   .show {
     opacity: 1;
     max-height: 1000px;
     transform: translateY(0);
     margin-top: 20px;
   }
-  
+
   .titulo-banco {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px;
   }
-  
+
   .mensagem {
     margin-top: 20px;
     font-size: 18px;
     color: #2d5c51;
   }
-  
-  
+/* Responsividade */
+@media (max-width: 1024px) {
+  .service-card {
+    width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  header, nav, #service-list {
+    margin-left: 0;
+  }
+
+  .topbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-wrapper {
+    width: 100%;
+  }
+
+  #search {
+    width: 90%;
+  }
+
+  .search-icon {
+    right: 8%;
+  }
+}

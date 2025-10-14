@@ -3,20 +3,87 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 15px;
+    padding: 5px 15px;
   }
-  
+
   .logo {
-    height: 70px;
+    height: 75px;
   }
-  
+
   .icons {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
   }
-  
+
   .icons img {
-    width: 20px;
+    width: 23px;
     cursor: pointer;
   }
+
+  /* MENU LATERAL */
+.side-menu {
+  text-align: start;
+  position: fixed;
+  right: -100%;
+  background: #155a37;
+  width: 200px;
+  height: 100%;
+  padding: 200px;
+  transition: right 0.3s ease-in;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.side-menu.open {
+  background-color: #87B79F;
+  margin-top: 10px;
+}
+
+.side-menu a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  z-index: 999;
+}
+
+  /* Responsividade */
+@media (max-width: 1024px) {
+  .service-card {
+    width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  header, nav, #service-list {
+    margin-left: 0;
+  }
+
+  .topbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-wrapper {
+    width: 100%;
+  }
+
+  #search {
+    width: 90%;
+  }
+
+  .search-icon {
+    right: 8%;
+  }
+}

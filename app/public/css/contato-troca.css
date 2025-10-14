@@ -1,0 +1,276 @@
+/* Variáveis CSS para facilitar a manutenção */
+:root {
+  --color-primary: #B2E5D9; /* Cor principal do carrossel */
+  --color-secondary: orange; /* Cor do botão Iniciar Troca */
+  --color-text-dark: #333;
+  --color-text-light: #000;
+  --font-family-poppins: 'Poppins', sans-serif;
+  --spacing-small: 12px;
+  --spacing-medium: 20px;
+  --spacing-large: 40px;
+}
+
+/* Reset básico e tipografia */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--color-text-dark);
+  background-color: #ffffff; /* Fundo branco para o corpo */
+  line-height: 1.6;
+}
+
+/* O elemento <main> agora contém todo o layout */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; /* Limite máximo de largura para desktop */
+  margin: 0 auto; /* Centraliza o conteúdo na tela */
+  padding: var(--spacing-medium);
+}
+
+/* Seção de Perfil */
+.profile-section {
+  width: 100%;
+  padding: var(--spacing-medium) 0;
+  /* O "espaço" cinza foi removido, mas se for necessário um espaçamento no topo, pode ser adicionado aqui */
+  /* margin-top: 150px; */ 
+}
+
+.profile-card {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--spacing-medium); /* Padding lateral para mobile */
+  margin: 0; /* Remove margem padrão de figure */
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%; /* Se a imagem for quadrada, arredonda */
+  object-fit: cover;
+  flex-shrink: 0; /* Não permite que a imagem encolha */
+}
+
+.user-info {
+  margin-left: 27px;
+  font-size: 1rem;
+}
+
+.user-info h1 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.user-info p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.user-info .profession {
+  font-weight: 600;
+}
+
+/* Seção de Carrossel */
+.carousel-section {
+  width: 100%;
+  padding: var(--spacing-medium) 0;
+}
+
+.slider-container {
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto; /* Centraliza o carrossel */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slider-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 350px; /* Altura fixa para desktop */
+  overflow: hidden;
+}
+
+.slider-track {
+  display: flex;
+  width: 300%; /* 3 imagens de 100% */
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(.77,0,.18,1);
+}
+
+.slider-img {
+  width: calc(100% / 3); /* Cada imagem ocupa 1/3 do track */
+  height: 100%;
+  object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+}
+
+/* Esconde os inputs de rádio */
+input[name="slider"] {
+  display: none;
+}
+
+/* Lógica de transição do carrossel via CSS */
+#slide1:checked ~ .slider-img-wrapper .slider-track {
+  transform: translateX(0%);
+}
+#slide2:checked ~ .slider-img-wrapper .slider-track {
+  transform: translateX(-33.3333%); /* Ajustado para 1/3 do track */
+}
+#slide3:checked ~ .slider-img-wrapper .slider-track {
+  transform: translateX(-66.6666%); /* Ajustado para 2/3 do track */
+}
+
+.slider-circles {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-small);
+  margin-top: var(--spacing-small);
+}
+
+.circle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid var(--color-text-dark);
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+/* Estilo do indicador ativo */
+#slide1:checked ~ .slider-circles label[for="slide1"],
+#slide2:checked ~ .slider-circles label[for="slide2"],
+#slide3:checked ~ .slider-circles label[for="slide3"] {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* Seção de Descrição */
+.description-section {
+  width: 100%;
+  max-width: 700px; /* Limite de largura para melhor leitura */
+  padding: var(--spacing-medium);
+  margin: var(--spacing-medium) auto;
+}
+
+.description-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-small);
+  text-align: left; /* Alinhamento mais natural para títulos de seção */
+}
+
+.description-section p {
+  font-size: 1.1rem;
+  text-align: justify;  /* Justifica o texto para melhor leitura*/
+}
+
+/* Seção de Ação Principal (Botão) */
+.action-section {
+  width: 100%;
+  padding: var(--spacing-medium) 0 var(--spacing-large) 0;
+  text-align: center; /* Centraliza o botão */
+}
+
+.start-trade-button-link {
+  text-decoration: none; /* Remove sublinhado do link */
+}
+
+.start-trade-button {
+
+
+  background: var(--color-secondary);
+  color: var(--color-text-light);
+  border: none;
+  padding: 12px 30px;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: 350;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.start-trade-button:hover {
+  background: #e59c00; /* Um tom mais escuro de laranja no hover */
+}
+
+/* =================================================================
+   Responsividade (Mobile First)
+   ================================================================= */
+
+/* Ajustes para telas menores que 600px (Mobile) */
+@media (max-width: 600px) {
+  main {
+    padding: var(--spacing-small);
+  }
+
+  .profile-card {
+    padding: 0;
+  }
+
+  .avatar {
+    width: 60px;
+    height: 60px;
+  }
+
+  .user-info {
+    margin-left: var(--spacing-medium);
+  }
+
+  .user-info h1 {
+    font-size: 1.1rem;
+  }
+
+  .user-info p {
+    font-size: 0.85rem;
+  }
+
+  .slider-img-wrapper {
+    height: 250px; /* Altura ajustada para mobile */
+  }
+
+  .description-section {
+    padding: var(--spacing-small);
+  }
+
+  .description-section h2 {
+    font-size: 1.3rem;
+  }
+
+  .description-section p {
+    font-size: 0.77rem;
+  }
+
+  .start-trade-button {
+    width: 90%; /* Botão ocupa quase toda a largura em mobile */
+    max-width: 300px;
+  }
+}
+
+/* Ajustes para telas entre 601px e 900px (Tablet) */
+@media (min-width: 601px) and (max-width: 900px) {
+  .slider-img-wrapper {
+    height: 300px;
+  }
+}
+
+/* Ajustes para telas maiores que 900px (Desktop) */
+@media (min-width: 901px) {
+  .profile-section {
+    padding: var(--spacing-large) 0 var(--spacing-medium) 0;
+  }
+  
+  .profile-card {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}

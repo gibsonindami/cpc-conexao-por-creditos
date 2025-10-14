@@ -21,13 +21,15 @@
     <a href="/saibamais">SAIBA MAIS</a>
     <a href="/noticias">NOTÍCIAS</a>
   </nav>
+<%- include('../partials/header.ejs') %>
+<body>
 
   <!-- SOBREPOSIÇÃO DO MENU (FUNDO ESCURO) -->
   <div id="overlay" class="overlay"></div>
 
   <!-- BANNER -->
   <section class="banner">
-    <img src="../img/img-home.jpeg" alt="Banner principal">
+    <img src="../img/img-banner.jpeg" alt="Banner principal">
     <div class="banner-text">
       <h1>Junte-se a nós e construa conexões valiosas!</h1>
       <button class="btn-banner">SAIBA MAIS</button>
@@ -45,27 +47,37 @@
   <!-- ÍCONES -->
   <section class="icones">
     <div class="icone">
+
       <img src="../img/img kids.jpeg" alt="Imagem da área infantil com crianças brincando">
+
+      <a href="/kids"><img src="../img/img kids.jpeg" alt="Área Kids"></a>
+
       <p>Área Kids</p>
     </div>
     <div class="icone">
       <a href="/todos"><img src="../img/servicos.jpeg" alt="Ícone representando serviços disponíveis"></a>
+      <a href="/profissionais"><img src="../img/servicos.jpeg" alt="Serviços"></a>
       <p>Serviços</p>
     </div>
+
     <div class="icone">
       <img src="../img/img alimentacao.jpeg" alt="Imagem representando alimentação saudável">
+      <a href="/alimentos"><img src="../img/img alimentacao.jpeg" alt="Alimentação"></a>
       <p>Alimentação</p>
     </div>
+
     <div class="icone">
+
       <img src="../img/img noticias.jpeg" alt="Imagem representando notícias e informações">
+      <a href="/noticias"><img src="../img/img noticias.jpeg" alt="Notícias"></a>
       <p>Notícias</p>
     </div>
   </section>
 
   <!-- ABAS -->
   <div class="abas">
-    <button id="btn-sobre" class="aba ativa">Sobre</button>
-    <a href="/doe"><button id="btn-doe" class="aba">Doe</button></a>
+    <a href="/"><button id="btn-sobre" class="aba ativa">Sobre</button></a>
+    <a href="/home2"><button id="btn-doe" class="aba">Doe</button></a>
   </div>
 
   <!-- CONTEÚDO DAS ABAS -->
@@ -87,12 +99,17 @@
       <input type="text" name="nome" placeholder="Primeiro nome" required>
       <input type="email" name="email" placeholder="Email" required>
       <button type="submit">CADASTRAR</button>
+    <form>
+      <input type="text" placeholder="Primeiro nome" required>
+      <input type="email" placeholder="Email" required>
+      <a href="/doe"><button type="submit">CADASTRAR</button></a>
     </form>
-  </section>
+  </section><br>
 
   <%- include('../partials/footer.ejs') %>
 
   <script src="../js/menu.js"></script>
+  <br>
 
 </body>
 </html>
