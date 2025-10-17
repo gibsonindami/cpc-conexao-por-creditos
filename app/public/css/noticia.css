@@ -62,19 +62,19 @@ body {
   padding: 25px 20px;
   text-align: center;
 }
-
+ 
 .fique-por-dentro form {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-
+ 
 .fique-por-dentro input {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 10px;
 }
-
+ 
 .fique-por-dentro button {
   width: 100%;
   background: orange;
@@ -123,40 +123,49 @@ body {
   text-decoration: underline;
 }
 
-/* ======== RESPONSIVIDADE ======== */
-@media (min-width: 768px) {
-  .noticia, .newsletter, .rodape {
-    max-width: 500px;
-    margin: 0 auto;
-    border-radius: 10px;
-  }
-}
 
+/* Responsividade */
 @media (max-width: 1024px) {
   .service-card {
     width: 90%;
   }
 }
-
+ 
+@media (max-width: 450px) {
+  .service-card {
+    width: 90%;
+  }
+}
+ 
 @media (max-width: 600px) {
   header, nav, #service-list {
     margin-left: 0;
   }
-
+ 
   .topbar {
     flex-direction: column;
     gap: 10px;
   }
-
+ 
   .search-wrapper {
     width: 100%;
   }
-
+ 
   #search {
     width: 90%;
   }
-
+ 
   .search-icon {
     right: 8%;
+  }
+}
+ 
+@media (max-width: 600px) {
+.banner-text {
+    max-width: 90%;
+    font-size: 1rem;
+    padding: 8px;
+    left: 10px;
+    bottom: 10px;
   }
 }

@@ -101,11 +101,6 @@
   }
   
   #conteudo-aba img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: auto;
-    width: 80%;
     max-width: 100%;
     margin-top: 15px;
     border-radius: 10px;
@@ -152,8 +147,7 @@
     cursor: pointer;
     margin-top: 10px;
   }
-
-
+  
   footer {
     text-align: center;
     padding: 20px;

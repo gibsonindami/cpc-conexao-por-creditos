@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+ 
 body {
   font-family: 'Poppins', sans-serif;
 }
@@ -36,7 +36,7 @@ body {
   justify-content: center;
   margin-top: 40px; /* Espaço do cabeçalho */
 }
-
+ 
 .banner img {
   width: 60%;
   height: auto;
@@ -47,8 +47,8 @@ body {
   height: center;
   display: flex;
 }
-
-
+ 
+ 
 .banner-text {
   position: absolute;
   bottom: 30px;
@@ -65,7 +65,7 @@ body {
   font-size: 1.2rem;
   line-height: 1.4;
 }
-
+ 
 .btn-banner {
   margin-top: 8px;
   background: orange;
@@ -76,22 +76,22 @@ body {
   border-radius: 6px;
   cursor: pointer;
 }
-
+ 
 .boas-vindas {
   padding: 20px;
 }
-
+ 
 .boas-vindas h2 {
   text-align: center;
   margin-bottom: 10px;
 }
-
+ 
 .boas-vindas p {
   text-align: center;
   font-size: 14px;
   line-height: 1.5;
 }
-
+ 
 .icones {
   display: flex;
   justify-content: space-around;
@@ -99,17 +99,17 @@ body {
   flex-wrap: wrap;
   gap: 10px;
 }
-
+ 
 .icone {
   text-align: center;
   flex: 1 1 70px;
 }
-
+ 
 .icone img {
   width: 85px;
   height: 85px;
 }
-
+ 
 .abas {
   display: flex;
   justify-content: space-around;
@@ -117,14 +117,14 @@ body {
   border-top: 1px solid #ccc;
   margin-top: 20px;
 }
-
+ 
 .aba {
   padding: 10px;
   border: none;
   background: none;
   font-weight: bold;
 }
-
+ 
 .aba.ativa {
   color: orange;
   border-bottom: 2px solid orange;
@@ -162,13 +162,13 @@ body {
   flex-direction: column;
   gap: 10px;
 }
-
+ 
 .fique-por-dentro input {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 10px;
 }
-
+ 
 .fique-por-dentro button {
   width: 100%;
   background: orange;
@@ -179,18 +179,18 @@ body {
   border-radius: 20px;
   cursor: pointer;
 }
-
+ 
 footer {
   text-align: center;
   padding: 20px;
   background: #f1f1f1;
 }
-
+ 
 footer img {
   width: 80px;
   margin-bottom: 10px;
 }
-
+ 
 .footer-links a {
   display: block;
   text-decoration: none;
@@ -198,10 +198,11 @@ footer img {
   margin-top: 5px;
   font-size: 14px;
 }
-
+ 
 .side-menu {
   position: fixed;
   top: 0;
+  right: -250px;
   right: -250px;
   width: 250px;
   height: 100%;
@@ -210,11 +211,12 @@ footer img {
   transition: right 0.3s ease;
   z-index: 1001;
 }
-
+ 
 .side-menu.open {
   right: 0;
+  right: 0;
 }
-
+ 
 .overlay {
   position: fixed;
   top: 0;
@@ -346,30 +348,24 @@ footer img {
   }
 }
 
-@media (max-width: 450px) {
-  .service-card {
-    width: 90%;
-  }
-}
-
 @media (max-width: 600px) {
   header, nav, #service-list {
     margin-left: 0;
   }
-
+ 
   .topbar {
     flex-direction: column;
     gap: 10px;
   }
-
+ 
   .search-wrapper {
     width: 100%;
   }
-
+ 
   #search {
     width: 90%;
   }
-
+ 
   .search-icon {
     right: 8%;
   }
