@@ -28,27 +28,33 @@
         <form action="/login" method="POST">
           <div class="input-group">
             <span class="icon">@</span>
-            <input
-              type="text"
-              id="usuarioDigitado"
-              name="usuarioDigitado"
-              placeholder="Digite seu email"
-              value="<%= valores?.usuarioDigitado || '' %>"
-              class="<%= erro ? 'erro' : '' %>"
-            />
-          </div>
 
-          <div class="input-group">
-            <span class="icon">🔒</span>
-            <input
-              type="password"
-              id="senhaDigitada"
-              name="senhaDigitada"
-              placeholder="Digite sua senha"
-              value="<%= valores?.senhaDigitada || '' %>"
-              class="<%= erro ? 'erro' : '' %>"
-            />
-          </div>
+            value="<%= (valores && valores.usuarioDigitado) || '' %>
+
+      <div class="input-group">
+        <span class="icon">@</span>
+        <input
+          type="text"
+          id="usuarioDigitado"
+          name="usuarioDigitado"
+          placeholder="Digite seu email"
+          value="<%= valores.usuarioDigitado || '' %>"
+          class="<%= erro ? 'erro' : '' %>"
+        />
+      </div>
+      
+      <div class="input-group">
+        <span class="icon">🔒</span>
+        <input
+          type="password"
+          id="senhaDigitada"
+          name="senhaDigitada"
+          placeholder="Digite sua senha"
+          value="<%= valores.senhaDigitada || '' %>"
+          class="<%= erro ? 'erro' : '' %>"
+        />
+      </div>      
+
           <% if (erro) { %>
           <span class="msgErro"><%= erro %></span>
           <% } %>
