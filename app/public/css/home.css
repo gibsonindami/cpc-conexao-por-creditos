@@ -7,15 +7,6 @@
 body {
   font-family: 'Poppins', sans-serif;
 }
-.banner {
-  position: relative;
-}
-
-.banner img {
-  width: 100%;
-  height: center;
-  display: flex;
-}
 
 .banner-text {
   position: absolute;
@@ -29,7 +20,7 @@ body {
   font-size: 1.2rem;
   line-height: 1.4;
 }
-
+ 
 .btn-banner {
   margin-top: 8px;
   background: orange;
@@ -151,7 +142,7 @@ footer img {
 .side-menu {
   position: fixed;
   top: 0;
-  right: -250px; 
+  right: -250px;
   width: 250px;
   height: 100%;
   background-color: #B2E5D9;
@@ -161,7 +152,7 @@ footer img {
 }
  
 .side-menu.open {
-  right: 0; 
+  right: 0;
 }
  
 .overlay {
@@ -174,13 +165,14 @@ footer img {
   display: none;
   z-index: 999;
 }
-
+ 
 /* Responsividade */
 @media (max-width: 1024px) {
   .service-card {
     width: 90%;
   }
 }
+
 @media (max-width: 600px) {
   header, nav, #service-list {
     margin-left: 0;
@@ -200,9 +192,10 @@ footer img {
   }
  
   .search-icon {
-    right: 8%;
+    right: 8;
   }
 }
+
 @media (max-width: 600px) {
 .banner-text {
     max-width: 90%;
