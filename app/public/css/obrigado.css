@@ -149,6 +149,10 @@ body {
 
 /* ===== RESPONSIVIDADE ===== */
 @media (min-width: 768px) {
+  .hero {
+    height: 480px;
+    max-width: 100%;
+  }
   .hero-text h1 {
     font-size: 36px;
   }
@@ -160,6 +164,7 @@ body {
 @media (min-width: 1024px) {
   .hero {
     height: 480px;
+    max-width: 100%;
   }
   .hero-text h1 {
     font-size: 40px;

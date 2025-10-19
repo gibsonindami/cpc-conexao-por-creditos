@@ -8,6 +8,16 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+.banner {
+  position: relative;
+}
+
+.banner img {
+  width: 100%;
+  height: center;
+  display: flex;
+}
+
 .banner-text {
   position: absolute;
   bottom: 15px;
@@ -24,7 +34,7 @@ body {
 .btn-banner {
   margin-top: 8px;
   background: orange;
-  color: white;
+  color: black;
   border: none;
   padding: 6px 12px;
   font-weight: bold;
@@ -37,12 +47,13 @@ body {
 }
  
 .boas-vindas h2 {
+  font-size: 23px;
   text-align: center;
   margin-bottom: 10px;
 }
  
 .boas-vindas p {
-  text-align: center;
+  text-align: left;
   font-size: 14px;
   line-height: 1.5;
 }
@@ -84,15 +95,23 @@ body {
   color: orange;
   border-bottom: 2px solid orange;
 }
+
 #conteudo-aba {
   background: #B2E5D9;
   padding: 20px;
 }
+
 #conteudo-aba img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  width: 80%;
   max-width: 100%;
   margin-top: 15px;
   border-radius: 10px;
 }
+
 .fique-por-dentro {
   padding: 25px 20px;
   text-align: center;
@@ -167,17 +186,49 @@ footer img {
 }
  
 /* Responsividade */
-@media (max-width: 1024px) {
+@media (max-width: 1920px)/* Monitor médio */ {
   .service-card {
     width: 90%;
   }
+ .fique-por-dentro {
+  padding: 25px 20px;
+  text-align: center;
 }
+.fique-por-dentro form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.fique-por-dentro input {
+  width: 50%;
+  align-self: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+.fique-por-dentro button {
+  width: 40%;
+  align-self: center;
+  background: orange;
+  color: black;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}}
 
 @media (max-width: 600px) {
   header, nav, #service-list {
     margin-left: 0;
   }
- 
+ .banner-text {
+    max-width: 90%;
+    font-size: 1rem;
+    padding: 8px;
+    left: 10px;
+    bottom: 10px;
+}
   .topbar {
     flex-direction: column;
     gap: 10px;
@@ -196,11 +247,31 @@ footer img {
   }
 }
 
-@media (max-width: 600px) {
-.banner-text {
-    max-width: 90%;
-    font-size: 1rem;
-    padding: 8px;
-    left: 10px;
-    bottom: 10px;
+@media (max-width: 768px) {
+.fique-por-dentro {
+  padding: 25px 20px;
+  text-align: center;
+}
+.fique-por-dentro form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.fique-por-dentro input {
+  width: 100%;
+  align-self: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+.fique-por-dentro button {
+  width: 100%;
+  align-self: center;
+  background: orange;
+  color: black;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
 }}
