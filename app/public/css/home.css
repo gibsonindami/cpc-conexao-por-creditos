@@ -7,18 +7,7 @@
 body {
   font-family: 'Poppins', sans-serif;
 }
- 
-.banner {
-  position: relative;
-}
- 
-.banner img {
-  width: 100%;
-  height: center;
-  display: flex;
-}
- 
- 
+
 .banner-text {
   position: absolute;
   bottom: 15px;
@@ -48,11 +37,12 @@ body {
 }
  
 .boas-vindas h2 {
+  text-align: center;
   margin-bottom: 10px;
 }
  
 .boas-vindas p {
-  text-align: justify;
+  text-align: center;
   font-size: 14px;
   line-height: 1.5;
 }
@@ -76,7 +66,7 @@ body {
 }
  
 .abas {
-  display:flex;
+  display: flex;
   justify-content: space-around;
   border-bottom: 1px solid #ccc;
   border-top: 1px solid #ccc;
@@ -94,28 +84,19 @@ body {
   color: orange;
   border-bottom: 2px solid orange;
 }
- 
 #conteudo-aba {
   background: #B2E5D9;
   padding: 20px;
 }
- 
 #conteudo-aba img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height: auto;
-  width: 80%;
   max-width: 100%;
   margin-top: 15px;
   border-radius: 10px;
 }
- 
 .fique-por-dentro {
   padding: 25px 20px;
   text-align: center;
 }
- 
 .fique-por-dentro form {
   display: flex;
   flex-direction: column;
@@ -131,7 +112,7 @@ body {
 .fique-por-dentro button {
   width: 100%;
   background: orange;
-  color: white;
+  color: black;
   font-weight: bold;
   border: none;
   padding: 10px;
@@ -211,10 +192,10 @@ footer img {
   }
  
   .search-icon {
-    right: 8%;
+    right: 8;
   }
 }
- 
+
 @media (max-width: 600px) {
 .banner-text {
     max-width: 90%;
@@ -222,5 +203,4 @@ footer img {
     padding: 8px;
     left: 10px;
     bottom: 10px;
-  }
-}
+}}

@@ -1,65 +1,16 @@
-/* Slider styles for sliding effect */
-.slider-container {
-  width: 90%;
-  max-width: 500px;
-  margin: 40px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  column-gap: 20px 20px;
-  align-items: center;
-}
-.slider-img-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 500px;
-  height: 350px;
-  max-height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Variáveis CSS para facilitar a manutenção */
+:root {
+  --color-primary: #B2E5D9; /* Cor principal do carrossel */
+  --color-secondary: orange; /* Cor do botão Iniciar Troca */
+  --color-text-dark: #333;
+  --color-text-light: #000;
+  --font-family-poppins: 'Poppins', sans-serif;
+  --spacing-small: 12px;
+  --spacing-medium: 20px;
+  --spacing-large: 40px;
 }
 
-.slider-track {
-  display: flex;
-  width: 300%;
-  height: 100%;
-  transition: transform 0.7s cubic-bezier(.77,0,.18,1);
-  column-gap: 15px;
-}
-/* Add extra gap only between the second and third slide */
-.slider-track .slider-img:slider-img-wrapper(2) {
-  margin-right: 95px;
-}
-input[name="slider"] {
-  display: none;
-}
-/* Show only one image at a time by moving the track by 0%, -100%, -200% */
-#slide1:checked ~ .slider-img-wrapper .slider-track {
-  transform: translateX(0%);
-}
-#slide2:checked ~ .slider-img-wrapper .slider-track {
-  transform: translateX(-100%);
-}
-#slide3:checked ~ .slider-img-wrapper .slider-track {
-  transform: translateX(-200%);
-}
-.slider-circles {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 12px;
-}
-.circle {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: #B2E5D9;
-  border: 2px solid #333;
-  cursor: pointer;
-  transition: 2.3s;
-}
-
+/* Reset básico e tipografia */
 * {
   margin: 0;
   padding: 0;
@@ -68,261 +19,258 @@ input[name="slider"] {
 
 body {
   font-family: 'Poppins', sans-serif;
-}
-/*BODY*/
-.espaço{
-    width: 100%;
-    height: 150px;
-    background-color: lightgray;
+  color: var(--color-text-dark);
+  background-color: #ffffff; /* Fundo branco para o corpo */
+  line-height: 1.6;
 }
 
-.conteudo-preview, h2 {
-  padding: 25px 20px;
-  text-align: center;
+/* O elemento <main> agora contém todo o layout */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; /* Limite máximo de largura para desktop */
+  margin: 0 auto; /* Centraliza o conteúdo na tela */
+  padding: var(--spacing-medium);
 }
 
-#conteudo-sobre, h3{
-    padding: 10px;
-    font-size: 16px;
-    text-align:justify;
+/* Seção de Perfil */
+.profile-section {
+  width: 100%;
+  padding: var(--spacing-medium) 0;
+  /* O "espaço" cinza foi removido, mas se for necessário um espaçamento no topo, pode ser adicionado aqui */
+  /* margin-top: 150px; */ 
 }
 
-.profile {
-    display: flex;
-    align-items: center;
-    padding: 20px 15px;
-    background-color: #ffffff;
+.profile-card {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--spacing-medium); /* Padding lateral para mobile */
+  margin: 0; /* Remove margem padrão de figure */
 }
 
 .avatar {
-    width: 80px;
-    height: 80px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%; /* Se a imagem for quadrada, arredonda */
+  object-fit: cover;
+  flex-shrink: 0; /* Não permite que a imagem encolha */
 }
 
 .user-info {
-  font-size: large;
-    margin-left: 27px;
+  margin-left: 27px;
+  font-size: 1rem;
 }
 
-.iniciar-troca button {
-  margin-left: 40%;
+.user-info h1 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.user-info p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.user-info .profession {
+  font-weight: 600;
+}
+
+/* Seção de Carrossel */
+.carousel-section {
+  width: 100%;
+  padding: var(--spacing-medium) 0;
+}
+
+.slider-container {
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto; /* Centraliza o carrossel */
   text-align: center;
-  background: orange;
-  color: black;
-  border: none;
-  padding: 12px;
-  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Container principal */
+.slider-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 350px; /* Altura fixa para desktop */
+  overflow: hidden;
+}
 
-  .slider-container {
-    width: 90%;
-    max-width: 500px;
-    margin: 40px auto;
-    position: relative;
-    text-align: center;
-/* Removed stray closing bracket after deleting duplicated CSS block. */
-/* Removed duplicated and incorrect .slider-img { display: none; } and unused checked selectors. */
-  }
-  .slider-circles {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 12px;
-  }
-  .circle {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    border: 2px solid #333;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  #slide1:checked ~ .slider-circles label[for="slide1"],
-  #slide2:checked ~ .slider-circles label[for="slide2"],
-  #slide3:checked ~ .slider-circles label[for="slide3"] {
-    background: #B2E5D9;
-    border-color: #B2E5D9;
-  }
-/* Slider transition effect for carousels */
 .slider-track {
   display: flex;
-  width: 300%;
+  width: 300%; /* 3 imagens de 100% */
   height: 100%;
   transition: transform 0.7s cubic-bezier(.77,0,.18,1);
-  position: relative;
 }
+
+.slider-img {
+  width: calc(100% / 3); /* Cada imagem ocupa 1/3 do track */
+  height: 100%;
+  object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+}
+
+/* Esconde os inputs de rádio */
+input[name="slider"] {
+  display: none;
+}
+
+/* Lógica de transição do carrossel via CSS */
 #slide1:checked ~ .slider-img-wrapper .slider-track {
   transform: translateX(0%);
 }
 #slide2:checked ~ .slider-img-wrapper .slider-track {
-  transform: translateX(-100%);
+  transform: translateX(-33.3333%); /* Ajustado para 1/3 do track */
 }
 #slide3:checked ~ .slider-img-wrapper .slider-track {
-  transform: translateX(-200%);
+  transform: translateX(-66.6666%); /* Ajustado para 2/3 do track */
 }
 
-@media (max-width: 900px) {
-  .slider-img-wrapper {
-    height: 220px;
-    max-width: 100vw;
-  }
-  .slider-img {
-  flex: 0 0 100%;
+.slider-circles {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-small);
+  margin-top: var(--spacing-small);
+}
+
+.circle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid var(--color-text-dark);
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+/* Estilo do indicador ativo */
+#slide1:checked ~ .slider-circles label[for="slide1"],
+#slide2:checked ~ .slider-circles label[for="slide2"],
+#slide3:checked ~ .slider-circles label[for="slide3"] {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* Seção de Descrição */
+.description-section {
   width: 100%;
-    object-fit: contain;
-  }
+  max-width: 700px; /* Limite de largura para melhor leitura */
+  padding: var(--spacing-medium);
+  margin: var(--spacing-medium) auto;
 }
 
+.description-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-small);
+  text-align: left; /* Alinhamento mais natural para títulos de seção */
+}
+
+.description-section p {
+  font-size: 1.1rem;
+  text-align: justify;  /* Justifica o texto para melhor leitura*/
+}
+
+/* Seção de Ação Principal (Botão) */
+.action-section {
+  width: 100%;
+  padding: var(--spacing-medium) 0 var(--spacing-large) 0;
+  text-align: center; /* Centraliza o botão */
+}
+
+.start-trade-button-link {
+  text-decoration: none; /* Remove sublinhado do link */
+}
+
+.start-trade-button {
+
+
+  background: var(--color-secondary);
+  color: var(--color-text-light);
+  border: none;
+  padding: 12px 30px;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: 350;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.start-trade-button:hover {
+  background: #e59c00; /* Um tom mais escuro de laranja no hover */
+}
+
+/* =================================================================
+   Responsividade (Mobile First)
+   ================================================================= */
+
+/* Ajustes para telas menores que 600px (Mobile) */
 @media (max-width: 600px) {
+  main {
+    padding: var(--spacing-small);
+  }
+
+  .profile-card {
+    padding: 0;
+  }
+
+  .avatar {
+    width: 60px;
+    height: 60px;
+  }
+
+  .user-info {
+    margin-left: var(--spacing-medium);
+  }
+
+  .user-info h1 {
+    font-size: 1.1rem;
+  }
+
+  .user-info p {
+    font-size: 0.85rem;
+  }
+
   .slider-img-wrapper {
-    height: 270px;
-    max-width: 100vw;
-  }
-  .slider-img {
-    object-fit: contain;
-  }
-}
-/*480PX BREAKPOINT*/
-@media (min-width:30em){
-
-    .label-slide {
-    
-        margin: 130px 5px 5px 5px;
-        left: 39%; 
-    
-    }
-
-}
-
-/*600PX BREAKPOINT*/
-@media (min-width:37em){
-
-    .label-slide {
-    
-        margin: 180px 5px 5px 5px;
-        left: 43%; 
-    
-    }
-
-} 
-
-/*768PX BREAKPOINT*/
-@media (min-width:48em){
-
-    .label-slide {
-    
-        margin: 230px 5px 5px 5px;
-        left: 43%; 
-    
-    }
-
-} 
-
-/*960PX BREAKPOINT*/
-@media (min-width:60em){
-
-    .label-slide {
-    
-        margin: 265px 5px 15px 5px;
-        left: 46%;
-    
-    }
-
-}
-
-/*1280PX BREAKPOINT*/
-@media (min-width:80em){
-
-    .label-slide {
-    
-        margin: 450px 5px 15px 5px;
-        left: 47%;
-    
-    }
- 
-}
-
-/*1366PX BREAKPOINT*/
-@media (min-width:85em){
-
-    .label-slide {
-    
-        margin: 480px 5px 15px 5px;
-        left: 47%;
-    
-    }
-
-}
-
-/*1920PX BREAKPOINT*/
-@media (min-width:120em){
-
-    .label-slide {
-    
-        margin: 520px 5px 15px 5px;
-        left: 49%;
-    
-    }
-}
-
-/*MENU LATERAL*/
-.side-menu {
-  position: fixed;
-  top: 0;
-  right: -250px; 
-  width: 250px;
-  height: 100%;
-  background-color: #B2E5D9;
-  padding: 30px 20px;
-  transition: right 0.3s ease;
-  z-index: 1001;
-}
-
-.side-menu.open {
-  right: 0; 
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
-  display: none;
-  z-index: 999;
-}
-/* Responsividade */
-@media (max-width: 1024px) {
-  .service-card {
-    width: 90%;
-  }
-  /* Remove responsive width for carousel */
-}
-
-@media (max-width: 600px) {
-  header, nav, #service-list {
-    margin-left: 0;
+    height: 250px; /* Altura ajustada para mobile */
   }
 
-  .topbar {
-    flex-direction: column;
-    gap: 10px;
+  .description-section {
+    padding: var(--spacing-small);
   }
 
-  .search-wrapper {
-    width: 100%;
+  .description-section h2 {
+    font-size: 1.3rem;
   }
 
-  #search {
-    width: 90%;
+  .description-section p {
+    font-size: 0.77rem;
   }
 
-  .search-icon {
-    right: 8%;
+  .start-trade-button {
+    width: 90%; /* Botão ocupa quase toda a largura em mobile */
+    max-width: 300px;
   }
-  /* Remove responsive width for carousel */
 }
-/* Removed duplicated slider CSS block. Only the first set is kept for clarity and functionality. */
+
+/* Ajustes para telas entre 601px e 900px (Tablet) */
+@media (min-width: 601px) and (max-width: 900px) {
+  .slider-img-wrapper {
+    height: 300px;
+  }
+}
+
+/* Ajustes para telas maiores que 900px (Desktop) */
+@media (min-width: 901px) {
+  .profile-section {
+    padding: var(--spacing-large) 0 var(--spacing-medium) 0;
+  }
+  
+  .profile-card {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}

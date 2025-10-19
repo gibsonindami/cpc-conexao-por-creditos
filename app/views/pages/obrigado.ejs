@@ -8,6 +8,22 @@
   <link rel="stylesheet" href="../css/obrigado.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
+    <!-- MENU LATERAL -->
+  <nav class="side-menu" id="side-menu">
+    <a href="/conta">MINHA CONTA</a>
+    <a href="/">INÍCIO</a>
+    <a href="/sobrenos">SOBRE NÓS</a>
+    <a href="/comofunciona">COMO FUNCIONA</a>
+    <a href="/servicos">SERVIÇOS DE TROCA</a>
+    <a href="/saibamais">SAIBA MAIS</a>
+    <a href="/noticias">NOTÍCIAS</a>
+  </nav>
+  
+  <!-- SOBREPOSIÇÃO DO MENU (FUNDO ESCURO) -->
+  <div id="overlay" class="overlay"></div>
+
+  <script src="../js/menu.js"></script>
+  </header>
 
 <body>
   <!-- Seção Hero -->
@@ -16,7 +32,7 @@
       <a href="/"><img src="../img/logo-white.png" alt="Logo CPC" class="logo"></a>
       <div class="icons">
         <a href="/conta"><img src="../img/img perfil-white.png" alt="Usuário" class="icon"></a>
-        <img src="../img/img menu-white.png" alt="Menu" class="icon">
+        <img src="../img/img menu-white.png" class="icon" id="btnMenu" alt="Abrir menu">
 </div>
   
   <!-- SOBREPOSIÇÃO DO MENU (FUNDO ESCURO) -->
@@ -39,5 +55,6 @@
   <br>
   <br>
 </body>
+
 <%- include('../partials/footer.ejs') %>
 </html>

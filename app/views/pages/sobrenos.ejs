@@ -1,109 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CPC - Conectando Pessoas</title>
+  <link rel="stylesheet" href="../css/sobrenos.css">
 </head>
+
+<%- include('../partials/header.ejs') %>
 <body>
 
-    <!-- Simple slider with three images and navigation circles -->
-    <style>
-            .slider-container {
-                width: 90%;
-                max-width: 500px;
-                margin: 40px auto;
-                position: relative;
-                text-align: center;
-            }
-            .slider-img-wrapper {
-                position: relative;
-                width: 100%;
-                height: 220px;
-                overflow: hidden;
-                display: block;
-            }
-            .slider-track {
-                display: flex;
-                width: 300%;
-                height: 100%;
-                transition: transform 0.7s cubic-bezier(.77,0,.18,1);
-                position: relative;
-            }
-            .slider-img {
-                width: 100%;
-                height: 100%;
-                border-radius: 10px;
-                flex-shrink: 0;
-                object-fit: contain;
-                background: #fff;
-                display: block;
-            }
-        input[name="slider"] {
-            display: none;
-        }
-            #slide1:checked ~ .slider-img-wrapper .slider-track {
-                transform: translateX(0%);
-            }
-            #slide2:checked ~ .slider-img-wrapper .slider-track {
-                transform: translateX(-100%);
-            }
-            #slide3:checked ~ .slider-img-wrapper .slider-track {
-                transform: translateX(-200%);
-            }
-        .slider-circles {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 12px;
-        }
-        .circle {
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: #B2E5D9;
-            border: 2px solid #333;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        #slide1:checked ~ .slider-circles label[for="slide1"],
-        #slide2:checked ~ .slider-circles label[for="slide2"],
-        #slide3:checked ~ .slider-circles label[for="slide3"] {
-            background: #FF9800;
-            border-color: #FF9800;
-        }
-    </style>
-        <div class="slider-container">
-            <input type="radio" name="slider" id="slide1" checked>
-            <input type="radio" name="slider" id="slide2">
-            <input type="radio" name="slider" id="slide3">
-            <div class="slider-img-wrapper">
-                <div class="slider-track">
-                    <img src="../img/img2-home.jpeg" class="slider-img" alt="Imagem 1">
-                    <img src="../img/img home-2.png" class="slider-img" alt="Imagem 2">
-                    <img src="../img/img2-home.jpeg" class="slider-img" alt="Imagem 3">
-                </div>
-            </div>
-            <div class="slider-circles">
-                <label for="slide1" class="circle"></label>
-                <label for="slide2" class="circle"></label>
-                <label for="slide3" class="circle"></label>
-            </div>
-        </div>
-        <script>
-            // Auto-advance slider every 3 seconds
-            const slides = [
-                document.getElementById('slide1'),
-                document.getElementById('slide2'),
-                document.getElementById('slide3')
-            ];
-            let current = 0;
-            setInterval(() => {
-                slides[current].checked = false;
-                current = (current + 1) % slides.length;
-                slides[current].checked = true;
-            }, 3000);
-        </script>
+  <!-- SOBREPOSIÇÃO DO MENU (FUNDO ESCURO) -->
+  <div id="overlay" class="overlay"></div>
+
+<body>
+  <!-- Banner -->
+  <section class="banner">
+    <img src="../img/sobrenos.png" alt="Rede de pessoas conectadas">
+  </section>
+
+  <!-- Conteúdo principal -->
+  <main>
+    <h2>Conectando pessoas, Promovendo trocas, Gerando impacto</h2>
+
+    <section class="texto">
+      <h3>Nossa missão</h3>
+      <p>
+        Nossa missão é criar uma rede colaborativa onde pessoas em situação de vulnerabilidade
+        possam trocar produtos, serviços e habilidades sem a necessidade de dinheiro.
+        Acreditamos que todos têm algo valioso a oferecer e, através de trocas justas e solidárias,
+        buscamos promover um ambiente de apoio mútuo, confiança e desenvolvimento comunitário.
+      </p>
+
+      <h3>O que fazemos?</h3>
+      <p>
+        Nosso propósito é simples: tornar as trocas acessíveis para todos, especialmente
+        para aqueles que enfrentam dificuldades financeiras. Sabemos que, em tempos de crise,
+        pequenas ações podem fazer grandes diferenças, e é isso que queremos proporcionar —
+        um espaço onde cada pessoa possa contribuir com o que tem de melhor e ser recompensada por isso.
+      </p>
+    </section>
+
+    <h3 class="valores-titulo">Nossos valores</h3>
+
+    <!-- Círculos de valores -->
+    <section class="valores">
+      <div class="circulo circulo1">Solidariedade</div>
+      <div class="circulo circulo2">Sustentabilidade</div>
+      <div class="circulo circulo3">Confiança</div>
+      <div class="circulo circulo4">Inclusão</div>
+    </section>
+
+    <section class="texto">
+      <h3>Como funcionamos</h3>
+      <p>
+        Nosso sistema é simples: os usuários oferecem produtos ou serviços, ganham créditos em troca
+        e usam esses créditos para adquirir o que precisam de outros membros da comunidade.
+        Além das trocas, o site também promove doações diretas para quem mais precisa,
+        ajudando a construir uma rede de apoio verdadeiramente colaborativa.
+      </p>
+    </section>
+  </main>
+
+    <%- include('../partials/footer.ejs') %>
+
+  <script src="../js/menu.js"></script>
+  <br>
 </body>
 </html>
+

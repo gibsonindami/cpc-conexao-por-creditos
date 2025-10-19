@@ -22,8 +22,8 @@ router.get("/saibamais", function (req, res) {
 router.get("/servicos", function (req, res) {
     res.render("pages/servicos")
 });
-router.get("/noticias", function (req, res) {
-    res.render("pages/noticias")
+router.get("/noticia", function (req, res) {
+    res.render("pages/noticia")
 });
 router.get("/sobrenos", function (req, res) {
     res.render("pages/sobrenos")
@@ -78,7 +78,7 @@ router.get("/", (req, res) => res.render("pages/home"));
 router.get("/home-doe", (req, res) => res.render("pages/home2"));
 router.get("/saibamais", (req, res) => res.render("pages/saibamais"));
 router.get("/servicos", (req, res) => res.render("pages/servicos"));
-router.get("/noticias", (req, res) => res.render("pages/noticias"));
+router.get("/noticia", (req, res) => res.render("pages/noticia"));
 router.get("/sobrenos", (req, res) => res.render("pages/sobrenos"));
 router.get("/comofunciona", (req, res) => res.render("pages/comofunciona"));
 router.get("/conta", (req, res) => res.render("pages/conta"));
