@@ -9,44 +9,31 @@ body {
 }
 .banner {
   position: relative;
-  display: flex;
-  justify-content: center;
-  margin-top: 40px; /* Espaço do cabeçalho */
 }
- 
+
 .banner img {
-  width: 60%;
-  height: auto;
-  display: block;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
   height: center;
   display: flex;
 }
- 
- 
+
 .banner-text {
   position: absolute;
-  bottom: 30px;
-  left: 40%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.5);
+  bottom: 15px;
+  left: 15px;
+  background: rgba(0, 0, 0, 0.4);
   color: #fff;
-  padding: 15px 16px;
+  padding: 10px;
   border-radius: 8px;
-  max-width: 80%;
-  text-align: left;
-  font-size: 16px; /* Tamanho da fonte */
   max-width: 70%;
   font-size: 1.2rem;
   line-height: 1.4;
 }
- 
+
 .btn-banner {
   margin-top: 8px;
   background: orange;
-  color: black;
+  color: white;
   border: none;
   padding: 6px 12px;
   font-weight: bold;
