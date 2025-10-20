@@ -2,30 +2,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Arial", sans-serif;
 }
 
 body {
-  background-color: #ffffff;
-  color: #111;
-}
-
-/* ===== TOPO ===== */
-.topo {
-  background-color: #c8ece8;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-}
-
-.logo {
-  width: 90px;
-}
-
-.icones {
-  display: flex;
-  gap: 15px;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* ===== BANNER ===== */
@@ -96,7 +76,7 @@ body {
 .saiba-mais img{
   width: 100%;
   height: center;
-  display: flex;
+  display: block;
 }
 
 /* ===== SISTEMA DE CRÉDITOS ===== */
@@ -140,22 +120,23 @@ body {
 }
 
 .btn {
-  width: 80%;
-  max-width: 300px;
+  width: 100%;
   text-align: center;
   text-decoration: none;
-  font-weight: bold;
-  color: #fff;
-  padding: 12px;
-  border-radius: 6px;
+  color: black;
+  padding: 10px;
+  border-radius: 20px;
 }
 
 .btn.amarelo {
-  background-color: #f7a600;
+  width: 100%; 
+  font-size: 0.95rem;
+  background-color: orange;
 }
 
 .btn.laranja {
-  background-color: #f8a100;
+  font-size: 0.95rem;
+  background-color: orange;
 }
 
 /* ===== RODAPÉ ===== */
@@ -196,10 +177,56 @@ body {
 }
 
 /* ===== RESPONSIVIDADE ===== */
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .funciona, .creditos, .rodape {
-    max-width: 500px;
+    max-width: 100%;
     margin: 0 auto;
     border-radius: 10px;
   }
+  .btn.amarelo {
+  max-width: 100%;
+  align-self: center;
+  background: orange;
+  color: black;
+  font-weight: bold;
+  border: none;
+  padding: 9px;
+  border-radius: 20px;
+  cursor: pointer;
 }
+.btn.laranja {
+  width: 100%;
+  align-self: center;
+  background: orange;
+  color: black;
+  font-weight: medium;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+}
+
+@media (max-width: 1920px){
+.btn.amarelo {
+  width: 40%;
+  align-self: center;
+  background: orange;
+  color: black;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.btn.laranja {
+  width: 40%;
+  align-self: center;
+  background: orange;
+  color: black;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}}

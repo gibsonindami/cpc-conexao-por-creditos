@@ -1,9 +1,16 @@
+/* ============== RESET ============ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
 body {
   font-family: 'Poppins', sans-serif;
 }
@@ -14,7 +21,7 @@ body {
 
 .banner img {
   width: 100%;
-  height: center;
+  height: 100%;
   display: flex;
 }
 
@@ -205,6 +212,10 @@ footer img {
   .service-card {
     width: 90%;
   }
+  .banner img {
+  width: 80%;
+  display: flex;
+}
  .fique-por-dentro {
   padding: 25px 20px;
   text-align: center;
@@ -222,7 +233,7 @@ footer img {
   border-radius: 20px;
 }
 .fique-por-dentro button {
-  width: 40%;
+  width: 50%;
   align-self: center;
   background: orange;
   color: black;
@@ -298,13 +309,4 @@ footer img {
   padding: 10px;
   border-radius: 20px;
   cursor: pointer;
-}
-#conteudo-aba img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height: auto;
-  max-width: 100%;
-  margin-top: 15px;
-  border-radius: 10px;
 }}

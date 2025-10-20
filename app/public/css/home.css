@@ -1,15 +1,19 @@
+/* ============== RESET ============ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
  
 body {
   font-family: 'Poppins', sans-serif;
-}
-
-.banner {
-  position: relative;
 }
 
 .banner img {
@@ -20,7 +24,7 @@ body {
 
 .banner-text {
   position: absolute;
-  bottom: 15px;
+  bottom: -350px;
   left: 15px;
   background: rgba(0, 0, 0, 0.4);
   color: #fff;
@@ -207,7 +211,7 @@ footer img {
   border-radius: 20px;
 }
 .fique-por-dentro button {
-  width: 40%;
+  width: 50%;
   align-self: center;
   background: orange;
   color: black;
@@ -216,19 +220,23 @@ footer img {
   padding: 10px;
   border-radius: 20px;
   cursor: pointer;
+}
+#conteudo-aba img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  width: 60%;
+  max-width: 100%;
+  margin-top: 15px;
+  border-radius: 10px;
 }}
 
 @media (max-width: 600px) {
   header, nav, #service-list {
     margin-left: 0;
   }
- .banner-text {
-    max-width: 90%;
-    font-size: 1rem;
-    padding: 8px;
-    left: 10px;
-    bottom: 10px;
-}
+
   .topbar {
     flex-direction: column;
     gap: 10px;
@@ -245,7 +253,13 @@ footer img {
   .search-icon {
     right: 8;
   }
-}
+  .banner-text {
+    max-width: 90%;
+    font-size: 1rem;
+    padding: 8px;
+    left: 10px;
+    bottom: 10px;
+  }}
 
 @media (max-width: 768px) {
 .fique-por-dentro {
@@ -274,4 +288,16 @@ footer img {
   padding: 10px;
   border-radius: 20px;
   cursor: pointer;
+}
+.banner-text {
+  position: absolute;
+  bottom: 650px;
+  left: 15px;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 90%;
+  font-size: 1.2rem;
+  line-height: 1.4;
 }}

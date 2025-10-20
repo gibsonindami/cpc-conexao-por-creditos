@@ -2,11 +2,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Arial", sans-serif;
 }
 
 body {
-  background-color: #c8ece8;
+  font-family: "Arial", sans-serif;
 }
 
 /* ======== BANNER ======== */
@@ -171,7 +170,7 @@ body {
   border-radius: 10px;
 }}
  
-@media (max-width: 450px) {
+@media (max-width: 450px) { 
   .service-card {
     width: 90%;
   }
@@ -197,11 +196,7 @@ body {
  
   .search-icon {
     right: 8%;
-  }
-}
- 
-@media (max-width: 600px) {
-.banner-text {
+  }.banner-text {
     max-width: 90%;
     font-size: 1rem;
     padding: 8px;
@@ -209,3 +204,37 @@ body {
     bottom: 10px;
   }
 }
+
+@media (max-width: 768px) {
+.fique-por-dentro {
+  padding: 25px 20px;
+  text-align: center;
+}
+.fique-por-dentro form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.fique-por-dentro input {
+  width: 100%;
+  align-self: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+.fique-por-dentro button {
+  width: 100%;
+  align-self: center;
+  background: orange;
+  color: black;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.img-noticia img {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 8px;
+}}
