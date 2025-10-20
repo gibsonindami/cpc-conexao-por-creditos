@@ -1,12 +1,21 @@
+/* ============== RESET ============ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
  
 body {
   font-family: 'Poppins', sans-serif;
 }
+<<<<<<< HEAD
 .side-menu {
   position: fixed;
   right: -100%;
@@ -37,30 +46,23 @@ body {
   margin-top: 40px; /* Espaço do cabeçalho */
 }
  
+=======
+
+>>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
 .banner img {
-  width: 60%;
-  height: auto;
-  display: block;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
   height: center;
   display: flex;
 }
- 
- 
+
 .banner-text {
   position: absolute;
-  bottom: 30px;
-  left: 40%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.5);
+  bottom: -350px;
+  left: 15px;
+  background: rgba(0, 0, 0, 0.4);
   color: #fff;
-  padding: 15px 16px;
+  padding: 10px;
   border-radius: 8px;
-  max-width: 80%;
-  text-align: left;
-  font-size: 16px; /* Tamanho da fonte */
   max-width: 70%;
   font-size: 1.2rem;
   line-height: 1.4;
@@ -82,12 +84,13 @@ body {
 }
  
 .boas-vindas h2 {
+  font-size: 23px;
   text-align: center;
   margin-bottom: 10px;
 }
  
 .boas-vindas p {
-  text-align: center;
+  text-align: left;
   font-size: 14px;
   line-height: 1.5;
 }
@@ -129,15 +132,29 @@ body {
   color: orange;
   border-bottom: 2px solid orange;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
 #conteudo-aba {
   background: #B2E5D9;
   padding: 20px;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
 #conteudo-aba img {
-  max-width: 45%;
-  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  width: 80%;
+  max-width: 100%;
+  margin-top: 15px;
   border-radius: 10px;
 }
+<<<<<<< HEAD
   #conteudo-aba {
     background: #B2E5D9;
     padding: 20px;
@@ -153,6 +170,9 @@ body {
     margin-top: 15px;
     border-radius: 10px;
   }
+=======
+
+>>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
 .fique-por-dentro {
   padding: 25px 20px;
   text-align: center;
@@ -227,6 +247,7 @@ footer img {
   display: none;
   z-index: 999;
 }
+<<<<<<< HEAD
 .search-bar input {
   width: 400px;
   max-width: 90%;
@@ -341,18 +362,57 @@ footer img {
     font-size: 12px;
   }
 
+=======
+ 
+>>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
 /* Responsividade */
-@media (max-width: 1024px) {
+@media (max-width: 1920px)/* Monitor médio */ {
   .service-card {
     width: 90%;
   }
+ .fique-por-dentro {
+  padding: 25px 20px;
+  text-align: center;
 }
+.fique-por-dentro form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.fique-por-dentro input {
+  width: 50%;
+  align-self: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+.fique-por-dentro button {
+  width: 50%;
+  align-self: center;
+  background: orange;
+  color: black;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+#conteudo-aba img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  width: 60%;
+  max-width: 100%;
+  margin-top: 15px;
+  border-radius: 10px;
+}}
 
 @media (max-width: 600px) {
   header, nav, #service-list {
     margin-left: 0;
   }
- 
+
   .topbar {
     flex-direction: column;
     gap: 10px;
@@ -367,14 +427,59 @@ footer img {
   }
  
   .search-icon {
-    right: 8%;
+    right: 8;
   }
+<<<<<<< HEAD
 }
 @media (max-width: 600px) {
 .banner-text {
+=======
+  .banner-text {
+>>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
     max-width: 90%;
     font-size: 1rem;
     padding: 8px;
     left: 10px;
     bottom: 10px;
+  }}
+
+@media (max-width: 768px) {
+.fique-por-dentro {
+  padding: 25px 20px;
+  text-align: center;
+}
+.fique-por-dentro form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.fique-por-dentro input {
+  width: 100%;
+  align-self: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+.fique-por-dentro button {
+  width: 100%;
+  align-self: center;
+  background: orange;
+  color: black;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.banner-text {
+  position: absolute;
+  bottom: 650px;
+  left: 15px;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 90%;
+  font-size: 1.2rem;
+  line-height: 1.4;
 }}

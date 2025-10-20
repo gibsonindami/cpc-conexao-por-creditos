@@ -227,9 +227,9 @@ main {
 }
 
 .warning-notice p {
-  font-size: 0.85rem;
+  font-size: 0.80rem;
   color: black;
-  text-align: left;
+  text-align: justify;
   line-height: 1.5;
 }
 

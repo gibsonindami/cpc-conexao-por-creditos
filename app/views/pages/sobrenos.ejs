@@ -1,12 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre Nós - CPC</title>
+  <link rel="stylesheet" href="../css/sobrenos.css">
 </head>
+
+<%- include('../partials/header.ejs') %>
 <body>
-    
+
+  <!-- SOBREPOSIÇÃO DO MENU (FUNDO ESCURO) -->
+  <div id="overlay" class="overlay"></div>
+
+<body>
+  <!-- Banner -->
+  <section class="banner">
+    <img src="../img/sobrenos.png" alt="Rede de pessoas conectadas">
+  </section>
+
+  <!-- Conteúdo principal -->
+  <main>
+    <h2>Conectando pessoas, Promovendo trocas, Gerando impacto</h2>
+
+    <section class="texto">
+      <br><h3>Nossa missão</h3>
+      <p>
+        Nossa missão é criar uma rede colaborativa onde pessoas em situação de vulnerabilidade
+        possam trocar produtos, serviços e habilidades sem a necessidade de dinheiro.
+        Acreditamos que todos têm algo valioso a oferecer e, através de trocas justas e solidárias,
+        buscamos promover um ambiente de apoio mútuo, confiança e desenvolvimento comunitário.
+      </p>
+
+      <h3>O que fazemos?</h3>
+      <p>
+        Nosso propósito é simples: tornar as trocas acessíveis para todos, especialmente
+        para aqueles que enfrentam dificuldades financeiras. Sabemos que, em tempos de crise,
+        pequenas ações podem fazer grandes diferenças, e é isso que queremos proporcionar —
+        um espaço onde cada pessoa possa contribuir com o que tem de melhor e ser recompensada por isso.
+      </p>
+    </section>
+
+    <h3 class="valores-titulo">Nossos valores</h3>
+
+    <!-- Círculos de valores -->
+    <section class="valores">
+      <div class="circulo circulo1">Solidariedade</div>
+      <div class="circulo circulo2">Sustentabilidade</div>
+      <div class="circulo circulo3">Confiança</div>
+      <div class="circulo circulo4">Inclusão</div>
+    </section>
+
+    <section class="texto">
+      <h3>Como funcionamos</h3>
+      <p>
+        Nosso sistema é simples: os usuários oferecem produtos ou serviços, ganham créditos em troca
+        e usam esses créditos para adquirir o que precisam de outros membros da comunidade.
+        Além das trocas, o site também promove doações diretas para quem mais precisa,
+        ajudando a construir uma rede de apoio verdadeiramente colaborativa.
+      </p><br><br>
+    </section>
+  </main>
+
+    <%- include('../partials/footer.ejs') %>
+
+  <script src="../js/menu.js"></script>
+  <br>
 </body>
 </html>
+

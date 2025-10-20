@@ -10,11 +10,18 @@
   --spacing-large: 40px;
 }
 
-/* Reset básico e tipografia */
+/* ============== RESET ============ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -164,7 +171,7 @@ input[name="slider"] {
 }
 
 .description-section h2 {
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin-bottom: var(--spacing-small);
   text-align: left; /* Alinhamento mais natural para títulos de seção */
 }
@@ -274,3 +281,10 @@ input[name="slider"] {
     margin: 0 auto;
   }
 }
+
+@media (max-width: 1920px) {
+.action-section {
+  width: 120%;
+  padding: var(--spacing-medium) 0 var(--spacing-large) 0;
+  text-align: center; /* Centraliza o botão */
+}}
