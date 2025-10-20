@@ -15,49 +15,20 @@ body {
 body {
   font-family: 'Poppins', sans-serif;
 }
-<<<<<<< HEAD
-.side-menu {
-  position: fixed;
-  right: -100%;
-  top: 0;
-  background: #87B79F;
-  width: 200px;
-  height: 100%;
-  padding: 20px;
-  transition: right 0.3s ease-in;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
 
-.side-menu.open {
-  right: 0;
-}
-
-.side-menu a {
-  text-decoration: none;
-  color: #FFFFFF;
-  font-weight: bold;
-}
 .banner {
   position: relative;
-  display: flex;
-  justify-content: center;
-  margin-top: 40px; /* Espaço do cabeçalho */
 }
- 
-=======
 
->>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
 .banner img {
   width: 100%;
-  height: center;
+  height: 100%;
   display: flex;
 }
 
 .banner-text {
   position: absolute;
-  bottom: -350px;
+  bottom: 15px;
   left: 15px;
   background: rgba(0, 0, 0, 0.4);
   color: #fff;
@@ -67,7 +38,7 @@ body {
   font-size: 1.2rem;
   line-height: 1.4;
 }
- 
+
 .btn-banner {
   margin-top: 8px;
   background: orange;
@@ -78,7 +49,6 @@ body {
   border-radius: 6px;
   cursor: pointer;
 }
- 
 .boas-vindas {
   padding: 20px;
 }
@@ -132,18 +102,14 @@ body {
   color: orange;
   border-bottom: 2px solid orange;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
+
 #conteudo-aba {
   background: #B2E5D9;
   padding: 20px;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
+
 #conteudo-aba img {
   display: block;
   margin-left: auto;
@@ -154,25 +120,8 @@ body {
   margin-top: 15px;
   border-radius: 10px;
 }
-<<<<<<< HEAD
-  #conteudo-aba {
-    background: #B2E5D9;
-    padding: 20px;
-  }
-  
-  #conteudo-aba img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: auto;
-    width: 88%;
-    max-width: 100%;
-    margin-top: 15px;
-    border-radius: 10px;
-  }
-=======
 
->>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
+
 .fique-por-dentro {
   padding: 25px 20px;
   text-align: center;
@@ -223,7 +172,6 @@ footer img {
   position: fixed;
   top: 0;
   right: -250px;
-  right: -250px;
   width: 250px;
   height: 100%;
   background-color: #B2E5D9;
@@ -233,7 +181,6 @@ footer img {
 }
  
 .side-menu.open {
-  right: 0;
   right: 0;
 }
  
@@ -247,124 +194,7 @@ footer img {
   display: none;
   z-index: 999;
 }
-<<<<<<< HEAD
-.search-bar input {
-  width: 400px;
-  max-width: 90%;
-  padding: 10px 15px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 25px;
-  outline: none;
-  transition: border-color 0.2s ease;
-}
-
-.search-bar input:focus {
-  border-color: #999;
-}
-
-@media screen and (max-width: 768px) {
-  .side-menu {
-    width: 200px;
-  }
-
-  .side-menu.open {
-    right: 0;
-  }
-
-  .banner img {
-    width: 80%;
-  }
-
-  .banner-text {
-    left: 50%;
-    bottom: 20px;
-    transform: translateX(-50%);
-    padding: 12px 14px;
-    font-size: 14px;
-    max-width: 90%;
-  }
-
-  .icones {
-    gap: 5px;
-  }
-
-  .icone img {
-    width: 70px;
-    height: 70px;
-  }
-
-  .fique-por-dentro form {
-    gap: 8px;
-  }
-
-  .fique-por-dentro input {
-    width: 100%;
-  }
-
-  .search-bar input {
-    width: 100%;
-    max-width: none;
-  }
-
-  footer img {
-    width: 60px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .side-menu {
-    width: 180px;
-    padding: 15px;
-  }
-}
-
-  .banner img {
-    width: 90%;
-  }
-
-  .banner-text {
-    left: 50%;
-    bottom: 15px;
-    transform: translateX(-50%);
-    padding: 10px 12px;
-    font-size: 12px;
-    max-width: 95%;
-  }
-
-  .btn-banner {
-    padding: 5px 10px;
-    font-size: 14px;
-  }
-
-  .boas-vindas h2 {
-    font-size: 18px;
-  }
-
-  .boas-vindas p {
-    font-size: 12px;
-  }
-
-  .icones {
-    gap: 5px;
-  }
-
-  .icone img {
-    width: 50px;
-    height: 50px;
-  }
-
-  footer {
-    padding: 10px;
-  }
-
-  .footer-links a {
-    font-size: 12px;
-  }
-
-=======
  
->>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
 /* Responsividade */
 @media (max-width: 1920px)/* Monitor médio */ {
   .service-card {
@@ -408,10 +238,12 @@ footer img {
   border-radius: 10px;
 }}
 
+
 @media (max-width: 600px) {
   header, nav, #service-list {
     margin-left: 0;
   }
+
 
   .topbar {
     flex-direction: column;
@@ -429,19 +261,14 @@ footer img {
   .search-icon {
     right: 8;
   }
-<<<<<<< HEAD
-}
-@media (max-width: 600px) {
-.banner-text {
-=======
   .banner-text {
->>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
     max-width: 90%;
     font-size: 1rem;
     padding: 8px;
     left: 10px;
     bottom: 10px;
   }}
+
 
 @media (max-width: 768px) {
 .fique-por-dentro {

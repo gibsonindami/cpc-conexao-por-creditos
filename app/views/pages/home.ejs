@@ -7,13 +7,13 @@
   <link rel="stylesheet" href="../css/home.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
 </head>
-
+ 
 <%- include('../partials/header.ejs') %>
 <body>
-
+ 
   <!-- SOBREPOSIÇÃO DO MENU (FUNDO ESCURO) -->
   <div id="overlay" class="overlay"></div>
-
+ 
   <!-- BANNER -->
   <section class="banner">
     <img src="../img/img-banner.png" alt="Banner principal">
@@ -22,48 +22,44 @@
       <a href="/saibamais"><button class="btn-banner">SAIBA MAIS</button></a>
     </div>
   </section>
-
+ 
   <!-- BOAS-VINDAS -->
   <section class="boas-vindas">
     <h2>Bem-vindo ao Conexão por Créditos</h2>
     <p>No mundo atual, muitas pessoas enfrentam dificuldades. Através das redes colaborativas e da educação, podemos mudar essa realidade. <br>
-    O CPC é uma organização que promove inclusão, solidariedade e transformação social. 
+    O CPC é uma organização que promove inclusão, solidariedade e transformação social.
     Somos uma organização que trabalha pelo fim da pobreza.</p>
   </section>
-
+ 
   <!-- ÍCONES -->
   <section class="icones">
     <div class="icone">
       <a href="/kids"><img src="../img/img kids.jpeg" alt="Área Kids"></a>
-
+ 
       <p>Área Kids</p>
     </div>
     <div class="icone">
       <a href="/profissionais"><img src="../img/servicos.jpeg" alt="Serviços"></a>
       <p>Serviços</p>
     </div>
-
+ 
     <div class="icone">
       <a href="/alimentos"><img src="../img/img alimentacao.jpeg" alt="Alimentação"></a>
       <p>Alimentação</p>
     </div>
-
+ 
     <div class="icone">
-<<<<<<< HEAD
-      <a href="/noticias"><img src="../img/img noticias.jpeg" alt="Notícias"></a>
-=======
       <a href="/noticia"><img src="../img/img noticias.jpeg" alt="Notícias"></a>
->>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
       <p>Notícias</p>
     </div>
   </section>
-
+ 
   <!-- ABAS -->
   <div class="abas">
     <a href="/"><button id="btn-sobre" class="aba ativa">Sobre</button></a>
     <a href="/home2"><button id="btn-doe" class="aba">Doe</button></a>
   </div>
-
+ 
   <!-- CONTEÚDO DAS ABAS -->
   <section id="conteudo-aba">
     <div id="conteudo-sobre">
@@ -74,28 +70,20 @@
       <img src="../img/img2-home.jpeg" alt="Foto da organização CPC em atividade">
     </div>
   </section>
-
+ 
   <!-- FIQUE POR DENTRO -->
   <section class="fique-por-dentro">
     <h2>FIQUE POR DENTRO</h2>
-<<<<<<< HEAD
-    <form>
-      <input type="text" placeholder="Primeiro nome" required>
-      <input type="email" placeholder="Email" required>
-      <a href="/doe"><button type="submit">CADASTRAR</button></a>
-    </form>
-=======
     <form action="/cadastro-newsletter" method="POST">
       <input type="text" name="nome" placeholder="Primeiro nome" required>
       <input type="email" name="email" placeholder="Email" required>
       <button type="submit">CADASTRAR</button>
->>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
   </section><br>
-
+ 
   <%- include('../partials/footer.ejs') %>
-
+ 
   <script src="../js/menu.js"></script>
   <br>
-
+ 
 </body>
 </html>

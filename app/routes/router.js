@@ -45,12 +45,7 @@ router.get("/kids", function (req, res) {
 });
 router.get("/alimentos", function (req, res) {
     res.render("pages/alimentos")});
-<<<<<<< HEAD
-   
- 
-=======
 
->>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
 const usuarios = [];
 
 // -------------------- ROTAS GET --------------------

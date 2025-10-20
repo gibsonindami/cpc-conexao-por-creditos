@@ -208,12 +208,11 @@ footer img {
 }
 
 /* Responsividade */
-@media (max-width: 1920px)/* Monitor médio */ {
+@media (max-width: 1920px)/* Monitor médio */{
   .service-card {
     width: 90%;
   }
-<<<<<<< HEAD
-  
+}
   .icone img {
     width: 85px;
     height: 85px;
@@ -248,7 +247,6 @@ footer img {
     max-width: 100%;
     margin-top: 15px;
     border-radius: 10px;
-=======
   .banner img {
   width: 80%;
   display: flex;
@@ -293,14 +291,12 @@ footer img {
 @media (max-width: 600px) {
   header, nav, #service-list {
     margin-left: 0;
->>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
-  }
+}}
 
   .topbar {
     flex-direction: column;
     gap: 10px;
   }
-<<<<<<< HEAD
   
   .fique-por-dentro input {
     padding: 10px;
@@ -309,10 +305,7 @@ footer img {
   }
   
   .fique-por-dentro button {
-=======
-
   .search-wrapper {
->>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
     width: 100%;
   }
 
