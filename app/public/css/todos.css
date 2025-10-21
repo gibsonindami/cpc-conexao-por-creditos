@@ -159,11 +159,10 @@ nav {
 @media (min-width: 768px) {
     /* Remove a limitação de largura do contêiner da lista para permitir múltiplas colunas */
     .service-list {
-        max-width: 100%; /* Remove o max-width de 400px */
-        flex-direction: row; /* Permite que os cards fiquem lado a lado */
+        max-width: 100%;/* Remove o max-width de 400px */
         flex-wrap: wrap; /* Quebra os cards para a próxima linha se não couberem */
         justify-content: center; /* Centraliza os cards na tela */
-        align-items: flex-start; /* Alinha os cards no topo */
+        align-items: center; /* Alinha os cards no topo */
         padding: 0 20px; /* Adiciona um padding lateral para não colar nas bordas */
     }
 

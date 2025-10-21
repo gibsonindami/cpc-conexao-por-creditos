@@ -1,9 +1,16 @@
+/* ============== RESET ============ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
 body {
   font-family: 'Poppins', sans-serif;
 }
@@ -14,10 +21,9 @@ body {
 
 .banner img {
   width: 100%;
-  height: center;
+  height: 100%;
   display: flex;
 }
-
 
 .banner-text {
   position: absolute;
@@ -35,7 +41,7 @@ body {
 .btn-banner {
   margin-top: 8px;
   background: orange;
-  color: white;
+  color: black;
   border: none;
   padding: 6px 12px;
   font-weight: bold;
@@ -48,11 +54,13 @@ body {
 }
 
 .boas-vindas h2 {
+  font-size: 23px;
+  text-align: center;
   margin-bottom: 10px;
 }
 
 .boas-vindas p {
-  text-align: justify;
+  text-align: left;
   font-size: 14px;
   line-height: 1.5;
 }
@@ -116,12 +124,12 @@ body {
   margin-left: 25%;
   width: 50%;
   background: orange;
-  color: white;
+  color: black;
   font-weight: bold;
   border: none;
   padding: 10px;
   border-radius: 20px;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .fique-por-dentro {
@@ -144,7 +152,7 @@ body {
 .fique-por-dentro button {
   width: 100%;
   background: orange;
-  color: white;
+  color: black;
   font-weight: bold;
   border: none;
   padding: 10px;
@@ -152,7 +160,6 @@ body {
   cursor: pointer;
   margin-top: 10px;
 }
-
 
 footer {
   text-align: center;
@@ -201,23 +208,111 @@ footer img {
 }
 
 /* Responsividade */
-@media (max-width: 1024px) {
+@media (max-width: 1920px)/* Monitor médio */ {
   .service-card {
     width: 90%;
   }
+<<<<<<< HEAD
+  
+  .icone img {
+    width: 85px;
+    height: 85px;
+  }
+  
+  .abas {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+  }
+  
+  .aba {
+    padding: 10px;
+    border: none;
+    background: none;
+    font-weight: bold;
+  }
+  
+  .aba.ativa {
+    color: orange;
+    border-bottom: 2px solid orange;
+  }
+  
+  #conteudo-aba {
+    background: #B2E5D9;
+    padding: 20px;
+  }
+  
+  #conteudo-aba img {
+    max-width: 100%;
+    margin-top: 15px;
+    border-radius: 10px;
+=======
+  .banner img {
+  width: 80%;
+  display: flex;
 }
+ .fique-por-dentro {
+  padding: 25px 20px;
+  text-align: center;
+}
+.fique-por-dentro form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.fique-por-dentro input {
+  width: 50%;
+  align-self: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+.fique-por-dentro button {
+  width: 50%;
+  align-self: center;
+  background: orange;
+  color: black;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+#conteudo-aba img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  max-width: 55%;
+  margin-top: 15px;
+  border-radius: 10px;
+}}
 
 @media (max-width: 600px) {
   header, nav, #service-list {
     margin-left: 0;
+>>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
   }
 
   .topbar {
     flex-direction: column;
     gap: 10px;
   }
+<<<<<<< HEAD
+  
+  .fique-por-dentro input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  
+  .fique-por-dentro button {
+=======
 
   .search-wrapper {
+>>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
     width: 100%;
   }
 
@@ -227,11 +322,7 @@ footer img {
 
   .search-icon {
     right: 8%;
-  }
-}
-
-@media (max-width: 600px) {
-.banner-text {
+  }.banner-text {
     max-width: 90%;
     font-size: 1rem;
     padding: 8px;
@@ -239,3 +330,32 @@ footer img {
     bottom: 10px;
   }
 }
+
+@media (max-width: 768px) {
+.fique-por-dentro {
+  padding: 25px 20px;
+  text-align: center;
+}
+.fique-por-dentro form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.fique-por-dentro input {
+  width: 100%;
+  align-self: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+.fique-por-dentro button {
+  width: 100%;
+  align-self: center;
+  background: orange;
+  color: black;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}}
