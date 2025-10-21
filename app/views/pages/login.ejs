@@ -1,107 +1,81 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Conexão por Créditos - Login</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/login.css">
-  <link rel="icon" href="../img/img Logo-cpc.jpeg" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tela de Login e Cadastro</title>
+  <link rel="stylesheet" href="../css/login.css" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://kit.fontawesome.com/a81368914c.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="login-box">
-  <div class="container">
-    <img src="../img/img Logo-cpc.jpeg" alt="Logo" class="logo">
-    <h2 class="subtitulo">Conexão por créditos</h2>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Conexão por Créditos - Login</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/login.css" />
-    <link rel="icon" href="../img/img logo.png" />
-  </head>
-  <body>
-    <div class="login-box">
-      <div class="container">
-        <img src="../img/img cpc-verde.jpeg" alt="Logo" class="logo" />
-        <h2 class="subtitulo">Conexão por créditos</h2>
-        <h1>Entrar</h1>
-        <form action="/login" method="POST">
-          <div class="input-group">
-            <span class="icon">@</span>
-            <input
-              type="text"
-              id="usuarioDigitado"
-              name="usuarioDigitado"
-              placeholder="Digite seu email"
-              value="<%= valores?.usuarioDigitado || '' %>"
-              class="<%= erro ? 'erro' : '' %>"
-            />
-          </div>
+  <div class="container" id="container">
+    <!-- Login -->
+    <div class="form-container sign-in-container">
+      <form action="#">
+        <h1>Login</h1>
+        <input type="text" placeholder="Usuário" />
+        <input type="password" placeholder="Senha" />
+        <a href="#">Esqueceu a senha?</a>
+        <button>Entrar</button>
+        <p>ou entre com</p>
+        <div class="social-container">
+          <a href="#" class="social"><i class="bx bxl-google"></i></a>
+          <a href="#" class="social"><i class="bx bxl-facebook"></i></a>
+          <a href="#" class="social"><i class="bx bxl-github"></i></a>
+          <a href="#" class="social"><i class="bx bxl-linkedin"></i></a>
+        </div>
 
-          <div class="input-group">
-            <span class="icon">🔒</span>
-            <input
-              type="password"
-              id="senhaDigitada"
-              name="senhaDigitada"
-              placeholder="Digite sua senha"
-              value="<%= valores?.senhaDigitada || '' %>"
-              class="<%= erro ? 'erro' : '' %>"
-            />
-          </div>
-          <% if (erro) { %>
-          <span class="msgErro"><%= erro %></span>
-          <% } %>
+        <!-- Botão extra para celular/tablet -->
+        <div class="mobile-toggle">
+          <p>Não tem conta?</p>
+          <button type="button" class="ghost" id="mobileSignUp">Cadastrar</button>
+        </div>
+      </form>
+    </div>
 
-          <div class="esquei-senha">
-            <a href="recuperar-senha.ejs">Esqueceu a senha?</a>
-          </div>
+    <!-- Cadastro -->
+    <div class="form-container sign-up-container">
+      <form action="#">
+        <h1>Cadastro</h1>
+        <input type="text" placeholder="Usuário" />
+        <input type="email" placeholder="Email" />
+        <input type="password" placeholder="Senha" />
+        <input type="password" placeholder="Confirmar senha" />
+        <button>Cadastrar</button>
+        <p>ou cadastre-se com</p>
+        <div class="social-container">
+          <a href="#" class="social"><i class="bx bxl-google"></i></a>
+          <a href="#" class="social"><i class="bx bxl-facebook"></i></a>
+          <a href="#" class="social"><i class="bx bxl-github"></i></a>
+          <a href="#" class="social"><i class="bx bxl-linkedin"></i></a>
+        </div>
 
-          <button
-            type="submit"
-            class="btn verde"
-            onclick="window.location.href='/conta'"
-          >
-            Acessar
-          </button>
-        </form>
+        <!-- Botão extra para celular/tablet -->
+        <div class="mobile-toggle">
+          <p>Já tem uma conta?</p>
+          <button type="button" class="ghost" id="mobileSignIn">Login</button>
+        </div>
+      </form>
+    </div>
 
-        <p class="ou">OU</p>
-
-        <button
-          class="btn google"
-          onclick="window.location.href='https://accounts.google.com/'"
-        >
-          <img src="../img/img google.png" alt="Google" class="google-icon" />
-          Entrar com Google
-        </button>
-
-        <button class="btn verde" onclick="window.location.href='/cadastro'">
-          Cadastre-se
-        </button>
+    <!-- Painel lateral (para desktop) -->
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1>Bem-vindo de volta!</h1>
+          <p>Já tem uma conta? Entre e continue conosco.</p>
+          <button class="ghost" id="signIn">Login</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h1>Olá, seja bem-vindo!</h1>
+          <p>Não tem uma conta? Crie uma agora mesmo.</p>
+          <button class="ghost" id="signUp">Cadastrar</button>
+        </div>
       </div>
-
-      <div class="input-group">
-        <span class="icon">🔒</span>
-        <input type="password" id="senha" placeholder="Digite sua senha" required>
-      </div>
-
-      <div class="esqueci-senha">
-        <a href="recuperar-senha.ejs">Esqueceu a senha?</a>
-      </div>
-
-      <button type="submit" class="btn verde" onclick="window.location.href='/home'">Acessar</button>
-    </form>
-
-    <p class="ou">OU</p>
-
-    <button class="btn google" onclick="window.location.href='https://accounts.google.com/'">
-      <img src="../img/img google.png" alt="Google" class="google-icon">
-      Entrar com Google
-    </button>
-    <button class="btn verde" onclick="window.location.href='/cadastro'">Cadastre-se</button>
+    </div>
   </div>
-</div>
+
+  <script src="../js/login.js"></script>
 </body>
 </html>
-
