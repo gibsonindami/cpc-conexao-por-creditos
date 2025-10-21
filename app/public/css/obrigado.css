@@ -47,6 +47,43 @@ body {
   height: 33px;
 }
 
+ /* MENU LATERAL */
+.side-menu {
+  text-align: start;
+  position: fixed;
+  right: -100%;
+  background: #155a37;
+  width: 200px;
+  height: 100%;
+  padding: 200px;
+  transition: right 0.3s ease-in;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.side-menu.open {
+  background-color: #87B79F;
+  margin-top: 10px;
+}
+
+.side-menu a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  z-index: 999;
+}
+
 .hero-text {
   text-align: center;
   padding-bottom: 300px;
@@ -112,6 +149,10 @@ body {
 
 /* ===== RESPONSIVIDADE ===== */
 @media (min-width: 768px) {
+  .hero {
+    height: 480px;
+    max-width: 100%;
+  }
   .hero-text h1 {
     font-size: 36px;
   }
@@ -121,13 +162,29 @@ body {
 }
 
 @media (min-width: 1024px) {
-  .hero {
-    height: 480px;
-  }
   .hero-text h1 {
     font-size: 40px;
   }
   .content {
     max-width: 500px;
   }
+.logo {
+  width: 50px;
 }
+
+.icons {
+  display: flex;
+  gap: 15px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+.hero {
+  width: 100%;
+  height: 800px;
+  zoom: 2;
+  background: linear-gradient(rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.20)),
+            url("../img/img obrigado.png") center/cover no-repeat;
+}}

@@ -10,6 +10,16 @@
 
 <%- include('../partials/header.ejs') %>
 <body>
+<script>
+  var services = [
+    { nome: "Encanador", local: "Malcolm, Barueri-SP", categoria: "profissionais", img: "../img/img malcon.png" },
+    { nome: "Montador", local: "Malcolm, Barueri-SP", categoria: "profissionais", img: "../img/img malcon.png" },
+    { nome: "Eletricista", local: "Malcolm, Barueri-SP", categoria: "profissionais", img: "../img/img malcon.png" },
+    { nome: "Faxineira", local: "Malcolm, Barueri-SP", categoria: "profissionais", img: "../img/img malcon.png" },
+    { nome: "Pedreiro", local: "Malcolm, Barueri-SP", categoria: "profissionais", img: "../img/img malcon.png" },
+    { nome: "Marceneiro", local: "Malcolm, Barueri-SP", categoria: "profissionais", img: "../img/img malcon.png" }
+  ];
+</script>
   
   <!-- SOBREPOSIÇÃO DO MENU (FUNDO ESCURO) -->
   <div id="overlay" class="overlay"></div>
@@ -17,7 +27,7 @@
   <!--Campo de Busca-->
 <div id="divBusca">
   <label for="txtBusca"></label>
-  <input type="search" id="txtBusca" placeholder="Busque seu Profissional...">
+  <input type="search" id="txtBusca" placeholder="Busque seu Profissional">
   <button id="btnBusca" type="button"><img src="../img/img lupa.png" alt="Buscar"></button>
 </div><br>
 <!-- Local onde o texto buscado vai aparecer -->
@@ -106,7 +116,6 @@ document.getElementById("btnBusca").addEventListener("click", function() {
 </script>
   <script src="../js/busca.js"></script>
   <script src="../js/menu.js"></script>
-  <script src="../js/todos.js"></script>
 </body>
 <%- include('../partials/footer.ejs') %>
 </html>

@@ -10,15 +10,28 @@
 
 <%- include('../partials/header.ejs') %>
 <body>
+<script>
+  var services = [
+    { nome: "Maçã", local: "Malcolm, Barueri-SP", categoria: "alimentação", img: "../img/img malcon.png" },
+    { nome: "Arroz", local: "Malcolm, Barueri-SP", categoria: "alimentação", img: "../img/img malcon.png" },
+    { nome: "Leite", local: "Malcolm, Barueri-SP", categoria: "alimentação", img: "../img/img malcon.png" },
+    { nome: "Óleo", local: "Malcolm, Barueri-SP", categoria: "alimentação", img: "../img/img malcon.png" },
+    { nome: "Feijão", local: "Malcolm, Barueri-SP", categoria: "alimentação", img: "../img/img malcon.png" },
+    { nome: "Macarrão", local: "Malcolm, Barueri-SP", categoria: "alimentação", img: "../img/img malcon.png" }
+  ];
+</script>
   
   <!-- SOBREPOSIÇÃO DO MENU (FUNDO ESCURO) -->
   <div id="overlay" class="overlay"></div>
 
   <!--Campo de Busca-->
 <div id="divBusca">
-  <input type="text" id="txtBusca" placeholder="Busque seu Alimento...">
-  <img src="../img/img lupa.png" id="btnBusca" alt="Buscar">
+  <label for="txtBusca"></label>
+  <input type="search" id="txtBusca" placeholder="Busque seu Alimento">
+  <button id="btnBusca" type="button"><img src="../img/img lupa.png" alt="Buscar"></button>
 </div><br>
+<!-- Local onde o texto buscado vai aparecer -->
+<p id="resultadoBusca"></p>
 
   <!-- Filtros -->
   <nav>
@@ -27,10 +40,11 @@
     <a href="/profissionais"><button class="filter-btn" data-filter="profissionais">Profissionais</button></a>
     <a href="/alimentos"><button class="filter-btn active" data-filter="alimentos">Alimentação</button></a>
   </nav>
+
   <!-- Lista de serviços -->
-<div class="service-list">
-    
-    <br><div class="service-card">
+  <div class="service-list">
+
+  <br><div class="service-card active">
       <img src="../img/img malcon.png" alt="Foto" class="avatar">
       <div class="service-info">
         <h3>Maçã</h3>
@@ -38,8 +52,8 @@
         <a href="/contato"><button class="btn-contato">Contato</button></a>
       </div>
     </div><br>
-    
-    <div class="service-card">
+
+    <div class="service-card active">
       <img src="../img/img malcon.png" alt="Foto" class="avatar">
       <div class="service-info">
         <h3>Arroz</h3>
@@ -48,7 +62,7 @@
       </div>
     </div><br>
     
-    <div class="service-card">
+    <div class="service-card active">
       <img src="../img/img malcon.png" alt="Foto" class="avatar">
       <div class="service-info">
         <h3>Leite</h3>
@@ -56,8 +70,8 @@
         <a href="/contato"><button class="btn-contato">Contato</button></a>
       </div>
     </div><br>
-    
-    <div class="service-card">
+
+    <div class="service-card active">
       <img src="../img/img malcon.png" alt="Foto" class="avatar">
       <div class="service-info">
         <h3>Óleo</h3>
@@ -75,7 +89,7 @@
       </div>
     </div><br>
 
-    <div class="service-card">
+    <div class="service-card active">
       <img src="../img/img malcon.png" alt="Foto" class="avatar">
       <div class="service-info">
         <h3>Macarrão</h3>
@@ -84,12 +98,24 @@
       </div>
     </div><br>
 
-  </div><br>
+    </div><br>
 
-  </section>
+</section>
 
+<script> const termoBusca = document.getElementById("txtBusca").value.trim();
+document.getElementById("btnBusca").addEventListener("click", function() {
+        const termoBusca = document.getElementById("txtBusca").value.trim()
+        const resultado = document.getElementById("resultadoBusca")
+
+        if (termoBusca !== "") {
+            resultado.textContent = "Você buscou por: " + termoBusca
+        } else {
+            resultado.textContent = "Digite algo para buscar."
+        }
+    });
+</script>
+  <script src="../js/busca.js"></script>
   <script src="../js/menu.js"></script>
-  <script src="../app/public/js/todos.js"></script>
 </body>
 <%- include('../partials/footer.ejs') %>
 </html>

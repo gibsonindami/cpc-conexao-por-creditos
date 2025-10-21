@@ -10,13 +10,23 @@
 
 <%- include('../partials/header.ejs') %>
 <body>
+<script>
+  var services = [
+    { nome: "Macacão", local: "Malcolm, Barueri-SP", categoria: "infantil", img: "../img/img malcon.png" },
+    { nome: "Lencinho", local: "Malcolm, Barueri-SP", categoria: "infantil", img: "../img/img malcon.png" },
+    { nome: "Cadeirinha", local: "Malcolm, Barueri-SP", categoria: "infantil", img: "../img/img malcon.png" },
+    { nome: "Berço", local: "Malcolm, Barueri-SP", categoria: "infantil", img: "../img/img malcon.png" },
+    { nome: "Mamadeira", local: "Malcolm, Barueri-SP", categoria: "infantil", img: "../img/img malcon.png" },
+    { nome: "Chupeta", local: "Malcolm, Barueri-SP", categoria: "infantil", img: "../img/img malcon.png" }
+  ];
+</script>
   
   <!-- SOBREPOSIÇÃO DO MENU (FUNDO ESCURO) -->
   <div id="overlay" class="overlay"></div>
 
   <!--Campo de Busca-->
 <div id="divBusca">
-  <input type="text" id="txtBusca" placeholder="Busque seu Item Kids...">
+  <input type="text" id="txtBusca" placeholder="Busque seu Item Kids">
   <img src="../img/img lupa.png" id="btnBusca" alt="Buscar">
 </div><br>
 
@@ -29,68 +39,12 @@
   </nav>
 
   <!-- Lista de serviços -->
-<div class="service-list">
-    
-    <br><div class="service-card">
-      <img src="../img/img malcon.png" alt="Foto" class="avatar">
-      <div class="service-info">
-        <h3>Macacão</h3>
-        <p>Malcolm, Barueri-SP</p>
-        <a href="/contato"><button class="btn-contato">Contato</button></a>
-      </div>
-    </div><br>
-
-    <div class="service-card">
-      <img src="../img/img malcon.png" alt="Foto" class="avatar">
-      <div class="service-info">
-        <h3>Lencinho</h3>
-        <p>Malcolm, Barueri-SP</p>
-        <a href="/contato"><button class="btn-contato">Contato</button></a>
-      </div>
-    </div><br>
-
-    <div class="service-card">
-      <img src="../img/img malcon.png" alt="Foto" class="avatar">
-      <div class="service-info">
-        <h3>Cadeirinha</h3>
-        <p>Malcolm, Barueri-SP</p>
-        <a href="/contato"><button class="btn-contato">Contato</button></a>
-      </div>
-    </div><br>
-
-    <div class="service-card active">
-      <img src="../img/img malcon.png" alt="Foto" class="avatar">
-      <div class="service-info">
-        <h3>Berço</h3>
-        <p>Malcolm, Barueri-SP</p>
-        <a href="/contato"><button class="btn-contato">Contato</button></a>
-      </div>
-    </div><br>
-
-    <div class="service-card active">
-      <img src="../img/img malcon.png" alt="Foto" class="avatar">
-      <div class="service-info">
-        <h3>Mamadeira</h3>
-        <p>Malcolm, Barueri-SP</p>
-        <a href="/contato"><button class="btn-contato">Contato</button></a>
-      </div>
-    </div><br>
-
-    <div class="service-card">
-      <img src="../img/img malcon.png" alt="Foto" class="avatar">
-      <div class="service-info">
-        <h3>Chupeta</h3>
-        <p>Malcolm, Barueri-SP</p>
-        <a href="/contato"><button class="btn-contato">Contato</button></a>
-      </div>
-    </div><br>
-
-  </div><br>
+<div class="service-list"></div>
 
   </section>
 
   <script src="../js/menu.js"></script>
-  <script src="../app/public/js/todos.js"></script>
+  <script src="../js/busca.js"></script>
 </body>
 <%- include('../partials/footer.ejs') %>
 </html>

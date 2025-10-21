@@ -1,0 +1,270 @@
+/* ============== RESET ============ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+h2, h3 {
+  text-align: center;
+  color: #111;
+  font-weight: 500;
+  margin: 20px 0;
+}
+
+p {
+  line-height: 1.6;
+  text-align: justify;
+  margin: 10px 20px;
+}
+
+/* ====== CABEÇALHO ====== */
+header {
+  background-color: #a8d8c7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+}
+
+.logo {
+  height: 40px;
+}
+
+nav img {
+  height: 24px;
+  margin-left: 15px;
+}
+
+/* ====== BANNER ====== */
+.banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ====== TEXTO ====== */
+.texto {
+  padding: 0 20px;
+}
+
+.valores-titulo {
+  margin-top: 40px;
+  text-align: center;
+}
+/* ====== CÍRCULOS ====== */
+.valores {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 70px -15px;
+  position: relative;
+  height: 220px;
+  animation: fadeInUp 1.2s ease;
+}
+
+.circulo {
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+   margin: -45px 0px;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  animation: flutuar 3s ease-in-out infinite alternate;
+}
+
+.circulo1 {
+  background-color: #e0e0e0;
+  width: 165px;
+  height: 165px;
+  top: 20px;
+  left: 13%;
+  color: #000;
+  animation-delay: 0.2s;
+}
+
+.circulo2 {
+  background-color: #618d7c;
+  width: 180px;
+  height: 180px;
+  top: 20px;
+  left: 46%;
+  color: white;
+  animation-delay: 0.4s;
+}
+
+.circulo3 {
+  background-color: #a3d6c5;
+  width: 160px;
+  height: 160px;
+  top: 120px;
+  left: 26%;
+  color: #000;
+  animation-delay: 0.6s;
+}
+
+.circulo4 {
+  background-color: #7cb59a;
+  width: 160px;
+  height: 160px;
+  top: 120px;
+  left: 60%;
+  color: white;
+  animation-delay: 0.8s;
+}
+
+/* ====== ANIMAÇÕES ====== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes flutuar {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-8px);
+  }
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #f1f1f1;
+}
+ 
+footer img {
+  width: 80px;
+  margin-bottom: 10px;
+}
+ 
+.footer-links a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  margin-top: 5px;
+  font-size: 14px;
+}
+ 
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -250px; 
+  width: 250px;
+  height: 100%;
+  background-color: #B2E5D9;
+  padding: 30px 20px;
+  transition: right 0.3s ease;
+  z-index: 1001;
+}
+ 
+.side-menu.open {
+  right: 0; 
+}
+ 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  z-index: 999;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .service-card {
+    width: 90%;
+  }
+}
+@media (max-width: 768px) {
+  header, nav, #service-list {
+    margin-left: 0;
+  }
+ 
+  .topbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+ 
+  .search-wrapper {
+    width: 100%;
+  }
+ 
+  #search {
+    width: 90%;
+  }
+ 
+  .search-icon {
+    right: 8%;
+  }
+  .banner-text {
+    max-width: 90%;
+    font-size: 1rem;
+    padding: 8px;
+    left: 10px;
+    bottom: 10px;
+}}
+
+@media (min-width: 1080px) {
+.circulo1 {
+  background-color: #e0e0e0;
+  width: 165px;
+  height: 165px;
+  top: 20px;
+  left: 30.7%;
+  color: #000;
+  animation-delay: 0.2s;
+}
+
+.circulo2 {
+  background-color: #618d7c;
+  width: 180px;
+  height: 180px;
+  top: 2node app0px;
+  left: 47%;
+  color: white;
+  animation-delay: 0.4s;
+}
+
+.circulo3 {
+  background-color: #a3d6c5;
+  width: 160px;
+  height: 160px;
+  top: 110px;
+  left: 39%;
+  color: #000;
+  animation-delay: 0.6s;
+}
+
+.circulo4 {
+  background-color: #7cb59a;
+  width: 160px;
+  height: 160px;
+  top: 110px;
+  left: 56%;
+  color: white;
+  animation-delay: 0.8s;
+}}

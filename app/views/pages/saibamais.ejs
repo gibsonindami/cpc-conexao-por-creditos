@@ -7,6 +7,25 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <ul class="produtos-scroll">
+  <% produtos.forEach(produto => { %>
+    <li>
+      <article>
+        <figure>
+          <a href="/item/<%= produto.id %>">
+            <img src="/imagem/<%= produto.imagem %>" alt="<%= produto.nome %>">
+          </a>
+          <figcaption>
+            <h3><%= produto.nome %></h3>
+            <p>R$ <%= produto.preco %>,00 / tonelada</p>
+            <p>Disponível em <%= produto.local %></p>
+            <a href="/item/<%= produto.id %>">Ver detalhes</a>
+          </figcaption>
+        </figure>
+      </article>
+    </li>
+  <% }) %>
+</ul>
+ 
 </body>
 </html>
