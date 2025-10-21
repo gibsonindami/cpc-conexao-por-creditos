@@ -9,16 +9,16 @@
   <script src="https://kit.fontawesome.com/a81368914c.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<<<<<<< HEAD
+
   <div class="container" id="container">
     <!-- Login -->
     <div class="form-container sign-in-container">
       <form action="#">
         <h1>Login</h1>
-        <input type="text" placeholder="Usuário" />
-        <input type="password" placeholder="Senha" />
+        <input type="text" placeholder="Usuário" required>
+        <input type="password" placeholder="Senha" required>
         <a href="#">Esqueceu a senha?</a>
-        <button>Entrar</button>
+        <button type="submit">Entrar</button>
         <p>ou entre com</p>
         <div class="social-container">
           <a href="#" class="social"><i class="bx bxl-google"></i></a>
@@ -34,68 +34,16 @@
         </div>
       </form>
     </div>
-=======
-    <div class="login-box">
-  <div class="container">
-    <img src="../img/img Logo-cpc.jpeg" alt="Logo" class="logo">
-    <h2 class="subtitulo">Conexão por créditos</h2>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Conexão por Créditos - Login</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/login.css" />
-    <link rel="icon" href="../img/img logo.png" />
-  </head>
-  <body>
-    <div class="login-box">
-      <div class="container">
-        <img src="../img/img cpc-verde.jpeg" alt="Logo" class="logo" />
-        <h2 class="subtitulo">Conexão por créditos</h2>
-        <h1>Entrar</h1>
-        <form action="/login" method="POST">
-          <div class="input-group">
-            <span class="icon">@</span>
-
-            value="<%= (valores && valores.usuarioDigitado) || '' %>
-
-      <div class="input-group">
-        <span class="icon">@</span>
-        <input
-          type="text"
-          id="usuarioDigitado"
-          name="usuarioDigitado"
-          placeholder="Digite seu email"
-          value="<%= valores.usuarioDigitado || '' %>"
-          class="<%= erro ? 'erro' : '' %>"
-        />
-      </div>
-      
-      <div class="input-group">
-        <span class="icon">🔒</span>
-        <input
-          type="password"
-          id="senhaDigitada"
-          name="senhaDigitada"
-          placeholder="Digite sua senha"
-          value="<%= valores.senhaDigitada || '' %>"
-          class="<%= erro ? 'erro' : '' %>"
-        />
-      </div>      
-
-          <% if (erro) { %>
-          <span class="msgErro"><%= erro %></span>
-          <% } %>
->>>>>>> 3e4d3a44700095fd7d9a45da41ced25ec7a2908b
 
     <!-- Cadastro -->
     <div class="form-container sign-up-container">
       <form action="#">
         <h1>Cadastro</h1>
-        <input type="text" placeholder="Usuário" />
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Senha" />
-        <input type="password" placeholder="Confirmar senha" />
-        <button>Cadastrar</button>
+        <input type="text" placeholder="Usuário" required>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Senha" required>
+        <input type="password" placeholder="Confirmar senha" required>
+        <button type="submit">Cadastrar</button>
         <p>ou cadastre-se com</p>
         <div class="social-container">
           <a href="#" class="social"><i class="bx bxl-google"></i></a>

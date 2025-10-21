@@ -11,60 +11,63 @@ body {
   width: 100%;
   overflow-x: hidden;
 }
+ 
 body {
   font-family: 'Poppins', sans-serif;
 }
 
+.side-menu {
+  position: fixed;
+  right: -100%;
+  top: 0;
+  background: #87B79F;
+  width: 200px;
+  height: 100%;
+  padding: 20px;
+  transition: right 0.3s ease-in;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.side-menu.open {
+  right: 0;
+}
+
+.side-menu a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-weight: bold;
+}
 .banner {
   position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px; /* Espaço do cabeçalho */
 }
 
 .banner img {
   width: 100%;
-  height: 100%;
+  height: center;
   display: flex;
 }
-
-.banner-text {
-  position: absolute;
-  bottom: 15px;
-  left: 15px;
-  background: rgba(0, 0, 0, 0.4);
-  color: #fff;
-  padding: 10px;
-  border-radius: 8px;
-  max-width: 70%;
-  font-size: 1.2rem;
-  line-height: 1.4;
-}
-
-.btn-banner {
-  margin-top: 8px;
-  background: orange;
-  color: black;
-  border: none;
-  padding: 6px 12px;
-  font-weight: bold;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
+ 
 .boas-vindas {
   padding: 20px;
 }
-
+ 
 .boas-vindas h2 {
   font-size: 23px;
   text-align: center;
   margin-bottom: 10px;
 }
-
+ 
 .boas-vindas p {
   text-align: left;
   font-size: 14px;
   line-height: 1.5;
 }
-
+ 
 .icones {
   display: flex;
   justify-content: space-around;
@@ -72,17 +75,17 @@ body {
   flex-wrap: wrap;
   gap: 10px;
 }
-
+ 
 .icone {
   text-align: center;
   flex: 1 1 70px;
 }
-
+ 
 .icone img {
-  width: 85px;
-  height: 85px;
+  width: 200px;
+  height: 200px;
 }
-
+ 
 .abas {
   display: flex;
   justify-content: space-around;
@@ -136,19 +139,18 @@ body {
   padding: 25px 20px;
   text-align: center;
 }
-
 .fique-por-dentro form {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-
+ 
 .fique-por-dentro input {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 10px;
 }
-
+ 
 .fique-por-dentro button {
   width: 100%;
   background: orange;
@@ -158,20 +160,19 @@ body {
   padding: 10px;
   border-radius: 20px;
   cursor: pointer;
-  margin-top: 10px;
 }
-
+ 
 footer {
   text-align: center;
   padding: 20px;
   background: #f1f1f1;
 }
-
+ 
 footer img {
   width: 80px;
   margin-bottom: 10px;
 }
-
+ 
 .footer-links a {
   display: block;
   text-decoration: none;
@@ -179,10 +180,11 @@ footer img {
   margin-top: 5px;
   font-size: 14px;
 }
-
+ 
 .side-menu {
   position: fixed;
   top: 0;
+  right: -250px;
   right: -250px;
   width: 250px;
   height: 100%;
@@ -191,11 +193,12 @@ footer img {
   transition: right 0.3s ease;
   z-index: 1001;
 }
-
+ 
 .side-menu.open {
   right: 0;
+  right: 0;
 }
-
+ 
 .overlay {
   position: fixed;
   top: 0;
@@ -207,52 +210,125 @@ footer img {
   z-index: 999;
 }
 
+.search-bar input {
+  width: 400px;
+  max-width: 90%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.search-bar input:focus {
+  border-color: #999;
+}
+
+@media screen and (max-width: 768px) {
+  .side-menu {
+    width: 200px;
+  }
+
+  .side-menu.open {
+    right: 0;
+  }
+
+  .banner img {
+    width: 80%;
+  }
+
+  .banner-text {
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    padding: 12px 14px;
+    font-size: 14px;
+    max-width: 90%;
+  }
+
+  .icones {
+    gap: 5px;
+  }
+
+  .icone img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .fique-por-dentro form {
+    gap: 8px;
+  }
+
+  .fique-por-dentro input {
+    width: 100%;
+  }
+
+  .search-bar input {
+    width: 100%;
+    max-width: none;
+  }
+
+  footer img {
+    width: 60px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .side-menu {
+    width: 180px;
+    padding: 15px;
+  }
+}
+
+  .banner img {
+    width: 90%;
+  }
+
+  .banner-text {
+    left: 50%;
+    bottom: 15px;
+    transform: translateX(-50%);
+    padding: 10px 12px;
+    font-size: 12px;
+    max-width: 95%;
+  }
+
+  .btn-banner {
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+
+  .boas-vindas h2 {
+    font-size: 18px;
+  }
+
+  .boas-vindas p {
+    font-size: 12px;
+  }
+
+  .icones {
+    gap: 5px;
+  }
+
+  .icone img {
+    width: 50px;
+    height: 50px;
+  }
+
+  footer {
+    padding: 10px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+  }
+
 /* Responsividade */
 @media (max-width: 1920px)/* Monitor médio */ {
   .service-card {
     width: 90%;
   }
-<<<<<<< HEAD
-  
-  .icone img {
-    width: 85px;
-    height: 85px;
-  }
-  
-  .abas {
-    display: flex;
-    justify-content: space-around;
-    border-bottom: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    margin-top: 20px;
-  }
-  
-  .aba {
-    padding: 10px;
-    border: none;
-    background: none;
-    font-weight: bold;
-  }
-  
-  .aba.ativa {
-    color: orange;
-    border-bottom: 2px solid orange;
-  }
-  
-  #conteudo-aba {
-    background: #B2E5D9;
-    padding: 20px;
-  }
-  
-  #conteudo-aba img {
-    max-width: 100%;
-    margin-top: 15px;
-    border-radius: 10px;
-=======
-  .banner img {
-  width: 80%;
-  display: flex;
-}
  .fique-por-dentro {
   padding: 25px 20px;
   text-align: center;
@@ -285,7 +361,8 @@ footer img {
   margin-left: auto;
   margin-right: auto;
   height: auto;
-  max-width: 55%;
+  width: 60%;
+  max-width: 100%;
   margin-top: 15px;
   border-radius: 10px;
 }}
@@ -293,36 +370,27 @@ footer img {
 @media (max-width: 600px) {
   header, nav, #service-list {
     margin-left: 0;
->>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
   }
 
   .topbar {
     flex-direction: column;
     gap: 10px;
   }
-<<<<<<< HEAD
-  
-  .fique-por-dentro input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-  }
-  
-  .fique-por-dentro button {
-=======
-
+ 
   .search-wrapper {
->>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
     width: 100%;
   }
-
+ 
   #search {
     width: 90%;
   }
-
+ 
   .search-icon {
-    right: 8%;
-  }.banner-text {
+    right: 8;
+  }
+}
+@media (max-width: 600px) {
+.banner-text {
     max-width: 90%;
     font-size: 1rem;
     padding: 8px;
@@ -358,4 +426,16 @@ footer img {
   padding: 10px;
   border-radius: 20px;
   cursor: pointer;
+}
+.banner-text {
+  position: absolute;
+  bottom: 650px;
+  left: 15px;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 90%;
+  font-size: 1.2rem;
+  line-height: 1.4;
 }}
