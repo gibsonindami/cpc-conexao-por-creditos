@@ -15,7 +15,7 @@ body {
 body {
   font-family: 'Poppins', sans-serif;
 }
-<<<<<<< HEAD
+
 .side-menu {
   position: fixed;
   right: -100%;
@@ -43,40 +43,13 @@ body {
   position: relative;
   display: flex;
   justify-content: center;
-  margin-top: 40px; /* Espaço do cabeçalho */
+  margin-top: 15px; /* Espaço do cabeçalho */
 }
- 
-=======
 
->>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
 .banner img {
   width: 100%;
   height: center;
   display: flex;
-}
-
-.banner-text {
-  position: absolute;
-  bottom: -350px;
-  left: 15px;
-  background: rgba(0, 0, 0, 0.4);
-  color: #fff;
-  padding: 10px;
-  border-radius: 8px;
-  max-width: 70%;
-  font-size: 1.2rem;
-  line-height: 1.4;
-}
- 
-.btn-banner {
-  margin-top: 8px;
-  background: orange;
-  color: black;
-  border: none;
-  padding: 6px 12px;
-  font-weight: bold;
-  border-radius: 6px;
-  cursor: pointer;
 }
  
 .boas-vindas {
@@ -109,8 +82,8 @@ body {
 }
  
 .icone img {
-  width: 85px;
-  height: 85px;
+  width: 200px;
+  height: 200px;
 }
  
 .abas {
@@ -132,18 +105,12 @@ body {
   color: orange;
   border-bottom: 2px solid orange;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
 #conteudo-aba {
   background: #B2E5D9;
   padding: 20px;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
 #conteudo-aba img {
   display: block;
   margin-left: auto;
@@ -154,25 +121,7 @@ body {
   margin-top: 15px;
   border-radius: 10px;
 }
-<<<<<<< HEAD
-  #conteudo-aba {
-    background: #B2E5D9;
-    padding: 20px;
-  }
-  
-  #conteudo-aba img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: auto;
-    width: 88%;
-    max-width: 100%;
-    margin-top: 15px;
-    border-radius: 10px;
-  }
-=======
 
->>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
 .fique-por-dentro {
   padding: 25px 20px;
   text-align: center;
@@ -247,7 +196,7 @@ footer img {
   display: none;
   z-index: 999;
 }
-<<<<<<< HEAD
+
 .search-bar input {
   width: 400px;
   max-width: 90%;
@@ -274,15 +223,6 @@ footer img {
 
   .banner img {
     width: 80%;
-  }
-
-  .banner-text {
-    left: 50%;
-    bottom: 20px;
-    transform: translateX(-50%);
-    padding: 12px 14px;
-    font-size: 14px;
-    max-width: 90%;
   }
 
   .icones {
@@ -323,15 +263,6 @@ footer img {
     width: 90%;
   }
 
-  .banner-text {
-    left: 50%;
-    bottom: 15px;
-    transform: translateX(-50%);
-    padding: 10px 12px;
-    font-size: 12px;
-    max-width: 95%;
-  }
-
   .btn-banner {
     padding: 5px 10px;
     font-size: 14px;
@@ -362,9 +293,6 @@ footer img {
     font-size: 12px;
   }
 
-=======
- 
->>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
 /* Responsividade */
 @media (max-width: 1920px)/* Monitor médio */ {
   .service-card {
@@ -429,19 +357,7 @@ footer img {
   .search-icon {
     right: 8;
   }
-<<<<<<< HEAD
 }
-@media (max-width: 600px) {
-.banner-text {
-=======
-  .banner-text {
->>>>>>> 1d1e093a868f7155f6fbc973a581c3f5172702e8
-    max-width: 90%;
-    font-size: 1rem;
-    padding: 8px;
-    left: 10px;
-    bottom: 10px;
-  }}
 
 @media (max-width: 768px) {
 .fique-por-dentro {
@@ -470,16 +386,4 @@ footer img {
   padding: 10px;
   border-radius: 20px;
   cursor: pointer;
-}
-.banner-text {
-  position: absolute;
-  bottom: 650px;
-  left: 15px;
-  background: rgba(0, 0, 0, 0.4);
-  color: #fff;
-  padding: 10px;
-  border-radius: 8px;
-  max-width: 90%;
-  font-size: 1.2rem;
-  line-height: 1.4;
 }}

@@ -254,6 +254,36 @@ a {
   animation: shake 420ms ease-in-out;
 }
 
+/* ====== Feedback visual ====== */
+
+/* Sucesso (verde) */
+form.success {
+  border: 2px solid #00c851;
+  box-shadow: 0 0 15px rgba(0, 200, 81, 0.6);
+  animation: sucessoPiscar 0.4s ease-in-out;
+}
+
+/* Erro (vermelho) */
+form.error {
+  border: 2px solid #ff4444;
+  box-shadow: 0 0 15px rgba(255, 68, 68, 0.6);
+  animation: erroPiscar 0.4s ease-in-out;
+}
+
+/* Animações */
+@keyframes sucessoPiscar {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+@keyframes erroPiscar {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+
 /* ==================== RESPONSIVIDADE ==================== */
 
 @media (max-width: 1024px) {
