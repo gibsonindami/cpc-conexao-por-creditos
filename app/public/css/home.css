@@ -11,11 +11,12 @@ body {
   width: 100%;
   overflow-x: hidden;
 }
- 
+
 body {
   font-family: 'Poppins', sans-serif;
 }
 
+/* ============== MENU LATERAL ============ */
 .side-menu {
   position: fixed;
   right: -100%;
@@ -30,55 +31,48 @@ body {
   gap: 10px;
 }
 
+.side-menu.open {
+  right: 0;
+}
+
+.side-menu a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+/* ============== BANNER ============ */
 .banner {
   position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px; /* Espaço do cabeçalho */
 }
 
 .banner img {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: flex;
 }
 
-.banner-text {
-  position: absolute;
-  bottom: 15px;
-  left: 15px;
-  background: rgba(0, 0, 0, 0.4);
-  color: #fff;
-  padding: 10px;
-  border-radius: 8px;
-  max-width: 70%;
-  font-size: 1.2rem;
-  line-height: 1.4;
-}
-
-.btn-banner {
-  margin-top: 8px;
-  background: orange;
-  color: black;
-  border: none;
-  padding: 6px 12px;
-  font-weight: bold;
-  border-radius: 6px;
-  cursor: pointer;
-}
+/* ============== BOAS-VINDAS ============ */
 .boas-vindas {
   padding: 20px;
 }
- 
+
 .boas-vindas h2 {
   font-size: 23px;
   text-align: center;
   margin-bottom: 10px;
 }
- 
+
 .boas-vindas p {
   text-align: left;
   font-size: 14px;
   line-height: 1.5;
 }
- 
+
+/* ============== ÍCONES ============ */
 .icones {
   display: flex;
   justify-content: space-around;
@@ -86,17 +80,18 @@ body {
   flex-wrap: wrap;
   gap: 10px;
 }
- 
+
 .icone {
   text-align: center;
   flex: 1 1 70px;
 }
- 
+
 .icone img {
   width: 200px;
   height: 200px;
 }
- 
+
+/* ============== ABAS ============ */
 .abas {
   display: flex;
   justify-content: space-around;
@@ -104,25 +99,24 @@ body {
   border-top: 1px solid #ccc;
   margin-top: 20px;
 }
- 
+
 .aba {
   padding: 10px;
   border: none;
   background: none;
   font-weight: bold;
 }
- 
+
 .aba.ativa {
   color: orange;
   border-bottom: 2px solid orange;
 }
 
-
+/* ============== CONTEÚDO DAS ABAS ============ */
 #conteudo-aba {
   background: #B2E5D9;
   padding: 20px;
 }
-
 
 #conteudo-aba img {
   display: block;
@@ -135,23 +129,37 @@ body {
   border-radius: 10px;
 }
 
+#conteudo-aba button {
+  text-align: center;
+  margin-left: 25%;
+  width: 50%;
+  background: orange;
+  color: black;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 20px;
+}
 
+/* ============== FIQUE POR DENTRO ============ */
 .fique-por-dentro {
   padding: 25px 20px;
   text-align: center;
 }
+
 .fique-por-dentro form {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
- 
+
 .fique-por-dentro input {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 10px;
 }
- 
+
 .fique-por-dentro button {
   width: 100%;
   background: orange;
@@ -162,18 +170,19 @@ body {
   border-radius: 20px;
   cursor: pointer;
 }
- 
+
+/* ============== RODAPÉ ============ */
 footer {
   text-align: center;
   padding: 20px;
   background: #f1f1f1;
 }
- 
+
 footer img {
   width: 80px;
   margin-bottom: 10px;
 }
- 
+
 .footer-links a {
   display: block;
   text-decoration: none;
@@ -181,7 +190,8 @@ footer img {
   margin-top: 5px;
   font-size: 14px;
 }
- 
+
+/* ============== MENU LATERAL FIXO ============ */
 .side-menu {
   position: fixed;
   top: 0;
@@ -193,11 +203,11 @@ footer img {
   transition: right 0.3s ease;
   z-index: 1001;
 }
- 
+
 .side-menu.open {
   right: 0;
 }
- 
+
 .overlay {
   position: fixed;
   top: 0;
@@ -208,107 +218,149 @@ footer img {
   display: none;
   z-index: 999;
 }
- 
-/* Responsividade */
-@media (max-width: 1920px)/* Monitor médio */ {
+
+/* ============== RESPONSIVIDADE ============ */
+
+/* Monitor médio */
+@media (max-width: 1920px) {
   .service-card {
     width: 90%;
   }
- .fique-por-dentro {
-  padding: 25px 20px;
-  text-align: center;
+  .icone img {
+    width: 70px;
+    height: 70px;
+  }
+  .fique-por-dentro form {
+    gap: 8px;
+  }
+  .fique-por-dentro input {
+    width: 100%;
+  }
+  .search-bar input {
+    width: 100%;
+    max-width: none;
+  }
+  footer img {
+    width: 60px;
+  }
 }
-.fique-por-dentro form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.fique-por-dentro input {
-  width: 50%;
-  align-self: center;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-}
-.fique-por-dentro button {
-  width: 50%;
-  align-self: center;
-  background: orange;
-  color: black;
-  font-weight: bold;
-  border: none;
-  padding: 10px;
-  border-radius: 20px;
-  cursor: pointer;
-}
-#conteudo-aba img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height: auto;
-  width: 60%;
-  max-width: 100%;
-  margin-top: 15px;
-  border-radius: 10px;
-}}
 
+/* Celulares pequenos */
+@media screen and (max-width: 480px) {
+  .side-menu {
+    width: 180px;
+    padding: 15px;
+  }
 
+  .banner img {
+    width: 90%;
+  }
+
+  .banner-text {
+    left: 50%;
+    bottom: 15px;
+    transform: translateX(-50%);
+    padding: 10px 12px;
+    font-size: 12px;
+    max-width: 95%;
+  }
+
+  .btn-banner {
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+
+  .boas-vindas h2 {
+    font-size: 18px;
+  }
+
+  .boas-vindas p {
+    font-size: 12px;
+  }
+
+  .icones {
+    gap: 5px;
+  }
+
+  .icone img {
+    width: 50px;
+    height: 50px;
+  }
+
+  footer {
+    padding: 10px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+  }
+}
+
+/* Ajustes adicionais */
 @media (max-width: 600px) {
   header, nav, #service-list {
     margin-left: 0;
   }
-
-
   .topbar {
     flex-direction: column;
     gap: 10px;
   }
- 
-  .search-wrapper {
+  .fique-por-dentro input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+}
+
+/* Banner e formulário no tablet */
+@media (max-width: 768px) {
+  .fique-por-dentro {
+    padding: 25px 20px;
+    text-align: center;
+  }
+  .fique-por-dentro form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .fique-por-dentro input {
     width: 100%;
+    align-self: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
   }
- 
-  #search {
-    width: 90%;
-  }
- 
-  .search-icon {
-    right: 8;
+  .fique-por-dentro button {
+    width: 100%;
+    align-self: center;
+    background: orange;
+    color: black;
+    font-weight: bold;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
   }
   .banner-text {
+    position: absolute;
+    bottom: 650px;
+    left: 15px;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
     max-width: 90%;
-    font-size: 1rem;
-    padding: 8px;
-    left: 10px;
-    bottom: 10px;
-  }}
-
-
-@media (max-width: 768px) {
-.fique-por-dentro {
-  padding: 25px 20px;
-  text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.4;
+  }
+  #conteudo-aba img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    width: 80%;
+    max-width: 100%;
+    margin-top: 15px;
+    border-radius: 10px;
+  }
 }
-.fique-por-dentro form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.fique-por-dentro input {
-  width: 100%;
-  align-self: center;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-}
-.fique-por-dentro button {
-  width: 100%;
-  align-self: center;
-  background: orange;
-  color: black;
-  font-weight: bold;
-  border: none;
-  padding: 10px;
-  border-radius: 20px;
-  cursor: pointer;
-}}

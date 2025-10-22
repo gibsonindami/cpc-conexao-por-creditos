@@ -11,11 +11,12 @@ body {
   width: 100%;
   overflow-x: hidden;
 }
- 
+
 body {
   font-family: 'Poppins', sans-serif;
 }
 
+/* ============== MENU LATERAL ============ */
 .side-menu {
   position: fixed;
   right: -100%;
@@ -39,6 +40,8 @@ body {
   color: #FFFFFF;
   font-weight: bold;
 }
+
+/* ============== BANNER ============ */
 .banner {
   position: relative;
   display: flex;
@@ -48,26 +51,28 @@ body {
 
 .banner img {
   width: 100%;
-  height: center;
+  height: auto;
   display: flex;
 }
- 
+
+/* ============== BOAS-VINDAS ============ */
 .boas-vindas {
   padding: 20px;
 }
- 
+
 .boas-vindas h2 {
   font-size: 23px;
   text-align: center;
   margin-bottom: 10px;
 }
- 
+
 .boas-vindas p {
   text-align: left;
   font-size: 14px;
   line-height: 1.5;
 }
- 
+
+/* ============== ÍCONES ============ */
 .icones {
   display: flex;
   justify-content: space-around;
@@ -75,17 +80,18 @@ body {
   flex-wrap: wrap;
   gap: 10px;
 }
- 
+
 .icone {
   text-align: center;
   flex: 1 1 70px;
 }
- 
+
 .icone img {
   width: 200px;
   height: 200px;
 }
- 
+
+/* ============== ABAS ============ */
 .abas {
   display: flex;
   justify-content: space-around;
@@ -106,6 +112,7 @@ body {
   border-bottom: 2px solid orange;
 }
 
+/* ============== CONTEÚDO DAS ABAS ============ */
 #conteudo-aba {
   background: #B2E5D9;
   padding: 20px;
@@ -122,8 +129,8 @@ body {
   border-radius: 10px;
 }
 
-  #conteudo-aba button {
-    text-align: center;
+#conteudo-aba button {
+  text-align: center;
   margin-left: 25%;
   width: 50%;
   background: orange;
@@ -135,22 +142,24 @@ body {
   margin-top: 20px;
 }
 
+/* ============== FIQUE POR DENTRO ============ */
 .fique-por-dentro {
   padding: 25px 20px;
   text-align: center;
 }
+
 .fique-por-dentro form {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
- 
+
 .fique-por-dentro input {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 10px;
 }
- 
+
 .fique-por-dentro button {
   width: 100%;
   background: orange;
@@ -161,18 +170,19 @@ body {
   border-radius: 20px;
   cursor: pointer;
 }
- 
+
+/* ============== RODAPÉ ============ */
 footer {
   text-align: center;
   padding: 20px;
   background: #f1f1f1;
 }
- 
+
 footer img {
   width: 80px;
   margin-bottom: 10px;
 }
- 
+
 .footer-links a {
   display: block;
   text-decoration: none;
@@ -180,11 +190,11 @@ footer img {
   margin-top: 5px;
   font-size: 14px;
 }
- 
+
+/* ============== MENU LATERAL FIXO ============ */
 .side-menu {
   position: fixed;
   top: 0;
-  right: -250px;
   right: -250px;
   width: 250px;
   height: 100%;
@@ -193,12 +203,11 @@ footer img {
   transition: right 0.3s ease;
   z-index: 1001;
 }
- 
+
 .side-menu.open {
   right: 0;
-  right: 0;
 }
- 
+
 .overlay {
   position: fixed;
   top: 0;
@@ -210,49 +219,38 @@ footer img {
   z-index: 999;
 }
 
-/* Responsividade */
-@media (max-width: 1920px)/* Monitor médio */{
+/* ============== RESPONSIVIDADE ============ */
+
+/* Monitor médio */
+@media (max-width: 1920px) {
   .service-card {
     width: 90%;
   }
-}
   .icone img {
     width: 70px;
     height: 70px;
   }
-
   .fique-por-dentro form {
     gap: 8px;
   }
-
   .fique-por-dentro input {
     width: 100%;
   }
-
   .search-bar input {
     width: 100%;
     max-width: none;
   }
-
   footer img {
     width: 60px;
   }
 }
 
+/* Celulares pequenos */
 @media screen and (max-width: 480px) {
   .side-menu {
     width: 180px;
     padding: 15px;
   }
-  
-  #conteudo-aba img {
-    max-width: 100%;
-    margin-top: 15px;
-    border-radius: 10px;
-  .banner img {
-  width: 80%;
-  display: flex;
-}
 
   .banner img {
     width: 90%;
@@ -296,126 +294,73 @@ footer img {
   .footer-links a {
     font-size: 12px;
   }
+}
 
-/* Responsividade */
-@media (max-width: 1920px)/* Monitor médio */ {
-  .service-card {
-    width: 90%;
-  }
- .fique-por-dentro {
-  padding: 25px 20px;
-  text-align: center;
-}
-.fique-por-dentro form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.fique-por-dentro input {
-  width: 50%;
-  align-self: center;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-}
-.fique-por-dentro button {
-  width: 50%;
-  align-self: center;
-  background: orange;
-  color: black;
-  font-weight: bold;
-  border: none;
-  padding: 10px;
-  border-radius: 20px;
-  cursor: pointer;
-}
-#conteudo-aba img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height: auto;
-  width: 60%;
-  max-width: 100%;
-  margin-top: 15px;
-  border-radius: 10px;
-}}
-
+/* Ajustes adicionais */
 @media (max-width: 600px) {
   header, nav, #service-list {
     margin-left: 0;
-}}
-
+  }
   .topbar {
     flex-direction: column;
     gap: 10px;
   }
-  
   .fique-por-dentro input {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 10px;
   }
-  
-  .fique-por-dentro button {
-  .search-wrapper {
-    width: 100%;
-  }
- 
-  #search {
-    width: 90%;
-  }
- 
-  .search-icon {
-    right: 8;
-  }
-}
-@media (max-width: 600px) {
-.banner-text {
-    max-width: 90%;
-    font-size: 1rem;
-    padding: 8px;
-    left: 10px;
-    bottom: 10px;
-  }
 }
 
+/* Banner e formulário no tablet */
 @media (max-width: 768px) {
-.fique-por-dentro {
-  padding: 25px 20px;
-  text-align: center;
+  .fique-por-dentro {
+    padding: 25px 20px;
+    text-align: center;
+  }
+  .fique-por-dentro form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .fique-por-dentro input {
+    width: 100%;
+    align-self: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+  }
+  .fique-por-dentro button {
+    width: 100%;
+    align-self: center;
+    background: orange;
+    color: black;
+    font-weight: bold;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  .banner-text {
+    position: absolute;
+    bottom: 650px;
+    left: 15px;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 90%;
+    font-size: 1.2rem;
+    line-height: 1.4;
+  }
+  #conteudo-aba img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    width: 80%;
+    max-width: 100%;
+    margin-top: 15px;
+    border-radius: 10px;
+  }
 }
-.fique-por-dentro form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.fique-por-dentro input {
-  width: 100%;
-  align-self: center;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-}
-.fique-por-dentro button {
-  width: 100%;
-  align-self: center;
-  background: orange;
-  color: black;
-  font-weight: bold;
-  border: none;
-  padding: 10px;
-  border-radius: 20px;
-  cursor: pointer;
-}
-.banner-text {
-  position: absolute;
-  bottom: 650px;
-  left: 15px;
-  background: rgba(0, 0, 0, 0.4);
-  color: #fff;
-  padding: 10px;
-  border-radius: 8px;
-  max-width: 90%;
-  font-size: 1.2rem;
-  line-height: 1.4;
-}}
