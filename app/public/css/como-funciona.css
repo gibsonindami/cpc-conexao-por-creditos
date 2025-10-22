@@ -135,6 +135,7 @@ body {
 }
 
 .btn.laranja {
+  width: 100%; 
   font-size: 0.95rem;
   background-color: orange;
 }
@@ -195,13 +196,13 @@ body {
   cursor: pointer;
 }
 .btn.laranja {
-  width: 100%;
+  max-width: 80%;
   align-self: center;
   background: orange;
   color: black;
-  font-weight: medium;
+  font-weight: bold;
   border: none;
-  padding: 10px;
+  padding: 100px;
   border-radius: 20px;
   cursor: pointer;
 }

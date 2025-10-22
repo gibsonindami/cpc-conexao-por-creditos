@@ -97,8 +97,8 @@ input {
 
 button {
   border-radius: 20px;
-  border: 1px solid #1dc772;
-  background-color: #1dc772;
+  border: 1px solid #7EB89C;
+  background-color: #7EB89C;
   color: #fff;
   font-size: 14px;
   font-weight: bold;
@@ -116,7 +116,7 @@ button:active {
 
 button.ghost {
   background-color: transparent;
-  border-color: #1dc772;
+  border-color: #7EB89C;
   color: #1dc772;
 }
 

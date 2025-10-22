@@ -4,13 +4,13 @@ const { body, validationResult } = require("express-validator");
 const { append } = require("express/lib/response");
  
  
-router.get("/", function (req, res) {
+router.get("/login", function (req, res) {
     res.render("pages/login")
 });
 router.get("/cadastro", function (req, res) {
     res.render("pages/cadastro")
 });
-router.get("/home", function (req, res) {
+router.get("/", function (req, res) {
     res.render("pages/home")
 });
 router.get("/home2", function (req, res) {
