@@ -1,31 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CPC - Saiba Mais</title>
+  <link rel="stylesheet" href="../css/saibamais.css" />
 </head>
+
+<%- include('../partials/header.ejs') %>
 <body>
-    <ul class="produtos-scroll">
-  <% produtos.forEach(produto => { %>
-    <li>
-      <article>
-        <figure>
-          <a href="/item/<%= produto.id %>">
-            <img src="/imagem/<%= produto.imagem %>" alt="<%= produto.nome %>">
-          </a>
-          <figcaption>
-            <h3><%= produto.nome %></h3>
-            <p>R$ <%= produto.preco %>,00 / tonelada</p>
-            <p>Disponível em <%= produto.local %></p>
-            <a href="/item/<%= produto.id %>">Ver detalhes</a>
-          </figcaption>
-        </figure>
-      </article>
-    </li>
-  <% }) %>
-</ul>
- 
+
+  <!-- SOBREPOSIÇÃO DO MENU (FUNDO ESCURO) -->
+  <div id="overlay" class="overlay"></div>
+
+  <section class="banner">
+    <img src="../img/saiba-mais.png" alt="Banner com pessoas dando as mãos" class="banner-img">
+  </section>
+
+  <section class="conteudo">
+    <h1>Junte-se a Nós e Transforme Vidas!</h1>
+    <p>
+      Você pode fazer parte de uma comunidade que valoriza a solidariedade e o apoio mútuo. 
+      No nosso site, as pessoas se conectam para trocar produtos, serviços e habilidades, 
+      sem a necessidade de dinheiro. Seja você uma pessoa que precisa de ajuda ou alguém que deseja 
+      contribuir, há sempre uma maneira de participar.
+    </p>
+
+    <h3>Ao se cadastrar, você</h3>
+    <ul>
+      <li>Troca produtos e serviços diretamente com outros usuários</li>
+      <li>Oferece suas habilidades para ganhar créditos, que podem ser usados na plataforma</li>
+      <li>Ajuda quem precisa, fazendo itens ou tempo, e contribui para uma rede de apoio mais inclusiva</li>
+    </ul>
+
+    <p>
+      Venha fazer parte desta rede de troca e doação, onde cada ação tem o poder de transformar vidas e criar oportunidades para todos.  
+      Juntos, podemos construir um futuro melhor, um ato de solidariedade por vez.
+    </p>
+
+    <p class="cadastro-texto">
+      Se interessou? Clique em <a href="/" class="cadastro-link">CADASTRAR</a> para saber mais!
+    </p>
+  </section>
+
+  <%- include('../partials/footer.ejs') %>
+
+  <script src="../js/menu.js"></script>
+  <br>
+
 </body>
 </html>

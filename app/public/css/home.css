@@ -16,6 +16,20 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+.side-menu {
+  position: fixed;
+  right: -100%;
+  top: 0;
+  background: #87B79F;
+  width: 200px;
+  height: 100%;
+  padding: 20px;
+  transition: right 0.3s ease-in;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .banner {
   position: relative;
 }
@@ -79,8 +93,8 @@ body {
 }
  
 .icone img {
-  width: 85px;
-  height: 85px;
+  width: 200px;
+  height: 200px;
 }
  
 .abas {
@@ -297,16 +311,4 @@ footer img {
   padding: 10px;
   border-radius: 20px;
   cursor: pointer;
-}
-.banner-text {
-  position: absolute;
-  bottom: 650px;
-  left: 15px;
-  background: rgba(0, 0, 0, 0.4);
-  color: #fff;
-  padding: 10px;
-  border-radius: 8px;
-  max-width: 90%;
-  font-size: 1.2rem;
-  line-height: 1.4;
 }}

@@ -4,13 +4,13 @@ const { body, validationResult } = require("express-validator");
 const { append } = require("express/lib/response");
  
  
-router.get("/login", function (req, res) {
+router.get("/", function (req, res) {
     res.render("pages/login")
 });
 router.get("/cadastro", function (req, res) {
     res.render("pages/cadastro")
 });
-router.get("/", function (req, res) {
+router.get("/home", function (req, res) {
     res.render("pages/home")
 });
 router.get("/home2", function (req, res) {
@@ -49,7 +49,7 @@ router.get("/alimentos", function (req, res) {
 const usuarios = [];
 
 // -------------------- ROTAS GET --------------------
-router.get("/login", (req, res) => {
+router.get("/", (req, res) => {
   res.render("pages/login", {
     erro: null,
     valores: {
@@ -74,7 +74,7 @@ router.get("/cadastro", (req, res) => {
   });
 });
  
-router.get("/", (req, res) => res.render("pages/home"));
+router.get("/home", (req, res) => res.render("pages/home"));
 router.get("/home-doe", (req, res) => res.render("pages/home2"));
 router.get("/saibamais", (req, res) => res.render("pages/saibamais"));
 router.get("/servicos", (req, res) => res.render("pages/servicos"));
