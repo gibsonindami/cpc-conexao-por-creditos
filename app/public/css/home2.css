@@ -210,47 +210,12 @@ footer img {
   z-index: 999;
 }
 
-.search-bar input {
-  width: 400px;
-  max-width: 90%;
-  padding: 10px 15px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 25px;
-  outline: none;
-  transition: border-color 0.2s ease;
+/* Responsividade */
+@media (max-width: 1920px)/* Monitor médio */{
+  .service-card {
+    width: 90%;
+  }
 }
-
-.search-bar input:focus {
-  border-color: #999;
-}
-
-@media screen and (max-width: 768px) {
-  .side-menu {
-    width: 200px;
-  }
-
-  .side-menu.open {
-    right: 0;
-  }
-
-  .banner img {
-    width: 80%;
-  }
-
-  .banner-text {
-    left: 50%;
-    bottom: 20px;
-    transform: translateX(-50%);
-    padding: 12px 14px;
-    font-size: 14px;
-    max-width: 90%;
-  }
-
-  .icones {
-    gap: 5px;
-  }
-
   .icone img {
     width: 70px;
     height: 70px;
@@ -279,6 +244,14 @@ footer img {
     width: 180px;
     padding: 15px;
   }
+  
+  #conteudo-aba img {
+    max-width: 100%;
+    margin-top: 15px;
+    border-radius: 10px;
+  .banner img {
+  width: 80%;
+  display: flex;
 }
 
   .banner img {
@@ -370,13 +343,20 @@ footer img {
 @media (max-width: 600px) {
   header, nav, #service-list {
     margin-left: 0;
-  }
+}}
 
   .topbar {
     flex-direction: column;
     gap: 10px;
   }
- 
+  
+  .fique-por-dentro input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  
+  .fique-por-dentro button {
   .search-wrapper {
     width: 100%;
   }
