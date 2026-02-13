@@ -237,7 +237,6 @@ footer img {
   footer img {
     width: 60px;
   }
-}
 
 @media screen and (max-width: 480px) {
   .side-menu {
@@ -295,7 +294,7 @@ footer img {
 
   .footer-links a {
     font-size: 12px;
-  }
+  }}}
 
 /* Responsividade */
 @media (max-width: 1920px)/* Monitor médio */ {
