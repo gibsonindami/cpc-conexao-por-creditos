@@ -1,50 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const { body, validationResult } = require("express-validator");
-const { append } = require("express/lib/response");
- 
- 
-router.get("/", function (req, res) {
-    res.render("pages/login")
-});
-router.get("/cadastro", function (req, res) {
-    res.render("pages/cadastro")
-});
-router.get("/home", function (req, res) {
-    res.render("pages/home")
-});
-router.get("/home2", function (req, res) {
-    res.render("pages/home2")
-});
-router.get("/saibamais", function (req, res) {
-    res.render("pages/saibamais")
-});
-router.get("/servicos", function (req, res) {
-    res.render("pages/servicos")
-});
-router.get("/noticia", function (req, res) {
-    res.render("pages/noticia")
-});
-router.get("/sobrenos", function (req, res) {
-    res.render("pages/sobrenos")
-});
-router.get("/comofunciona", function (req, res) {
-    res.render("pages/comofunciona")
-});
-router.get("/conta", function (req, res) {
-    res.render("pages/conta")
-});
-router.get("/doe", function (req, res) {
-    res.render("pages/doe")
-});
-router.get("/todos", function (req, res) {
-    res.render("pages/todos")
-});
-router.get("/kids", function (req, res) {
-    res.render("pages/infantil")
-});
-router.get("/alimentos", function (req, res) {
-    res.render("pages/alimentos")});
+
+// utility import removed as it was unused
+// const { append } = require("express/lib/response");
+
+// routes are defined further down, avoid duplication
+
 
 const usuarios = [];
 
@@ -182,9 +144,8 @@ router.post("/login", (req, res) => {
       valores: {
         usuarioDigitado: usuarioDigitado,
         senhaDigitada: senhaDigitada,
-      }})
+        }
+      });
     }
-    });
-
-
+  });
     module.exports = router;
