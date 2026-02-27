@@ -1,25 +1,64 @@
-  <link rel="icon" href="../img/logo-black.png" />
-    <link rel="stylesheet" href="../css/header.css">
-<header class="header">
-    <a href="/home"><img src="../img/logo-black.png" class="logo" alt="Logo"></a>
-    
-    <div class="icons">
-      <a href="/conta"><img src="../img/img perfil.png" alt="Perfil"></a>
-      <img src="../img/img menu.png" id="btnMenu" alt="Abrir menu">
-    </div>
-    <!-- MENU LATERAL -->
-  <nav class="side-menu" id="side-menu">
-    <a href="/conta">MINHA CONTA</a>
-    <a href="/home">INÍCIO</a>
-    <a href="/sobrenos">SOBRE NÓS</a>
-    <a href="/comofunciona">COMO FUNCIONA</a>
-    <a href="/servicos">SERVIÇOS DE TROCA</a>
-    <a href="/saibamais">SAIBA MAIS</a>
-    <a href="/noticia">NOTÍCIAS</a>
-  </nav>
-  
-  <!-- SOBREPOSIÇÃO DO MENU (FUNDO ESCURO) -->
-  <div id="overlay" class="overlay"></div>
+<link rel="icon" href="../img/logo-black.png">
+<link rel="stylesheet" href="../css/header.css">              
+<header class="main-header">
+    <div class="header-container">
 
-  <script src="../js/menu.js"></script>
-  </header>
+        <!-- LOGIN MOBILE -->
+        <a href="/" class="login mobile-login">LOGIN</a>
+
+        <!-- LOGO -->
+        <div class="logo">
+            <a href="/home">
+                <img src="/img/logo-white.png" alt="CPC Logo">
+            </a>
+        </div>
+
+        <!-- MENU DESKTOP -->
+        <nav class="desktop-menu">
+            <ul>
+                <li><a href="/home">INÍCIO</a></li>
+                <li><a href="/sobrenos">SOBRE NÓS</a></li>
+                <li><a href="/comofunciona">COMO FUNCIONA</a></li>
+                <li><a href="/servicos">SERVIÇOS DE TROCA</a></li>
+                <li><a href="/saibamais">SAIBA MAIS</a></li>
+                <li><a href="/noticia">NOTÍCIAS</a></li>
+            </ul>
+        </nav>
+
+        <!-- AÇÕES DESKTOP -->
+        <div class="desktop-actions">
+            <button class="search-btn">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <line x1="16" y1="16" x2="21" y2="21"></line>
+                </svg>
+            </button>
+            <a href="/" class="login">LOGIN</a>
+        </div>
+
+        <!-- HAMBURGER MOBILE -->
+        <div class="hamburger mobile-menu" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </div>
+</header>
+
+<script src="/js/menu.js"></script>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay"></div>
+
+<!-- MENU LATERAL MOBILE -->
+<nav class="side-menu" id="sideMenu">
+    <ul>
+        <li><a href="/home">INÍCIO</a></li>
+        <li><a href="/sobrenos">SOBRE NÓS</a></li>
+        <li><a href="/comofunciona">COMO FUNCIONA</a></li>
+        <li><a href="/servicos">SERVIÇOS DE TROCA</a></li>
+        <li><a href="/saibamais">SAIBA MAIS</a></li>
+        <li><a href="/noticia">NOTÍCIAS</a></li>
+    </ul>
+</nav>

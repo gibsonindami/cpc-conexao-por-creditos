@@ -1,4 +1,3 @@
-/* ============== RESET ============ */
 * {
   margin: 0;
   padding: 0;
@@ -16,7 +15,7 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-/* ============== MENU LATERAL ============ */
+/* == MENU LATERAL  */
 .side-menu {
   position: fixed;
   right: -100%;
@@ -41,7 +40,7 @@ body {
   font-weight: bold;
 }
 
-/* ============== BANNER ============ */
+/* == BANNER  */
 .banner {
   position: relative;
   display: flex;
@@ -55,7 +54,7 @@ body {
   display: flex;
 }
 
-/* ============== BOAS-VINDAS ============ */
+/* == BOAS-VINDAS  */
 .boas-vindas {
   padding: 20px;
 }
@@ -72,7 +71,7 @@ body {
   line-height: 1.5;
 }
 
-/* ============== ÍCONES ============ */
+/* == ÍCONES  */
 .icones {
   display: flex;
   justify-content: space-around;
@@ -91,7 +90,7 @@ body {
   height: 200px;
 }
 
-/* ============== ABAS ============ */
+/* == ABAS  */
 .abas {
   display: flex;
   justify-content: space-around;
@@ -112,7 +111,7 @@ body {
   border-bottom: 2px solid orange;
 }
 
-/* ============== CONTEÚDO DAS ABAS ============ */
+/* == CONTEÚDO DAS ABAS  */
 #conteudo-aba {
   background: #B2E5D9;
   padding: 20px;
@@ -142,7 +141,7 @@ body {
   margin-top: 20px;
 }
 
-/* ============== FIQUE POR DENTRO ============ */
+/* == FIQUE POR DENTRO  */
 .fique-por-dentro {
   padding: 25px 20px;
   text-align: center;
@@ -171,7 +170,7 @@ body {
   cursor: pointer;
 }
 
-/* ============== RODAPÉ ============ */
+/* == RODAPÉ  */
 footer {
   text-align: center;
   padding: 20px;
@@ -191,7 +190,7 @@ footer img {
   font-size: 14px;
 }
 
-/* ============== MENU LATERAL FIXO ============ */
+/* == MENU LATERAL FIXO  */
 .side-menu {
   position: fixed;
   top: 0;
@@ -219,7 +218,7 @@ footer img {
   z-index: 999;
 }
 
-/* ============== RESPONSIVIDADE ============ */
+/* == RESPONSIVIDADE  */
 
 /* Monitor médio */
 @media (max-width: 1920px) {

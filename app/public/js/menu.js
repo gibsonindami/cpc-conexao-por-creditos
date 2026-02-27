@@ -1,5 +1,5 @@
- document.addEventListener('DOMContentLoaded', function () {
-    const btnMenu = document.getElementById('btnMenu');
+document.addEventListener('DOMContentLoaded', function () {
+    const btnMenu = document.getElementById('hamburger');
     const menu = document.querySelector('.side-menu');
     const overlay = document.querySelector('.overlay');
 
@@ -13,4 +13,3 @@
       overlay.style.display = 'none';
     });
   });
-
