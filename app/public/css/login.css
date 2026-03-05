@@ -15,6 +15,10 @@ body {
   margin: 0;
 }
 
+.logo img {
+    height: 75px;
+}
+
 .container {
   background-color: #fff;
   border-radius: 20px;
@@ -116,8 +120,8 @@ button:active {
 
 button.ghost {
   background-color: transparent;
-  border-color: #1dc772;
-  color: #1dc772;
+  border-color: #ffffff;
+  color: #ffffff;
 }
 
 a {
@@ -167,7 +171,7 @@ a {
 }
 
 .overlay {
-  background: linear-gradient(to right, #87B79F, #155a37);
+  background: linear-gradient(to right, #2a7d63, #1f5d49);
   color: #ffffff;
   position: relative;
   left: -100%;
