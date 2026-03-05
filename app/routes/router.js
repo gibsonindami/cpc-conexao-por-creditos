@@ -11,7 +11,7 @@ const { body, validationResult } = require("express-validator");
 const usuarios = [];
 
 // -------------------- ROTAS GET --------------------
-router.get("login", (req, res) => {
+router.get("/login", (req, res) => {
   res.render("pages/login", {
     erro: null,
     valores: {
