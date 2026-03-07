@@ -101,8 +101,8 @@ input {
 
 button {
   border-radius: 20px;
-  border: 1px solid #1dc772;
-  background-color: #1dc772;
+  border: 1px solid #14b162;
+  background-color: #14b162;
   color: #fff;
   font-size: 14px;
   font-weight: bold;
@@ -150,8 +150,8 @@ a {
 }
 
 .social-container a:hover {
-  border-color: #4beca1;
-  color: #4beca1;
+  border-color: #2cd687;
+  color: #2cd687;
 }
 
 /* --- Overlay --- */
@@ -384,6 +384,12 @@ form.error {
     padding: 0 25px;
     transition: padding 0.8s ease-in-out;
   }
+
+  button.ghost {
+  background-color: transparent;
+  border-color: #14b162;
+  color: #14b162;
+}
 }
 
 @media (max-width: 400px) {
