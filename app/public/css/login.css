@@ -91,12 +91,12 @@ form h1 {
 }
 
 input {
-  background-color: #eee;
+  background-color: #d3d3d3;
   border: none;
   padding: 12px 15px;
   margin: 8px 0;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 9px;
 }
 
 button {
@@ -287,6 +287,25 @@ form.error {
   100% { transform: scale(1); }
 }
 
+/* ====== INPUT SUCESSO (verde individual) ====== */
+.input-success {
+  border: 2px solid #00c851 !important;
+  box-shadow: 0 0 0 4px rgba(0, 200, 81, 0.08);
+}
+
+/* remover erro quando corrigir */
+input:focus {
+  outline: none;
+}
+
+/* mensagem de sucesso opcional (se quiser usar depois) */
+.msgSucesso {
+  display: block;
+  color: #00c851;
+  font-size: 12px;
+  margin-top: 6px;
+  text-align: left;
+}
 
 /* ==================== RESPONSIVIDADE ==================== */
 

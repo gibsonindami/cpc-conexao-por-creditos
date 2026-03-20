@@ -1,8 +1,8 @@
+// ================= OVERLAY =================
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
 
-// Botões do overlay (desktop)
 signUpButton.addEventListener('click', () => {
   container.classList.add("right-panel-active");
 });
@@ -11,7 +11,6 @@ signInButton.addEventListener('click', () => {
   container.classList.remove("right-panel-active");
 });
 
-// Botões adicionais (mobile/tablet)
 const mobileSignUp = document.getElementById('mobileSignUp');
 const mobileSignIn = document.getElementById('mobileSignIn');
 
@@ -23,114 +22,167 @@ mobileSignIn.addEventListener('click', () => {
   container.classList.remove("right-panel-active");
 });
 
-// ======== Feedback visual ========
+// ================= FEEDBACK =================
 function mostrarFeedback(form, tipo) {
   form.classList.remove('error', 'success');
   form.classList.add(tipo);
 
   setTimeout(() => {
     form.classList.remove(tipo);
-  }, 2500);
+  }, 1500);
 }
 
-// ======== Validação Front-End ========
-
+// ================= ERRO / SUCESSO =================
 function mostrarErro(input, mensagem) {
-  let p = input.parentNode.querySelector('.msg-erro');
+  let p = input.parentNode.querySelector('.msgErro');
+
   if (!p) {
     p = document.createElement('p');
-    p.className = 'msg-erro';
-    p.style.color = 'red';
-    p.style.fontSize = '14px';
-    p.style.marginTop = '4px';
+    p.className = 'msgErro';
     input.insertAdjacentElement('afterend', p);
   }
+
   p.textContent = mensagem;
-  input.style.border = '2px solid red';
+
+  input.classList.add('input-error');
+  input.classList.remove('input-success');
+
+  // animação
+  input.classList.add('shake');
+  setTimeout(() => input.classList.remove('shake'), 400);
 }
 
 function limparErro(input) {
-  const p = input.parentNode.querySelector('.msg-erro');
+  const p = input.parentNode.querySelector('.msgErro');
   if (p) p.remove();
-  input.style.border = '1px solid #ccc';
+
+  input.classList.remove('input-error');
 }
 
-// ======== Login ========
+function marcarSucesso(input) {
+  input.classList.remove('input-error');
+  input.classList.add('input-success');
+}
+
+// ================= LOGIN =================
 const loginForm = document.querySelector('.sign-in-container form');
-loginForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const usuario = loginForm.querySelector('input[placeholder="Usuário"]');
-  const senha = loginForm.querySelector('input[placeholder="Senha"]');
 
-  let valido = true;
-  limparErro(usuario);
-  limparErro(senha);
+const usuarioLogin = loginForm.querySelector('input[name="usuarioDigitado"]');
+const senhaLogin = loginForm.querySelector('input[name="senhaDigitada"]');
 
-  if (usuario.value.trim() === "") {
-    mostrarErro(usuario, "Digite seu usuário!");
-    valido = false;
-  }
-
-  if (senha.value.trim() === "") {
-    mostrarErro(senha, "Digite sua senha!");
-    valido = false;
-  }
-
-  if (valido) {
-    mostrarFeedback(loginForm, 'success');
-    // redireciona após 800ms para a página de home
-    setTimeout(() => {
-      loginForm.submit(); // se quiser enviar para back-end
-      // ou usar window.location:
-      window.location.href = "/home"; 
-    }, 800);
-  } else {
-    mostrarFeedback(loginForm, 'error');
+// validação em tempo real
+usuarioLogin.addEventListener('input', () => {
+  if (usuarioLogin.value.trim() !== "") {
+    limparErro(usuarioLogin);
+    marcarSucesso(usuarioLogin);
   }
 });
 
-// ======== Cadastro ========
-const cadastroForm = document.querySelector('.sign-up-container form');
-cadastroForm.addEventListener('submit', (e) => {
-  e.preventDefault();
+senhaLogin.addEventListener('input', () => {
+  if (senhaLogin.value.trim() !== "") {
+    limparErro(senhaLogin);
+    marcarSucesso(senhaLogin);
+  }
+});
 
-  const usuario = cadastroForm.querySelector('input[placeholder="Usuário"]');
-  const email = cadastroForm.querySelector('input[placeholder="Email"]');
-  const senha = cadastroForm.querySelector('input[placeholder="Senha"]');
-  const confirmar = cadastroForm.querySelector('input[placeholder="Confirmar senha"]');
-
+loginForm.addEventListener('submit', (e) => {
   let valido = true;
-  [usuario, email, senha, confirmar].forEach(limparErro);
 
-  if (usuario.value.trim().length < 3) {
-    mostrarErro(usuario, "O nome deve ter pelo menos 3 caracteres!");
+  limparErro(usuarioLogin);
+  limparErro(senhaLogin);
+
+  if (usuarioLogin.value.trim() === "") {
+    mostrarErro(usuarioLogin, "Digite seu usuário!");
     valido = false;
   }
 
-  if (!email.value.includes("@") || !email.value.includes(".")) {
-    mostrarErro(email, "Digite um email válido!");
+  if (senhaLogin.value.trim() === "") {
+    mostrarErro(senhaLogin, "");
     valido = false;
   }
 
-  if (senha.value.length < 6) {
-    mostrarErro(senha, "A senha deve ter no mínimo 6 caracteres!");
-    valido = false;
-  }
-
-  if (senha.value !== confirmar.value) {
-    mostrarErro(confirmar, "As senhas não conferem!");
-    valido = false;
-  }
-
-  if (valido) {
-    mostrarFeedback(cadastroForm, 'success');
-    // redireciona após 800ms para login
-    setTimeout(() => {
-      cadastroForm.submit(); // se quiser enviar para back-end
-      // ou usar window.location:
-      window.location.href = "/home"; 
-    }, 800);
+  if (!valido) {
+    e.preventDefault();
+    mostrarFeedback(loginForm, 'error');
   } else {
+    mostrarFeedback(loginForm, 'success');
+  }
+});
+
+// ================= CADASTRO =================
+const cadastroForm = document.querySelector('.sign-up-container form');
+
+const usuarioCad = cadastroForm.querySelector('input[name="nome"]');
+const emailCad = cadastroForm.querySelector('input[name="email"]');
+const senhaCad = cadastroForm.querySelector('input[name="senha"]');
+const confirmarCad = cadastroForm.querySelector('input[name="confirmarSenha"]');
+
+// validação em tempo real
+usuarioCad.addEventListener('input', () => {
+  if (usuarioCad.value.trim().length >= 3) {
+    limparErro(usuarioCad);
+    marcarSucesso(usuarioCad);
+  }
+});
+
+emailCad.addEventListener('input', () => {
+  if (emailCad.value.includes("@") && emailCad.value.includes(".")) {
+    limparErro(emailCad);
+    marcarSucesso(emailCad);
+  }
+});
+
+senhaCad.addEventListener('input', () => {
+  if (senhaCad.value.length >= 6) {
+    limparErro(senhaCad);
+    marcarSucesso(senhaCad);
+  }
+});
+
+confirmarCad.addEventListener('input', () => {
+  if (confirmarCad.value === senhaCad.value && confirmarCad.value !== "") {
+    limparErro(confirmarCad);
+    marcarSucesso(confirmarCad);
+  }
+});
+
+cadastroForm.addEventListener('submit', (e) => {
+  let valido = true;
+
+  [usuarioCad, emailCad, senhaCad, confirmarCad].forEach(limparErro);
+
+  if (usuarioCad.value.trim().length < 3) {
+    mostrarErro(usuarioCad, "Mínimo 3 caracteres!");
+    valido = false;
+  } else {
+    marcarSucesso(usuarioCad);
+  }
+
+  if (!emailCad.value.includes("@") || !emailCad.value.includes(".")) {
+    mostrarErro(emailCad, "Digite um email válido!");
+    valido = false;
+  } else {
+    marcarSucesso(emailCad);
+  }
+
+  if (senhaCad.value.length < 6) {
+    mostrarErro(senhaCad, "Senha deve ter no mínimo 6 caracteres!");
+    valido = false;
+  } else {
+    marcarSucesso(senhaCad);
+  }
+
+  if (senhaCad.value !== confirmarCad.value || confirmarCad.value === "") {
+    mostrarErro(confirmarCad, "Complete todos os campos corretamente!");
+    valido = false;
+  } else {
+    marcarSucesso(confirmarCad);
+  }
+
+  if (!valido) {
+    e.preventDefault();
     mostrarFeedback(cadastroForm, 'error');
+  } else {
+    mostrarFeedback(cadastroForm, 'success');
   }
 });
