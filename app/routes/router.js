@@ -5,7 +5,7 @@ const { body, validationResult } = require("express-validator");
 // 🔥 simulação de banco (em memória)
 const usuarios = [];
 
-// ================= GET =================
+// -------------------- ROTAS GET --------------------
 router.get("/login", (req, res) => {
   res.render("pages/login", {
     erro: null,
@@ -26,7 +26,7 @@ router.get("/cadastro", (req, res) => {
   });
 });
 
-router.get("/", (req, res) => res.render("pages/home"));
+router.get("/home", (req, res) => res.render("pages/home"));
 router.get("/home2", (req, res) => res.render("pages/home2"));
 router.get("/saibamais", (req, res) => res.render("pages/saibamais"));
 router.get("/servicos", (req, res) => res.render("pages/servicos"));
@@ -113,16 +113,8 @@ router.post(
       email: req.body.email.toLowerCase(),
       senha: req.body.senha,
     });
-
-    console.log("USUÁRIOS:", usuarios);
-
-    return res.render("pages/login", {
-      sucesso: "Cadastro realizado com sucesso!",
-      erro: null,
-      valores: {},
-      erroValidacao: {},
-      msgErro: {},
-    });
+ 
+    res.redirect("/home");
   }
 );
 
