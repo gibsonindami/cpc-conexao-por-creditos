@@ -15,6 +15,10 @@ body {
   margin: 0;
 }
 
+.logo img {
+    height: 75px;
+}
+
 .container {
   background-color: #fff;
   border-radius: 20px;
@@ -87,18 +91,18 @@ form h1 {
 }
 
 input {
-  background-color: #eee;
+  background-color: #d3d3d3;
   border: none;
   padding: 12px 15px;
   margin: 8px 0;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 9px;
 }
 
 button {
   border-radius: 20px;
-  border: 1px solid #1dc772;
-  background-color: #1dc772;
+  border: 1px solid #14b162;
+  background-color: #14b162;
   color: #fff;
   font-size: 14px;
   font-weight: bold;
@@ -116,8 +120,8 @@ button:active {
 
 button.ghost {
   background-color: transparent;
-  border-color: #1dc772;
-  color: #1dc772;
+  border-color: #ffffff;
+  color: #ffffff;
 }
 
 a {
@@ -146,8 +150,8 @@ a {
 }
 
 .social-container a:hover {
-  border-color: #4beca1;
-  color: #4beca1;
+  border-color: #2cd687;
+  color: #2cd687;
 }
 
 /* --- Overlay --- */
@@ -167,7 +171,7 @@ a {
 }
 
 .overlay {
-  background: linear-gradient(to right, #87B79F, #155a37);
+  background: linear-gradient(to right, #2a7d63, #1f5d49);
   color: #ffffff;
   position: relative;
   left: -100%;
@@ -283,6 +287,25 @@ form.error {
   100% { transform: scale(1); }
 }
 
+/* ====== INPUT SUCESSO (verde individual) ====== */
+.input-success {
+  border: 2px solid #00c851 !important;
+  box-shadow: 0 0 0 4px rgba(0, 200, 81, 0.08);
+}
+
+/* remover erro quando corrigir */
+input:focus {
+  outline: none;
+}
+
+/* mensagem de sucesso opcional (se quiser usar depois) */
+.msgSucesso {
+  display: block;
+  color: #00c851;
+  font-size: 12px;
+  margin-top: 6px;
+  text-align: left;
+}
 
 /* ==================== RESPONSIVIDADE ==================== */
 
@@ -380,6 +403,12 @@ form.error {
     padding: 0 25px;
     transition: padding 0.8s ease-in-out;
   }
+
+  button.ghost {
+  background-color: transparent;
+  border-color: #14b162;
+  color: #14b162;
+}
 }
 
 @media (max-width: 400px) {
