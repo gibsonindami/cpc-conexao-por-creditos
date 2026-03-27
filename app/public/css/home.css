@@ -111,7 +111,7 @@ body {
   border-bottom: 2px solid orange;
 }
 
-/* CONTEÚDO DAS ABAS */
+/* CONTEÚDO Sobre o CPC */
 #conteudo-aba {
   background: #B2E5D9;
   padding: 20px;
@@ -140,7 +140,77 @@ body {
   border-radius: 20px;
   margin-top: 20px;
 }
+/* Conteúdo Doe */
+#conteudo-aba {
+  background: #B2E5D9;
+  padding: 20px;
+}
 
+#conteudo-aba img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  width: 80%;
+  max-width: 100%;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+#conteudo-aba button {
+  text-align: center;
+  margin-left: 25%;
+  width: 50%;
+  background: orange;
+  color: black;
+  font-weight: bold;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+/* NOTICIAS */
+.noticia {
+  background-color: #fff;
+  padding: 20px;
+  border-top: 5px solid #c8ece8;
+}
+
+.noticia h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 2.0em;
+}
+
+.noticia h3 {
+  font-size: 1.3em;
+  font-weight: bold;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+
+.noticia p {
+  font-size: 1em;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.noticia ul {
+  margin: 10px 0 20px 25px;
+  font-size: 1.05em;
+}
+
+.img-noticia {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.img-noticia img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 8px;
+}
 /* FIQUE POR DENTRO */
 .fique-por-dentro {
   padding: 25px 20px;

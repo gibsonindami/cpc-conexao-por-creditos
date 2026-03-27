@@ -11,7 +11,7 @@ const { body, validationResult } = require("express-validator");
 const usuarios = [];
 
 // -------------------- ROTAS GET --------------------
-router.get("/", (req, res) => {
+router.get("/login", (req, res) => {
   res.render("pages/login", {
     erro: null,
     valores: {
@@ -35,7 +35,7 @@ router.get("/cadastro", (req, res) => {
     msgErro: {},
   });
 });
- 
+
 router.get("/home", (req, res) => res.render("pages/home"));
 router.get("/home2", (req, res) => res.render("pages/home2"));
 router.get("/saibamais", (req, res) => res.render("pages/saibamais"));
@@ -123,7 +123,7 @@ router.post(
       senha: req.body.senha,
     });
  
-    res.redirect("/");
+    res.redirect("/home");
   }
 );
  
