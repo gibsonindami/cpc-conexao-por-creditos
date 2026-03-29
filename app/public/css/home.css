@@ -196,9 +196,10 @@ body {
   color: #222;
 }
 
-.noticia ul {
-  margin: 10px 0 20px 25px;
-  font-size: 1.05em;
+.noticia img {
+    width: 100%;
+  max-width: 520px;
+  border-radius: 8px;
 }
 
 .img-noticia {
@@ -208,7 +209,7 @@ body {
 
 .img-noticia img {
   width: 100%;
-  max-width: 350px;
+  max-width: 520px;
   border-radius: 8px;
 }
 /* FIQUE POR DENTRO */
@@ -363,6 +364,11 @@ footer img {
   .footer-links a {
     font-size: 12px;
   }
+  .noticia img {
+    width: 100%;
+  max-width: 350px;
+  border-radius: 8px;
+}
 }
 
 /* Ajustes adicionais */

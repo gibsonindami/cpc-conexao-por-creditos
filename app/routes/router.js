@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { body, validationResult } = require("express-validator");
 
-// simulação de banco
+// 🔥 simulação de banco (em memória)
 const usuarios = [];
 
 // ================= GET =================
@@ -74,7 +74,7 @@ router.post(
   (req, res) => {
     const errors = validationResult(req);
 
-    // erro de validação
+    // 🔴 erro de validação
     if (!errors.isEmpty()) {
       const erroValidacao = {};
       const msgErro = {};
@@ -140,7 +140,7 @@ router.post(
   (req, res) => {
     const errors = validationResult(req);
 
-    // erro de campos vazios
+    // 🔴 erro de campos vazios
     if (!errors.isEmpty()) {
       const erroValidacao = {};
       const msgErro = {};
@@ -171,12 +171,12 @@ router.post(
         u.senha === senhaDigitada
     );
 
-    // SUCESSO
+    // 🟢 SUCESSO
     if (usuarioEncontrado) {
       return res.redirect("/");
     }
 
-    // ERRO
+    // 🔴 ERRO
     return res.render("pages/login", {
       erro: "Usuário ou senha incorretos!",
       sucesso: false,

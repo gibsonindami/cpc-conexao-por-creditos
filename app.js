@@ -9,7 +9,7 @@ app.set("view engine", "ejs");
 app.set("views", "./app/views");
  
 const rotaPrincipal = require("./app/routes/router");
-app.use("/home", rotaPrincipal);
+app.use("/", rotaPrincipal);
 
 // Definir porta via variável de ambiente APP_PORT ou PORT, ou 3000 como fallback
 const porta = process.env.APP_PORT || process.env.PORT || 3000;
