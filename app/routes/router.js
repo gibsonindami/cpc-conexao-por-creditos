@@ -2,41 +2,31 @@ const express = require("express");
 const router = express.Router();
 const { body, validationResult } = require("express-validator");
 
-// utility import removed as it was unused
-// const { append } = require("express/lib/response");
-
-// routes are defined further down, avoid duplication
-
-
+// simulação de banco
 const usuarios = [];
 
-// -------------------- ROTAS GET --------------------
+// ================= GET =================
 router.get("/login", (req, res) => {
   res.render("pages/login", {
     erro: null,
-    valores: {
-      usuarioDigitado: "",
-      senhaDigitada: "",
-    },
-  });
-});
- 
-router.get("/cadastro", (req, res) => {
-  res.render("pages/cadastro", {
-    erros: null,
-    valores: {
-      nome: "",
-      email: "",
-      senha: "",
-      confirmarSenha: "",
-    },
-    retorno: null,
+    sucesso: null,
+    valores: {},
     erroValidacao: {},
     msgErro: {},
   });
 });
 
-router.get("/home", (req, res) => res.render("pages/home"));
+router.get("/cadastro", (req, res) => {
+  res.render("pages/login", {
+    erro: null,
+    sucesso: null,
+    valores: {},
+    erroValidacao: {},
+    msgErro: {},
+  });
+});
+
+router.get("/", (req, res) => res.render("pages/home"));
 router.get("/home2", (req, res) => res.render("pages/home2"));
 router.get("/saibamais", (req, res) => res.render("pages/saibamais"));
 router.get("/servicos", (req, res) => res.render("pages/servicos"));
@@ -52,100 +42,155 @@ router.get("/profissionais", (req, res) => res.render("pages/profissionais"));
 router.get("/contato", (req, res) => res.render("pages/contato-troca"));
 router.get("/resumo", (req, res) => res.render("pages/resumo-troca"));
 router.get("/obrigado", (req, res) => res.render("pages/obrigado"));
- 
-// -------------------- CADASTRO --------------------
+
+
+// ================= CADASTRO =================
 router.post(
   "/cadastro",
+
   body("nome")
     .trim()
-    .notEmpty()
-    .withMessage("*Campo obrigatório!")
-    .bail()
-    .isLength({ min: 3, max: 50 })
-    .withMessage("*O Nome de usuário deve conter entre 3 e 50 caracteres!")
-    .matches(/^[A-Za-zÀ-ú\s]+$/)
-    .withMessage("*O nome deve conter apenas letras!"),
- 
+    .notEmpty().withMessage("*Campo obrigatório!")
+    .isLength({ min: 3 }).withMessage("*Mínimo 3 caracteres!"),
+
   body("email")
-    .notEmpty()
-    .withMessage("*Campo obrigatório!")
-    .bail()
-    .isEmail()
-    .withMessage("*Endereço de email inválido!"),
- 
+    .trim()
+    .notEmpty().withMessage("*Campo obrigatório!")
+    .isEmail().withMessage("*Email inválido!"),
+
   body("senha")
-    .notEmpty()
-    .withMessage("*Campo obrigatório!")
-    .bail()
-    .isStrongPassword({
-      minLowercase: 1,
-      minUppercase: 1,
-      minNumbers: 1,
-      minSymbols: 1,
-    })
-    .withMessage(
-      "*Sua senha deve conter pelo menos: uma letra maiúscula, um número e um caractere especial!"
-    ),
- 
+    .notEmpty().withMessage("*Campo obrigatório!")
+    .isLength({ min: 6 }).withMessage("*Mínimo 6 caracteres!"),
+
   body("confirmarSenha")
-    .notEmpty()
-    .withMessage("*Campo obrigatório!")
+    .notEmpty().withMessage("*Campo obrigatório!")
     .custom((value, { req }) => {
       if (value !== req.body.senha) {
-        throw new Error("*As senhas não conferem!");
+        throw new Error("");
       }
       return true;
     }),
- 
+
   (req, res) => {
     const errors = validationResult(req);
+
+    // erro de validação
     if (!errors.isEmpty()) {
       const erroValidacao = {};
       const msgErro = {};
- 
+
       errors.array().forEach((erro) => {
-        erroValidacao[erro.path] = "erro";
+        erroValidacao[erro.path] = "input-error";
         msgErro[erro.path] = erro.msg;
       });
- 
-      return res.render("pages/cadastro", {
-        erros: errors,
+
+      return res.render("pages/login", {
         valores: req.body,
-        retorno: null,
+        erroValidacao,
+        msgErro,
+        erro: null,
+        sucesso: false,
+      });
+    }
+
+    const usuarioExistente = usuarios.find(
+      (u) => u.email === req.body.email
+    );
+
+    if (usuarioExistente) {
+      return res.render("pages/login", {
+        valores: req.body,
+        erroValidacao: { email: "input-error" },
+        msgErro: { email: "*Email já cadastrado!" },
+        erro: null,
+        sucesso: false,
+      });
+    }
+
+    // salvar usuário
+    usuarios.push({
+      nome: req.body.nome.toLowerCase(),
+      email: req.body.email.toLowerCase(),
+      senha: req.body.senha,
+    });
+
+    console.log("USUÁRIOS:", usuarios);
+
+    return res.render("pages/login", {
+      sucesso: "Cadastro realizado com sucesso!",
+      erro: null,
+      valores: {},
+      erroValidacao: {},
+      msgErro: {},
+    });
+  }
+);
+
+
+// ================= LOGIN =================
+router.post(
+  "/login",
+
+  body("usuarioDigitado")
+    .notEmpty().withMessage("*Informe o usuário/email!"),
+
+  body("senhaDigitada")
+    .notEmpty().withMessage("*Informe a senha!"),
+
+  (req, res) => {
+    const errors = validationResult(req);
+
+    // erro de campos vazios
+    if (!errors.isEmpty()) {
+      const erroValidacao = {};
+      const msgErro = {};
+
+      errors.array().forEach((erro) => {
+        erroValidacao[erro.path] = "input-error";
+        msgErro[erro.path] = erro.msg;
+      });
+
+      return res.render("pages/login", {
+        erro: "*Preencha todos os campos!",
+        sucesso: false,
+        valores: req.body,
         erroValidacao,
         msgErro,
       });
     }
- 
-    usuarios.push({
-      nome: req.body.nome,
-      email: req.body.email,
-      senha: req.body.senha,
+
+    const usuarioDigitado = req.body.usuarioDigitado.toLowerCase();
+    const senhaDigitada = req.body.senhaDigitada;
+
+    console.log("Tentativa:", usuarioDigitado, senhaDigitada);
+    console.log("Banco:", usuarios);
+
+    const usuarioEncontrado = usuarios.find(
+      (u) =>
+        (u.email === usuarioDigitado || u.nome === usuarioDigitado) &&
+        u.senha === senhaDigitada
+    );
+
+    // SUCESSO
+    if (usuarioEncontrado) {
+      return res.redirect("/");
+    }
+
+    // ERRO
+    return res.render("pages/login", {
+      erro: "Usuário ou senha incorretos!",
+      sucesso: false,
+      valores: req.body,
+      erroValidacao: {
+        usuarioDigitado: "input-error",
+        senhaDigitada: "input-error",
+      },
+      msgErro: {
+        usuarioDigitado: "",
+        senhaDigitada: "",
+      },
     });
- 
-    res.redirect("/home");
   }
 );
- 
-// -------------------- LOGIN --------------------
-router.post("/login", (req, res) => {
-  const { usuarioDigitado, senhaDigitada } = req.body;
- 
-  const usuarioEncontrado = usuarios.find(
-    (u) => u.email === usuarioDigitado && u.senha === senhaDigitada
-  );
- 
-  if (usuarioEncontrado) {
-    return res.render("pages/home");
-  } else {
-    return res.render("pages/login", {
-      erro: "*Não reconhecemos estas credenciais. Tente novamente.",
-      sucesso: false,
-      valores: {
-        usuarioDigitado: usuarioDigitado,
-        senhaDigitada: senhaDigitada,
-        }
-      });
-    }
-  });
-    module.exports = router;
+
+module.exports = router;
