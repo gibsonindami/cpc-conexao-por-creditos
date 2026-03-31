@@ -105,6 +105,11 @@
     letter-spacing: 1px;
     font-weight: 600;
 }
+.perfil {
+  display: flex;
+  width: 45px;
+  height: 40px;
+}
 
 .mobile-menu,
 .mobile-login {
