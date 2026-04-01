@@ -110,11 +110,11 @@ body {
   color: orange;
   border-bottom: 2px solid orange;
 }
- 
+
 /* CONTEÚDO Sobre o CPC */
 #conteudo-aba {
-  background: #B2E5D9;
-  padding: 20px;
+  background: #e2f1ee;
+  padding: 7px;
 }
  
 #conteudo-aba img {
@@ -122,91 +122,87 @@ body {
   margin-left: auto;
   margin-right: auto;
   height: auto;
-  width: 80%;
-  max-width: 100%;
-  margin-top: 15px;
+  width: 100%;
   border-radius: 10px;
 }
- 
-#conteudo-aba button {
-  text-align: center;
-  margin-left: 25%;
-  width: 50%;
-  background: orange;
-  color: black;
-  font-weight: bold;
-  border: none;
-  padding: 10px;
-  border-radius: 20px;
-  margin-top: 20px;
-}
-/* Conteúdo Doe */
-#conteudo-aba {
-  background: #B2E5D9;
-  padding: 20px;
-}
- 
-#conteudo-aba img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height: auto;
-  width: 80%;
-  max-width: 100%;
+#conteudo-aba h3 {
+  text-align: left;
+  padding-left: 9px;
   margin-top: 15px;
-  border-radius: 10px;
 }
- 
-#conteudo-aba button {
-  text-align: center;
-  margin-left: 25%;
-  width: 50%;
-  background: orange;
-  color: black;
-  font-weight: bold;
-  border: none;
+#conteudo-aba p {
   padding: 10px;
-  border-radius: 20px;
-  margin-top: 20px;
+  font-size: 15px;
+  line-height: 1.25;
+  color: black;
 }
+/* Conteúdo Desktop */
+.container {
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    width: 550px;
+    padding: 25px;
+    position: relative;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.card h3 {
+    margin-top: 15px;
+}
+
+.card p {
+    font-size: 14px;
+    color: #555;
+}
+
 /* NOTICIAS */
 .noticia {
   background-color: #fff;
   padding: 20px;
   border-top: 5px solid #c8ece8;
 }
- 
+
 .noticia h2 {
   text-align: center;
   margin-bottom: 15px;
   font-size: 2.0em;
 }
- 
+
 .noticia h3 {
   font-size: 1.3em;
   font-weight: bold;
   line-height: 1.4;
   margin-bottom: 15px;
 }
- 
+
 .noticia p {
   font-size: 1em;
   line-height: 1.6;
   margin-bottom: 10px;
   color: #222;
 }
- 
+
 .noticia img {
     width: 100%;
   max-width: 520px;
   border-radius: 8px;
 }
- 
+
 .img-noticia {
   text-align: center;
   margin-top: 15px;
 }
- 
+
 .img-noticia img {
   width: 100%;
   max-width: 520px;
@@ -313,6 +309,12 @@ footer img {
   footer img {
     width: 60px;
   }
+  .desktop-only {
+        display: block;
+    }
+    .mobile-only {
+      display: none;
+    }
 }
  
 /* Celulares pequenos */
@@ -368,6 +370,23 @@ footer img {
     width: 100%;
   max-width: 350px;
   border-radius: 8px;
+}
+.card {
+    background: white;
+    border-radius: 10px;
+    width: 1000px;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}
+ .mobile-only {
+        display: block;
+    }
+    .desktop-only {
+      display: none;
+    }
 }
 }
  

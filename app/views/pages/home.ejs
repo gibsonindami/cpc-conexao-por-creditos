@@ -12,7 +12,7 @@
 <meta property="og:image" content="/workspaces/cpc-conexao-por-creditos/app/public/img/img home-2.png"/>
 <meta property="og:url" content="https://cpc-conexao-por-creditos.onrender.com/" />
 <meta property="og:type" content="website" />
- 
+
 <meta property="og:locale" content="pt_BR">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:site_name" content="Conexão Por Créditos">
@@ -21,7 +21,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:alt" content="Doação de mantimentos básicos como macarrão, água, azeite e coberta"><!--VERIFICAR MUDANÇA-->
- 
+
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@conexaoporcreditos_x">
 <meta name="twitter:creator" content="@autor_x"><!--Twitter do Kamau?-->
@@ -32,7 +32,7 @@
  
 <%- include('../partials/header.ejs') %>
 <body>
-  
+ 
   <!-- BANNER -->
   <section class="banner">
     <img src="../img/img-banner.png" alt="Banner principal">
@@ -50,9 +50,9 @@
   <section class="icones">
     <section class="icone">
       <a href="/kids"><img src="../img/img kids.jpeg" alt="Área Kids"></a>
- 
       <p>Área Kids</p>
     </section>
+    
     <section class="icone">
       <a href="/profissionais"><img src="../img/servicos.jpeg" alt="Serviços"></a>
       <p>Serviços</p>
@@ -64,8 +64,8 @@
     </section>
  
     <section class="icone">
-      <a href="/noticia"><img src="../img/img noticias.jpeg" alt="Notícias"></a>
-      <p>Notícias</p>
+      <a href="/conta"><img src="../img/icone perfil.png" alt="Perfil"></a>
+      <p>Perfil</p>
     </section>
   </section>
  
@@ -74,25 +74,45 @@
     <a href="/"><button id="btn-sobre" class="aba ativa">Conheça o CPC</button></a>
   </section>
  
-  <!-- CONTEÚDO sobre o CPC -->
+  <!--Conteúdos Home Desktop-->
+   <section class="desktop-only">
+<section class="container">
+
+    <article class="card">
+        <img src="../img/img2-home.jpeg" alt="Foto da organização CPC em atividade">
+        <h3>Sobre a organização</h3>
+        <p>Nosso objetivo é criar uma rede solidária onde pessoas possam trocar serviços e produtos sem a necessidade de dinheiro. Aqui você pode oferecer suas habilidades, ajudar quem precisa e receber apoio em troca, tudo de uma forma simples e acessível.
+      Ideal para quem busca se conectar, compartilhar e transformar vidas na comunidade, nosso espaço é um ponto de encontro para aqueles em situação de <strong>vulnerabilidade</strong> e para todos que desejam fazer a diferença.<br>
+      Junte-se a nós e descubra o poder da colaboração!</p>
+    </article>
+
+    <article class="card">
+        <img src="../img/img home-2.png" alt="Foto da organização">
+        <h3>Faça parte da mudança</h3>
+        <p>Com sua ajuda, podemos continuar construindo uma comunidade mais justa e sustentável, 
+        onde todos tenham a chance de participar e prosperar. Doe produtos, tempo ou habilidades e faça parte dessa transformação.</p>
+    </article>
+</section>
+   </section>
+
+<!--Conteúdos Home Mobile-->
+<section class="mobile-only">
   <section id="conteudo-aba">
     <section id="conteudo-sobre">
+      <img src="../img/img2-home.jpeg" alt="Foto da organização CPC em atividade">
       <h3>Sobre a organização</h3>
       <p>Nosso objetivo é criar uma rede solidária onde as pessoas podem trocar serviços e produtos sem a necessidade de dinheiro. Aqui você pode oferecer suas habilidades, ajudar quem precisa e receber apoio em troca, tudo de uma forma simples e acessível.
       Ideal para quem busca se conectar, compartilhar e transformar vidas na comunidade, nosso espaço é um ponto de encontro para aqueles em situação de <strong>vulnerabilidade</strong> e para todos que desejam fazer a diferença.<br>
       Junte-se a nós e descubra o poder da colaboração!</p>
-      <img src="../img/img2-home.jpeg" alt="Foto da organização CPC em atividade">
- 
-      <!--Conteúdo Doe--><br>
-      <h3>Faça parte da mudança</h3>
-      <p>
-        Com sua ajuda, podemos continuar a construir uma comunidade mais justa e sustentável,
-        onde todos tenham a chance de participar e prosperar. Doe produtos, tempo ou habilidades e faça parte dessa transformação.
-      </p>
+
       <img src="../img/img home-2.png" alt="Foto da organização" class="imagem-doacao">
+      <h3>Faça parte da mudança</h3>
+      <p>Com sua ajuda, podemos continuar a construir uma comunidade mais justa e sustentável, 
+        onde todos tenham a chance de participar e prosperar. Doe produtos, tempo ou habilidades e faça parte dessa transformação.</p>
     </section>
   </section>
- 
+ </section>
+
   <!-- Bloco de notícia -->
     <section class="noticia">
       <h2>Notícias</h2>
@@ -102,7 +122,7 @@
       <p>
         Os bairros que mais concentram famílias em extrema pobreza encontram-se nas áreas destacadas da cidade:
       </p>
-      <img src="../img/grafico-pobreza.png" alt="Grafico com as cidades mais pobres" class="grafico-noticia"> 
+      <img src="../img/grafico-pobreza.webp" alt="Grafico com as cidades mais pobres" class="grafico-noticia">
       <p>
         Para a economista e pesquisadora de temas ligados às desigualdades socioeconômicas Regina Wohler,
         a concentração da extrema pobreza está relacionada com a maneira como a cidade expandiu as suas atividades.
@@ -112,7 +132,7 @@
         <img src="../img/noticia2.png" alt="Imagem ilustrativa da notícia">
       </section>
     </section>
- 
+
   <!-- FIQUE POR DENTRO -->
   <section class="fique-por-dentro">
     <h2>FIQUE POR DENTRO</h2>
