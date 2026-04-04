@@ -27,7 +27,7 @@ router.get("/cadastro", (req, res) => {
 });
  
 router.get("/", (req, res) => res.render("pages/home"));
-router.get("/home2", (req, res) => res.render("pages/home2"));
+router.get("/avaliacao", (req, res) => res.render("pages/avaliacao"));
 router.get("/saibamais", (req, res) => res.render("pages/saibamais"));
 router.get("/servicos", (req, res) => res.render("pages/servicos"));
 router.get("/noticia", (req, res) => res.render("pages/noticia"));

@@ -1,0 +1,267 @@
+/* Reset básico e tipografia */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Classe para elementos visualmente ocultos mas acessíveis para leitores de tela */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* == MENU LATERAL  */
+.side-menu {
+  position: fixed;
+  right: -100%;
+  top: 0;
+  background: #87B79F;
+  width: 200px;
+  height: 100%;
+  padding: 20px;
+  transition: right 0.3s ease-in;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.side-menu.open {
+  right: 0;
+}
+
+.side-menu a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+main {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--color-background);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-text-dark);
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    background: #d9d9d9;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 20px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 15px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* garante alinhamento à esquerda */
+}
+
+.info h2 {
+    margin: 0;
+}
+
+.info p {
+    margin: 3px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+/* SISTEMA DE ESTRELAS */
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    font-size: 25px;
+    color: #ccc;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* hover */
+.rating label:hover,
+.rating label:hover ~ label {
+    color: gold;
+}
+
+/* selecionado */
+.rating input:checked ~ label {
+    color: gold;
+}
+
+/* == RESPONSIVIDADE  */
+
+/* Monitor médio */
+@media (max-width: 1920px) {
+  .service-card {
+    width: 90%;
+  }
+  .icone img {
+    width: 70px;
+    height: 70px;
+  }
+  .fique-por-dentro form {
+    gap: 8px;
+  }
+  .fique-por-dentro input {
+    width: 100%;
+  }
+  .search-bar input {
+    width: 100%;
+    max-width: none;
+  }
+  footer img {
+    width: 60px;
+  }
+}
+
+/* Celulares pequenos */
+@media screen and (max-width: 480px) {
+  .side-menu {
+    width: 180px;
+    padding: 15px;
+  }
+
+.card {
+    display: flex;
+    align-items: center;
+    background: #d9d9d9;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 20px;
+    max-width: 340px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 15px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+  .icones {
+    gap: 5px;
+  }
+
+  .icone img {
+    width: 50px;
+    height: 50px;
+  }
+
+  footer {
+    padding: 10px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+  }
+}
+
+/* Ajustes adicionais */
+@media (max-width: 600px) {
+  header, nav, #service-list {
+    margin-left: 0;
+  }
+  .topbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .fique-por-dentro input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+}
+
+/* Banner e formulário no tablet */
+@media (max-width: 768px) {
+  .fique-por-dentro {
+    padding: 25px 20px;
+    text-align: center;
+  }
+  .fique-por-dentro form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .fique-por-dentro input {
+    width: 100%;
+    align-self: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+  }
+  .fique-por-dentro button {
+    width: 100%;
+    align-self: center;
+    background: orange;
+    color: black;
+    font-weight: bold;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  .banner-text {
+    position: absolute;
+    bottom: 650px;
+    left: 15px;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 90%;
+    font-size: 1.2rem;
+    line-height: 1.4;
+  }
+  #conteudo-aba img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    width: 80%;
+    max-width: 100%;
+    margin-top: 15px;
+    border-radius: 10px;
+  }
+}
