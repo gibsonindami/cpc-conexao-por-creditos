@@ -56,10 +56,15 @@ body {
     font-weight: bold;
 }
 
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
 .andamento { padding-top: 20px; color: black; background-color: #fcbf2f; }
 .concluido { padding-top: 20px; background-color: #28a745; }
 .inativa { padding-top: 20px; background-color: #dc3545; }
-.ativa { padding-top: 15px; padding-bottom: 15px; ; background-color: #007bff; }
+.ativa { padding-top: 15px; padding-bottom: 15px; background-color: #007bff; }
 
 /*MENU LATERAL*/
 .side-menu {
