@@ -26,8 +26,9 @@
     "dotenv": "^17.2.2",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
+    "express-session": "^1.19.0",
     "express-validator": "^7.2.1",
-    "install": "^0.13.0"
-  },
-  "devDependencies": {}
+    "install": "^0.13.0",
+    "mysql2": "^3.22.0"
+  }
 }

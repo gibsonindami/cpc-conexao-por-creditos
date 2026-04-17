@@ -9,9 +9,6 @@ body {
   padding: 0;
   width: 100%;
   overflow-x: hidden;
-}
- 
-body {
   font-family: 'Poppins', sans-serif;
 }
  
@@ -388,8 +385,7 @@ footer img {
       display: none;
     }
 }
-}
- 
+
 /* Ajustes adicionais */
 @media (max-width: 600px) {
   header, nav, #service-list {
@@ -456,5 +452,172 @@ footer img {
     max-width: 100%;
     margin-top: 15px;
     border-radius: 10px;
+  }
+}
+
+/* NOTÍCIAS DASHBOARD */
+.noticias-dashboard {
+  padding: 40px 20px;
+}
+
+.noticias-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.noticias-header h2 {
+  color: #000000;
+  font-size: 45px;
+  font-weight: 700;
+}
+
+.noticias-header p {
+  font-size: 15px;
+  color: #2b2b2b;
+  max-width: 600px;
+  margin: 10px auto;
+}
+
+/* GRID */
+.noticias-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+/* CARD */
+.noticia-card {
+  background: #e2f1ee;
+  padding: 45px;
+  border-radius: 19px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+}
+
+.noticia-card h3 {
+  color: #00553d;
+  margin-bottom: 29px;
+}
+
+.bloco {
+  margin-bottom: 15px;
+}
+
+.bloco span {
+  font-size: 11px;
+  color: #000000;
+}
+
+.linha {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+
+.barra {
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 10px;
+}
+
+.barra div {
+  height: 100%;
+  background: #065f46;
+  border-radius: 10px;
+}
+
+.descricao {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* STATS */
+.noticia-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.stat {
+  background: #fff;
+  padding: 0px;
+  border-radius: 16px;
+}
+
+.stat span {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.stat h2 {
+  font-size: 24px;
+}
+
+.stat h3 {
+  font-size: 20px;
+}
+
+.stat.destaque {
+  background: #065f46;
+  color: white;
+}
+
+/* CARD VERDE */
+.creditos {
+  margin-top: 25px;
+}
+
+.creditos-box {
+  background: #065f46;
+  color: white;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.creditos-box p {
+  color: #d1fae5;
+}
+
+.botoes {
+  margin-top: 15px;
+}
+
+.btn-doar {
+  background: #f97316;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  margin-right: 10px;
+}
+
+.btn-saiba {
+  background: #047857;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+/* Para desktop */
+@media (min-width: 1024px) { /* ajuste o valor conforme sua necessidade de breakpoint */
+  .noticias-dashboard {
+    padding: 40px 155px;
+  }
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .noticias-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .creditos-box {
+    text-align: center;
+  }
+
+  .botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 }

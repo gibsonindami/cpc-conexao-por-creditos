@@ -104,11 +104,46 @@
     font-size: 13px;
     letter-spacing: 1px;
     font-weight: 600;
+    transition: color 0.3s;
 }
+
+.login:hover {
+    color: #a8d5b8;
+}
+
 .perfil {
   display: flex;
   width: 45px;
   height: 40px;
+}
+
+.perfil-icon {
+    text-decoration: none;
+    color: #87B79F;
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.perfil-icon:hover {
+    color: #a8d5b8;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.perfil-img {
+    height: 32px;
+    width: auto;
+    transition: all 0.3s;
+}
+
+.perfil-icon:hover .perfil-img {
+    filter: brightness(1.2);
 }
 
 .mobile-menu,

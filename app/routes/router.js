@@ -1,12 +1,24 @@
 const express = require("express");
 const router = express.Router();
 const { body, validationResult } = require("express-validator");
- 
-// 🔥 simulação de banco (em memória)
-const usuarios = [];
- 
+const usuariosModel = require("../models/models");
+
+// Middleware para proteger rotas (requer autenticação)
+const autenticado = (req, res, next) => {
+  if (req.session && req.session.usuario) {
+    next();
+  } else {
+    res.redirect("/login");
+  }
+};
+
 // ================= GET =================
 router.get("/login", (req, res) => {
+  // Se já está logado, redireciona para home
+  if (req.session && req.session.usuario) {
+    return res.redirect("/");
+  }
+  
   res.render("pages/login", {
     erro: null,
     sucesso: null,
@@ -15,8 +27,13 @@ router.get("/login", (req, res) => {
     msgErro: {},
   });
 });
- 
+
 router.get("/cadastro", (req, res) => {
+  // Se já está logado, redireciona para home
+  if (req.session && req.session.usuario) {
+    return res.redirect("/");
+  }
+  
   res.render("pages/login", {
     erro: null,
     sucesso: null,
@@ -25,7 +42,8 @@ router.get("/cadastro", (req, res) => {
     msgErro: {},
   });
 });
- 
+
+// GET Páginas públicas
 router.get("/", (req, res) => res.render("pages/home"));
 router.get("/avaliacao", (req, res) => res.render("pages/avaliacao"));
 router.get("/saibamais", (req, res) => res.render("pages/saibamais"));
@@ -33,7 +51,6 @@ router.get("/servicos", (req, res) => res.render("pages/servicos"));
 router.get("/noticia", (req, res) => res.render("pages/noticia"));
 router.get("/sobrenos", (req, res) => res.render("pages/sobrenos"));
 router.get("/comofunciona", (req, res) => res.render("pages/comofunciona"));
-router.get("/conta", (req, res) => res.render("pages/conta"));
 router.get("/doe", (req, res) => res.render("pages/doe"));
 router.get("/todos", (req, res) => res.render("pages/todos"));
 router.get("/kids", (req, res) => res.render("pages/infantil"));
@@ -42,8 +59,22 @@ router.get("/profissionais", (req, res) => res.render("pages/profissionais"));
 router.get("/contato", (req, res) => res.render("pages/contato-troca"));
 router.get("/resumo", (req, res) => res.render("pages/resumo-troca"));
 router.get("/obrigado", (req, res) => res.render("pages/obrigado"));
- 
- 
+
+// GET Conta (protegida - requer login)
+router.get("/conta", autenticado, (req, res) => {
+  res.render("pages/conta", {
+    usuario: req.session.usuario
+  });
+});
+
+// GET Logout
+router.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) console.error("Erro ao destruir sessão:", err);
+    res.redirect("/");
+  });
+});
+
 // ================= CADASTRO =================
 router.post(
   "/cadastro",
@@ -71,7 +102,7 @@ router.post(
       return true;
     }),
  
-  (req, res) => {
+  async (req, res) => {
     const errors = validationResult(req);
  
     // 🔴 erro de validação
@@ -92,37 +123,47 @@ router.post(
         sucesso: false,
       });
     }
+
+    try {
+      // Verificar se email já existe no banco
+      const usuarioExistente = await usuariosModel.findByEmail(req.body.email);
  
-    const usuarioExistente = usuarios.find(
-      (u) => u.email === req.body.email
-    );
+      if (usuarioExistente) {
+        return res.render("pages/login", {
+          valores: req.body,
+          erroValidacao: { email: "input-error" },
+          msgErro: { email: "*Email já cadastrado!" },
+          erro: null,
+          sucesso: false,
+        });
+      }
  
-    if (usuarioExistente) {
+      // Criar usuário no banco de dados
+      const resultado = await usuariosModel.create({
+        nome: req.body.nome.trim(),
+        email: req.body.email.toLowerCase(),
+        senha: req.body.senha
+      });
+
+      console.log("✅ Usuário cadastrado com sucesso:", req.body.nome);
+
       return res.render("pages/login", {
-        valores: req.body,
-        erroValidacao: { email: "input-error" },
-        msgErro: { email: "*Email já cadastrado!" },
+        sucesso: "Cadastro realizado com sucesso! Faça login agora.",
         erro: null,
+        valores: {},
+        erroValidacao: {},
+        msgErro: {},
+      });
+    } catch (err) {
+      console.error("Erro ao cadastrar:", err);
+      return res.render("pages/login", {
+        erro: "Erro ao cadastrar. Tente novamente.",
         sucesso: false,
+        valores: req.body,
+        erroValidacao: {},
+        msgErro: {},
       });
     }
- 
-    // salvar usuário
-    usuarios.push({
-      nome: req.body.nome.toLowerCase(),
-      email: req.body.email.toLowerCase(),
-      senha: req.body.senha,
-    });
- 
-    console.log("USUÁRIOS:", usuarios);
- 
-    return res.render("pages/login", {
-      sucesso: "Cadastro realizado com sucesso!",
-      erro: null,
-      valores: {},
-      erroValidacao: {},
-      msgErro: {},
-    });
   }
 );
  
@@ -137,7 +178,7 @@ router.post(
   body("senhaDigitada")
     .notEmpty().withMessage("*Informe a senha!"),
  
-  (req, res) => {
+  async (req, res) => {
     const errors = validationResult(req);
  
     // 🔴 erro de campos vazios
@@ -158,38 +199,53 @@ router.post(
         msgErro,
       });
     }
+
+    try {
+      const usuarioDigitado = req.body.usuarioDigitado.toLowerCase();
+      const senhaDigitada = req.body.senhaDigitada;
  
-    const usuarioDigitado = req.body.usuarioDigitado.toLowerCase();
-    const senhaDigitada = req.body.senhaDigitada;
- 
-    console.log("Tentativa:", usuarioDigitado, senhaDigitada);
-    console.log("Banco:", usuarios);
- 
-    const usuarioEncontrado = usuarios.find(
-      (u) =>
-        (u.email === usuarioDigitado || u.nome === usuarioDigitado) &&
-        u.senha === senhaDigitada
-    );
- 
-    // 🟢 SUCESSO
-    if (usuarioEncontrado) {
-      return res.redirect("/");
+      // Procurar usuário por email OU nome (com a senha)
+      const usuario = await usuariosModel.findByCredentials(usuarioDigitado, senhaDigitada);
+
+      // 🟢 SUCESSO - Login com email ou nome
+      if (usuario) {
+        // Armazenar dados na sessão
+        req.session.usuarioId = usuario.id;
+        req.session.usuario = {
+          id: usuario.id,
+          nome: usuario.nome,
+          email: usuario.email
+        };
+
+        console.log("✅ Login bem-sucedido:", usuario.nome);
+        return res.redirect("/");
+      }
+
+      // 🔴 ERRO - Credenciais incorretas
+      return res.render("pages/login", {
+        erro: "Usuário ou senha incorretos!",
+        sucesso: false,
+        valores: req.body,
+        erroValidacao: {
+          usuarioDigitado: "input-error",
+          senhaDigitada: "input-error",
+        },
+        msgErro: {
+          usuarioDigitado: "",
+          senhaDigitada: "",
+        },
+      });
+
+    } catch (err) {
+      console.error("Erro ao fazer login:", err);
+      return res.render("pages/login", {
+        erro: "Erro ao fazer login. Tente novamente.",
+        sucesso: false,
+        valores: req.body,
+        erroValidacao: {},
+        msgErro: {},
+      });
     }
- 
-    // 🔴 ERRO
-    return res.render("pages/login", {
-      erro: "Usuário ou senha incorretos!",
-      sucesso: false,
-      valores: req.body,
-      erroValidacao: {
-        usuarioDigitado: "input-error",
-        senhaDigitada: "input-error",
-      },
-      msgErro: {
-        usuarioDigitado: "",
-        senhaDigitada: "",
-      },
-    });
   }
 );
  

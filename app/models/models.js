@@ -1,0 +1,194 @@
+// ============================================
+// 📊 Modelo de Usuários (Login/Cadastro)
+// Suporta MySQL e Mock JSON (para desenvolvimento)
+// ============================================
+
+const fs = require("fs");
+const path = require("path");
+
+// Tentar conectar ao MySQL, mas usar JSON como fallback
+let pool = null;
+let usarJSON = true;
+let tentouMySQL = false;
+
+try {
+  pool = require("../../config/pool_conexoes");
+  tentouMySQL = true;
+  // Não mude usarJSON aqui - detectaremos em tempo de execução
+} catch (err) {
+  console.log("⚠️  MySQL indisponível na inicialização, usando JSON");
+  tentouMySQL = false;
+}
+
+// Função auxiliar para detectar falha de conexão e usar JSON
+const withFallback = async (mysqlFn, jsonFn) => {
+  try {
+    if (tentouMySQL && !usarJSON) {
+      return await mysqlFn();
+    } else {
+      return jsonFn();
+    }
+  } catch (err) {
+    console.log("⚠️  Falha no MySQL, alternando para JSON:", err.message);
+    usarJSON = true;
+    return jsonFn();
+  }
+};
+
+// Caminho do arquivo JSON
+const dbPath = path.join(__dirname, "../../data/usuarios.json");
+const dbDir = path.dirname(dbPath);
+
+// Garantir que o diretório existe
+if (!fs.existsSync(dbDir)) {
+  fs.mkdirSync(dbDir, { recursive: true });
+}
+
+// Garantir que o arquivo exists
+if (!fs.existsSync(dbPath)) {
+  fs.writeFileSync(dbPath, JSON.stringify([], null, 2));
+}
+
+// ============================================
+// FUNÇÕES DE LEITURA/ESCRITA JSON
+// ============================================
+
+const lerUsuarios = () => {
+  const dados = fs.readFileSync(dbPath, "utf8");
+  return JSON.parse(dados);
+};
+
+const salvarUsuarios = (usuarios) => {
+  fs.writeFileSync(dbPath, JSON.stringify(usuarios, null, 2));
+};
+
+const gerarId = () => {
+  const usuarios = lerUsuarios();
+  if (usuarios.length === 0) return 1;
+  return Math.max(...usuarios.map(u => u.id)) + 1;
+};
+
+// ============================================
+// MODELO DE USUÁRIOS
+// ============================================
+
+const usuariosModel = {
+  // Listar todos os usuários
+  findAll: async (opts = { limit: 100, offset: 0 }) => {
+    return await withFallback(
+      async () => {
+        const sql = "SELECT * FROM usuarios LIMIT ? OFFSET ?";
+        const [linhas] = await pool.query(sql, [opts.limit, opts.offset]);
+        return linhas.map(mapRowToUsuario);
+      },
+      () => {
+        const usuarios = lerUsuarios();
+        return usuarios.slice(opts.offset, opts.offset + opts.limit);
+      }
+    );
+  },
+
+  // Buscar usuário por ID
+  findById: async (id) => {
+    return await withFallback(
+      async () => {
+        const [linhas] = await pool.query(
+          "SELECT * FROM usuarios WHERE id = ?",
+          [id]
+        );
+        if (!linhas || linhas.length === 0) return null;
+        return mapRowToUsuario(linhas[0]);
+      },
+      () => {
+        const usuarios = lerUsuarios();
+        const usuario = usuarios.find(u => u.id === id);
+        return usuario || null;
+      }
+    );
+  },
+
+  // Buscar usuário por email
+  findByEmail: async (email) => {
+    return await withFallback(
+      async () => {
+        const [linhas] = await pool.query(
+          "SELECT * FROM usuarios WHERE email = ?",
+          [email.toLowerCase()]
+        );
+        if (!linhas || linhas.length === 0) return null;
+        return mapRowToUsuario(linhas[0]);
+      },
+      () => {
+        const usuarios = lerUsuarios();
+        const usuario = usuarios.find(u => u.email === email.toLowerCase());
+        return usuario || null;
+      }
+    );
+  },
+
+  // Criar novo usuário
+  create: async (dados) => {
+    if (!dados || !dados.nome || !dados.email || !dados.senha) {
+      throw new Error("Nome, email e senha são obrigatórios");
+    }
+
+    return await withFallback(
+      async () => {
+        const sql = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
+        const [result] = await pool.query(sql, [
+          dados.nome.trim(),
+          dados.email.toLowerCase(),
+          dados.senha
+        ]);
+        return { insertId: result.insertId };
+      },
+      () => {
+        const usuarios = lerUsuarios();
+        const id = gerarId();
+        const novoUsuario = {
+          id,
+          nome: dados.nome.trim(),
+          email: dados.email.toLowerCase(),
+          senha: dados.senha,
+          dataCriacao: new Date().toISOString()
+        };
+        usuarios.push(novoUsuario);
+        salvarUsuarios(usuarios);
+        console.log("✅ Usuário cadastrado (JSON):", dados.nome);
+        return { insertId: id };
+      }
+    );
+  },
+
+  // Verificar login (nome/email + senha)
+  findByCredentials: async (usuarioOuEmail, senha) => {
+    return await withFallback(
+      async () => {
+        const [linhas] = await pool.query(
+          "SELECT * FROM usuarios WHERE (email = ? OR nome = ?) AND senha = ?",
+          [usuarioOuEmail.toLowerCase(), usuarioOuEmail.toLowerCase(), senha]
+        );
+        if (!linhas || linhas.length === 0) return null;
+        return mapRowToUsuario(linhas[0]);
+      },
+      () => {
+        const usuarios = lerUsuarios();
+        const usuario = usuarios.find(u => 
+          (u.email === usuarioOuEmail.toLowerCase() || u.nome.toLowerCase() === usuarioOuEmail.toLowerCase()) && 
+          u.senha === senha
+        );
+        return usuario || null;
+      }
+    );
+  }
+};
+
+// Mapear resultado do banco para objeto usuário (para MySQL)
+const mapRowToUsuario = (row) => ({
+  id: row.id,
+  nome: row.nome,
+  email: row.email,
+  dataCriacao: row.data_criacao
+});
+
+module.exports = usuariosModel;

@@ -113,27 +113,98 @@
   </section>
  </section>
 
-  <!-- Bloco de notícia -->
-    <section class="noticia">
-      <h2>Notícias</h2>
-      <h3>
-        São Paulo é a maior e mais rica cidade do Brasil e possui famílias vivendo com até R$ 109 por mês.
-      </h3>
-      <p>
-        Os bairros que mais concentram famílias em extrema pobreza encontram-se nas áreas destacadas da cidade:
-      </p>
-      <img src="../img/grafico-pobreza.webp" alt="Grafico com as cidades mais pobres" class="grafico-noticia">
-      <p>
-        Para a economista e pesquisadora de temas ligados às desigualdades socioeconômicas Regina Wohler,
-        a concentração da extrema pobreza está relacionada com a maneira como a cidade expandiu as suas atividades.
-      </p>
-      <!-- Imagem secundária -->
-      <section class="img-noticia">
-        <img src="../img/noticia2.png" alt="Imagem ilustrativa da notícia">
-      </section>
-    </section>
+    <section class="noticias-dashboard">
+  <header class="noticias-header">
+    <h2>Notícias</h2>
+    <p>
+      Monitorando em tempo real a transformação social através da economia colaborativa e troca de serviços.
+    </p>
+  </header>
 
-  <!-- FIQUE POR DENTRO -->
+  <section class="noticias-grid">
+
+    <!-- CARD PRINCIPAL -->
+    <div class="noticia-card">
+
+      <h3>📊 Níveis de Pobreza Extrema</h3>
+
+      <div class="bloco">
+        <span>CENÁRIO GLOBAL</span>
+
+        <div class="linha">
+          <strong>9.2% da População</strong>
+          <small>Consolidado 2024</small>
+        </div>
+
+        <div class="barra">
+          <div style="width: 45%"></div>
+        </div>
+      </div>
+
+      <div class="bloco">
+        <span>CENÁRIO BRASIL</span>
+
+        <div class="linha">
+          <strong>5.8% da População</strong>
+          <small>Meta: 0%</small>
+        </div>
+
+        <div class="barra">
+          <div style="width: 28%"></div>
+        </div>
+      </div>
+
+      <p class="descricao">
+        O Brasil apresenta avanços significativos, porém a concentração urbana ainda demanda intervenções focadas em micro-comunidades.
+      </p>
+
+    </div>
+
+    <!-- STATS -->
+    <div class="noticia-stats">
+
+      <div class="stat destaque">
+        <span>MEMBROS ATIVOS</span>
+        <h2>12,480</h2>
+      </div>
+
+      <div class="stat">
+        <span>TROCAS REALIZADAS</span>
+        <h3>45,210</h3>
+      </div>
+
+      <div class="stat">
+        <span>TOTAL DE DOAÇÕES</span>
+        <h3>R$ 1.2M</h3>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CARD VERDE -->
+  <section class="creditos">
+    <div class="creditos-box">
+
+      <h2>Como funcionam os Créditos?</h2>
+
+      <p>
+        Créditos sociais são gerados através da prestação de serviços para a comunidade.
+        Ao oferecer seu tempo e talento, você acumula créditos que podem ser trocados por
+        serviços de outros membros ou produtos essenciais.
+      </p>
+
+      <div class="botoes">
+        <button class="btn-doar">Doe Agora</button>
+        <button class="btn-saiba">Saiba Mais</button>
+      </div>
+
+    </div>
+  </section>
+
+</section>
+
+  <!-- FIQUE POR DENTRO 
   <section class="fique-por-dentro">
     <h2>FIQUE POR DENTRO</h2>
     <form action="/cadastro-newsletter" method="POST">
@@ -141,7 +212,7 @@
       <input type="email" name="email" placeholder="Email" required>
       <button type="submit">CADASTRAR</button>
     </form>
-  </section><br>
+  </section><br> -->
  
   <%- include('../partials/footer.ejs') %>
  
