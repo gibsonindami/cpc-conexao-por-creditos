@@ -4,7 +4,7 @@
     <section class="header-container">
  
         <!-- LOGIN MOBILE -->
-        <a href="/home" class="login mobile-login">LOGIN</a>
+        <a href="/login" class="login mobile-login">LOGIN</a>
 
         <!-- LOGO -->
         <section class="logo">
@@ -27,7 +27,9 @@
  
         <!-- AÇÕES DESKTOP -->
         <section class="desktop-actions">
-            <a href="/conta" class="perfil"><img src="../img/img perfil-white.png" alt="perfil"></a>
+            <% if (usuarioLogado) { %>
+                <a href="/conta" class="perfil"><img src="../img/img perfil-white.png" alt="perfil"></a>
+            <% } %>
             <a href="/login" class="login">LOGIN</a>
         </section>
  
