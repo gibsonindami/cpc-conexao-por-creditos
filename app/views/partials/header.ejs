@@ -4,7 +4,11 @@
     <section class="header-container">
  
         <!-- LOGIN MOBILE -->
-        <a href="/login" class="login mobile-login">LOGIN</a>
+        <% if (!usuarioLogado) { %>
+            <a href="/login" class="login mobile-login">LOGIN</a>
+        <% } else { %>
+            <a href="/conta" class="login mobile-login"><img src="/img/img perfil-white.png" alt="Perfil" class="perfil-img"></a>
+        <% } %>
 
         <!-- LOGO -->
         <section class="logo">
@@ -21,16 +25,17 @@
                 <li><a href="/comofunciona">COMO FUNCIONA</a></li>
                 <li><a href="/servicos">SERVIÇOS DE TROCA</a></li>
                 <li><a href="/saibamais">SAIBA MAIS</a></li>
-                <li><a href="/conta">MINHA CONTA</a></li>
+                <li><a href="/noticia">NOTÍCIAS</a></li>
             </ul>
         </nav>
  
         <!-- AÇÕES DESKTOP -->
         <section class="desktop-actions">
-            <% if (usuarioLogado) { %>
-                <a href="/conta" class="perfil"><img src="../img/img perfil-white.png" alt="perfil"></a>
+            <% if (!usuarioLogado) { %>
+                <a href="/login" class="login">LOGIN</a>
+            <% } else { %>
+                <a href="/conta" class="perfil-icon" title="Meu Perfil"><img src="/img/img perfil-white.png" alt="Perfil" class="perfil-img"></a>
             <% } %>
-            <a href="/login" class="login">LOGIN</a>
         </section>
  
         <!-- HAMBURGER MOBILE -->
@@ -56,6 +61,10 @@
         <li><a href="/comofunciona">COMO FUNCIONA</a></li>
         <li><a href="/servicos">SERVIÇOS DE TROCA</a></li>
         <li><a href="/saibamais">SAIBA MAIS</a></li>
-        <li><a href="/conta">MINHA CONTA</a></li>
+        <li><a href="/noticia">NOTÍCIAS</a></li>
+        <% if (usuarioLogado) { %>
+            <li><a href="/conta">MINHA CONTA</a></li>
+            <li><a href="/logout">SAIR</a></li>
+        <% } %>
     </ul>
 </nav>

@@ -10,12 +10,13 @@
 <%- include('../partials/header.ejs') %>
 <body>
     <section class="profile">
-            <img src="../img/img malcon.png" alt="Foto do usuário" class="avatar">
+            <img src="../img/img perfil.png" alt="Foto do usuário" class="avatar">
             <section class="user-info">
-                <p class="name"><strong>Malcolm Eliseu Ribeiro</strong></p>
-                <p class="details">25 anos  | Barueri-SP</p>
+                <p class="name"><strong><%= usuario.nome %></strong></p>
+                <p class="email"><%= usuario.email %></p>
             </section>
         </section>
+    <a href="/logout" class="btn-logout">Sair</a>
 
         <br><br><section class="credits">
             Você Acumulou <strong>100 créditos</strong>

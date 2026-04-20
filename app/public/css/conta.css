@@ -122,3 +122,25 @@ a{
     right: 8%;
   }
 }
+.email {
+    color: #666;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.btn-logout {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-logout:hover {
+    background-color: #c82333;
+}
