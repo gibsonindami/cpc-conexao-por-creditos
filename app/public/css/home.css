@@ -205,34 +205,6 @@ body {
   max-width: 520px;
   border-radius: 8px;
 }
-/* FIQUE POR DENTRO */
-.fique-por-dentro {
-  padding: 25px 20px;
-  text-align: center;
-}
- 
-.fique-por-dentro form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
- 
-.fique-por-dentro input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-}
- 
-.fique-por-dentro button {
-  width: 100%;
-  background: orange;
-  color: black;
-  font-weight: bold;
-  border: none;
-  padding: 10px;
-  border-radius: 20px;
-  cursor: pointer;
-}
  
 /* RODAPÉ */
 footer {
@@ -538,21 +510,24 @@ footer img {
 }
 
 .stat {
-  background: #fff;
+  background: #f6fffc;
   padding: 0px;
   border-radius: 16px;
 }
 
 .stat span {
+  padding-left: 10px;
   font-size: 11px;
   color: #9ca3af;
 }
 
 .stat h2 {
-  font-size: 24px;
+  padding-left: 10px;
+  font-size: 22px;
 }
 
 .stat h3 {
+  padding-left: 10px;
   font-size: 20px;
 }
 
@@ -615,9 +590,4 @@ footer img {
     text-align: center;
   }
 
-  .botoes {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
 }

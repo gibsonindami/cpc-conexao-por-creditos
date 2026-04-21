@@ -43,16 +43,6 @@
   font-weight: bold;
 }
 
-main {
-  max-width: 600px;
-  margin: 0 auto;
-  background: var(--color-background);
-  padding: var(--spacing-lg);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  margin-top: var(--spacing-md);
-  margin-bottom: var(--spacing-md);
-}
 
 h1 {
   text-align: center;
@@ -61,16 +51,22 @@ h1 {
   color: var(--color-text-dark);
 }
 
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 1200px; 
+  margin: 40px auto;
+  width: 90%;
+}
+
 .card {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     background: #d9d9d9;
-    border-radius: 15px;
+    border-radius: 10px;
     padding: 15px;
-    margin-bottom: 20px;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
 }
 
 .card img {
@@ -158,6 +154,10 @@ h1 {
     width: 180px;
     padding: 15px;
   }
+
+  .card-list {
+  grid-template-columns: 1fr;
+}
 
 .card {
     display: flex;
