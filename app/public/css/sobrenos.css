@@ -78,7 +78,7 @@ nav img {
   position: absolute;
   border-radius: 50%;
   display: flex;
-   margin: -45px 0px;
+   margin: -40px 0px;
   justify-content: center;
   align-items: center;
   font-weight: 500;
@@ -91,7 +91,7 @@ nav img {
   width: 165px;
   height: 165px;
   top: 20px;
-  left: 13%;
+  left: 10%;
   color: #000;
   animation-delay: 0.2s;
 }
@@ -101,7 +101,7 @@ nav img {
   width: 180px;
   height: 180px;
   top: 20px;
-  left: 46%;
+  left: 43%;
   color: white;
   animation-delay: 0.4s;
 }
@@ -111,7 +111,7 @@ nav img {
   width: 160px;
   height: 160px;
   top: 120px;
-  left: 26%;
+  left: 21%;
   color: #000;
   animation-delay: 0.6s;
 }
@@ -121,7 +121,7 @@ nav img {
   width: 160px;
   height: 160px;
   top: 120px;
-  left: 60%;
+  left: 55%;
   color: white;
   animation-delay: 0.8s;
 }

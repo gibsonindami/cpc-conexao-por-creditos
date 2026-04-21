@@ -8,6 +8,21 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 /*BODY*/
+.btn-logout {
+  display: block;
+    margin: 20px;
+    margin-left: 1700px;
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.btn-logout:hover {
+    background-color: #c82333;
+}
 
 .profile {
     display: flex;
@@ -121,7 +136,7 @@ a{
   .search-icon {
     right: 8%;
   }
-}
+
 .email {
     color: #666;
     font-size: 14px;
@@ -129,18 +144,17 @@ a{
 }
 
 .btn-logout {
-    display: block;
-    margin: 20px auto;
+  display: block;
+    margin: 20px;
+    margin-left: 280px;
     padding: 10px 20px;
     background-color: #dc3545;
     color: white;
-    text-decoration: none;
     border-radius: 5px;
     text-align: center;
     font-weight: bold;
-    transition: background-color 0.3s;
 }
 
 .btn-logout:hover {
     background-color: #c82333;
-}
+}}
