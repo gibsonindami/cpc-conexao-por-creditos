@@ -97,7 +97,7 @@ router.post(
     .notEmpty().withMessage("*Campo obrigatório!")
     .custom((value, { req }) => {
       if (value !== req.body.senha) {
-        throw new Error("");
+        throw new Error("Senhas não coincidem!");
       }
       return true;
     }),
@@ -221,20 +221,35 @@ router.post(
         return res.redirect("/");
       }
 
-      // 🔴 ERRO - Credenciais incorretas
-      return res.render("pages/login", {
-        erro: "Usuário ou senha incorretos!",
-        sucesso: false,
-        valores: req.body,
-        erroValidacao: {
-          usuarioDigitado: "input-error",
-          senhaDigitada: "input-error",
-        },
-        msgErro: {
-          usuarioDigitado: "",
-          senhaDigitada: "",
-        },
-      });
+      // 🔴 ERRO - Verificar se usuário existe
+      const usuarioExiste = await usuariosModel.findByUsuarioOuEmail(usuarioDigitado);
+      if (usuarioExiste) {
+        // Usuário existe, senha errada
+        return res.render("pages/login", {
+          erro: null,
+          sucesso: false,
+          valores: req.body,
+          erroValidacao: {
+            senhaDigitada: "input-error",
+          },
+          msgErro: {
+            senhaDigitada: "*Senha incorreta!",
+          },
+        });
+      } else {
+        // Usuário não existe
+        return res.render("pages/login", {
+          erro: null,
+          sucesso: false,
+          valores: req.body,
+          erroValidacao: {
+            usuarioDigitado: "input-error",
+          },
+          msgErro: {
+            usuarioDigitado: "Usuário não encontrado!",
+          },
+        });
+      }
 
     } catch (err) {
       console.error("Erro ao fazer login:", err);

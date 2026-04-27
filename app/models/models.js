@@ -160,6 +160,27 @@ const usuariosModel = {
     );
   },
 
+  // Verificar se usuário existe (por nome ou email, sem senha)
+  findByUsuarioOuEmail: async (usuarioOuEmail) => {
+    return await withFallback(
+      async () => {
+        const [linhas] = await pool.query(
+          "SELECT * FROM usuarios WHERE email = ? OR nome = ?",
+          [usuarioOuEmail.toLowerCase(), usuarioOuEmail.toLowerCase()]
+        );
+        if (!linhas || linhas.length === 0) return null;
+        return mapRowToUsuario(linhas[0]);
+      },
+      () => {
+        const usuarios = lerUsuarios();
+        const usuario = usuarios.find(u => 
+          u.email === usuarioOuEmail.toLowerCase() || u.nome.toLowerCase() === usuarioOuEmail.toLowerCase()
+        );
+        return usuario || null;
+      }
+    );
+  },
+
   // Verificar login (nome/email + senha)
   findByCredentials: async (usuarioOuEmail, senha) => {
     return await withFallback(

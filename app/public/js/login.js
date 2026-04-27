@@ -91,14 +91,25 @@ loginForm.addEventListener('submit', (e) => {
   limparErro(usuarioLogin);
   limparErro(senhaLogin);
 
-  if (usuarioLogin.value.trim() === "") {
-    mostrarErro(usuarioLogin, "Digite seu usuário!");
-    valido = false;
-  }
+  const usuarioVazio = usuarioLogin.value.trim() === "";
+  const senhaVazia = senhaLogin.value.trim() === "";
 
-  if (senhaLogin.value.trim() === "") {
-    mostrarErro(senhaLogin, "");
+  if (usuarioVazio && senhaVazia) {
+    // Mostrar erro visual nos dois campos
+    usuarioLogin.classList.add('input-error');
+    // Mostrar mensagem em baixo do campo senha
+    mostrarErro(senhaLogin, "É obrigatório o preenchimento de todos os campos.");
     valido = false;
+  } else {
+    if (usuarioVazio) {
+      mostrarErro(usuarioLogin, "Preencha o seu usuario.");
+      valido = false;
+    }
+
+    if (senhaVazia) {
+      mostrarErro(senhaLogin, "Digita sua senha.");
+      valido = false;
+    }
   }
 
   if (!valido) {
@@ -151,31 +162,47 @@ cadastroForm.addEventListener('submit', (e) => {
 
   [usuarioCad, emailCad, senhaCad, confirmarCad].forEach(limparErro);
 
-  if (usuarioCad.value.trim().length < 3) {
+  const usuarioCadVazia = usuarioCad.value.trim() === "";
+  const emailCadVazia = emailCad.value.trim() === "";
+  const senhaCadVazia = senhaCad.value.trim() === "";
+  const confirmarCadVazia = confirmarCad.value.trim() === "";
+
+  // 🔥 CAMPOS VAZIOS → TODOS FICAM VERMELHOS
+  if (usuarioCadVazia || emailCadVazia || senhaCadVazia || confirmarCadVazia) {
+    [usuarioCad, emailCad, senhaCad, confirmarCad].forEach(input => {
+      input.classList.add('input-error');
+    });
+
+    mostrarErro(confirmarCad, "É obrigatório o preenchimento de todos os campos.");
+    valido = false;
+  }
+
+  // validações normais (somente se não estiver vazio)
+  if (!usuarioCadVazia && usuarioCad.value.trim().length < 3) {
     mostrarErro(usuarioCad, "Mínimo 3 caracteres!");
     valido = false;
-  } else {
+  } else if (!usuarioCadVazia) {
     marcarSucesso(usuarioCad);
   }
 
-  if (!emailCad.value.includes("@") || !emailCad.value.includes(".")) {
+  if (!emailCadVazia && (!emailCad.value.includes("@") || !emailCad.value.includes("."))) {
     mostrarErro(emailCad, "Digite um email válido!");
     valido = false;
-  } else {
+  } else if (!emailCadVazia) {
     marcarSucesso(emailCad);
   }
 
-  if (senhaCad.value.length < 6) {
+  if (!senhaCadVazia && senhaCad.value.length < 6) {
     mostrarErro(senhaCad, "Senha deve ter no mínimo 6 caracteres!");
     valido = false;
-  } else {
+  } else if (!senhaCadVazia) {
     marcarSucesso(senhaCad);
   }
 
-  if (senhaCad.value !== confirmarCad.value || confirmarCad.value === "") {
-    mostrarErro(confirmarCad, "Complete todos os campos corretamente!");
+  if (!confirmarCadVazia && senhaCad.value !== confirmarCad.value) {
+    mostrarErro(confirmarCad, "As senhas não coincidem!");
     valido = false;
-  } else {
+  } else if (!confirmarCadVazia) {
     marcarSucesso(confirmarCad);
   }
 
