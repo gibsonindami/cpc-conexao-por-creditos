@@ -1,60 +1,143 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Conta</title>
-  <link rel="stylesheet" href="../css/conta.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?familly=Poppins:wght@400;600;700&display=swap">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/conta.css" />
 </head>
 <%- include('../partials/header.ejs') %>
+
 <body>
+  <main class="container">
+    <!-- Profile Section -->
     <section class="profile">
-            <img src="../img/img perfil.png" alt="Foto do usuário" class="avatar">
-            <section class="user-info">
-                <p class="name"><strong><%= usuario.nome %></strong></p>
-                <p class="email"><%= usuario.email %></p>
-            </section>
-        </section>
-    <a href="/logout" class="btn-logout">Sair</a>
+      <div class="profile-image">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsX1eHsSD7BTAo5Jd3dOlaacmax0SX_uRaEXTaPEzG9vIH_J3I2VFIWqQPtijZDpaRLx9B0HE0-JrScsLoslekHEzB-WkMTDGyu7AtEaRPCxNwc0qm40ueWI08cTmjLLMeWOVgGVUbOHSXG7ukPV7Fv42ffNCjzu70WP6K7YSQme2KuSC9S8q7PRwukP1UE9MpX8k5exQT6XzPoH8duhXmbsvOIBHOUAu_NCxNWv-cvmniugWpTX3giXcT2f3OARsbgtx05gh56Qa-" alt="Eminem" />
+      </div>
+      <h1>Eminem</h1>
+      <p>marshall@detroit.com</p>
+    </section>
 
-        <br><br><section class="credits">
-            Você Acumulou <strong>100 créditos</strong>
-            <span class="coin"><a href=""></span></a>
-        </section><br><br>
+    <!-- Credit Balance -->
+    <section class="balance-card">
+      <span class="balance-label">Saldo de Crédito</span>
+      <div class="balance-amount">
+        <span class="dollar-sign">$</span>
+        <span class="amount">1.250</span>
+      </div>
+    </section>
 
-        <section class="ultimas-trocas">
-            <h2>Últimas trocas</h2><br>
-            <section class="transaction">
-                <span>Limpeza<br> Joarez Santos<br> 22/09/2024</span>
-                <span class="status andamento">Andamento</span>
-            </section>
-            <section class="transaction">
-                <span>Limpeza<br> Joarez Santos<br> 21/09/2024</span>
-                <span class="status concluido">Concluído</span>
-            </section>
-            <section class="transaction">
-                <span>Leite<br> Joarez Santos<br> 06/07/2024</span>
-                <span class="status concluido"><a href="/avaliacao">Concluído</a></span>
-            </section><br>
-        </section>
+    <!-- Bento Grid -->
+    <div class="bento-grid">
+      <!-- In-Progress Trades -->
+      <section class="trades-section">
+        <h2>Trocas em Andamento</h2>
+        
+        <div class="trade-card">
+          <div class="trade-icon">
+            <span class="material-symbols-outlined">pending_actions</span>
+          </div>
+          <div class="trade-info">
+            <p class="trade-type">Serviço</p>
+            <p class="trade-name">Direção Criativa</p>
+          </div>
+          <div class="trade-status">75%</div>
+        </div>
 
-        <section class="active-offers">
-            <h2>Ofertas ativas</h2><br>
-            <section class="offer">
-                <span>Limpeza<br> Joarez Santos<br> 23/09/2024</span>
-                <span class="status inativa">Inativa</span>
-            </section>
-            <section class="offer">
-                <span>Limpeza<br> Joarez Santos<br> 22/09/2024</span>
-                <a href="/contato"><span class="status ativa">Ativa</a></span>
-            </section>
-        </section>
+        <div class="trade-card">
+          <div class="trade-icon">
+            <span class="material-symbols-outlined">local_shipping</span>
+          </div>
+          <div class="trade-info">
+            <p class="trade-type">Mercadoria</p>
+            <p class="trade-name">Limited Vinyl Set</p>
+          </div>
+          <div class="trade-status">EM ROTA</div>
+        </div>
+      </section>
 
-  <script src="../js/menu.js"></script>
-  <br>
-  <br>
-  <br>
+      <!-- Proposals -->
+      <section class="proposals-section">
+        <h2>Propostas Recebidas</h2>
+        
+        <div class="proposal-card">
+          <div class="proposal-header">
+            <span class="material-symbols-outlined">mic</span>
+            <span>Dr. Dre</span>
+            <span class="proposal-type">Serviço</span>
+          </div>
+          <p>Studio Mix Session</p>
+        </div>
+
+        <div class="proposal-card">
+          <div class="proposal-header">
+            <span class="material-symbols-outlined">directions_car</span>
+            <span>Snoop Dogg</span>
+            <span class="proposal-type">Bens</span>
+          </div>
+          <p>Classic Lowrider Model</p>
+        </div>
+
+        <div class="proposal-card">
+          <div class="proposal-header">
+            <span class="material-symbols-outlined">restaurant</span>
+            <span>50 Cent</span>
+            <span class="proposal-type">Comida</span>
+          </div>
+          <p>Vitamin Water Case</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- History Table -->
+    <section class="history-section">
+      <h2>Histórico Recente (10 dias)</h2>
+      <div class="history-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Troca</th>
+              <th>Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>24 Out</td>
+              <td>Royalties Collection</td>
+              <td class="positive">+$450</td>
+            </tr>
+            <tr>
+              <td>22 Out</td>
+              <td>Studio Gear Sale</td>
+              <td class="positive">+$320</td>
+            </tr>
+            <tr>
+              <td>19 Out</td>
+              <td>Merch Restock</td>
+              <td class="negative">-$120</td>
+            </tr>
+            <tr>
+              <td>15 Out</td>
+              <td>Collaboration Fee</td>
+              <td class="positive">+$1.000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Logout -->
+    <section class="logout-section">
+      <button class="logout-btn">
+        <span class="material-symbols-outlined">logout</span>
+        Sair da Conta
+      </button>
+    </section>
+  </main>
+
+    <%- include('../partials/footer.ejs') %>
 </body>
-<%- include('../partials/footer.ejs') %>
 </html>

@@ -167,7 +167,7 @@ cadastroForm.addEventListener('submit', (e) => {
   const senhaCadVazia = senhaCad.value.trim() === "";
   const confirmarCadVazia = confirmarCad.value.trim() === "";
 
-  // 🔥 CAMPOS VAZIOS → TODOS FICAM VERMELHOS
+  // CAMPOS VAZIOS → TODOS FICAM VERMELHOS
   if (usuarioCadVazia || emailCadVazia || senhaCadVazia || confirmarCadVazia) {
     [usuarioCad, emailCad, senhaCad, confirmarCad].forEach(input => {
       input.classList.add('input-error');
