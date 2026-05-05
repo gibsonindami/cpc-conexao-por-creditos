@@ -7,6 +7,10 @@ require("dotenv").config();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+const passport = require("passport");
+require("./config/passport");
+const authRoutes = require("./app/routes/auth");
+
 // Configurar sessão
 app.use(session({
   secret: process.env.SESSION_SECRET || "seu-secret-seguro-aqui",
@@ -17,6 +21,10 @@ app.use(session({
     maxAge: 1000 * 60 * 60 * 24 * 7 // 7 dias
   }
 }));
+
+// Inicializar Passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Middleware para passar dados de sessão para as views
 app.use((req, res, next) => {
@@ -31,6 +39,7 @@ app.set("view engine", "ejs");
 app.set("views", "./app/views");
  
 const rotaPrincipal = require("./app/routes/router");
+app.use("/auth", authRoutes);
 app.use("/", rotaPrincipal);
  
 // Definir porta via variável de ambiente APP_PORT ou PORT, ou 3000 como fallback

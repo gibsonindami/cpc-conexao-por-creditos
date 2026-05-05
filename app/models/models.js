@@ -126,19 +126,59 @@ const usuariosModel = {
     );
   },
 
+  // Buscar usuário por provider e providerId
+  findByProviderId: async (provider, providerId) => {
+    return await withFallback(
+      async () => {
+        const [linhas] = await pool.query(
+          "SELECT * FROM usuarios WHERE provider = ? AND provider_id = ?",
+          [provider, providerId]
+        );
+        if (!linhas || linhas.length === 0) return null;
+        return mapRowToUsuario(linhas[0]);
+      },
+      () => {
+        const usuarios = lerUsuarios();
+        const usuario = usuarios.find(
+          u => u.provider === provider && u.providerId === providerId
+        );
+        return usuario || null;
+      }
+    );
+  },
+
   // Criar novo usuário
   create: async (dados) => {
-    if (!dados || !dados.nome || !dados.email || !dados.senha) {
-      throw new Error("Nome, email e senha são obrigatórios");
+    if (!dados || !dados.nome || !dados.email) {
+      throw new Error("Nome e email são obrigatórios");
+    }
+
+    const usuarioValido = {
+      nome: dados.nome.trim(),
+      email: dados.email.toLowerCase(),
+      senha: dados.senha ?? null,
+      foto: dados.foto || null,
+      provider: dados.provider || "local",
+      providerId: dados.providerId || null,
+    };
+
+    if (usuarioValido.provider === "local" && !usuarioValido.senha) {
+      throw new Error("Senha é obrigatória para cadastro local");
     }
 
     return await withFallback(
       async () => {
-        const sql = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)";
+        const sql = `
+          INSERT INTO usuarios (nome, email, senha, foto, provider, provider_id)
+          VALUES (?, ?, ?, ?, ?, ?)
+        `;
         const [result] = await pool.query(sql, [
-          dados.nome.trim(),
-          dados.email.toLowerCase(),
-          dados.senha
+          usuarioValido.nome,
+          usuarioValido.email,
+          usuarioValido.senha,
+          usuarioValido.foto,
+          usuarioValido.provider,
+          usuarioValido.providerId,
         ]);
         return { insertId: result.insertId };
       },
@@ -147,9 +187,12 @@ const usuariosModel = {
         const id = gerarId();
         const novoUsuario = {
           id,
-          nome: dados.nome.trim(),
-          email: dados.email.toLowerCase(),
-          senha: dados.senha,
+          nome: usuarioValido.nome,
+          email: usuarioValido.email,
+          senha: usuarioValido.senha,
+          foto: usuarioValido.foto,
+          provider: usuarioValido.provider,
+          providerId: usuarioValido.providerId,
           dataCriacao: new Date().toISOString()
         };
         usuarios.push(novoUsuario);
@@ -209,7 +252,10 @@ const mapRowToUsuario = (row) => ({
   id: row.id,
   nome: row.nome,
   email: row.email,
-  dataCriacao: row.data_criacao
+  foto: row.foto || null,
+  provider: row.provider || "local",
+  providerId: row.provider_id || row.providerId || null,
+  dataCriacao: row.data_criacao || row.dataCriacao
 });
 
 module.exports = usuariosModel;

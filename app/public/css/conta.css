@@ -24,7 +24,8 @@ body {
   max-width: 12800px;
   margin: 0 auto;
   padding: 0 24px;
-  padding-top: 40px;
+  padding-top: 80px;
+  padding-bottom: 80000px;
 }
 
 /* Profile */

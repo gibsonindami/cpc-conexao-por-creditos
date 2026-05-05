@@ -14,10 +14,15 @@
     <!-- Profile Section -->
     <section class="profile">
       <div class="profile-image">
-        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsX1eHsSD7BTAo5Jd3dOlaacmax0SX_uRaEXTaPEzG9vIH_J3I2VFIWqQPtijZDpaRLx9B0HE0-JrScsLoslekHEzB-WkMTDGyu7AtEaRPCxNwc0qm40ueWI08cTmjLLMeWOVgGVUbOHSXG7ukPV7Fv42ffNCjzu70WP6K7YSQme2KuSC9S8q7PRwukP1UE9MpX8k5exQT6XzPoH8duhXmbsvOIBHOUAu_NCxNWv-cvmniugWpTX3giXcT2f3OARsbgtx05gh56Qa-" alt="Eminem" />
+        <img src="<%= usuario?.foto || '/img/img perfil-white.png' %>" alt="Foto de perfil de <%= usuario?.nome || 'usuário' %>" loading="lazy" />
       </div>
-      <h1>Eminem</h1>
-      <p>marshall@detroit.com</p>
+      <div class="profile-header">
+        <h1><%= usuario?.nome || 'Usuário' %></h1>
+        <% if (usuario?.provider) { %>
+          <span class="provider-label"><%= usuario.provider === 'google' ? 'Entrou com Google' : usuario.provider === 'local' ? 'Login local' : 'Entrou com ' + usuario.provider %></span>
+        <% } %>
+      </div>
+      <p><%= usuario?.email || 'Sem e-mail cadastrado' %></p>
     </section>
 
     <!-- Credit Balance -->
@@ -131,10 +136,10 @@
 
     <!-- Logout -->
     <section class="logout-section">
-      <button class="logout-btn">
+      <a href="/logout" class="logout-btn">
         <span class="material-symbols-outlined">logout</span>
         Sair da Conta
-      </button>
+      </a>
     </section>
   </main>
 

@@ -61,10 +61,20 @@ router.get("/resumo", (req, res) => res.render("pages/resumo-troca"));
 router.get("/obrigado", (req, res) => res.render("pages/obrigado"));
 
 // GET Conta (protegida - requer login)
-router.get("/conta", autenticado, (req, res) => {
-  res.render("pages/conta", {
-    usuario: req.session.usuario
-  });
+router.get("/conta", autenticado, async (req, res) => {
+  try {
+    const usuario = await usuariosModel.findById(req.session.usuarioId);
+    if (!usuario) {
+      return res.redirect("/login");
+    }
+
+    res.render("pages/conta", {
+      usuario
+    });
+  } catch (err) {
+    console.error("Erro ao carregar conta:", err);
+    res.redirect("/login");
+  }
 });
 
 // GET Logout
@@ -214,7 +224,8 @@ router.post(
         req.session.usuario = {
           id: usuario.id,
           nome: usuario.nome,
-          email: usuario.email
+          email: usuario.email,
+          foto: usuario.foto || null
         };
 
         console.log("✅ Login bem-sucedido:", usuario.nome);
