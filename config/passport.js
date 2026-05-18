@@ -6,6 +6,7 @@ require("dotenv").config();
  
 const googleClientID = process.env.GOOGLE_CLIENT_ID;
 const googleClientSecret = process.env.GOOGLE_CLIENT_SECRET;
+
 const appBaseUrl =
   process.env.APP_BASE_URL ||
   process.env.BASE_URL ||
@@ -17,6 +18,12 @@ const githubClientID = process.env.GITHUB_CLIENT_ID;
 const githubClientSecret = process.env.GITHUB_CLIENT_SECRET;
 const githubCallbackURL = process.env.GITHUB_CALLBACK_URL || `${appBaseUrl}/auth/github/callback`;
  
+const googleCallbackURL = process.env.GOOGLE_CALLBACK_URL || "https://cpc-conexao-por-creditos.onrender.com/auth/google/callback";
+
+const githubClientID = process.env.GITHUB_CLIENT_ID;
+const githubClientSecret = process.env.GITHUB_CLIENT_SECRET;
+const githubCallbackURL = process.env.GITHUB_CALLBACK_URL || "https://cpc-conexao-por-creditos.onrender.com/auth/github/callback";
+
 const googleConfigured = Boolean(googleClientID && googleClientSecret);
 const githubConfigured = Boolean(githubClientID && githubClientSecret);
  
