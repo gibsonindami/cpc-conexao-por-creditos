@@ -292,5 +292,33 @@
     "tipo": "servico",
     "ativo": true,
     "dataCriacao": "2026-05-23T19:09:28.390Z"
+  },
+  {
+    "id": 22,
+    "titulo": "Desenvolvedor Web",
+    "descricao": "Crio sites para seu produto ou serviço, avalio e reformo a identidade visual.",
+    "categoria": "profissionais",
+    "pontos": 10,
+    "doadorId": 4,
+    "doadorNome": "João Silva",
+    "doadorLocal": "Carapicuíba-SP",
+    "foto": "../img/img malcon.png",
+    "tipo": "servico",
+    "ativo": true,
+    "dataCriacao": "2026-05-24T20:32:50.350Z"
+  },
+  {
+    "id": 23,
+    "titulo": "Designer",
+    "descricao": "Faço artes digitais",
+    "categoria": "profissionais",
+    "pontos": 10,
+    "doadorId": null,
+    "doadorNome": "Usuário CPC",
+    "doadorLocal": "Barueri-SP",
+    "foto": "../img/img malcon.png",
+    "tipo": "servico",
+    "ativo": true,
+    "dataCriacao": "2026-05-26T13:20:15.248Z"
   }
 ]
