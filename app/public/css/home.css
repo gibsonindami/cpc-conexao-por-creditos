@@ -258,6 +258,17 @@ footer img {
  
 /* Monitor médio */
 @media (max-width: 1920px) {
+  .banner {
+  position: relative;
+  display: flex;
+  justify-content: right;
+  margin-top: 0px; /* Espaço do cabeçalho */
+}
+.banner img {
+  width: 60%;
+  height: auto;
+  display: flex;
+} 
   .service-card {
     width: 90%;
   }
@@ -293,9 +304,17 @@ footer img {
     padding: 15px;
   }
  
-  .banner img {
-    width: 90%;
-  }
+ .banner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 0px; /* Espaço do cabeçalho */
+}
+.banner img {
+  width: 100%;
+  height: auto;
+  display: flex;
+} 
  
   .banner-text {
     left: 50%;
@@ -578,6 +597,9 @@ footer img {
   .noticias-dashboard {
     padding: 40px 155px;
   }
+
+
+
 }
 
 /* RESPONSIVO */

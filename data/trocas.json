@@ -66,5 +66,18 @@
     "status": "concluida",
     "dataSolicitacao": "2026-05-23T19:19:27.612Z",
     "dataConclusao": null
+  },
+  {
+    "id": 7,
+    "anuncioId": 16,
+    "anuncioTitulo": "Cadeirinha",
+    "doadorNome": "Malcolm Eliseu Ribeiro",
+    "foto": "../img/img malcon.png",
+    "solicitanteNome": "João Silva",
+    "solicitanteEmail": "joao@test.com",
+    "mensagem": "",
+    "status": "pendente",
+    "dataSolicitacao": "2026-05-26T13:22:46.850Z",
+    "dataConclusao": null
   }
 ]
