@@ -263,7 +263,6 @@ footer img {
   .icone img { width: 50px; height: 50px; }
   footer { padding: 10px; }
   .footer-links a { font-size: 12px; }
-  .noticia img { width: 100%; max-width: 350px; border-radius: 8px; }
   .card { width: 100%; }
   .mobile-only { display: block; }
   .desktop-only { display: none; }
@@ -292,8 +291,6 @@ footer img {
     display: block; margin: 15px auto 0;
     height: auto; width: 80%; max-width: 100%; border-radius: 10px;
   }
-  .noticias-grid { grid-template-columns: 1fr; }
-  .creditos-box { text-align: center; }
 }
  
 /* ── DESKTOP ── */
@@ -379,60 +376,293 @@ footer img {
   .desktop-only { display: block; }
   .mobile-only { display: none; }
 }
- 
-/* ── NOTÍCIAS DASHBOARD ── */
-.noticias-dashboard { padding: 40px 20px; }
- 
-.noticias-header { text-align: center; margin-bottom: 30px; }
-.noticias-header h2 { color: #000; font-size: 45px; font-weight: 700; }
-.noticias-header p { font-size: 15px; color: #2b2b2b; max-width: 600px; margin: 10px auto; }
- 
-.noticias-grid {
+
+
+/* ═══════════════════════════════════════════════════════
+   SEÇÃO: NOSSO IMPACTO
+   (substitui .noticias-dashboard, .noticia-card, etc.)
+   ═══════════════════════════════════════════════════════ */
+
+.impact {
+  background: #ffffff;
+  padding: clamp(36px, 6vw, 72px) clamp(16px, 5vw, 60px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 4vw, 44px);
+  margin-top: 40px;
+}
+
+/* Cabeçalho */
+.impact__header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  text-align: center;
+}
+
+.impact__label {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #22c55e;
+  text-transform: uppercase;
+}
+
+.impact__title {
+  font-size: clamp(1.6rem, 4.5vw, 2.5rem);
+  font-weight: 700;
+  color: #000000;
+  line-height: 1.15;
+}
+
+.impact__subtitle {
+  font-size: clamp(0.85rem, 1.8vw, 1rem);
+  color: #1a1a1a;
+  line-height: 1.65;
+}
+
+/* Grid de cards de estatísticas */
+.impact__stats {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(10px, 2vw, 20px);
 }
- 
-.noticia-card {
-  background: #e2f1ee;
-  padding: 45px;
-  border-radius: 19px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+
+/* Cada card */
+.stat-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 2px solid #d8d8d8;
+  padding: clamp(12px, 2.5vw, 20px);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
- 
-.noticia-card h3 { color: #00553d; margin-bottom: 29px; }
- 
-.bloco { margin-bottom: 15px; }
-.bloco span { font-size: 11px; color: #000; }
-.linha { display: flex; justify-content: space-between; margin: 5px 0; }
-.barra { height: 6px; background: #e5e7eb; border-radius: 10px; }
-.barra div { height: 100%; background: #065f46; border-radius: 10px; }
-.descricao { font-size: 13px; color: #6b7280; }
- 
-.noticia-stats { display: flex; flex-direction: column; gap: 15px; }
- 
-.stat { background: #f6fffc; padding: 0; border-radius: 16px; }
-.stat span { padding-left: 10px; font-size: 11px; color: #9ca3af; }
-.stat h2 { padding-left: 10px; font-size: 22px; }
-.stat h3 { padding-left: 10px; font-size: 20px; }
-.stat.destaque { background: #065f46; color: white; }
- 
-.creditos { margin-top: 25px; }
-.creditos-box { background: #065f46; color: white; padding: 30px; border-radius: 20px; }
-.creditos-box p { color: #d1fae5; }
-.botoes { margin-top: 15px; }
- 
-.btn-doar {
-  background: #f97316; color: white; border: none;
-  padding: 10px 20px; border-radius: 20px; margin-right: 10px;
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.3);
 }
- 
-.btn-saiba {
-  background: #047857; color: white; border: none;
-  padding: 10px 20px; border-radius: 20px;
+
+.stat-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #f0fdf4;
+  color: #16a34a;
+  margin-bottom: 6px;
 }
- 
+
+.stat-card__value {
+  font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+  font-weight: 700;
+  color: #111;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-card__label {
+  font-size: 0.78rem;
+  color: #6b7280;
+}
+
+.stat-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  padding: 3px 8px;
+  border-radius: 99px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  width: fit-content;
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+/* Grade inferior */
+.impact__bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(10px, 2vw, 20px);
+  align-items: start;
+}
+
+/* Card de barras */
+.impact-info-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 2px solid #d8d8d8;
+  padding: clamp(16px, 3vw, 28px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.impact-info-card__title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0a0a0a;
+}
+
+.impact-bar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.impact-bar-item__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.impact-bar-item__name {
+  font-size: 0.78rem;
+  color: #1f2329;
+  flex: 1;
+  min-width: 0;
+}
+
+.impact-bar-item__value {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #111;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.impact-bar-item__value--progress {
+  font-size: 0.73rem;
+  font-weight: 600;
+  color: #232425;
+}
+
+.impact-bar-track {
+  width: 100%;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.impact-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+}
+
+.impact-bar-fill--orange { background: #f97316; }
+.impact-bar-fill--green  { background: #22c55e; }
+
+.impact-info-card__source {
+  font-size: 0.7rem;
+  color: #434446;
+  line-height: 1.5;
+}
+
+/* Card CTA */
+.impact-cta-card {
+  background: #166534;
+  border-radius: 16px;
+  padding: clamp(18px, 3.5vw, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.impact-cta-card__badge {
+  display: inline-block;
+  background: #22c55e;
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  width: fit-content;
+  text-transform: uppercase;
+}
+
+.impact-cta-card__title {
+  font-size: clamp(1.05rem, 2.5vw, 1.45rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.impact-cta-card__text {
+  font-size: 0.85rem;
+  color: #bbf7d0;
+  line-height: 1.65;
+}
+
+.impact-cta-card__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.impact-btn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,0.5);
+  color: #fff;
+  background: transparent;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 10px 18px;
+  transition: background 0.18s, border-color 0.18s;
+}
+
+.impact-btn:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: #fff;
+}
+
+/* ── Responsivo: Tablet ── */
+@media (max-width: 720px) {
+  .impact__stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Terceiro card ocupa linha inteira */
+  .impact__stats .stat-card:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+
+  .impact__bottom {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Responsivo: Mobile ── */
+@media (max-width: 480px) {
+  .impact__stats {
+    grid-template-columns: 1fr;
+  }
+
+  .impact__stats .stat-card:nth-child(3) {
+    grid-column: auto;
+  }
+
+  .impact__title {
+    font-size: 1.5rem;
+  }
+}
+
+/* ── Responsivo: Desktop largo ── */
 @media (min-width: 1024px) {
-  .noticias-dashboard { padding: 40px 155px; }
+  .impact {
+    padding-left: 155px;
+    padding-right: 155px;
+  }
 }
- 
