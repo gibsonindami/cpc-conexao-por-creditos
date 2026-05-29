@@ -73,10 +73,10 @@ body {
 .balance-card {
   background: linear-gradient(135deg, #F8A700 0%, #f8a700 100%);
   color: #000000;
-  padding: 14px;
+  padding: 10px;
   border-radius: 35px;
   text-align: center;
-  margin-top: 24px;
+  margin-top: 10px;
   margin-bottom: 50px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.12);
 }

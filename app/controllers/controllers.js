@@ -1,8 +1,3 @@
-// ============================================
-// 👤 Controllers - Login e Cadastro
-// Integração com Banco de Dados
-// ============================================
-
 const usuariosModel = require("../models/models");
 
 // ============================================
@@ -11,7 +6,6 @@ const usuariosModel = require("../models/models");
 const cadastroController = async (req, res) => {
     const { nome, email, senha } = req.body;
 
-    // Validar
     if (!nome || !email || !senha) {
         return res.render("pages/login", {
             erro: "Todos os campos são obrigatórios",
@@ -23,7 +17,6 @@ const cadastroController = async (req, res) => {
     }
 
     try {
-        // Verificar se email já existe
         const usuarioExistente = await usuariosModel.findByEmail(email);
         if (usuarioExistente) {
             return res.render("pages/login", {
@@ -35,7 +28,6 @@ const cadastroController = async (req, res) => {
             });
         }
 
-        // Criar usuário no banco (a senha será hasheada no modelo)
         await usuariosModel.create({
             nome: nome.trim(),
             email: email.toLowerCase(),
@@ -67,7 +59,6 @@ const cadastroController = async (req, res) => {
 const loginController = async (req, res) => {
     const { usuarioDigitado, senhaDigitada } = req.body;
 
-    // Validar
     if (!usuarioDigitado || !senhaDigitada) {
         return res.render("pages/login", {
             erro: "*Preencha todos os campos!",
@@ -85,31 +76,32 @@ const loginController = async (req, res) => {
     }
 
     try {
-        // Verificar credenciais (o modelo compara hash)
         const usuario = await usuariosModel.findByCredentials(usuarioDigitado, senhaDigitada);
         if (usuario) {
-            // Login bem-sucedido
-            req.session = req.session || {};
-            req.session.usuarioId = usuario.id;
-            req.session.usuarioNome = usuario.nome;
-            
-            console.log("✅ Login bem-sucedido:", usuario.nome);
+            // ✅ ALTERADO: salva objeto completo com perfil na sessão
+            req.session.usuario = {
+                id: usuario.id,
+                nome: usuario.nome,
+                email: usuario.email,
+                perfil: usuario.perfil || "user"
+            };
+
+            console.log("✅ Login bem-sucedido:", usuario.nome, "| perfil:", usuario.perfil || "user");
+
+            // ✅ NOVO: redireciona admin direto para o painel
+            if (usuario.perfil === "admin") {
+                return res.redirect("/adm");
+            }
+
             return res.redirect("/");
         }
 
-        // Login falhou
         return res.render("pages/login", {
             erro: "Usuário ou senha incorretos!",
             sucesso: false,
             valores: req.body,
-            erroValidacao: {
-                usuarioDigitado: "input-error",
-                senhaDigitada: "input-error",
-            },
-            msgErro: {
-                usuarioDigitado: "",
-                senhaDigitada: "",
-            },
+            erroValidacao: { usuarioDigitado: "input-error", senhaDigitada: "input-error" },
+            msgErro: { usuarioDigitado: "", senhaDigitada: "" },
         });
     } catch (err) {
         console.error("Erro ao fazer login:", err);

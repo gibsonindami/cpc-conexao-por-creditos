@@ -29,5 +29,26 @@
     "provider": "local",
     "providerId": null,
     "dataCriacao": "2026-05-23T17:15:36.709Z"
+  },
+  {
+    "id": 5,
+    "nome": "Psi_7",
+    "email": "gabrielribeiro200902@gmail.com",
+    "senha": "$2b$08$WM7bIqcW.kB84lFhnDMSu.X6VCXL32Gk7Uoswo3rXqHkSWjeK6xVW",
+    "foto": null,
+    "provider": "local",
+    "providerId": null,
+    "dataCriacao": "2026-05-26T15:08:39.110Z"
+  },
+  {
+    "id": 1.1,
+    "nome": "Admin",
+    "email": "admin@cpc.com",
+    "senha": "cpcadmin123",
+    "perfil": "admin",
+    "foto": null,
+    "provider": "local",
+    "providerId": null,
+    "dataCriacao": "2026-01-01T00:00:00.000Z"
   }
 ]

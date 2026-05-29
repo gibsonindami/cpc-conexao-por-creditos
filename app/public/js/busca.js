@@ -28,11 +28,11 @@ document.addEventListener('DOMContentLoaded', function() {
 			card.className = "service-card";
 			card.innerHTML = `
 				<img src="${serv.img}" alt="Foto de ${serv.nome}" class="avatar">
-				<div class="service-info">
+				<section class="service-info">
 					<h3>${serv.nome}</h3>
 					<p>${serv.local}</p>
 					<a href="/contato"><button class="btn-contato">Contato</button></a>
-				</div>
+				</section>
 			`;
 			container.appendChild(card);
 			container.appendChild(document.createElement('br'));

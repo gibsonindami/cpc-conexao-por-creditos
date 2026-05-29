@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — CPC</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+  <link rel="icon" href="/img/logo-black.png">
+  <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <section class="topbar">
+  <section class="topbar-left">
+    <a href="/adm/usuarios" class="topbar-user mobile-only-user">
+      <%= usuarioLogado ? usuarioLogado.nome.charAt(0).toUpperCase() : 'A' %>
+    </a>
+
+    <a class="topbar-logo" href="/">
+      <img src="/img/logo-white.png" alt="CPC">
+      <span>admin</span>
+    </a>
+  </section>
+
+  <nav class="topbar-nav side-menu">
+    <ul>
+      <li>
+        <a href="/adm" class="active">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a href="/adm/anuncios">
+          <svg viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-5"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          Anúncios
+        </a>
+      </li>
+      <li>
+        <a href="/adm/trocas">
+          <svg viewBox="0 0 24 24"><path d="M7 16V4m0 0L3 8m4-4l4 4"/><path d="M17 8v12m0 0l4-4m-4 4l-4-4"/></svg>
+          Trocas
+        </a>
+      </li>
+      <li>
+        <a href="/adm/usuarios">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Usuários
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <section class="hamburger mobile-menu" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </section>
+
+  <section class="topbar-right desktop-only-right">
+    <span class="topbar-badge">● sistema ativo</span>
+    <section class="topbar-user"><%= usuarioLogado ? usuarioLogado.nome.charAt(0).toUpperCase() : 'A' %></section>
+  </section>
+</section>
+
+<section class="overlay" id="overlay"></section>
+
+<script src="/js/menu.js"></script>
+
+  <!-- GRID -->
+  <section class="page">
+    <section class="grid">
+
+      <!-- HERO -->
+      <section class="card card-dark hero" style="display:flex;flex-direction:column;justify-content:space-between;min-height:140px">
+        <section style="display:flex;justify-content:space-between;align-items:flex-start">
+          <section>
+            <p class="hero-label">conexão por créditos</p>
+            <p class="hero-title">Painel<br>admin</p>
+          </section>
+          <section class="status-pill">
+            <span class="status-dot"></span>
+            sistema ativo
+          </section>
+        </section>
+        <p class="hero-meta">
+          <%= new Date().toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) %>
+        </p>
+      </section>
+
+      <!-- TROCAS HOJE -->
+      <section class="card" style="display:flex;flex-direction:column;justify-content:center">
+        <p class="stat-label">trocas hoje</p>
+        <p class="stat-value"><%= trocasHoje %></p>
+        <p class="stat-delta delta-up">+<%= deltaPercent %>% vs. ontem</p>
+      </section>
+
+      <!-- MEMBROS -->
+      <section class="card" style="display:flex;flex-direction:column;justify-content:center">
+        <p class="stat-label">membros ativos</p>
+        <p class="stat-value"><%= stats.membrosAtivos.toLocaleString('pt-BR') %></p>
+        <p class="stat-delta delta-neutral">+<%= novosEssaSemana %> esta semana</p>
+      </section>
+
+      <!-- ATIVIDADE POR HORA -->
+      <section class="card" style="grid-column:1/2;grid-row:2/4">
+        <section class="sec-title">atividade por hora</section>
+        <section class="bars">
+          <% const alturas = [30,45,55,70,90,100,75,55,40,35]; %>
+          <% const cores = ['#e1f5ee','#e1f5ee','#9fe1cb','#9fe1cb','#5dcaa5','#1d9e75','#9fe1cb','#9fe1cb','#e1f5ee','#e1f5ee']; %>
+          <% alturas.forEach(function(h, i) { %>
+            <section class="bar" style="--bar-height: <%= h %>%; --bar-color: <%= cores[i] %>"></section>
+          <% }) %>
+        </section>
+        <section class="bars-labels">
+          <span>08h</span><span>12h</span><span>16h</span><span>20h</span>
+        </section>
+        <section class="bar-peak">
+          <p>pico hoje</p>
+          <strong>14h – 15h</strong>
+          <small><%= picoDia %> trocas nesse intervalo</small>
+        </section>
+      </section>
+
+      <!-- ANÚNCIOS PENDENTES -->
+      <section class="card" style="grid-column:2/4;grid-row:2/3">
+        <section class="sec-title">
+          anúncios pendentes
+          <span style="font-size:11px;background:#faeeda;color:#633806;padding:2px 8px;border-radius:20px;font-weight:500">
+            <%= pendentes.length %> aguardando
+          </span>
+        </section>
+        <% pendentes.slice(0,3).forEach(function(a) { %>
+          <section class="pending-item">
+            <section class="pending-icon" style="background:#e1f5ee">
+              <span style="font-size:18px">
+                <% if(a.categoria === 'alimentos') { %>🥦<% } else if(a.categoria === 'infantil') { %>🧒<% } else { %>🔧<% } %>
+              </span>
+            </section>
+            <section class="pending-info">
+              <p><%= a.titulo %></p>
+              <small><%= a.doadorNome %> · <%= a.categoria %></small>
+            </section>
+            <section class="pending-actions">
+              <form action="/adm/anuncios/aprovar/<%= a.id %>" method="POST" style="display:inline">
+                <button class="btn-approve" type="submit">aprovar</button>
+              </form>
+              <form action="/adm/anuncios/deletar/<%= a.id %>" method="POST" style="display:inline">
+                <button class="btn-reject" type="submit">rejeitar</button>
+              </form>
+            </section>
+          </section>
+        <% }) %>
+        <% if (pendentes.length === 0) { %>
+          <p style="font-size:13px;color:#aaa;text-align:center;padding:1rem 0">Nenhum anúncio pendente</p>
+        <% } %>
+      </section>
+
+      <!-- CATEGORIAS -->
+      <section class="card" style="grid-column:4/5;grid-row:2/4">
+        <section class="sec-title">por categoria</section>
+        <section class="cat-row">
+          <section class="cat-header"><span>alimentos</span><strong><%= catAlimentos %>%</strong></section>
+          <section class="cat-track"><section class="cat-fill" style="--cat-width: <%= catAlimentos %>%; background: #1d9e75"></section></section>
+        </section>
+        <section class="cat-row">
+          <section class="cat-header"><span>profissionais</span><strong><%= catProfissionais %>%</strong></section>
+          <section class="cat-track"><section class="cat-fill" style="--cat-width: <%= catProfissionais %>%; background: #7f77dd"></section></section>
+        </section>
+        <section class="cat-row">
+          <section class="cat-header"><span>infantil</span><strong><%= catInfantil %>%</strong></section>
+          <section class="cat-track"><section class="cat-fill" style="--cat-width: <%= catInfantil %>%; background: #d85a30"></section></section>
+        </section>
+        <section class="cat-row">
+          <section class="cat-header"><span>outros</span><strong><%= catOutros %>%</strong></section>
+          <section class="cat-track"><section class="cat-fill" style="--cat-width: <%= catOutros %>%; background: #b4b2a9"></section></section>
+        </section>
+        <section style="margin-top:1rem;border-top:0.5px solid rgba(0,0,0,.07);padding-top:10px">
+          <p style="font-size:11px;color:#888">total de anúncios</p>
+          <p style="font-size:22px;font-weight:600;color:#1a1a1a"><%= totalAnuncios.toLocaleString('pt-BR') %></p>
+        </section>
+      </section>
+
+      <!-- ÚLTIMAS TROCAS -->
+      <section class="card" style="grid-column:2/4;grid-row:3/4">
+        <section class="sec-title">
+          últimas trocas
+          <a href="/adm/trocas">ver todas</a>
+        </section>
+        <% ultimasTrocas.slice(0,4).forEach(function(t) { %>
+          <section class="feed-item">
+            <span class="feed-dot" style="--dot-color: <%= t.status === 'concluida' ? '#1d9e75' : '#b4b2a9' %>"></span>
+            <span class="feed-title"><%= t.anuncioTitulo %></span>
+            <span class="feed-user"><%= t.solicitanteNome %></span>
+            <span class="feed-time"><%= t.data %></span>
+          </section>
+        <% }) %>
+        <% if (ultimasTrocas.length === 0) { %>
+          <p style="font-size:13px;color:#aaa;text-align:center;padding:.5rem 0">Nenhuma troca ainda</p>
+        <% } %>
+      </section>
+
+      <!-- NOVOS HOJE -->
+      <section class="card">
+        <section class="bottom-card-inner">
+          <section class="bottom-icon" style="background:#e1f5ee">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0f6e56" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
+          </section>
+          <section>
+            <p class="bottom-label">novos hoje</p>
+            <p class="bottom-value"><%= novosHoje %> membros</p>
+          </section>
+        </section>
+      </section>
+
+      <!-- DENÚNCIAS -->
+      <section class="card">
+        <section class="bottom-card-inner">
+          <section class="bottom-icon" style="background:#faeeda">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#854f0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </section>
+          <section>
+            <p class="bottom-label">denúncias</p>
+            <p class="bottom-value"><%= denuncias %> abertas</p>
+          </section>
+        </section>
+      </section>
+
+      <!-- DOAÇÕES -->
+      <section class="card" style="grid-column:3/5">
+        <section class="doacoes-inner">
+          <section class="bottom-card-inner">
+            <section class="bottom-icon" style="background:#e6f7f1">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0f6e56" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21s-6-4.35-9-8.5A5.5 5.5 0 0 1 7 3a5.5 5.5 0 0 1 5 3.13A5.5 5.5 0 0 1 17 3a5.5 5.5 0 0 1 19 12.5C18 16.65 12 21 12 21z"/>
+              </svg>
+            </section>
+            <section>
+              <p class="bottom-label">doações acumuladas</p>
+              <p class="bottom-value" style="font-size:24px">
+                500
+              </p>
+            </section>
+          </section>
+        </section>
+      </section>
+    </section>
+  </section>
+
+     <!-- Logout -->
+    <section class="logout-section">
+      <a href="/logout" class="logout-btn">Sair da Conta</a>
+    </section>
+ 
+
+</body>
+</html>

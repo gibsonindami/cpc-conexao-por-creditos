@@ -20,7 +20,6 @@ router.get("/cadastro", (req, res) => {
   res.render("pages/login", { erro: null, sucesso: null, valores: {}, erroValidacao: {}, msgErro: {} });
 });
 
-// HOME com estatísticas reais
 router.get("/", (req, res) => {
   try {
     const stats = trocasModel.getStats();
@@ -35,7 +34,6 @@ router.get("/", (req, res) => {
   }
 });
 
-// LISTAGENS com dados reais
 router.get("/todos", (req, res) => {
   const busca = req.query.busca || '';
   const anuncios = anunciosModel.findAll({ busca });
@@ -60,7 +58,6 @@ router.get("/profissionais", (req, res) => {
   res.render("pages/profissionais", { anuncios, busca });
 });
 
-// CONTATO / ANÚNCIO INDIVIDUAL
 router.get("/contato/:id", (req, res) => {
   const anuncio = anunciosModel.findById(req.params.id);
   if (!anuncio) return res.redirect("/todos");
@@ -73,7 +70,6 @@ router.get("/contato", (req, res) => {
   res.render("pages/contato-troca", { anuncio });
 });
 
-// RESUMO DE TROCA
 router.get("/resumo/:anuncioId", (req, res) => {
   const anuncio = anunciosModel.findById(req.params.anuncioId);
   if (!anuncio) return res.redirect("/todos");
@@ -86,7 +82,6 @@ router.get("/resumo", (req, res) => {
   res.render("pages/resumo-troca", { anuncio });
 });
 
-// CONFIRMAR TROCA - registra no banco e atualiza stats
 router.post("/confirmar-troca", (req, res) => {
   try {
     const { anuncioId, anuncioTitulo, mensagem } = req.body;
@@ -109,7 +104,6 @@ router.post("/confirmar-troca", (req, res) => {
   }
 });
 
-// NOVO ANÚNCIO (doador cadastra item/serviço)
 router.get("/novo-anuncio", (req, res) => {
   res.render("pages/novo-anuncio", { erro: null, sucesso: null, valores: {} });
 });
@@ -145,7 +139,6 @@ router.post("/novo-anuncio",
   }
 );
 
-// API endpoints
 router.get("/api/stats", (req, res) => {
   const stats = trocasModel.getStats();
   res.json({
@@ -160,7 +153,6 @@ router.get("/api/anuncios", (req, res) => {
   res.json(anunciosModel.findAll({ categoria, busca }));
 });
 
-// Páginas estáticas
 router.get("/avaliacao", (req, res) => res.render("pages/avaliacao"));
 router.get("/saibamais", (req, res) => res.render("pages/saibamais"));
 router.get("/servicos", (req, res) => res.render("pages/servicos"));
@@ -171,8 +163,10 @@ router.get("/doe", (req, res) => res.render("pages/doe"));
 router.get("/obrigado", (req, res) => res.render("pages/obrigado"));
 
 router.get("/conta", autenticado, async (req, res) => {
+  // ✅ Admin vai para o painel, não para a conta de usuário
+  if (req.session.usuario.perfil === "admin") return res.redirect("/adm");
   try {
-    const usuario = await usuariosModel.findById(req.session.usuarioId);
+    const usuario = await usuariosModel.findById(req.session.usuario.id);
     if (!usuario) return res.redirect("/login");
     const meusTrocas = trocasModel.findAll().filter(t => t.solicitanteEmail === usuario.email);
     res.render("pages/conta", { usuario, meusTrocas, totalTrocas: meusTrocas.length });
@@ -185,14 +179,12 @@ router.get("/logout", (req, res) => {
   req.session.destroy(() => res.redirect("/"));
 });
 
-// CADASTRO
 router.post("/cadastro",
   body("nome").trim().notEmpty().withMessage("*Campo obrigatório!").isLength({ min: 3 }).withMessage("*Mínimo 3 caracteres!"),
   body("email").trim().notEmpty().withMessage("*Campo obrigatório!").isEmail().withMessage("*Email inválido!"),
   body("senha").notEmpty().withMessage("*Campo obrigatório!").isLength({ min: 6 }).withMessage("*Mínimo 8 caracteres!"),
   body("confirmarSenha").notEmpty().withMessage("*Campo obrigatório!").custom((v, { req }) => {
     if (v !== req.body.senha) throw new Error("Senhas não coincidem!");
-    // Confirm senha ok
     return true;
   }),
   async (req, res) => {
@@ -230,7 +222,11 @@ router.post("/login",
       const usuario = await usuariosModel.findByCredentials(u, req.body.senhaDigitada);
       if (usuario) {
         req.session.usuarioId = usuario.id;
-        req.session.usuario = { id: usuario.id, nome: usuario.nome, email: usuario.email, foto: usuario.foto || null };
+        // ✅ CORRIGIDO: inclui perfil na sessão
+        req.session.usuario = { id: usuario.id, nome: usuario.nome, email: usuario.email, foto: usuario.foto || null, perfil: usuario.perfil || "user" };
+
+        // ✅ NOVO: redireciona admin direto para o painel
+        if (usuario.perfil === "admin") return res.redirect("/adm");
         return res.redirect("/");
       }
       const existe = await usuariosModel.findByUsuarioOuEmail(u);

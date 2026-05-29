@@ -66,14 +66,14 @@ const services = [
       card.className = "service-card";
       card.innerHTML = `
   <img src="${serv.img}" alt="Foto de ${serv.nome}">
-  <div class="service-info">
+  <section class="service-info">
     <strong>${serv.nome}</strong><br>
     <small>${serv.local}</small><br>
     <button class="contact-btn" onclick="window.location.href='https://wa.me/55DDDNÚMERO?text=Olá,%20gostaria%20de%20mais%20informações%20sobre%20o%20serviço%20de%20${encodeURIComponent(serv.nome)}.'">
   Contato
 </button>
 
-  </div>
+  </section>
 `;
       
       container.appendChild(card);
