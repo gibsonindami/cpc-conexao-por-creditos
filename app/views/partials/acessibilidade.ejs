@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="/css/acessibilidade.css">
+
+<!-- BOTÃO FLUTUANTE DE ACESSIBILIDADE -->
+<button id="a11y-btn" aria-haspopup="true" aria-expanded="false" aria-controls="a11y-panel" title="Acessibilidade" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="4" r="1.6"/>
+    <path d="M5 8.5c3.5 1 10.5 1 14 0"/>
+    <path d="M12 8.5v4l-3.2 7.5"/>
+    <path d="M12 12.5l3.2 7.5"/>
+    <path d="M9 12.5h6"/>
+  </svg>
+  <span class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">Abrir menu de acessibilidade</span>
+</button>
+
+<!-- PAINEL DE ACESSIBILIDADE -->
+<section id="a11y-panel" role="dialog" aria-label="Opções de acessibilidade">
+  <h2>
+    Acessibilidade
+    <button id="a11y-close" type="button" aria-label="Fechar painel de acessibilidade">✕</button>
+  </h2>
+
+  <div class="a11y-grupo">
+    <p>Contraste</p>
+    <div class="a11y-linha">
+      <button class="a11y-toggle" id="a11y-toggle-contraste" type="button" aria-pressed="false">Alto contraste</button>
+    </div>
+  </div>
+
+  <div class="a11y-grupo">
+    <p>Tema</p>
+    <div class="a11y-linha">
+      <button class="a11y-toggle" id="a11y-toggle-tema" type="button" aria-pressed="false">🌙 Modo escuro</button>
+    </div>
+  </div>
+
+  <div class="a11y-grupo">
+    <p>Tamanho da fonte</p>
+    <div class="a11y-linha">
+      <button id="a11y-font-menos" type="button" aria-label="Diminuir fonte">A−</button>
+      <button id="a11y-font-mais" type="button" aria-label="Aumentar fonte">A+</button>
+    </div>
+  </div>
+
+  <button id="a11y-reset" type="button">Restaurar padrão</button>
+</section>
+
+<script src="/js/acessibilidade.js" defer></script>

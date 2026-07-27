@@ -21,9 +21,10 @@
         <nav class="desktop-menu">
             <ul>
                 <li><a href="/">INÍCIO</a></li>
-                <li><a href="/sobrenos">SOBRE NÓS</a></li>
+                <li><a href="/doe">DOAR</a></li>
+                <li><a href="/servicos">TROCAR ITENS</a></li>
                 <li><a href="/comofunciona">COMO FUNCIONA</a></li>
-                <li><a href="/servicos">SERVIÇOS DE TROCA</a></li>
+                <li><a href="/sobrenos">SOBRE NÓS</a></li>
                 <li><a href="/saibamais">SAIBA MAIS</a></li>
                 <!-- <li><a href="/noticia">NOTÍCIAS</a></li> -->
             </ul>
@@ -57,9 +58,10 @@
 <nav class="side-menu" id="sideMenu">
     <ul>
         <li><a href="/">INÍCIO</a></li>
-        <li><a href="/sobrenos">SOBRE NÓS</a></li>
+        <li><a href="/doe">DOAR</a></li>
+        <li><a href="/servicos">TROCAR ITENS</a></li>
         <li><a href="/comofunciona">COMO FUNCIONA</a></li>
-        <li><a href="/servicos">SERVIÇOS DE TROCA</a></li>
+        <li><a href="/sobrenos">SOBRE NÓS</a></li>
         <li><a href="/saibamais">SAIBA MAIS</a></li>
         <!--<li><a href="/noticia">NOTÍCIAS</a></li>-->
         <% if (usuarioLogado) { %>
@@ -68,3 +70,6 @@
         <% } %>
     </ul>
 </nav>
+
+<%- include('acessibilidade.ejs') %>
+<%- include('chat-ia.ejs') %>

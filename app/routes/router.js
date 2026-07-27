@@ -4,6 +4,7 @@ const { body, validationResult } = require("express-validator");
 const usuariosModel = require("../models/models");
 const anunciosModel = require("../models/anunciosModel");
 const trocasModel = require("../models/trocasModel");
+const iaController = require("../controllers/iaController");
 
 const autenticado = (req, res, next) => {
   if (req.session && req.session.usuario) return next();
@@ -151,6 +152,23 @@ router.get("/api/stats", (req, res) => {
 router.get("/api/anuncios", (req, res) => {
   const { categoria, busca } = req.query;
   res.json(anunciosModel.findAll({ categoria, busca }));
+});
+
+// Chat com IA - tira dúvidas dos usuários sobre o funcionamento do site
+router.post("/api/chat", async (req, res) => {
+  try {
+    const { mensagem, historico } = req.body;
+    if (!mensagem || typeof mensagem !== "string" || !mensagem.trim()) {
+      return res.status(400).json({ erro: "Mensagem inválida." });
+    }
+    const resposta = await iaController.responderDuvida(mensagem, Array.isArray(historico) ? historico : []);
+    res.json({ resposta });
+  } catch (err) {
+    console.error("Erro no chat de IA:", err);
+    res.status(500).json({
+      resposta: "Desculpe, tive um problema para responder agora. Tente novamente em instantes.",
+    });
+  }
 });
 
 router.get("/avaliacao", (req, res) => res.render("pages/avaliacao"));

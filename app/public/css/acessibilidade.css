@@ -1,0 +1,188 @@
+/* =====================================================================
+   WIDGET DE ACESSIBILIDADE - CPC (Conexão por Créditos)
+   Botão flutuante com: Alto Contraste, Modo Claro/Escuro, Aumentar/Diminuir fonte
+   ===================================================================== */
+
+/* ---------- Botão flutuante ---------- */
+#a11y-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #184c3b;
+  color: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9998;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+#a11y-btn:hover { background: #2a7d63; transform: scale(1.06); }
+#a11y-btn:focus-visible { outline: 3px solid #ffd166; outline-offset: 2px; }
+#a11y-btn svg { width: 28px; height: 28px; }
+
+/* ---------- Painel ---------- */
+#a11y-panel {
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  width: 280px;
+  max-width: calc(100vw - 32px);
+  background: #ffffff;
+  color: #1c1c1c;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  z-index: 9998;
+  padding: 18px;
+  display: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#a11y-panel.aberto { display: block; }
+
+#a11y-panel h2 {
+  font-size: 16px;
+  margin: 0 0 12px 0;
+  color: #184c3b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#a11y-close {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  color: #555;
+  padding: 4px;
+}
+#a11y-close:hover { color: #000; }
+
+.a11y-grupo {
+  margin-bottom: 14px;
+}
+
+.a11y-grupo p {
+  font-size: 13px;
+  font-weight: bold;
+  margin: 0 0 6px 0;
+  color: #333;
+}
+
+.a11y-linha {
+  display: flex;
+  gap: 8px;
+}
+
+.a11y-linha button,
+.a11y-toggle {
+  flex: 1;
+  padding: 8px 6px;
+  font-size: 13px;
+  border-radius: 8px;
+  border: 1.5px solid #184c3b;
+  background: #fff;
+  color: #184c3b;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.a11y-linha button:hover,
+.a11y-toggle:hover { background: #e6f3ee; }
+
+.a11y-toggle[aria-pressed="true"] {
+  background: #184c3b;
+  color: #fff;
+}
+
+#a11y-reset {
+  width: 100%;
+  margin-top: 4px;
+  padding: 8px;
+  font-size: 12px;
+  border-radius: 8px;
+  border: 1px dashed #999;
+  background: transparent;
+  color: #555;
+  cursor: pointer;
+}
+#a11y-reset:hover { background: #f2f2f2; }
+
+/* =====================================================================
+   ESTADOS GLOBAIS APLICADOS NO <html>
+   ===================================================================== */
+
+/* ---- Tamanho da fonte (escala global) ---- */
+html.a11y-font-1 { font-size: 100%; }
+html.a11y-font-2 { font-size: 112%; }
+html.a11y-font-3 { font-size: 124%; }
+html.a11y-font-4 { font-size: 136%; }
+html.a11y-font-5 { font-size: 148%; }
+
+/* ---- Modo escuro (aplicado via filtro para funcionar em todo o site
+        sem precisar reescrever cada CSS individual das páginas) ---- */
+html.a11y-dark {
+  background: #121212;
+}
+html.a11y-dark body {
+  background: #121212 !important;
+  filter: invert(1) hue-rotate(180deg);
+}
+/* Evita inverter imagens e vídeos (ficariam com cores estranhas) */
+html.a11y-dark img,
+html.a11y-dark svg,
+html.a11y-dark video,
+html.a11y-dark picture,
+html.a11y-dark iframe {
+  filter: invert(1) hue-rotate(180deg);
+}
+/* O próprio widget de acessibilidade não deve ser invertido */
+html.a11y-dark #a11y-btn,
+html.a11y-dark #a11y-panel,
+html.a11y-dark #chatia-btn,
+html.a11y-dark #chatia-panel {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* ---- Alto contraste (preto/amarelo, alto legibilidade) ---- */
+html.a11y-contraste body {
+  background: #000000 !important;
+  color: #ffff00 !important;
+}
+html.a11y-contraste * {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+  border-color: #ffff00 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+html.a11y-contraste a,
+html.a11y-contraste button {
+  color: #ffff00 !important;
+  text-decoration: underline !important;
+}
+html.a11y-contraste img,
+html.a11y-contraste svg {
+  filter: grayscale(1) contrast(1.2);
+  opacity: 0.9;
+}
+/* Alto contraste tem prioridade sobre o modo escuro (não aplicar os dois filtros juntos) */
+html.a11y-contraste.a11y-dark body,
+html.a11y-contraste.a11y-dark img,
+html.a11y-contraste.a11y-dark svg,
+html.a11y-contraste.a11y-dark video {
+  filter: none;
+}
+
+@media (max-width: 480px) {
+  #a11y-panel { right: 16px; bottom: 84px; width: calc(100vw - 32px); }
+  #a11y-btn { right: 16px; bottom: 16px; }
+}
