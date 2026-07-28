@@ -18,7 +18,7 @@ body {
  
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-  font-size: 24px;
+  font-size: calc(24px * var(--a11y-escala, 1));
 }
  
  
@@ -54,7 +54,7 @@ body {
  
  
 .profile h1 {
-  font-size: 32px;
+  font-size: calc(32px * var(--a11y-escala, 1));
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -63,7 +63,7 @@ body {
  
  
 .profile p {
-  font-size: 16px;
+  font-size: calc(16px * var(--a11y-escala, 1));
   color: #424842;
   opacity: 0.7;
 }
@@ -83,7 +83,7 @@ body {
  
  
 .balance-label {
-  font-size: 14px;
+  font-size: calc(14px * var(--a11y-escala, 1));
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -102,7 +102,7 @@ body {
  
  
 .amount {
-  font-size: 32px;
+  font-size: calc(32px * var(--a11y-escala, 1));
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.03em;
@@ -117,7 +117,7 @@ body {
   justify-content: center;
   padding: 8px 12px;
   border-radius: 999px;
-  font-size: 12px;
+  font-size: calc(12px * var(--a11y-escala, 1));
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -143,7 +143,7 @@ body {
  
  
 .trades-section h2, .proposals-section h2, .history-section h2 {
-  font-size: 24px;
+  font-size: calc(24px * var(--a11y-escala, 1));
   font-weight: 600;
   line-height: 1.3;
   letter-spacing: -0.01em;
@@ -199,7 +199,7 @@ body {
  
  
 .trade-type {
-  font-size: 12px;
+  font-size: calc(12px * var(--a11y-escala, 1));
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -209,7 +209,7 @@ body {
  
  
 .trade-name {
-  font-size: 18px;
+  font-size: calc(18px * var(--a11y-escala, 1));
   font-weight: 700;
 }
  
@@ -217,7 +217,7 @@ body {
 .trade-status {
   background: #9ce4b4;
   color: #394b3b;
-  font-size: 11px;
+  font-size: calc(11px * var(--a11y-escala, 1));
   font-weight: 700;
   padding: 12px 9px;
   border-radius: 3px;
@@ -227,7 +227,7 @@ body {
 .trade-status.status-andamento{
   background: #FFC107;
   color: #000000;
-  font-size: 11px;
+  font-size: calc(11px * var(--a11y-escala, 1));
   font-weight: 700;
   padding: 12px 9px;
   border-radius: 3px;
@@ -237,7 +237,7 @@ body {
 .trade-status.status-concluido{
   background: #4CAF50;
   color: #ffffff;
-  font-size: 11px;
+  font-size: calc(11px * var(--a11y-escala, 1));
   font-weight: 700;
   padding: 12px 9px;
   border-radius: 3px;
@@ -247,7 +247,7 @@ body {
 .trade-status.status-inativa{
   background: #FF0000;
   color: #ffffff;
-  font-size: 11px;
+  font-size: calc(11px * var(--a11y-escala, 1));
   font-weight: 700;
   padding: 12px 9px;
   border-radius: 3px;
@@ -257,7 +257,7 @@ body {
 .trade-status.status-ativa{
   background: #33A8E2;
   color: #ffffff;
-  font-size: 11px;
+  font-size: calc(11px * var(--a11y-escala, 1));
   font-weight: 700;
   padding: 12px 9px;
   border-radius: 3px;
@@ -280,7 +280,7 @@ body {
   padding: 12px 24px;
   background: #FF0000;
   color: white;
-  font-size: 17px;
+  font-size: calc(17px * var(--a11y-escala, 1));
   font-weight: 600;
   border-radius: 120px;
   display: flex;
@@ -347,11 +347,11 @@ body::after {
 /* Desktop Large */
 @media (min-width: 1024px) {
   .profile h1 {
-    font-size: 36px;
+    font-size: calc(36px * var(--a11y-escala, 1));
   }
   .logout-btn {
     width: 1200px;        /* Define um tamanho fixo menor para o PC */
-    font-size: 15px;     /* Opcional: diminui um pouco a fonte no desktop */
+    font-size: calc(15px * var(--a11y-escala, 1));     /* Opcional: diminui um pouco a fonte no desktop */
     padding: 15px 24px;  /* Opcional: botão levemente mais fino */
   }
  
@@ -375,6 +375,6 @@ body::after {
  
  
   .amount {
-    font-size: 24px;
+    font-size: calc(24px * var(--a11y-escala, 1));
   }
 }

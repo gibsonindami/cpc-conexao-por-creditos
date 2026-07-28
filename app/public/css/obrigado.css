@@ -90,7 +90,7 @@ body {
 }
 
 .hero-text h1 {
-  font-size: 26px;
+  font-size: calc(26px * var(--a11y-escala, 1));
   font-weight: 700;
   letter-spacing: 1px;
   line-height: 1.3;
@@ -126,7 +126,7 @@ body {
   top: 0;
 }
 .content h2 {
-  font-size: 16px;
+  font-size: calc(16px * var(--a11y-escala, 1));
   font-weight: 600;
   margin-bottom: 45px;
 }
@@ -139,7 +139,7 @@ body {
   border-radius: 25px;
   cursor: pointer;
   font-weight: 600;
-  font-size: 14px;
+  font-size: calc(14px * var(--a11y-escala, 1));
   transition: 0.3s;
 }
 
@@ -154,7 +154,7 @@ body {
     max-width: 100%;
   }
   .hero-text h1 {
-    font-size: 36px;
+    font-size: calc(36px * var(--a11y-escala, 1));
   }
   .content {
     max-width: 450px;
@@ -163,7 +163,7 @@ body {
 
 @media (min-width: 1024px) {
   .hero-text h1 {
-    font-size: 40px;
+    font-size: calc(40px * var(--a11y-escala, 1));
   }
   .content {
     max-width: 500px;

@@ -63,14 +63,14 @@ html, body {
 }
  
 .boas-vindas h2 {
-  font-size: 23px;
+  font-size: calc(23px * var(--a11y-escala, 1));
   text-align: center;
   margin-bottom: 10px;
 }
  
 .boas-vindas p {
   text-align: left;
-  font-size: 14px;
+  font-size: calc(14px * var(--a11y-escala, 1));
   line-height: 1.5;
 }
  
@@ -128,14 +128,14 @@ html, body {
 }
  
 .icone-label {
-  font-size: 13px;
+  font-size: calc(13px * var(--a11y-escala, 1));
   font-weight: 600;
   color: #1a1a1a;
   text-align: center;
 }
  
 .icone-desc {
-  font-size: 11px;
+  font-size: calc(11px * var(--a11y-escala, 1));
   color: #888;
   text-align: center;
   line-height: 1.4;
@@ -203,7 +203,7 @@ html, body {
  
 #conteudo-aba p {
   padding: 10px;
-  font-size: 15px;
+  font-size: calc(15px * var(--a11y-escala, 1));
   line-height: 1.25;
   color: black;
 }
@@ -231,7 +231,7 @@ html, body {
 .card h3 { margin-top: 15px; }
  
 .card p {
-  font-size: 14px;
+  font-size: calc(14px * var(--a11y-escala, 1));
   color: #555;
 }
  
@@ -252,7 +252,7 @@ footer img {
   text-decoration: none;
   color: black;
   margin-top: 5px;
-  font-size: 14px;
+  font-size: calc(14px * var(--a11y-escala, 1));
 }
  
 .acao-principal {
@@ -263,7 +263,7 @@ footer img {
 }
 
 .acao-principal__titulo {
-  font-size: 22px;
+  font-size: calc(22px * var(--a11y-escala, 1));
   color: #184c3b;
   margin-bottom: 20px;
 }
@@ -296,19 +296,19 @@ footer img {
 .acao-card--trocar:hover { border-color: #2a7d63; }
 
 .acao-card__icone {
-  font-size: 34px;
+  font-size: calc(34px * var(--a11y-escala, 1));
   margin-bottom: 10px;
 }
 
 .acao-card__titulo {
   font-weight: 700;
-  font-size: 18px;
+  font-size: calc(18px * var(--a11y-escala, 1));
   color: #184c3b;
   margin-bottom: 8px;
 }
 
 .acao-card__desc {
-  font-size: 13.5px;
+  font-size: calc(13.5px * var(--a11y-escala, 1));
   color: #555;
   line-height: 1.5;
 }
@@ -316,11 +316,11 @@ footer img {
 /* ── CELULARES PEQUENOS ── */
 @media screen and (max-width: 480px) {
   .side-menu { width: 180px; padding: 15px; }
-  .boas-vindas h2 { font-size: 18px; }
-  .boas-vindas p { font-size: 12px; }
+  .boas-vindas h2 { font-size: calc(18px * var(--a11y-escala, 1)); }
+  .boas-vindas p { font-size: calc(12px * var(--a11y-escala, 1)); }
   .icone img { width: 50px; height: 50px; }
   footer { padding: 10px; }
-  .footer-links a { font-size: 12px; }
+  .footer-links a { font-size: calc(12px * var(--a11y-escala, 1)); }
   .card { width: 100%; }
   .mobile-only { display: block; }
   .desktop-only { display: none; }
@@ -386,7 +386,7 @@ footer img {
   }
  
   .boas-vindas h2 {
-    font-size: 35px;
+    font-size: calc(35px * var(--a11y-escala, 1));
     text-align: left;
     color: #fff;
     margin-bottom: 10px;
@@ -394,7 +394,7 @@ footer img {
   }
  
   .boas-vindas p {
-    font-size: 15px;
+    font-size: calc(15px * var(--a11y-escala, 1));
     color: #fff;
     line-height: 1.6;
     max-width: 450px;
@@ -410,7 +410,7 @@ footer img {
     color: #065f46;
     border-radius: 20px;
     text-decoration: none;
-    font-size: 13px;
+    font-size: calc(13px * var(--a11y-escala, 1));
     font-weight: 600;
     pointer-events: all;
     transition: background .2s, color .2s;

@@ -127,14 +127,14 @@
       <section class="card" style="grid-column:2/4;grid-row:2/3">
         <section class="sec-title">
           anúncios pendentes
-          <span style="font-size:11px;background:#faeeda;color:#633806;padding:2px 8px;border-radius:20px;font-weight:500">
+          <span style="font-size: calc(11px * var(--a11y-escala, 1));background:#faeeda;color:#633806;padding:2px 8px;border-radius:20px;font-weight:500">
             <%= pendentes.length %> aguardando
           </span>
         </section>
         <% pendentes.slice(0,3).forEach(function(a) { %>
           <section class="pending-item">
             <section class="pending-icon" style="background:#e1f5ee">
-              <span style="font-size:18px">
+              <span style="font-size: calc(18px * var(--a11y-escala, 1))">
                 <% if(a.categoria === 'alimentos') { %>🥦<% } else if(a.categoria === 'infantil') { %>🧒<% } else { %>🔧<% } %>
               </span>
             </section>
@@ -153,7 +153,7 @@
           </section>
         <% }) %>
         <% if (pendentes.length === 0) { %>
-          <p style="font-size:13px;color:#aaa;text-align:center;padding:1rem 0">Nenhum anúncio pendente</p>
+          <p style="font-size: calc(13px * var(--a11y-escala, 1));color:#aaa;text-align:center;padding:1rem 0">Nenhum anúncio pendente</p>
         <% } %>
       </section>
 
@@ -177,8 +177,8 @@
           <section class="cat-track"><section class="cat-fill" style="--cat-width: <%= catOutros %>%; background: #b4b2a9"></section></section>
         </section>
         <section style="margin-top:1rem;border-top:0.5px solid rgba(0,0,0,.07);padding-top:10px">
-          <p style="font-size:11px;color:#888">total de anúncios</p>
-          <p style="font-size:22px;font-weight:600;color:#1a1a1a"><%= totalAnuncios.toLocaleString('pt-BR') %></p>
+          <p style="font-size: calc(11px * var(--a11y-escala, 1));color:#888">total de anúncios</p>
+          <p style="font-size: calc(22px * var(--a11y-escala, 1));font-weight:600;color:#1a1a1a"><%= totalAnuncios.toLocaleString('pt-BR') %></p>
         </section>
       </section>
 
@@ -197,7 +197,7 @@
           </section>
         <% }) %>
         <% if (ultimasTrocas.length === 0) { %>
-          <p style="font-size:13px;color:#aaa;text-align:center;padding:.5rem 0">Nenhuma troca ainda</p>
+          <p style="font-size: calc(13px * var(--a11y-escala, 1));color:#aaa;text-align:center;padding:.5rem 0">Nenhuma troca ainda</p>
         <% } %>
       </section>
 
@@ -238,7 +238,7 @@
             </section>
             <section>
               <p class="bottom-label">doações acumuladas</p>
-              <p class="bottom-value" style="font-size:24px">
+              <p class="bottom-value" style="font-size: calc(24px * var(--a11y-escala, 1))">
                 500
               </p>
             </section>

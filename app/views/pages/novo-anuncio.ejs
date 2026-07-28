@@ -9,19 +9,19 @@
   <style>
     .form-anuncio { max-width: 480px; margin: 40px auto; padding: 32px; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.10); }
     .form-anuncio h2 { color: #028166; margin-bottom: 24px; text-align: center; }
-    .form-anuncio label { display: block; font-size: 13px; font-weight: 600; color: #302f2f; margin-bottom: 4px; margin-top: 14px; }
+    .form-anuncio label { display: block; font-size: calc(13px * var(--a11y-escala, 1)); font-weight: 600; color: #302f2f; margin-bottom: 4px; margin-top: 14px; }
     .form-anuncio input, .form-anuncio select, .form-anuncio textarea {
       width: 100%; padding: 10px 14px; border: 1.5px solid #ccc; border-radius: 8px;
-      font-family: Poppins, sans-serif; font-size: 14px; box-sizing: border-box; transition: border 0.2s;
+      font-family: Poppins, sans-serif; font-size: calc(14px * var(--a11y-escala, 1)); box-sizing: border-box; transition: border 0.2s;
     }
     .form-anuncio input:focus, .form-anuncio select:focus, .form-anuncio textarea:focus { border-color: #87B79F; outline: none; }
     .form-anuncio button[type=submit] {
       width: 100%; margin-top: 22px; padding: 13px; background: #109e57; color: #fff;
-      border: none; border-radius: 10px; font-size: 16px; font-weight: 700; cursor: pointer; transition: background 0.2s;
+      border: none; border-radius: 10px; font-size: calc(16px * var(--a11y-escala, 1)); font-weight: 700; cursor: pointer; transition: background 0.2s;
     }
     .form-anuncio button[type=submit]:hover { background: #388e3c; }
-    .msg-erro { background: #fdecea; color: #c62828; border-radius: 8px; padding: 12px; margin-bottom: 16px; font-size: 14px; }
-    .msg-sucesso { background: #e8f5e9; color: #2e7d32; border-radius: 8px; padding: 12px; margin-bottom: 16px; font-size: 14px; }
+    .msg-erro { background: #fdecea; color: #c62828; border-radius: 8px; padding: 12px; margin-bottom: 16px; font-size: calc(14px * var(--a11y-escala, 1)); }
+    .msg-sucesso { background: #e8f5e9; color: #2e7d32; border-radius: 8px; padding: 12px; margin-bottom: 16px; font-size: calc(14px * var(--a11y-escala, 1)); }
     body { background: #f5f5f5; font-family: Poppins, sans-serif; }
   </style>
 </head>
@@ -30,7 +30,7 @@
 
   <section class="form-anuncio">
     <h2>Cadastrar Anúncio</h2>
-    <p style="text-align:center;color:#666;font-size:13px;margin-bottom:20px">Ofereça um produto ou serviço para a comunidade</p>
+    <p style="text-align:center;color:#666;font-size: calc(13px * var(--a11y-escala, 1));margin-bottom:20px">Ofereça um produto ou serviço para a comunidade</p>
 
     <% if (erro) { %>
       <section class="msg-erro">⚠️ <%= erro %></section>
@@ -66,12 +66,12 @@
 
       <label for="whatsapp">WhatsApp para contato</label>
       <input type="tel" id="whatsapp" name="whatsapp" placeholder="Ex: +55 11 99999-9999" value="<%= valores.whatsapp || '' %>">
-      <small style="font-size:11px;color:#888;margin-top:2px;display:block">O cliente usará este número para combinar a troca</small>
+      <small style="font-size: calc(11px * var(--a11y-escala, 1));color:#888;margin-top:2px;display:block">O cliente usará este número para combinar a troca</small>
 
       <button type="submit">Publicar Anúncio</button>
     </form>
 
-    <p style="text-align:center;margin-top:16px;font-size:13px"><a href="/todos" style="color:#4caf50">← Ver todos os anúncios</a></p>
+    <p style="text-align:center;margin-top:16px;font-size: calc(13px * var(--a11y-escala, 1))"><a href="/todos" style="color:#4caf50">← Ver todos os anúncios</a></p>
   </section>
 
   <%- include('../partials/acessibilidade.ejs') %>

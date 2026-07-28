@@ -50,7 +50,7 @@
 .desktop-menu ul li a {
     text-decoration: none;
     color: #f2f7f4;
-    font-size: 15px;
+    font-size: calc(15px * var(--a11y-escala, 1));
     letter-spacing: 1px;
     font-weight: 500;
     position: relative;
@@ -103,7 +103,7 @@
 .login {
     text-decoration: none;
     color: #87B79F;
-    font-size: 13px;
+    font-size: calc(13px * var(--a11y-escala, 1));
     letter-spacing: 1px;
     font-weight: 600;
     transition: color 0.3s;
@@ -122,7 +122,7 @@
 .perfil-icon {
     text-decoration: none;
     color: #87B79F;
-    font-size: 13px;
+    font-size: calc(13px * var(--a11y-escala, 1));
     letter-spacing: 1px;
     font-weight: 600;
     display: flex;
@@ -248,7 +248,7 @@
 
     .mobile-login {
         display: block;
-        font-size: 14px;
+        font-size: calc(14px * var(--a11y-escala, 1));
         color: #87B79F;
         font-weight: 600;
         text-decoration: none;
