@@ -1,0 +1,93 @@
+{
+  "cadastro": {
+    "titulo": "Cadastro",
+    "descricao": "Criar uma conta no CPC é gratuito e permite acessar todas as funcionalidades da plataforma.",
+    "passos": [
+      "Clique em 'Login'.",
+      "Clique em 'Criar Conta'.",
+      "Preencha seu nome, e-mail e senha.",
+      "Confirme o cadastro."
+    ]
+  },
+
+  "login": {
+    "titulo": "Login",
+    "descricao": "Após criar sua conta, utilize seu e-mail e senha para acessar o sistema."
+  },
+
+  "inicio": {
+    "titulo": "Página Inicial",
+    "descricao": "Na página inicial você encontra informações sobre o CPC, estatísticas da comunidade e acesso às principais funcionalidades."
+  },
+
+  "anuncios": {
+    "titulo": "Anúncios",
+    "descricao": "Os anúncios permitem divulgar produtos, serviços ou doações para outros usuários.",
+    "passos": [
+      "Faça login.",
+      "Acesse 'Novo Anúncio'.",
+      "Preencha as informações.",
+      "Clique em publicar."
+    ]
+  },
+
+  "categorias": {
+    "titulo": "Categorias",
+    "descricao": "Os anúncios são organizados nas categorias Profissionais, Alimentos e Infantil para facilitar a busca."
+  },
+
+  "trocas": {
+    "titulo": "Trocas",
+    "descricao": "Você pode solicitar um item ou serviço disponível e combinar a troca diretamente com o anunciante."
+  },
+
+  "doacoes": {
+    "titulo": "Doações",
+    "descricao": "O CPC também permite doar produtos ou serviços sem esperar nada em troca."
+  },
+
+  "creditos": {
+    "titulo": "Créditos",
+    "descricao": "Os créditos fazem parte do funcionamento da plataforma e são utilizados durante as trocas entre usuários."
+  },
+
+  "perfil": {
+    "titulo": "Perfil",
+    "descricao": "Na página da conta é possível visualizar seus dados e acompanhar suas trocas."
+  },
+
+  "contato": {
+    "titulo": "Contato",
+    "descricao": "Ao escolher um anúncio você pode entrar em contato com o anunciante para combinar os detalhes da troca ou da retirada."
+  },
+
+  "como_funciona": {
+    "titulo": "Como Funciona",
+    "descricao": "O CPC conecta pessoas interessadas em doar, trocar produtos e oferecer serviços utilizando um sistema de créditos."
+  },
+
+  "seguranca": {
+    "titulo": "Segurança",
+    "descricao": "Nunca compartilhe sua senha ou dados bancários. Combine as trocas diretamente com o outro usuário e utilize a plataforma de forma responsável."
+  },
+
+  "servicos": {
+    "titulo": "Serviços",
+    "descricao": "Além de produtos, é possível anunciar serviços profissionais para a comunidade."
+  },
+
+  "avaliacoes": {
+    "titulo": "Avaliações",
+    "descricao": "Após concluir uma troca, os usuários podem avaliar a experiência para fortalecer a confiança na comunidade."
+  },
+
+  "conta": {
+    "titulo": "Minha Conta",
+    "descricao": "Na área da conta você pode acompanhar suas informações, anúncios e histórico de utilização da plataforma."
+  },
+
+  "faq": {
+    "titulo": "Perguntas Frequentes",
+    "descricao": "Caso tenha dúvidas, o assistente virtual pode ajudar com informações sobre cadastro, login, anúncios, trocas, créditos, doações e funcionamento do CPC."
+  }
+}

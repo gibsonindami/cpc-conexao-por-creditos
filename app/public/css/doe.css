@@ -77,6 +77,53 @@ body {
 
 .btn-doe:hover { background: #0c7f45; }
 
+.beneficios{
+    max-width:1100px;
+    margin:70px auto;
+    text-align:center;
+}
+
+.beneficios h2{
+    font-size:28px;
+    color:#0f4d44;
+    margin-bottom:45px;
+}
+
+.beneficios ul{
+    list-style:none;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+    padding:0;
+}
+
+.beneficios li{
+    background:#fff;
+    border-radius:18px;
+    padding:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.beneficios li:hover{
+    transform:translateY(-6px);
+}
+
+.beneficios img{
+    width:65px;
+    margin-bottom:15px;
+}
+
+.beneficios h3{
+    color:#0f4d44;
+    margin-bottom:10px;
+}
+
+.beneficios p{
+    color:#666;
+    line-height:1.6;
+}
+
 .doe-nota {
   max-width: 640px;
   margin: 10px auto 0;

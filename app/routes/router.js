@@ -4,7 +4,8 @@ const { body, validationResult } = require("express-validator");
 const usuariosModel = require("../models/models");
 const anunciosModel = require("../models/anunciosModel");
 const trocasModel = require("../models/trocasModel");
-const iaController = require("../controllers/iaController");
+const aiService = require("../ai/aiService");
+const historyManager = require("../ai/historyManager");
 
 const autenticado = (req, res, next) => {
   if (req.session && req.session.usuario) return next();
@@ -135,10 +136,13 @@ router.post("/novo-anuncio",
       });
       res.render("pages/novo-anuncio", { erro: null, sucesso: "Anúncio cadastrado com sucesso!", valores: {} });
     } catch (err) {
-      res.render("pages/novo-anuncio", { erro: "Erro ao cadastrar. Tente novamente.", sucesso: null, valores: req.body });
+         res.render("pages/novo-anuncio", {
+        erro: "Erro ao cadastrar. Tente novamente.",
+        sucesso: null,
+        valores: req.body
+      });
     }
-  }
-);
+});
 
 router.get("/api/stats", (req, res) => {
   const stats = trocasModel.getStats();
@@ -154,21 +158,94 @@ router.get("/api/anuncios", (req, res) => {
   res.json(anunciosModel.findAll({ categoria, busca }));
 });
 
-// Chat com IA - tira dúvidas dos usuários sobre o funcionamento do site
+// ==========================
+// CHAT IA (Gemini)
+// ==========================
+
 router.post("/api/chat", async (req, res) => {
-  try {
-    const { mensagem, historico } = req.body;
-    if (!mensagem || typeof mensagem !== "string" || !mensagem.trim()) {
-      return res.status(400).json({ erro: "Mensagem inválida." });
+
+    try {
+
+        const mensagem = String(
+
+            req.body.mensagem || ""
+
+        ).trim();
+
+        if (!mensagem) {
+
+            return res.status(400).json({
+
+                resposta: "Digite uma pergunta."
+
+            });
+
+        }
+
+        const conversationId =
+
+            req.session?.usuario?.id ||
+
+            req.sessionID ||
+
+            req.ip;
+
+        const historico = historyManager.get(
+
+            conversationId
+
+        );
+
+        const resposta = await aiService.answer(
+
+            mensagem,
+
+            historico
+
+        );
+
+        historyManager.add(
+
+            conversationId,
+
+            "user",
+
+            mensagem
+
+        );
+
+        historyManager.add(
+
+            conversationId,
+
+            "assistant",
+
+            resposta
+
+        );
+
+        return res.json({
+
+            resposta
+
+        });
+
     }
-    const resposta = await iaController.responderDuvida(mensagem, Array.isArray(historico) ? historico : []);
-    res.json({ resposta });
-  } catch (err) {
-    console.error("Erro no chat de IA:", err);
-    res.status(500).json({
-      resposta: "Desculpe, tive um problema para responder agora. Tente novamente em instantes.",
-    });
-  }
+
+    catch (erro) {
+
+        console.error("Erro IA:", erro);
+
+        return res.status(500).json({
+
+            resposta:
+
+            "Desculpe, ocorreu um erro ao consultar o assistente."
+
+        });
+
+    }
+
 });
 
 router.get("/avaliacao", (req, res) => res.render("pages/avaliacao"));

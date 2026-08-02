@@ -1,10 +1,10 @@
 const express = require("express");
 const session = require("express-session");
 const app = express();
-const multer = require('multer');
-const sharp = require('sharp');
-const path = require('path');
-const fs = require('fs');
+const multer = require("multer");
+const sharp = require("sharp");
+const path = require("path");
+const fs = require("fs");
 require("dotenv").config();
 
 app.use(express.urlencoded({ extended: true }));

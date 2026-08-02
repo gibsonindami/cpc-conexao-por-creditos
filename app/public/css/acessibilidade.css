@@ -1,11 +1,12 @@
- WIDGET DE ACESSIBILIDADE - CPC (Conexão por Créditos)
+/* =====================================================================
+   WIDGET DE ACESSIBILIDADE - CPC (Conexão por Créditos)
    Botão flutuante com: Alto Contraste, Modo Claro/Escuro, Aumentar/Diminuir fonte
    ===================================================================== */
- 
+
 :root {
-  --a11y-escala: 1; /* multiplicador global de fonte, usado pelos arquivos CSS do site */
+  --a11y-escala: 1; /* multiplicador global de fonte, usado por todo o CSS do site */
 }
- 
+
 /* ---------- Botão flutuante ---------- */
 #a11y-btn {
   position: fixed;
@@ -25,11 +26,11 @@
   box-shadow: 0 4px 14px rgba(0,0,0,0.25);
   transition: transform 0.2s ease, background 0.2s ease;
 }
- 
+
 #a11y-btn:hover { background: #2a7d63; transform: scale(1.06); }
 #a11y-btn:focus-visible { outline: 3px solid #ffd166; outline-offset: 2px; }
 #a11y-btn svg { width: 28px; height: 28px; }
- 
+
 /* ---------- Painel ---------- */
 #a11y-panel {
   position: fixed;
@@ -46,9 +47,9 @@
   display: none;
   font-family: Arial, Helvetica, sans-serif;
 }
- 
+
 #a11y-panel.aberto { display: block; }
- 
+
 #a11y-panel h2 {
   font-size: 16px;
   margin: 0 0 12px 0;
@@ -57,7 +58,7 @@
   align-items: center;
   justify-content: space-between;
 }
- 
+
 #a11y-close {
   background: transparent;
   border: none;
@@ -68,23 +69,18 @@
   padding: 4px;
 }
 #a11y-close:hover { color: #000; }
- 
-.a11y-grupo {
-  margin-bottom: 14px;
-}
- 
+
+.a11y-grupo { margin-bottom: 14px; }
+
 .a11y-grupo p {
   font-size: 13px;
   font-weight: bold;
   margin: 0 0 6px 0;
   color: #333;
 }
- 
-.a11y-linha {
-  display: flex;
-  gap: 8px;
-}
- 
+
+.a11y-linha { display: flex; gap: 8px; }
+
 .a11y-linha button,
 .a11y-toggle {
   flex: 1;
@@ -97,15 +93,15 @@
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease;
 }
- 
+
 .a11y-linha button:hover,
 .a11y-toggle:hover { background: #e6f3ee; }
- 
+
 .a11y-toggle[aria-pressed="true"] {
   background: #184c3b;
   color: #fff;
 }
- 
+
 #a11y-reset {
   width: 100%;
   margin-top: 4px;
@@ -118,136 +114,103 @@
   cursor: pointer;
 }
 #a11y-reset:hover { background: #f2f2f2; }
- 
+
 /* =====================================================================
-   ESTADOS GLOBAIS APLICADOS NO <html>
-   ===================================================================== */
- 
-/* ---- Tamanho da fonte ----
+   TAMANHO DA FONTE
    Define a variável --a11y-escala, usada por TODAS as declarações
    font-size: calc(Npx * var(--a11y-escala, 1)) espalhadas pelo CSS do
-   site (conversão feita em todos os arquivos public/css). Isso garante
-   que absolutamente toda fonte cresça/diminua na mesma proporção, sem
-   deslocar layout (apenas o tamanho do texto muda, não larguras/paddings). */
+   site. Garante que toda fonte cresça/diminua na mesma proporção, sem
+   deslocar o layout (só o texto muda de tamanho).
+   ===================================================================== */
 html.a11y-font-1 { --a11y-escala: 1;    font-size: 100%; }
 html.a11y-font-2 { --a11y-escala: 1.12; font-size: 112%; }
 html.a11y-font-3 { --a11y-escala: 1.24; font-size: 124%; }
 html.a11y-font-4 { --a11y-escala: 1.36; font-size: 136%; }
 html.a11y-font-5 { --a11y-escala: 1.48; font-size: 148%; }
- 
-/* ---- Modo escuro ----
-   Aplicado como filtro no próprio <html> (não no <body>). Isso é
-   proposital: o <html> é o "containing block" inicial da página, então
-   filtrar por ele não altera o comportamento de elementos
-   position:fixed (header, rodapé, menu lateral etc. usados no site).
-   Se o filtro fosse aplicado no <body>, elementos fixos passariam a se
-   posicionar em relação ao <body> em vez da tela, quebrando o layout —
-   foi esse o motivo do modo escuro parecer "não funcionar". */
-html.a11y-dark {
-  background: #121212;
-  filter: invert(1) hue-rotate(180deg);
+
+/* =====================================================================
+   MODO ESCURO (real, não é um filtro/inversão da tela)
+   ---------------------------------------------------------------------
+   Em vez de usar filter:invert() (que também inverte as cores da marca,
+   fotos e ícones), aqui trocamos apenas os tons de branco/preto/cinza
+   usados no site por equivalentes escuros. As cores da marca (verde,
+   laranja, vermelho, azul etc.) permanecem exatamente como estão — é
+   o mesmo princípio usado em sistemas de acessibilidade como o do
+   Sicredi: o "colorido" da marca não muda, só o fundo/texto neutro.
+   A lista completa e específica de cada página está no arquivo
+   modo-escuro-gerado.css (gerado automaticamente a partir do CSS do
+   site - ver script gerar_modo_escuro.py).
+   ===================================================================== */
+
+/* Base/fallback: garante fundo escuro mesmo em elementos não cobertos
+   pelo arquivo gerado */
+html.a11y-dark,
+html.a11y-dark body {
+  background-color: #101010;
+  color: #e5e5e5;
 }
-/* Evita inverter imagens, vídeos e ícones (ficariam com cores estranhas) */
-html.a11y-dark img,
-html.a11y-dark svg,
-html.a11y-dark video,
-html.a11y-dark picture,
-html.a11y-dark iframe {
-  filter: invert(1) hue-rotate(180deg);
+
+/* O próprio widget de acessibilidade e o chat mantêm suas cores de marca
+   (verde), só trocando o painel branco por um painel escuro legível */
+html.a11y-dark #a11y-panel {
+  background: #1b1b1b;
+  color: #e5e5e5;
 }
-/* O próprio widget de acessibilidade e o chat não devem ser invertidos
-   (o filtro do <html> já os afeta; aplicando o mesmo filtro de novo
-   sobre eles, o efeito se cancela e eles voltam à aparência normal) */
-html.a11y-dark #a11y-btn,
-html.a11y-dark #a11y-panel,
-html.a11y-dark #chatia-btn,
-html.a11y-dark #chatia-panel {
-  filter: invert(1) hue-rotate(180deg);
+html.a11y-dark #a11y-panel h2 { color: #6fd7ae; }
+html.a11y-dark #a11y-panel p { color: #cfcfcf; }
+html.a11y-dark .a11y-linha button,
+html.a11y-dark .a11y-toggle {
+  background: #1b1b1b;
+  color: #6fd7ae;
+  border-color: #2a7d63;
 }
- 
-/* ---- Alto contraste (preto/amarelo) ----
-   Duas camadas para garantir efeito visível mesmo se alguma página
-   tiver CSS muito específico: (1) um filtro no <html>, que sempre
-   funciona porque atua sobre o pixel já renderizado, imune a conflitos
-   de especificidade do CSS; (2) uma sobrescrita explícita de cores
-   preto/amarelo para os elementos comuns de texto, para o padrão de
-   alto contraste ficar mais fiel ao esperado (WCAG). */
-html.a11y-contraste {
-  filter: grayscale(1) contrast(1.6);
+html.a11y-dark .a11y-linha button:hover,
+html.a11y-dark .a11y-toggle:hover { background: #22332c; }
+html.a11y-dark .a11y-toggle[aria-pressed="true"] {
+  background: #2a7d63;
+  color: #fff;
 }
+html.a11y-dark #a11y-reset { color: #aaaaaa; border-color: #555; }
+html.a11y-dark #a11y-close { color: #cfcfcf; }
+
+html.a11y-dark #chatia-panel { background: #1b1b1b; color: #e5e5e5; }
+html.a11y-dark #chatia-mensagens { background: #141414; }
+html.a11y-dark .chatia-msg.bot { background: #22332c; color: #e5e5e5; }
+html.a11y-dark .chatia-sugestoes { background: #141414; }
+html.a11y-dark .chatia-sugestao { background: #1b1b1b; color: #6fd7ae; border-color: #2a7d63; }
+html.a11y-dark #chatia-form { background: #1b1b1b; border-top-color: #333; }
+html.a11y-dark #chatia-input { background: #101010; color: #e5e5e5; border-color: #444; }
+
+/* =====================================================================
+   ALTO CONTRASTE
+   ---------------------------------------------------------------------
+   Voltado para baixa visão: torna o TEXTO maior e mais forte (negrito),
+   sem repintar fundos/bordas e sem esconder ou apagar imagens. Não é
+   uma troca de tema (isso já é papel do modo claro/escuro) — o alto
+   contraste apenas reforça a legibilidade por cima do tema atual,
+   seja ele claro ou escuro.
+   ===================================================================== */
+
+/* Todo texto fica em negrito, sem trocar nenhuma cor de fundo/borda */
 html.a11y-contraste body,
 html.a11y-contraste body * {
-  background-color: #000000 !important;
-  color: #ffff00 !important;
-  border-color: #ffff00 !important;
-  box-shadow: none !important;
-  text-shadow: none !important;
+  font-weight: 700 !important;
 }
-html.a11y-contraste a,
-html.a11y-contraste button {
-  color: #ffff00 !important;
+
+/* Links e botões ganham sublinhado extra para facilitar a identificação,
+   sem mudar a cor deles */
+html.a11y-contraste a {
   text-decoration: underline !important;
 }
-html.a11y-contraste img,
-html.a11y-contraste svg,
-html.a11y-contraste video {
-  opacity: 0.9;
-}
-/* Widget de acessibilidade e chat mantêm cores próprias, sem herdar o
-   filtro/override de alto contraste do restante da página */
-html.a11y-contraste #a11y-btn {
-  filter: none;
-  background-color: #184c3b !important;
-  color: #fff !important;
-  border-color: transparent !important;
-}
-html.a11y-contraste #a11y-panel {
-  filter: none;
-  background-color: #ffffff !important;
-  color: #1c1c1c !important;
-}
-html.a11y-contraste #a11y-panel h2,
-html.a11y-contraste #a11y-panel p {
-  background-color: transparent !important;
-  color: #184c3b !important;
-}
-html.a11y-contraste .a11y-linha button,
-html.a11y-contraste .a11y-toggle,
-html.a11y-contraste #a11y-reset {
-  background-color: #ffffff !important;
-  color: #184c3b !important;
-  border-color: #184c3b !important;
-}
-html.a11y-contraste .a11y-toggle[aria-pressed="true"] {
-  background-color: #184c3b !important;
-  color: #ffffff !important;
-}
-html.a11y-contraste #chatia-btn {
-  filter: none;
-  background-color: #109e57 !important;
-  color: #fff !important;
-  border-color: transparent !important;
-}
-html.a11y-contraste #a11y-btn svg,
-html.a11y-contraste #chatia-btn svg {
-  color: #fff !important;
-}
-html.a11y-contraste #chatia-panel {
-  filter: none;
-  background-color: #ffffff !important;
-  color: #1c1c1c !important;
-}
-/* Se os dois modos estiverem ativos ao mesmo tempo, alto contraste manda
-   (evita somar dois filtros e gerar cores imprevisíveis) */
-html.a11y-contraste.a11y-dark {
-  filter: grayscale(1) contrast(1.6);
-}
-html.a11y-contraste.a11y-dark img,
-html.a11y-contraste.a11y-dark svg,
-html.a11y-contraste.a11y-dark video {
-  filter: none;
-}
- 
+
+/* Fonte um pouco maior do que o nível de tamanho já selecionado no
+   painel, para reforçar ainda mais a leitura */
+html.a11y-contraste.a11y-font-1 { --a11y-escala: 1.15; font-size: 115%; }
+html.a11y-contraste.a11y-font-2 { --a11y-escala: 1.29; font-size: 129%; }
+html.a11y-contraste.a11y-font-3 { --a11y-escala: 1.43; font-size: 143%; }
+html.a11y-contraste.a11y-font-4 { --a11y-escala: 1.56; font-size: 156%; }
+html.a11y-contraste.a11y-font-5 { --a11y-escala: 1.70; font-size: 170%; }
+
 @media (max-width: 480px) {
   #a11y-panel { right: 16px; bottom: 84px; width: calc(100vw - 32px); }
   #a11y-btn { right: 16px; bottom: 16px; }

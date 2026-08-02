@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/css/acessibilidade.css">
-
+<link rel="stylesheet" href="/css/modo-escuro.css">
 <!-- BOTÃO FLUTUANTE DE ACESSIBILIDADE -->
 <button id="a11y-btn" aria-haspopup="true" aria-expanded="false" aria-controls="a11y-panel" title="Acessibilidade" type="button">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -19,27 +19,27 @@
     <button id="a11y-close" type="button" aria-label="Fechar painel de acessibilidade">✕</button>
   </h2>
 
-  <div class="a11y-grupo">
+  <section class="a11y-grupo">
     <p>Contraste</p>
-    <div class="a11y-linha">
+    <section class="a11y-linha">
       <button class="a11y-toggle" id="a11y-toggle-contraste" type="button" aria-pressed="false">Alto contraste</button>
-    </div>
-  </div>
+    </section>
+  </section>
 
-  <div class="a11y-grupo">
+  <section class="a11y-grupo">
     <p>Tema</p>
-    <div class="a11y-linha">
+    <section class="a11y-linha">
       <button class="a11y-toggle" id="a11y-toggle-tema" type="button" aria-pressed="false">🌙 Modo escuro</button>
-    </div>
-  </div>
+    </section>
+  </section>
 
-  <div class="a11y-grupo">
+  <section class="a11y-grupo">
     <p>Tamanho da fonte</p>
-    <div class="a11y-linha">
+    <section class="a11y-linha">
       <button id="a11y-font-menos" type="button" aria-label="Diminuir fonte">A−</button>
       <button id="a11y-font-mais" type="button" aria-label="Aumentar fonte">A+</button>
-    </div>
-  </div>
+    </section>
+  </section>
 
   <button id="a11y-reset" type="button">Restaurar padrão</button>
 </section>
