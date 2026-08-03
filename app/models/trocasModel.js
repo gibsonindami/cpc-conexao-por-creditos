@@ -66,6 +66,7 @@ const trocasModel = {
       foto: dados.foto || '../img/img malcon.png',
       solicitanteNome: dados.solicitanteNome || '',
       solicitanteEmail: dados.solicitanteEmail || '',
+      pontos: parseInt(dados.pontos) || 0,
       mensagem: dados.mensagem || '',
       status: 'pendente',
       dataSolicitacao: new Date().toISOString(),

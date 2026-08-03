@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Novo Anúncio - CPC</title>
   <link rel="stylesheet" href="/css/login.css">
+  <link rel="icon" href="../img/logo-black.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
   <style>
     .form-anuncio { max-width: 480px; margin: 40px auto; padding: 32px; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.10); }
@@ -22,14 +23,30 @@
     .form-anuncio button[type=submit]:hover { background: #388e3c; }
     .msg-erro { background: #fdecea; color: #c62828; border-radius: 8px; padding: 12px; margin-bottom: 16px; font-size: calc(14px * var(--a11y-escala, 1)); }
     .msg-sucesso { background: #e8f5e9; color: #2e7d32; border-radius: 8px; padding: 12px; margin-bottom: 16px; font-size: calc(14px * var(--a11y-escala, 1)); }
+    body { background: #f5f5f5; font-family: Poppins, sans-serif;
+    }
+    .btn-voltar:hover { text-decoration: underline; }
+    .campo-imagens { margin-top: 14px; }
+    .campo-imagens-preview { display: flex; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
+    .campo-imagens-preview img { width: 36px; height: 76px; object-fit: cover; border-radius: 8px; border: 1.5px solid #ccc; }
+    .msg-erro { background: #fdecea; color: #c62828; border-radius: 8px; padding: 12px; margin-bottom: 16px; font-size: calc(14px * var(--a11y-escala, 1)); }
+    .msg-sucesso { background: #e8f5e9; color: #2e7d32; border-radius: 8px; padding: 12px; margin-bottom: 16px; font-size: calc(14px * var(--a11y-escala, 1)); }
     body { background: #f5f5f5; font-family: Poppins, sans-serif; }
+
+    @media (max-width: 480px) {
+      .form-anuncio { margin: 16px auto; padding: 20px 16px; border-radius: 12px; max-width: calc(100% - 24px); }
+      .campo-imagens-preview img { width: 64px; height: 64px; }
+    }
   </style>
 </head>
 
 <body>
 
   <section class="form-anuncio">
-    <h2>Cadastrar Anúncio</h2>
+    <button type="button" class="btn-voltar" id="btnVoltar" onclick="if (document.referrer && document.referrer.indexOf(window.location.host) !== -1) { history.back(); } else { window.location.href = '/todos'; }">
+      ← Voltar
+    </button>
+    <h2>Cadastrar Anúncio</h2> 
     <p style="text-align:center;color:#666;font-size: calc(13px * var(--a11y-escala, 1));margin-bottom:20px">Ofereça um produto ou serviço para a comunidade</p>
 
     <% if (erro) { %>
@@ -39,7 +56,7 @@
       <section class="msg-sucesso">✅ <%= sucesso %> <a href="/todos">Ver anúncios</a></section>
     <% } %>
 
-    <form action="/novo-anuncio" method="POST">
+    <form action="/novo-anuncio" method="POST" enctype="multipart/form-data">
 
       <label for="titulo">Título do anúncio *</label>
       <input type="text" id="titulo" name="titulo" placeholder="Ex: Encanador, Arroz 5kg, Berço..." value="<%= valores.titulo || '' %>" required>
@@ -48,7 +65,8 @@
       <textarea id="descricao" name="descricao" rows="3" placeholder="Descreva o que está oferecendo..." required><%= valores.descricao || '' %></textarea>
 
       <label for="tipo">Tipo *</label>
-      <select id="tipo" name="tipo">
+      <select id="tipo" name="tipo" required>
+        <option value="">Selecione...</option>
         <option value="produto" <%= valores.tipo === 'produto' ? 'selected' : '' %>>Produto</option>
         <option value="servico" <%= valores.tipo === 'servico' ? 'selected' : '' %>>Serviço</option>
       </select>
@@ -65,8 +83,15 @@
       <input type="text" id="doadorLocal" name="doadorLocal" placeholder="Ex: Barueri-SP" value="<%= valores.doadorLocal || '' %>">
 
       <label for="whatsapp">WhatsApp para contato</label>
-      <input type="tel" id="whatsapp" name="whatsapp" placeholder="Ex: +55 11 99999-9999" value="<%= valores.whatsapp || '' %>">
+      <input type="tel" id="whatsapp" name="whatsapp" placeholder="Ex: +55 11 99999-9999" value="<%= valores.whatsapp || '' %>" required>
       <small style="font-size: calc(11px * var(--a11y-escala, 1));color:#888;margin-top:2px;display:block">O cliente usará este número para combinar a troca</small>
+
+<section class="campo-imagens">
+        <label for="imagens">Fotos do produto/serviço (até 3)</label>
+        <input type="file" id="imagens" name="imagens" accept="image/*" multiple>
+        <small style="font-size: calc(11px * var(--a11y-escala, 1));color:#888;margin-top:2px;display:block">JPG ou PNG, até 5MB cada. Elas aparecerão no carrossel da página do anúncio.</small>
+        <section class="campo-imagens-preview" id="previewImagens"></section>
+      </section>
 
       <button type="submit">Publicar Anúncio</button>
     </form>
@@ -76,6 +101,33 @@
 
   <%- include('../partials/acessibilidade.ejs') %>
   <%- include('../partials/chat-ia.ejs') %>
+
+  <script>
+    (function () {
+      var input = document.getElementById('imagens');
+      var preview = document.getElementById('previewImagens');
+      if (!input || !preview) return;
+
+      input.addEventListener('change', function () {
+        preview.innerHTML = '';
+        var arquivos = Array.from(input.files || []);
+
+        if (arquivos.length > 3) {
+          alert('Selecione no máximo 3 imagens.');
+          input.value = '';
+          return;
+        }
+
+        arquivos.forEach(function (arquivo) {
+          if (!arquivo.type.startsWith('image/')) return;
+          var img = document.createElement('img');
+          img.src = URL.createObjectURL(arquivo);
+          img.alt = arquivo.name;
+          preview.appendChild(img);
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>

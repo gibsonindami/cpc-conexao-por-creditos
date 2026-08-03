@@ -2,12 +2,30 @@
    WIDGET DE CHAT COM IA - CPC (Conexão por Créditos)
    ===================================================================== */
 
+/* Blindagem contra regras genéricas de <button> de outras páginas
+   (ex.: login.css não tem reset universal "* { margin:0; padding:0 }"
+   e define um "button {}" genérico com padding grande, uppercase etc.,
+   que vazava para dentro do nosso botão e o deformava/escondia). */
+#chatia-btn, #chatia-panel, #chatia-panel *, #chatia-panel *::before, #chatia-panel *::after {
+  box-sizing: border-box;
+  text-transform: none;
+  letter-spacing: normal;
+  line-height: normal;
+  margin: 0;
+}
+
 #chatia-btn {
   position: fixed;
   bottom: 24px;
   right: 92px; /* fica ao lado do botão de acessibilidade */
   width: 56px;
   height: 56px;
+  min-width: 56px;
+  min-height: 56px;
+  max-width: 56px;
+  max-height: 56px;
+  margin: 0;
+  padding: 0;
   border-radius: 50%;
   background: #109e57;
   color: #fff;
@@ -16,7 +34,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 9997;
+  z-index: 999998;
   box-shadow: 0 4px 14px rgba(0,0,0,0.25);
   transition: transform 0.2s ease, background 0.2s ease;
 }
@@ -51,7 +69,7 @@
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-  z-index: 9997;
+  z-index: 999998;
   display: none;
   flex-direction: column;
   overflow: hidden;

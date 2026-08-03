@@ -1,3 +1,11 @@
+/* Arquivo GERADO automaticamente por gerar_modo_escuro.py - nao editar a mao.
+   Mapeia cores neutras (branco/preto/cinza) do site para equivalentes escuras
+   quando o modo escuro esta ativo. Cores da marca (verde, laranja, vermelho,
+   azul etc.) e textos/bordas claros propositais sobre fundo colorido NAO
+   sao alterados. */
+
+
+/* origem: avaliacao.css */
 html.a11y-dark .card { background-color: #262626 !important; }
 html.a11y-dark .info p { color: #aaaaaa !important; }
 
@@ -10,18 +18,21 @@ html.a11y-dark .creditos { background-color: #101010 !important; }
 html.a11y-dark .creditos h3 { color: #f0f0f0 !important; }
 html.a11y-dark .creditos p { color: #cccccc !important; }
 html.a11y-dark .creditos li { color: #f0f0f0 !important; }
-html.a11y-dark .btn { color: #f0f0f0 !important; }
 html.a11y-dark .rodape { background-color: #101010 !important; }
 html.a11y-dark .institucional a { color: #f0f0f0 !important; }
 
 /* origem: conta.css */
 html.a11y-dark body { background-color: #101010 !important; color: #e6e3e4 !important; }
 html.a11y-dark .profile p { color: #bdb7bd !important; }
-html.a11y-dark .balance-card { color: #f0f0f0 !important; }
 html.a11y-dark .amount { color: #eeeeee !important; }
+html.a11y-dark .resumo-creditos__item { background-color: #101010 !important; }
+html.a11y-dark .historico-card { background-color: #101010 !important; }
+html.a11y-dark .historico-card:hover { border-color: #3d373f !important; background-color: #101010 !important; }
+html.a11y-dark .historico-card__titulo { color: #e5e5e5 !important; }
+html.a11y-dark .historico-card__data { color: #756c75 !important; }
+html.a11y-dark .historico-vazio { color: #756c75 !important; background-color: #101010 !important; }
 html.a11y-dark .trade-card, html.a11y-dark .proposal-card { background-color: #101010 !important; }
 html.a11y-dark .trade-card:hover, html.a11y-dark .proposal-card:hover { border-color: #3d373f !important; background-color: #101010 !important; }
-html.a11y-dark .trade-status.status-andamento { color: #f0f0f0 !important; }
 
 /* origem: contato-troca.css */
 html.a11y-dark body { background-color: #101010 !important; }
@@ -60,9 +71,6 @@ html.a11y-dark .doe-nota { color: #888888 !important; background-color: #111010 
 html.a11y-dark footer { background-color: #101010 !important; }
 html.a11y-dark .footer-links a { color: #f0f0f0 !important; }
 
-/* origem: header.css */
-html.a11y-dark .hamburger span { background-color: #101010 !important; }
-
 /* origem: home.css */
 html.a11y-dark .icone-card { border-color: #747474 !important; background-color: #101010 !important; }
 html.a11y-dark .icone-label { color: #e5e5e5 !important; }
@@ -77,9 +85,7 @@ html.a11y-dark .impact { background-color: #101010 !important; }
 html.a11y-dark .impact__title { color: #f0f0f0 !important; }
 html.a11y-dark .impact__subtitle { color: #e5e5e5 !important; }
 html.a11y-dark .stat-card { background-color: #101010 !important; border-color: #272727 !important; }
-html.a11y-dark .stat-card__icon { background-color: #101010 !important; }
 html.a11y-dark .stat-card__value { color: #eeeeee !important; }
-html.a11y-dark .stat-card__badge { background-color: #101010 !important; }
 html.a11y-dark .impact-info-card { background-color: #101010 !important; border-color: #272727 !important; }
 html.a11y-dark .impact-info-card__title { color: #f0f0f0 !important; }
 html.a11y-dark .impact-bar-item__name { color: #e0dcd6 !important; }
@@ -110,11 +116,9 @@ html.a11y-dark .institucional ul li a { color: #f0f0f0 !important; }
 html.a11y-dark body { background-color: #101010 !important; color: #f0f0f0 !important; }
 html.a11y-dark .content { background-color: #101010 !important; }
 html.a11y-dark .main-content { background-color: #101010 !important; }
-html.a11y-dark .btn { color: #f0f0f0 !important; }
 
 /* origem: resumo-troca.css */
 html.a11y-dark .rt-pontos-row { background-color: #101010 !important; }
-html.a11y-dark .rt-btn-confirm { color: #f0f0f0 !important; }
 
 /* origem: saibamais.css */
 html.a11y-dark .conteudo { color: #dddddd !important; }
@@ -126,7 +130,6 @@ html.a11y-dark .btn { color: #f0f0f0 !important; background-color: #101010 !impo
 /* origem: sobrenos.css */
 html.a11y-dark h2, html.a11y-dark h3 { color: #eeeeee !important; }
 html.a11y-dark .circulo1 { background-color: #1f1f1f !important; color: #f0f0f0 !important; }
-html.a11y-dark .circulo3 { color: #f0f0f0 !important; }
 html.a11y-dark footer { background-color: #101010 !important; }
 html.a11y-dark .footer-links a { color: #f0f0f0 !important; }
 
@@ -135,3 +138,28 @@ html.a11y-dark #divBusca { background-color: #1d1d1d !important; }
 html.a11y-dark .filter-btn { color: #dcdcdc !important; }
 html.a11y-dark .service-card { background-color: #101010 !important; }
 html.a11y-dark .service-info p { color: #aaaaaa !important; }
+
+/* origem: app/views/pages/novo-anuncio.ejs */
+html.a11y-dark .form-anuncio { background-color: #101010 !important; }
+html.a11y-dark .form-anuncio label { color: #cfd0d0 !important; }
+html.a11y-dark .form-anuncio input, html.a11y-dark .form-anuncio select, html.a11y-dark .form-anuncio textarea { border-color: #333333 !important; }
+html.a11y-dark .campo-imagens-preview img { border-color: #333333 !important; }
+html.a11y-dark body { background-color: #101010 !important; }
+
+/* origem: variáveis CSS (:root) - resumo-troca.css */
+html.a11y-dark {
+  --bg-page: #101010;
+  --bg-card: #1a1a1a;
+  --text-dark: #e5e5e5;
+  --text-mid: #bbbbbb;
+  --text-light: #999999;
+  --border: #333333;
+}
+
+/* origem: variáveis CSS (:root) - contato-troca.css
+   (--color-text-light não é sobrescrito de propósito: é usado só no
+   botão "Iniciar Troca", que tem fundo laranja fixo em --color-secondary,
+   então o texto precisa continuar escuro para manter contraste ali) */
+html.a11y-dark {
+  --color-text-dark: #e5e5e5;
+}
