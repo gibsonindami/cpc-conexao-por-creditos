@@ -10,7 +10,7 @@ body {
 
 main h1 {
   text-align: center;
-  font-size: 18px;
+  font-size: calc(18px * var(--a11y-escala, 1));
   margin: 24px 16px;
   font-weight: 600;
   line-height: 1.5;
@@ -45,7 +45,7 @@ main h1 {
 }
 
 .btn span {
-  font-size: 16px;
+  font-size: calc(16px * var(--a11y-escala, 1));
   font-weight: 600;
   text-align: right;
   flex: 1;

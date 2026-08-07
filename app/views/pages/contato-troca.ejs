@@ -36,7 +36,11 @@
          infantil: ['/img/img kids.jpeg', '/img/img2-home.jpeg', '/img/img home-2.png'],
          default: ['/img/img2-home.jpeg', '/img/img cpc-verde.jpeg', '/img/servicos.jpeg']
        };
-       const sliderImages = defaultSliderImages[anuncio.categoria] || defaultSliderImages.default;
+       const imagensPadrao = defaultSliderImages[anuncio.categoria] || defaultSliderImages.default;
+       // Se o anúncio tem fotos próprias (enviadas no cadastro), usa elas;
+       // completa com imagens padrão da categoria caso tenham enviado menos de 3.
+       const imagensProprias = Array.isArray(anuncio.imagens) ? anuncio.imagens.filter(Boolean) : [];
+       const sliderImages = [0, 1, 2].map(i => imagensProprias[i] || imagensPadrao[i]);
     %>
     <!-- Carrossel -->
     <section class="carousel-section">

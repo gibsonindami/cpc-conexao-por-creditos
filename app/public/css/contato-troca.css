@@ -203,7 +203,7 @@ input[name="slider"] {
   border: none;
   padding: 12px 30px;
   border-radius: 20px;
-  font-size: 15px;
+  font-size: calc(15px * var(--a11y-escala, 1));
   font-weight: 350;
   cursor: pointer;
   transition: background 0.3s;

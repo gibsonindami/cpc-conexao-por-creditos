@@ -29,7 +29,7 @@ body {
 }
 .topbar-logo img { height: 28px; }
 .topbar-logo span {
-  font-size: 13px;
+  font-size: calc(13px * var(--a11y-escala, 1));
   color: #5dcaa5;
   font-weight: 500;
   letter-spacing: .04em;
@@ -45,7 +45,7 @@ body {
   gap: 6px;
   padding: 6px 12px;
   border-radius: 6px;
-  font-size: 13px;
+  font-size: calc(13px * var(--a11y-escala, 1));
   color: rgba(255,255,255,.6);
   text-decoration: none;
   transition: background .15s, color .15s;
@@ -61,7 +61,7 @@ body {
 .topbar-badge {
   background: #1d9e75;
   color: #e1f5ee;
-  font-size: 11px;
+  font-size: calc(11px * var(--a11y-escala, 1));
   padding: 3px 10px;
   border-radius: 20px;
   font-weight: 500;
@@ -72,7 +72,7 @@ body {
   background: #1d3a28;
   border: 1.5px solid #5dcaa5;
   display: flex; align-items: center; justify-content: center;
-  font-size: 12px; font-weight: 500; color: #5dcaa5;
+  font-size: calc(12px * var(--a11y-escala, 1)); font-weight: 500; color: #5dcaa5;
 }
 
 /* ── GRID ── */
@@ -100,19 +100,19 @@ body {
 /* ── HERO CARD ── */
 .hero { grid-column: 1 / 3; }
 .hero-label {
-  font-size: 11px;
+  font-size: calc(11px * var(--a11y-escala, 1));
   color: #5dcaa5;
   letter-spacing: .08em;
   text-transform: uppercase;
   margin-bottom: 8px;
 }
 .hero-title {
-  font-size: 30px;
+  font-size: calc(30px * var(--a11y-escala, 1));
   font-weight: 600;
   color: #fff;
   line-height: 1.1;
 }
-.hero-meta { font-size: 12px; color: #5f5e5a; margin-top: 1rem; }
+.hero-meta { font-size: calc(12px * var(--a11y-escala, 1)); color: #5f5e5a; margin-top: 1rem; }
 .status-pill {
   display: inline-flex;
   align-items: center;
@@ -120,21 +120,21 @@ body {
   background: #1d9e75;
   border-radius: 8px;
   padding: 5px 12px;
-  font-size: 12px;
+  font-size: calc(12px * var(--a11y-escala, 1));
   color: #e1f5ee;
 }
 .status-dot { width: 6px; height: 6px; border-radius: 50%; background: #9fe1cb; }
 
 /* ── STAT CARD ── */
-.stat-label { font-size: 11px; color: #888; margin-bottom: 4px; }
-.stat-value { font-size: 38px; font-weight: 600; color: #1a1a1a; line-height: 1; }
-.stat-delta { font-size: 11px; margin-top: 6px; }
+.stat-label { font-size: calc(11px * var(--a11y-escala, 1)); color: #888; margin-bottom: 4px; }
+.stat-value { font-size: calc(38px * var(--a11y-escala, 1)); font-weight: 600; color: #1a1a1a; line-height: 1; }
+.stat-delta { font-size: calc(11px * var(--a11y-escala, 1)); margin-top: 6px; }
 .delta-up { color: #1d9e75; }
 .delta-neutral { color: #888; }
 
 /* ── SECTION TITLE ── */
 .sec-title {
-  font-size: 12px;
+  font-size: calc(12px * var(--a11y-escala, 1));
   font-weight: 600;
   color: #1a1a1a;
   margin-bottom: 12px;
@@ -142,7 +142,7 @@ body {
   align-items: center;
   justify-content: space-between;
 }
-.sec-title a { font-size: 11px; font-weight: 400; color: #1d9e75; text-decoration: none; }
+.sec-title a { font-size: calc(11px * var(--a11y-escala, 1)); font-weight: 400; color: #1d9e75; text-decoration: none; }
 
 /* ── ACTIVITY BARS ── */
 .bars { display: flex; align-items: flex-end; gap: 5px; height: 72px; }
@@ -151,13 +151,13 @@ body {
   display: flex;
   justify-content: space-between;
   margin-top: 5px;
-  font-size: 10px;
+  font-size: calc(10px * var(--a11y-escala, 1));
   color: #aaa;
 }
 .bar-peak { margin-top: 1rem; border-top: 0.5px solid rgba(0,0,0,.07); padding-top: 10px; }
-.bar-peak p { font-size: 11px; color: #888; }
-.bar-peak strong { font-size: 17px; font-weight: 600; color: #1a1a1a; display: block; margin: 2px 0; }
-.bar-peak small { font-size: 11px; color: #aaa; }
+.bar-peak p { font-size: calc(11px * var(--a11y-escala, 1)); color: #888; }
+.bar-peak strong { font-size: calc(17px * var(--a11y-escala, 1)); font-weight: 600; color: #1a1a1a; display: block; margin: 2px 0; }
+.bar-peak small { font-size: calc(11px * var(--a11y-escala, 1)); color: #aaa; }
 
 /* ── PENDING ITEMS ── */
 .pending-item {
@@ -175,18 +175,18 @@ body {
   border-radius: 9px;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
-  font-size: 16px;
+  font-size: calc(16px * var(--a11y-escala, 1));
 }
 .pending-info { flex: 1; }
-.pending-info p { font-size: 13px; color: #1a1a1a; font-weight: 500; }
-.pending-info small { font-size: 11px; color: #888; }
+.pending-info p { font-size: calc(13px * var(--a11y-escala, 1)); color: #1a1a1a; font-weight: 500; }
+.pending-info small { font-size: calc(11px * var(--a11y-escala, 1)); color: #888; }
 .pending-actions { display: flex; gap: 6px; }
 .btn-approve {
   background: #e1f5ee;
   border: none;
   border-radius: 7px;
   padding: 4px 10px;
-  font-size: 12px;
+  font-size: calc(12px * var(--a11y-escala, 1));
   color: #0f6e56;
   cursor: pointer;
   font-family: inherit;
@@ -199,7 +199,7 @@ body {
   border: none;
   border-radius: 7px;
   padding: 4px 10px;
-  font-size: 12px;
+  font-size: calc(12px * var(--a11y-escala, 1));
   color: #a32d2d;
   cursor: pointer;
   font-family: inherit;
@@ -212,8 +212,8 @@ body {
 .cat-row { margin-bottom: 10px; }
 .cat-row:last-child { margin-bottom: 0; }
 .cat-header { display: flex; justify-content: space-between; margin-bottom: 4px; }
-.cat-header span { font-size: 12px; color: #666; }
-.cat-header strong { font-size: 12px; font-weight: 600; color: #1a1a1a; }
+.cat-header span { font-size: calc(12px * var(--a11y-escala, 1)); color: #666; }
+.cat-header strong { font-size: calc(12px * var(--a11y-escala, 1)); font-weight: 600; color: #1a1a1a; }
 .cat-track { height: 5px; background: #f0f0ed; border-radius: 3px; }
 .cat-fill { height: 5px; border-radius: 3px; width: var(--cat-width, 50%) !important; }
 
@@ -227,20 +227,20 @@ body {
 }
 .feed-item:last-child { border-bottom: none; }
 .feed-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; background: var(--dot-color, #b4b2a9) !important; }
-.feed-title { flex: 1; font-size: 13px; color: #1a1a1a; }
-.feed-user { font-size: 11px; color: #888; }
-.feed-time { font-size: 11px; color: #bbb; }
+.feed-title { flex: 1; font-size: calc(13px * var(--a11y-escala, 1)); color: #1a1a1a; }
+.feed-user { font-size: calc(11px * var(--a11y-escala, 1)); color: #888; }
+.feed-time { font-size: calc(11px * var(--a11y-escala, 1)); color: #bbb; }
 
 /* ── BOTTOM CARDS ── */
 .bottom-icon {
   width: 40px; height: 40px;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 20px;
+  font-size: calc(20px * var(--a11y-escala, 1));
   flex-shrink: 0;
 }
-.bottom-label { font-size: 11px; color: #888; margin-bottom: 2px; }
-.bottom-value { font-size: 20px; font-weight: 600; color: #1a1a1a; }
+.bottom-label { font-size: calc(11px * var(--a11y-escala, 1)); color: #888; margin-bottom: 2px; }
+.bottom-value { font-size: calc(20px * var(--a11y-escala, 1)); font-weight: 600; color: #1a1a1a; }
 .bottom-card-inner { display: flex; align-items: center; gap: 12px; }
 
 /* ── DOAÇÕES ── */
@@ -252,7 +252,7 @@ body {
 .tag-green {
   background: #e1f5ee;
   color: #085041;
-  font-size: 11px;
+  font-size: calc(11px * var(--a11y-escala, 1));
   padding: 4px 10px;
   border-radius: 20px;
   font-weight: 500;
@@ -289,7 +289,7 @@ body {
   padding: 12px 24px;
   background: #FF0000;
   color: white;
-  font-size: 17px;
+  font-size: calc(17px * var(--a11y-escala, 1));
   font-weight: 600;
   border-radius: 120px;
   display: flex;
@@ -420,7 +420,7 @@ body {
   .topbar-nav a {
     display: flex;
     padding: 16px 20px;
-    font-size: 14px;
+    font-size: calc(14px * var(--a11y-escala, 1));
     color: #ffffff;
     border-radius: 0;
     width: 100%;
@@ -456,10 +456,10 @@ body {
 
   /* ── ANÚNCIOS PENDENTES MANTIDOS LADO A LADO ── */
   .pending-item { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px; }
-  .pending-info p { font-size: 12px; }
-  .pending-info small { font-size: 10px; }
+  .pending-info p { font-size: calc(12px * var(--a11y-escala, 1)); }
+  .pending-info small { font-size: calc(10px * var(--a11y-escala, 1)); }
   .pending-actions { display: flex; gap: 4px; }
-  .btn-approve, .btn-reject { padding: 4px 8px; font-size: 11px; }
+  .btn-approve, .btn-reject { padding: 4px 8px; font-size: calc(11px * var(--a11y-escala, 1)); }
 
   .feed-item { flex-wrap: wrap; gap: 6px; padding: 10px 0; }
   .feed-title { width: 100%; flex: none; }

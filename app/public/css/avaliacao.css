@@ -89,7 +89,7 @@ h1 {
 
 .info p {
     margin: 3px 0;
-    font-size: 14px;
+    font-size: calc(14px * var(--a11y-escala, 1));
     color: #555;
 }
 
@@ -105,7 +105,7 @@ h1 {
 }
 
 .rating label {
-    font-size: 25px;
+    font-size: calc(25px * var(--a11y-escala, 1));
     color: #ccc;
     cursor: pointer;
     transition: 0.3s;
@@ -193,7 +193,7 @@ h1 {
   }
 
   .footer-links a {
-    font-size: 12px;
+    font-size: calc(12px * var(--a11y-escala, 1));
   }
 }
 

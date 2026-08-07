@@ -1,0 +1,111 @@
+[
+    {
+        "pergunta": "como criar conta",
+        "resposta": "Clique em Login e depois em Criar Conta. Preencha seus dados, confirme o cadastro e faça login para começar a utilizar o CPC."
+    },
+
+    {
+        "pergunta": "como faço cadastro",
+        "resposta": "Para criar uma conta, clique em Login, selecione Criar Conta, preencha seus dados e confirme o cadastro."
+    },
+
+    {
+        "pergunta": "quero criar uma conta",
+        "resposta": "Criar uma conta é simples e gratuito. Clique em Login, escolha Criar Conta, preencha seus dados e finalize o cadastro."
+    },
+
+    {
+        "pergunta": "como funciona",
+        "resposta": "O CPC conecta pessoas interessadas em doar, trocar produtos e oferecer serviços utilizando um sistema de créditos para incentivar a economia colaborativa."
+    },
+
+    {
+        "pergunta": "como funciona o site",
+        "resposta": "O CPC permite que os usuários publiquem produtos, façam doações, ofereçam serviços e realizem trocas utilizando um sistema de créditos."
+    },
+
+    {
+        "pergunta": "como ganho créditos",
+        "resposta": "Os créditos são obtidos através das funcionalidades da plataforma conforme as regras do CPC."
+    },
+
+    {
+        "pergunta": "o que são créditos",
+        "resposta": "Os créditos fazem parte do sistema do CPC e são utilizados para facilitar as trocas realizadas entre os usuários da plataforma."
+    },
+
+    {
+        "pergunta": "como anunciar",
+        "resposta": "Após fazer login, acesse Doar, preencha as informações do produto ou serviço e publique seu anúncio."
+    },
+
+    {
+        "pergunta": "onde cadastro um produto",
+        "resposta": "Depois de fazer login, acesse a página Doar, informe os dados do produto e publique o anúncio."
+    },
+
+    {
+        "pergunta": "como cadastrar um produto",
+        "resposta": "Faça login, acesse Doar, preencha as informações solicitadas e publique seu produto."
+    },
+
+    {
+        "pergunta": "como anunciar um serviço",
+        "resposta": "Faça login, acesse Doar, escolha a categoria Profissionais, informe os detalhes do serviço e publique o anúncio."
+    },
+
+    {
+        "pergunta": "como oferecer um serviço",
+        "resposta": "Você pode oferecer um serviço criando um novo anúncio na categoria Profissionais após realizar o login."
+    },
+
+    {
+        "pergunta": "como doar",
+        "resposta": "Acesse a área de doações ou publique um novo anúncio informando o item ou serviço que deseja disponibilizar gratuitamente."
+    },
+
+    {
+        "pergunta": "como doar roupas",
+        "resposta": "Para doar roupas, faça login, acesse Doar, informe os dados das roupas e publique a doação."
+    },
+
+    {
+        "pergunta": "como trocar",
+        "resposta": "Escolha um anúncio disponível, entre em contato com o anunciante e combine a troca."
+    },
+
+    {
+        "pergunta": "como trocar um item",
+        "resposta": "Selecione o anúncio desejado, entre em contato com o anunciante e combine os detalhes da troca entre vocês."
+    },
+
+    {
+        "pergunta": "como fazer uma troca",
+        "resposta": "Após encontrar um anúncio de interesse, entre em contato com o anunciante para combinar a troca ou a retirada do item."
+    },
+
+    {
+        "pergunta": "por que usar o cpc",
+        "resposta": "O CPC ajuda pessoas a doar, trocar produtos e oferecer serviços de forma colaborativa, fortalecendo a comunidade e reduzindo o desperdício."
+    },
+
+    {
+        "pergunta": "quais as vantagens do cpc",
+        "resposta": "O CPC incentiva a economia colaborativa, facilita doações, permite trocas entre usuários e ajuda a conectar pessoas que desejam compartilhar produtos e serviços."
+    },
+
+    {
+        "pergunta": "o que posso doar",
+        "resposta": "Você pode doar produtos em bom estado, roupas, alimentos, brinquedos, itens infantis e também oferecer serviços para a comunidade."
+    },
+
+    {
+        "pergunta": "o que posso trocar",
+        "resposta": "É possível trocar produtos, itens pessoais, alimentos, objetos infantis e serviços anunciados pelos usuários da plataforma."
+    },
+
+    {
+        "pergunta": "o que posso doar ou trocar no cpc",
+        "resposta": "Você pode anunciar produtos, roupas, alimentos, brinquedos, itens infantis e serviços profissionais, desde que estejam de acordo com as regras da plataforma."
+    }
+]

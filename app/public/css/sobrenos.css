@@ -186,7 +186,7 @@ footer img {
   text-decoration: none;
   color: black;
   margin-top: 5px;
-  font-size: 14px;
+  font-size: calc(14px * var(--a11y-escala, 1));
 }
  
 .side-menu {

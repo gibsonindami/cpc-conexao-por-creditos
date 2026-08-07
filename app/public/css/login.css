@@ -104,7 +104,7 @@ button {
   border: 1px solid #14b162;
   background-color: #14b162;
   color: #fff;
-  font-size: 14px;
+  font-size: calc(14px * var(--a11y-escala, 1));
   font-weight: bold;
   padding: 12px 45px;
   letter-spacing: 1px;
@@ -126,7 +126,7 @@ button.ghost {
 
 a {
   color: #333;
-  font-size: 12px;
+  font-size: calc(12px * var(--a11y-escala, 1));
   text-decoration: none;
   margin: 10px 0;
 }
@@ -226,7 +226,7 @@ a {
 
 .mobile-toggle p {
   margin-bottom: 8px;
-  font-size: 13px;
+  font-size: calc(13px * var(--a11y-escala, 1));
   color: #555;
 }
 
@@ -239,7 +239,7 @@ a {
 .msgErro {
   display: block;
   color: #d9534f;
-  font-size: 12px;
+  font-size: calc(12px * var(--a11y-escala, 1));
   margin-top: 6px;
   text-align: left;
 }
@@ -302,7 +302,7 @@ input:focus {
 .msgSucesso {
   display: block;
   color: #00c851;
-  font-size: 12px;
+  font-size: calc(12px * var(--a11y-escala, 1));
   margin-top: 6px;
   text-align: left;
 }
@@ -413,7 +413,20 @@ input:focus {
 
 @media (max-width: 400px) {
   form h1 {
-    font-size: 18px;
+    font-size: calc(18px * var(--a11y-escala, 1));
     transition: font-size 0.8s ease-in-out;
   }
+}
+
+/* Mensagem informativa (ex.: "faça login para continuar seu anúncio") */
+.msg-info {
+  background-color: #e6f3ee;
+  color: #184c3b;
+  border: 1px solid #2a7d63;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: calc(12.5px * var(--a11y-escala, 1));
+  text-align: center;
+  margin: 8px 0;
+  max-width: 100%;
 }

@@ -20,6 +20,12 @@
 
       <h1>Login</h1>
 
+      <% if (locals.redirect) { %>
+        <p class="msg-info">Faça login para continuar e cadastrar seu anúncio.</p>
+      <% } %>
+
+      <input type="hidden" name="redirect" value="<%= locals.redirect || '' %>">
+
       <% if (erro) { %>
         <p class="msg-erro"><%= erro %></p>
       <% } %>
@@ -69,6 +75,12 @@
     <form action="/cadastro" method="POST">
 
       <h1>Cadastro</h1>
+
+      <% if (locals.redirect) { %>
+        <p class="msg-info">Crie sua conta para continuar e cadastrar seu anúncio.</p>
+      <% } %>
+
+      <input type="hidden" name="redirect" value="<%= locals.redirect || '' %>">
 
       <% if (sucesso) { %>
         <p class="msg-sucesso"><%= sucesso %></p>
@@ -171,6 +183,9 @@
 </section>
 
 <script src="../js/login.js"></script>
+
+<%- include('../partials/acessibilidade.ejs') %>
+<%- include('../partials/chat-ia.ejs') %>
 
 </body>
 </html>

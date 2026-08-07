@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="/css/chat-ia.css">
+
+<!-- BOTÃO FLUTUANTE DO CHAT COM IA -->
+<button id="chatia-btn" aria-haspopup="true" aria-expanded="false" aria-controls="chatia-panel" title="Tire suas dúvidas com a IA do CPC" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+  </svg>
+  <span id="chatia-badge">IA</span>
+</button>
+
+<!-- PAINEL DO CHAT -->
+<section id="chatia-panel" role="dialog" aria-label="Assistente virtual do CPC">
+  <section id="chatia-header">
+    <section>
+      <h2>Assistente CPC</h2>
+      <small>Tire dúvidas sobre doações e trocas</small>
+    </section>
+    <button id="chatia-close" type="button" aria-label="Fechar chat">✕</button>
+  </section>
+
+  <section id="chatia-mensagens"></section>
+
+  <section class="chatia-sugestoes" id="chatia-sugestoes">
+    <button class="chatia-sugestao" type="button">Como funcionam os créditos?</button>
+    <button class="chatia-sugestao" type="button">Como faço uma doação?</button>
+    <button class="chatia-sugestao" type="button">Como troco um item?</button>
+  </section>
+
+  <form id="chatia-form">
+    <input type="text" id="chatia-input" placeholder="Digite sua dúvida..." autocomplete="off" maxlength="500">
+    <button id="chatia-enviar" type="submit" aria-label="Enviar mensagem">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+    </button>
+  </form>
+</section>
+
+<script src="/js/chat-ia.js" defer></script>

@@ -2,43 +2,80 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Doação</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doar - CPC Conexão por Créditos</title>
   <link rel="stylesheet" href="../css/doe.css">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <link rel="icon" type="image/png" href="../img/img logo.png">
+  <link rel="icon" href="../img/logo-black.png">
 </head>
+<%- include('../partials/header.ejs') %>
 <body>
-  <section class="container">
-    <section class="logo">
-        <img src="../img/logo-black.png" alt="Logo" />
-      </section>      
-    <h2>Ajude nossa causa, doe</h2>
 
-    <section class="form-inicial">
-      <input type="text" placeholder="Nome completo" id="nome">
-      <input type="email" placeholder="E-mail" id="email">
-      <input type="password" placeholder="Senha" id="senha">
-      <a href="/cadastro"><button id="continuarBtn">Continuar</button></a>
-    </section>
-    
-    <section class="form-banco hidden" id="formBanco">
-      <section class="titulo-banco">Dados Bancários</section>
-      <input type="text" placeholder="Nome do Cartão">
-      <input type="text" placeholder="Número do Cartão">
-      <input type="password" placeholder="CVV">
-      <label class="checkbox">
-        <input type="checkbox"> Deseja salvar seus dados?
-      </label>
-      <button id="doarBtn">Doe</button>
-      <button id="voltarBtn" class="voltar">Voltar</button>
-    </section>
-</form>
+<section class="container">
+  <h2>Doe um item, um serviço ou seu tempo</h2>
+  <p class="doe-intro">
+    O CPC não trabalha com doações em dinheiro. Aqui você doa o que tem:
+    um produto que não usa mais, uma habilidade ou um pouco do seu tempo —
+    e ajuda diretamente quem precisa, sem burocracia.
+  </p>
 
-    <section class="mensagem hidden" id="mensagem">
-      <h3>Obrigado pela sua doação! 💖</h3>
-    </section>
+  <section class="doe-opcoes">
+    <article class="doe-card">
+      <h3>📦 Doar um item</h3>
+      <p>Roupas, alimentos, brinquedos, móveis ou qualquer produto que possa ajudar outra pessoa.</p>
+      <a href="/novo-anuncio" class="btn-doe">Cadastrar item para doação</a>
+    </article>
 
-  <script src="/doe"></script>
+    <article class="doe-card">
+      <h3>🛠️ Doar um serviço</h3>
+      <p>Uma habilidade profissional (aula, reparo, consultoria) oferecida gratuitamente para quem precisa.</p>
+      <a href="/novo-anuncio" class="btn-doe">Cadastrar serviço para doação</a>
+    </article>
+
+    <article class="doe-card">
+      <h3>🔄 Já tenho algo, quero ver o que existe</h3>
+      <p>Veja os pedidos e anúncios de outros membros da comunidade e escolha como ajudar.</p>
+      <a href="/todos" class="btn-doe">Ver anúncios da comunidade</a>
+    </article>
+  </section>
+
+  <section class="beneficios">
+
+    <h2>Por que fazer parte do CPC?</h2>
+
+    <ul>
+        <li>
+            <img src="img/credito.webp" alt="">
+            <h3>Ganhe créditos</h3>
+            <p>Cada troca realizada gera créditos para utilizar na plataforma.</p>
+        </li>
+
+        <li>
+            <img src="img/solidario.webp" alt="">
+            <h3>Ajude pessoas</h3>
+            <p>Transforme itens e habilidades em oportunidades para quem precisa.</p>
+        </li>
+
+        <li>
+            <img src="img/sem-dinheiro.webp" alt="">
+            <h3>Sem dinheiro</h3>
+            <p>As negociações acontecem através de créditos e doações.</p>
+        </li>
+
+        <li>
+            <img src="img/comunidade.webp" alt="">
+            <h3>Comunidade</h3>
+            <p>Faça parte de uma rede colaborativa e sustentável.</p>
+        </li>
+    </ul>
+
+</section>
+
+  <p class="doe-nota">
+    💡 Ao publicar uma doação, indique no campo "Descrição" que o item é gratuito.
+    Isso deixa claro para quem for buscar que não é necessário oferecer créditos em troca.
+  </p>
+</section>
+
+<script src="../js/menu.js"></script>
 </body>
 </html>

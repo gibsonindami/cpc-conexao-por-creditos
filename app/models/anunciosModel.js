@@ -61,6 +61,7 @@ const anunciosModel = {
       doadorNome: dados.doadorNome || 'Usuário CPC',
       doadorLocal: dados.doadorLocal || 'São Paulo-SP',
       foto: dados.foto || '../img/img malcon.png',
+      imagens: Array.isArray(dados.imagens) ? dados.imagens.slice(0, 3) : [],
       tipo: dados.tipo || 'produto',
       ativo: true,
       dataCriacao: new Date().toISOString()

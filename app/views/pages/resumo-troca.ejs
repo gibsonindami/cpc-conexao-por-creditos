@@ -14,7 +14,7 @@
 
 <% if (!anuncio) { %>
   <section style="text-align:center;padding:60px 20px">
-    <p style="font-size:15px;color:#777;margin-bottom:16px">Nenhum anúncio selecionado.</p>
+    <p style="font-size: calc(15px * var(--a11y-escala, 1));color:#777;margin-bottom:16px">Nenhum anúncio selecionado.</p>
     <a href="/todos" style="color:#3c9e5a;font-weight:600">← Ver todos os anúncios</a>
   </section>
 <% } else {
@@ -133,7 +133,7 @@
       </section>
     </section>
     <% if (!temSaldo) { %>
-      <p style="font-size:12px;color:#c0392b;text-align:center;margin-top:10px;font-weight:600">
+      <p style="font-size: calc(12px * var(--a11y-escala, 1));color:#c0392b;text-align:center;margin-top:10px;font-weight:600">
         Você não tem pontos suficientes para esta troca.
       </p>
     <% } %>

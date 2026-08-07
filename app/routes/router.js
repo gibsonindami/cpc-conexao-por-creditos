@@ -4,6 +4,19 @@ const { body, validationResult } = require("express-validator");
 const usuariosModel = require("../models/models");
 const anunciosModel = require("../models/anunciosModel");
 const trocasModel = require("../models/trocasModel");
+const aiService = require("../ai/aiService");
+const historyManager = require("../ai/historyManager");
+const multer = require("multer");
+const sharp = require("sharp");
+const fs = require("fs");
+const path = require("path");
+
+const upload = multer({
+    dest: "uploads/",
+    limits: {
+        fileSize: 5 * 1024 * 1024
+    }
+});
 
 const autenticado = (req, res, next) => {
   if (req.session && req.session.usuario) return next();
@@ -105,14 +118,46 @@ router.post("/confirmar-troca", (req, res) => {
 });
 
 router.get("/novo-anuncio", (req, res) => {
-  res.render("pages/novo-anuncio", { erro: null, sucesso: null, valores: {} });
+
+    // Usuário não está logado
+    if (!req.session.usuario) {
+
+        // guarda a página que ele queria acessar
+        req.session.redirectAfterLogin = "/novo-anuncio";
+
+        return res.redirect("/login");
+    }
+
+    // Usuário logado
+    res.render("pages/novo-anuncio", {
+        erro: null,
+        sucesso: null,
+        valores: {}
+    });
+
 });
 
-router.post("/novo-anuncio",
-  body("titulo").trim().notEmpty().withMessage("Título é obrigatório"),
-  body("descricao").trim().notEmpty().withMessage("Descrição é obrigatória"),
-  body("categoria").notEmpty().withMessage("Categoria é obrigatória"),
-  (req, res) => {
+router.post(
+    "/novo-anuncio",
+
+    upload.array("imagens", 3),
+
+    (req, res, next) => {
+
+        if (!req.session.usuario) {
+            req.session.redirectAfterLogin = "/novo-anuncio";
+            return res.redirect("/login");
+        }
+
+        next();
+
+    },
+
+    body("titulo").trim().notEmpty().withMessage("Título é obrigatório"),
+    body("descricao").trim().notEmpty().withMessage("Descrição é obrigatória"),
+    body("categoria").notEmpty().withMessage("Categoria é obrigatória"),
+
+    async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.render("pages/novo-anuncio", {
@@ -123,21 +168,80 @@ router.post("/novo-anuncio",
     }
     try {
       const usuario = req.session.usuario;
+      const imagens = [];
+
+if (req.files && req.files.length) {
+
+    const pastaDestino = path.join(
+        __dirname,
+        "../public/img/anuncios"
+    );
+
+    if (!fs.existsSync(pastaDestino)) {
+        fs.mkdirSync(pastaDestino, { recursive: true });
+    }
+
+    for (const arquivo of req.files) {
+
+        const nome =
+            Date.now() +
+            "-" +
+            Math.round(Math.random() * 1000000) +
+            ".webp";
+
+        const destino = path.join(
+    pastaDestino,
+    nome
+);
+
+await sharp(arquivo.path)
+    .resize({
+        width: 1200,
+        withoutEnlargement: true
+    })
+    .webp({
+        quality: 80
+    })
+    .toFile(destino);
+
+fs.unlinkSync(arquivo.path);
+
+imagens.push(
+    "/img/anuncios/" + nome
+);
+    }
+
+}
       anunciosModel.create({
-        titulo: req.body.titulo,
-        descricao: req.body.descricao,
-        categoria: req.body.categoria,
-        tipo: req.body.tipo || 'produto',
-        doadorId: usuario ? usuario.id : null,
-        doadorNome: usuario ? usuario.nome : (req.body.doadorNome || 'Usuário CPC'),
-        doadorLocal: req.body.doadorLocal || 'São Paulo-SP',
-      });
+
+    titulo: req.body.titulo,
+
+    descricao: req.body.descricao,
+
+    categoria: req.body.categoria,
+
+    tipo: req.body.tipo,
+
+    doadorId: usuario.id,
+
+    doadorNome: usuario.nome,
+
+    doadorLocal: req.body.doadorLocal,
+
+    imagens,
+
+    foto: imagens[0] || "/img/img malcon.png"
+
+});
       res.render("pages/novo-anuncio", { erro: null, sucesso: "Anúncio cadastrado com sucesso!", valores: {} });
     } catch (err) {
-      res.render("pages/novo-anuncio", { erro: "Erro ao cadastrar. Tente novamente.", sucesso: null, valores: req.body });
+         res.render("pages/novo-anuncio", {
+        erro: "Erro ao cadastrar. Tente novamente.",
+        sucesso: null,
+        valores: req.body
+      });
     }
-  }
-);
+});
 
 router.get("/api/stats", (req, res) => {
   const stats = trocasModel.getStats();
@@ -151,6 +255,96 @@ router.get("/api/stats", (req, res) => {
 router.get("/api/anuncios", (req, res) => {
   const { categoria, busca } = req.query;
   res.json(anunciosModel.findAll({ categoria, busca }));
+});
+
+// ==========================
+// CHAT IA (Gemini)
+// ==========================
+
+router.post("/api/chat", async (req, res) => {
+
+    try {
+
+        const mensagem = String(
+
+            req.body.mensagem || ""
+
+        ).trim();
+
+        if (!mensagem) {
+
+            return res.status(400).json({
+
+                resposta: "Digite uma pergunta."
+
+            });
+
+        }
+
+        const conversationId =
+
+            req.session?.usuario?.id ||
+
+            req.sessionID ||
+
+            req.ip;
+
+        const historico = historyManager.get(
+
+            conversationId
+
+        );
+
+        const resposta = await aiService.answer(
+
+            mensagem,
+
+            historico
+
+        );
+
+        historyManager.add(
+
+            conversationId,
+
+            "user",
+
+            mensagem
+
+        );
+
+        historyManager.add(
+
+            conversationId,
+
+            "assistant",
+
+            resposta
+
+        );
+
+        return res.json({
+
+            resposta
+
+        });
+
+    }
+
+    catch (erro) {
+
+        console.error("Erro IA:", erro);
+
+        return res.status(500).json({
+
+            resposta:
+
+            "Desculpe, ocorreu um erro ao consultar o assistente."
+
+        });
+
+    }
+
 });
 
 router.get("/avaliacao", (req, res) => res.render("pages/avaliacao"));
@@ -199,7 +393,31 @@ router.post("/cadastro",
       if (existe) return res.render("pages/login", { valores: req.body, erroValidacao: { email: "input-error" }, msgErro: { email: "*Email já cadastrado!" }, erro: null, sucesso: false });
       await usuariosModel.create({ nome: req.body.nome.trim(), email: req.body.email.toLowerCase(), senha: req.body.senha });
       trocasModel.incrementarMembro();
-      return res.render("pages/login", { sucesso: "Cadastro realizado! Faça login agora.", erro: null, valores: {}, erroValidacao: {}, msgErro: {} });
+      await usuariosModel.create({
+    nome: req.body.nome.trim(),
+    email: req.body.email.toLowerCase(),
+    senha: req.body.senha
+});
+
+trocasModel.incrementarMembro();
+
+// faz login automaticamente
+const usuario = await usuariosModel.findByEmail(req.body.email);
+
+req.session.usuario = {
+    id: usuario.id,
+    nome: usuario.nome,
+    email: usuario.email,
+    perfil: usuario.perfil || "user"
+};
+
+req.session.usuarioId = usuario.id;
+
+const destino = req.session.redirectAfterLogin || "/";
+
+delete req.session.redirectAfterLogin;
+
+return res.redirect(destino);
     } catch (err) {
       return res.render("pages/login", { erro: "Erro ao cadastrar. Tente novamente.", sucesso: false, valores: req.body, erroValidacao: {}, msgErro: {} });
     }
@@ -226,8 +444,15 @@ router.post("/login",
         req.session.usuario = { id: usuario.id, nome: usuario.nome, email: usuario.email, foto: usuario.foto || null, perfil: usuario.perfil || "user" };
 
         // ✅ NOVO: redireciona admin direto para o painel
-        if (usuario.perfil === "admin") return res.redirect("/adm");
-        return res.redirect("/");
+    if (usuario.perfil === "admin") {
+    return res.redirect("/adm");
+}
+
+const destino = req.session.redirectAfterLogin || "/";
+
+delete req.session.redirectAfterLogin;
+
+return res.redirect(destino);
       }
       const existe = await usuariosModel.findByUsuarioOuEmail(u);
       if (existe) return res.render("pages/login", { erro: null, sucesso: false, valores: req.body, erroValidacao: { senhaDigitada: "input-error" }, msgErro: { senhaDigitada: "*Senha incorreta!" } });
