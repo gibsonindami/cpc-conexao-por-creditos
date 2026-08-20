@@ -42,14 +42,33 @@ body {
 }
  
  
-.profile-image img {
+.profile-image {
+  margin-top: 40px;
+}
+
+.photo-trigger {
+  display: block;
+  cursor: pointer;
+  border-radius: 50%;
+  outline: none;
+}
+
+.photo-trigger img {
   width: 128px;
   height: 128px;
   border-radius: 50%;
   border: 4px solid white;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   margin-bottom: 16px;
-  margin-top: 40px;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.photo-trigger:hover img,
+.photo-trigger:focus-visible img {
+  transform: scale(1.04);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
 }
  
  
@@ -521,7 +540,7 @@ body::after {
     padding-top: 24px;
   }
  
-  .profile-image img {
+  .photo-trigger img {
     width: 96px;
     height: 96px;
   }
@@ -530,4 +549,147 @@ body::after {
   .amount {
     font-size: calc(24px * var(--a11y-escala, 1));
   }
+}
+
+/* Ajustes visuais da conta */
+:root {
+  --conta-verde: #184c3b;
+  --conta-verde-claro: #e8f1eb;
+  --conta-borda: #dce7df;
+  --conta-texto-suave: #647269;
+}
+
+body {
+  background: #f3f7f4;
+}
+
+.container {
+  padding-top: 48px;
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: 152px 1fr;
+  align-items: center;
+  gap: 24px;
+  max-width: 860px;
+  margin: 0 auto 28px;
+  padding: 28px 32px;
+  text-align: left;
+  background: #fff;
+  border: 1px solid var(--conta-borda);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(24, 76, 59, 0.07);
+}
+
+.profile-image {
+  margin: 0;
+  justify-self: center;
+}
+
+.photo-trigger img {
+  margin: 0;
+  border-color: var(--conta-verde-claro);
+}
+
+.profile-header h1 {
+  margin-bottom: 6px;
+  color: var(--conta-verde);
+}
+
+.profile-header > p:not(.profile-eyebrow) {
+  color: var(--conta-texto-suave);
+  opacity: 1;
+}
+
+.profile-eyebrow {
+  margin-bottom: 4px;
+  color: #b57900 !important;
+  font-size: calc(12px * var(--a11y-escala, 1)) !important;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 1 !important;
+}
+
+.provider-label {
+  display: inline-flex;
+  margin-top: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--conta-verde-claro);
+  color: var(--conta-verde);
+  font-size: calc(11px * var(--a11y-escala, 1));
+  font-weight: 700;
+}
+
+.profile-message {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: calc(13px * var(--a11y-escala, 1));
+}
+
+.profile-message.success { background: #e7f5eb; color: #257344; }
+.profile-message.error { background: #fff0ee; color: #b63c32; }
+
+.balance-card {
+  max-width: 860px;
+  margin: 0 auto 34px;
+  padding: 22px;
+  border-radius: 16px;
+  background: #f8a700;
+  box-shadow: 0 8px 20px rgba(184, 134, 11, 0.14);
+}
+
+.amount {
+  font-size: calc(25px * var(--a11y-escala, 1));
+}
+
+.bento-grid {
+  max-width: 860px;
+  margin: 0 auto 32px;
+  gap: 24px;
+}
+
+.trades-section {
+  gap: 10px;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid var(--conta-borda);
+  border-radius: 16px;
+}
+
+.trades-section h2 {
+  margin-bottom: 6px;
+  padding-left: 0;
+  color: var(--conta-verde);
+  font-size: calc(19px * var(--a11y-escala, 1));
+  text-align: left;
+}
+
+.trade-card {
+  border-color: var(--conta-borda);
+  box-shadow: none;
+}
+
+.logout-section {
+  max-width: 860px;
+  margin: 0 auto;
+  padding-top: 20px;
+  border-top-color: var(--conta-borda);
+}
+
+@media (max-width: 600px) {
+  .container { padding-top: 24px; }
+  .profile {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 24px 18px;
+    text-align: center;
+  }
+  .profile-header { width: 100%; }
+  .profile-eyebrow { margin-top: 2px; }
+  .trades-section { padding: 16px; }
 }

@@ -15,7 +15,10 @@ const upload = multer({
     dest: "uploads/",
     limits: {
         fileSize: 5 * 1024 * 1024
-    }
+  },
+  fileFilter: (req, file, callback) => {
+    callback(null, file.mimetype.startsWith("image/"));
+  }
 });
 
 const autenticado = (req, res, next) => {
@@ -363,9 +366,42 @@ router.get("/conta", autenticado, async (req, res) => {
     const usuario = await usuariosModel.findById(req.session.usuario.id);
     if (!usuario) return res.redirect("/login");
     const meusTrocas = trocasModel.findAll().filter(t => t.solicitanteEmail === usuario.email);
-    res.render("pages/conta", { usuario, meusTrocas, totalTrocas: meusTrocas.length });
+    res.render("pages/conta", {
+      usuario,
+      meusTrocas,
+      totalTrocas: meusTrocas.length,
+      querySucesso: req.query.sucesso === "foto",
+      queryErro: req.query.erro === "foto"
+    });
   } catch (err) {
     res.redirect("/login");
+  }
+});
+
+router.post("/conta/foto", autenticado, upload.single("foto"), async (req, res) => {
+  if (!req.file) return res.redirect("/conta?erro=foto");
+
+  try {
+    const pastaDestino = path.join(__dirname, "../public/img/perfis");
+    if (!fs.existsSync(pastaDestino)) fs.mkdirSync(pastaDestino, { recursive: true });
+
+    const nome = `perfil-${req.session.usuario.id}-${Date.now()}.webp`;
+    const destino = path.join(pastaDestino, nome);
+
+    await sharp(req.file.path)
+      .resize(600, 600, { fit: "cover" })
+      .webp({ quality: 82 })
+      .toFile(destino);
+
+    fs.unlinkSync(req.file.path);
+    const foto = `/img/perfis/${nome}`;
+    await usuariosModel.updateFoto(req.session.usuario.id, foto);
+    req.session.usuario.foto = foto;
+    return res.redirect("/conta?sucesso=foto");
+  } catch (err) {
+    if (req.file && fs.existsSync(req.file.path)) fs.unlinkSync(req.file.path);
+    console.error("Erro ao atualizar foto de perfil:", err);
+    return res.redirect("/conta?erro=foto");
   }
 });
 

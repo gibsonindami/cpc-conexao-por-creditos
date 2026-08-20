@@ -5,31 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Perfil</title>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap%22 rel="stylesheet">
-  <link rel="stylesheet" href="../css/conta.css" />
+  <link rel="stylesheet" href="/css/conta.css" />
 </head>
 <%- include('../partials/header.ejs') %>
  
 <body>
   <main class="container">
-    <!-- Profile Section -->
     <section class="profile">
-      <section class="profile-image">
-        <img src="<%= usuario?.foto || '/img/img perfil-white.png' %>" alt="Foto de perfil de <%= usuario?.nome || 'usuário' %>" loading="lazy" />
-      </section>
+      <form class="profile-image" action="/conta/foto" method="POST" enctype="multipart/form-data">
+        <label class="photo-trigger" for="fotoInput" title="Alterar foto de perfil">
+          <img src="<%= usuario?.foto || '/img/img perfil-white.png' %>" alt="Foto de perfil de <%= usuario?.nome || 'usuário' %>" loading="lazy" id="fotoPerfil" />
+        </label>
+        <input id="fotoInput" name="foto" type="file" accept="image/jpeg,image/png,image/webp" hidden />
+      </form>
       <section class="profile-header">
+        <p class="profile-eyebrow">Minha conta</p>
         <h1><%= usuario?.nome || 'Usuário' %></h1>
+        <p><%= usuario?.email || 'Sem e-mail cadastrado' %></p>
         <% if (usuario?.provider) { %>
           <span class="provider-label"><%= usuario.provider === 'google' ? 'Entrou com Google' : usuario.provider === 'local' ? 'Login local' : 'Entrou com ' + usuario.provider %></span>
         <% } %>
       </section>
-      <p><%= usuario?.email || 'Sem e-mail cadastrado' %></p>
+      <% if (locals.querySucesso) { %><p class="profile-message success">Foto atualizada com sucesso.</p><% } %>
+      <% if (locals.queryErro) { %><p class="profile-message error">Não foi possível atualizar a foto. Use JPG, PNG ou WebP de até 5 MB.</p><% } %>
     </section>
-
-    <!-- <form action="/upload" method="POST" enctype="multipart/form-data"><label>Escolha uma foto (JPG ou PNG):</label>
-    <input type="file" name="minhaImagem" accept="img/*" required><button type="submit">Subir e Converter</button></form>
-
-    <form action="/enviar-foto" method="POST" enctype="multipart/form-data"><input type="file" name="imagemUsuario" accept="img/*">
-    <button type="submit">Upload Inteligente</button></form> -->
  
     <!-- Credit Balance -->
     <section class="balance-card">
@@ -118,5 +117,24 @@
     </section>
  
     <%- include('../partials/footer.ejs') %>
+    <script>
+      (function () {
+        var input = document.getElementById('fotoInput');
+        var preview = document.getElementById('fotoPerfil');
+        var formulario = input && input.form;
+        if (!input || !preview || !formulario) return;
+        input.addEventListener('change', function () {
+          var arquivo = input.files && input.files[0];
+          if (!arquivo) return;
+          if (!arquivo.type.startsWith('image/') || arquivo.size > 5 * 1024 * 1024) {
+            input.value = '';
+            alert('Escolha uma imagem de até 5 MB.');
+            return;
+          }
+          preview.src = URL.createObjectURL(arquivo);
+          formulario.submit();
+        });
+      })();
+    </script>
 </body>
 </html>
