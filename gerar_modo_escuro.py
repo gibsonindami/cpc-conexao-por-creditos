@@ -3,7 +3,7 @@ from collections import OrderedDict
 
 RAIZ = os.path.dirname(os.path.abspath(__file__))
 PASTA_CSS = os.path.join(RAIZ, "app", "public", "css")
-IGNORAR = {"acessibilidade.css", "chat-ia.css", "modo-escuro-gerado.css"}
+IGNORAR = {"acessibilidade.css", "chat-ia.css", "modo-escuro.css", "modo-escuro-gerado.css"}
 
 # Selectors que sabemos ter fundo colorido definido em OUTRA regra/classe
 # modificadora (não detectável automaticamente) — não inverter o texto.
@@ -39,10 +39,8 @@ def is_dark(rgb):
     return sum(rgb) / 3 < 160
 
 def invert_channel(v):
-    nv = 255 - v
-    if nv < 16: nv = 16
-    if nv > 240: nv = 240
-    return nv
+    # Comprime a inversao para evitar fundos quase pretos e textos estourados.
+    return round(32 + (223 * (255 - v) / 255))
 
 def rgb_to_hex(rgb):
     return "#{:02x}{:02x}{:02x}".format(*rgb)
@@ -230,12 +228,12 @@ for (nome, seletor), props in agrupado.items():
 linhas.append("""
 /* origem: variáveis CSS (:root) - resumo-troca.css */
 html.a11y-dark {
-  --bg-page: #101010;
-  --bg-card: #1a1a1a;
-  --text-dark: #e5e5e5;
-  --text-mid: #bbbbbb;
-  --text-light: #999999;
-  --border: #333333;
+    --bg-page: #202020;
+    --bg-card: #2a2a2a;
+    --text-dark: #e1e1e1;
+    --text-mid: #c7c7c7;
+    --text-light: #b0b0b0;
+    --border: #4d4d4d;
 }
 
 /* origem: variáveis CSS (:root) - contato-troca.css
@@ -243,11 +241,17 @@ html.a11y-dark {
    botão "Iniciar Troca", que tem fundo laranja fixo em --color-secondary,
    então o texto precisa continuar escuro para manter contraste ali) */
 html.a11y-dark {
-  --color-text-dark: #e5e5e5;
+    --color-text-dark: #e1e1e1;
+}
+
+/* O botão do banner mantém o verde da marca sobre o fundo claro. */
+html.a11y-dark .btn-banner,
+html.a11y-dark .btn-banner:hover {
+    color: #065f46 !important;
 }
 """)
 
-saida = os.path.join(PASTA_CSS, "modo-escuro-gerado.css")
+saida = os.path.join(PASTA_CSS, "modo-escuro.css")
 with open(saida, "w", encoding="utf-8") as f:
-    f.write("\n".join(linhas) + "\n")
+    f.write("\n".join(linhas).rstrip() + "\n")
 print("\nGerado em:", saida)

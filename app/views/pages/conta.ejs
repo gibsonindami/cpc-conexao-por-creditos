@@ -25,17 +25,17 @@
         <% if (usuario?.provider) { %>
           <span class="provider-label"><%= usuario.provider === 'google' ? 'Entrou com Google' : usuario.provider === 'local' ? 'Login local' : 'Entrou com ' + usuario.provider %></span>
         <% } %>
+        <section class="balance-card" aria-label="Saldo de créditos">
+          <span class="balance-icon material-symbols-outlined" aria-hidden="true"></span>
+          <span class="balance-copy">
+            <strong class="amount"><%= usuario?.creditos ?? 100 %></strong>
+            <span class="balance-label">CRÉDITOS CPC</span>
+          </span>
+        </section>
       </section>
       <% if (locals.querySucesso) { %><p class="profile-message success">Foto atualizada com sucesso.</p><% } %>
       <% if (locals.queryErro) { %><p class="profile-message error">Não foi possível atualizar a foto. Use JPG, PNG ou WebP de até 5 MB.</p><% } %>
     </section>
- 
-    <!-- Credit Balance -->
-    <section class="balance-card">
-        <section class="balance-amount">
-          <span class="amount">Você acumulou 100 créditos<!-- <img src="/img/img-creditos.png" alt="Ícone de créditos">--></span>
-        </section>
-      </section>
  
       <!-- Bento Grid -->
       <section class="bento-grid">

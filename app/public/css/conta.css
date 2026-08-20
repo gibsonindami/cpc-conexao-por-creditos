@@ -635,16 +635,55 @@ body {
 .profile-message.error { background: #fff0ee; color: #b63c32; }
 
 .balance-card {
-  max-width: 860px;
-  margin: 0 auto 34px;
-  padding: 22px;
-  border-radius: 16px;
-  background: #f8a700;
-  box-shadow: 0 8px 20px rgba(184, 134, 11, 0.14);
+  width: fit-content;
+  margin-top: 16px;
+  padding: 8px 12px 8px 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #dce7df;
+  border-radius: 10px;
+  background: #f8fbf8;
+  color: var(--conta-verde);
+  box-shadow: none;
+}
+
+.balance-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--conta-verde-claro);
+  border: 1px solid #cfe0d3;
+  color: var(--conta-verde);
+  font-size: 19px;
+}
+
+.balance-copy {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+}
+
+.balance-label {
+  font-size: calc(11px * var(--a11y-escala, 1));
+  font-weight: 700;
+  color: var(--conta-texto-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .amount {
-  font-size: calc(25px * var(--a11y-escala, 1));
+  font-size: calc(19px * var(--a11y-escala, 1));
+  line-height: 1;
+  color: var(--conta-verde);
+}
+
+.balance-unit {
+  color: var(--conta-texto-suave);
+  font-size: calc(11px * var(--a11y-escala, 1));
 }
 
 .bento-grid {
@@ -692,4 +731,5 @@ body {
   .profile-header { width: 100%; }
   .profile-eyebrow { margin-top: 2px; }
   .trades-section { padding: 16px; }
+  .balance-card { margin-top: 14px; }
 }
