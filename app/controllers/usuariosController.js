@@ -1,7 +1,10 @@
 const path = require("path");
 const usuariosModel = require("../models/models");
 const trocasModel = require("../models/trocasModel");
+const anunciosModel = require("../models/anunciosModel");
 const imageService = require("../services/imageService");
+
+const anuncianteBase = "Malcolm Eliseu Ribeiro";
 
 const exibirConta = async (req, res) => {
   if (req.session.usuario.perfil === "admin") return res.redirect("/adm");
@@ -13,11 +16,33 @@ const exibirConta = async (req, res) => {
     const meusTrocas = trocasModel.findAll().filter(
       (troca) => troca.solicitanteEmail === usuario.email
     );
+    const meusTrocasComPerfil = await Promise.all(meusTrocas.map(async (troca) => {
+      const anuncio = anunciosModel.findById(troca.anuncioId);
+      const anunciante = anuncio?.doadorId
+        ? await usuariosModel.findById(anuncio.doadorId)
+        : null;
+
+      return {
+        ...troca,
+        fotoPerfil: troca.doadorNome === anuncianteBase
+          ? (troca.foto || "/img/img malcon.png")
+          : (anunciante?.foto || "/img/img perfil-white.png"),
+      };
+    }));
+    const meusAnuncios = anunciosModel.findAll().filter(
+      (anuncio) => String(anuncio.doadorId) === String(usuario.id)
+    ).map((anuncio) => ({
+      ...anuncio,
+      fotoPerfil: anuncio.doadorNome === anuncianteBase
+        ? (anuncio.foto || "/img/img malcon.png")
+        : (usuario.foto || "/img/img perfil-white.png"),
+    }));
 
     return res.render("pages/conta", {
       usuario,
-      meusTrocas,
-      totalTrocas: meusTrocas.length,
+      meusTrocas: meusTrocasComPerfil,
+      meusAnuncios,
+      totalTrocas: meusTrocasComPerfil.length,
       querySucesso: req.query.sucesso === "foto",
       queryErro: req.query.erro === "foto",
     });

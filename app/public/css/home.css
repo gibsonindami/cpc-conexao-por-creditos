@@ -126,6 +126,12 @@ html, body {
   stroke: #0f6e56;
   transition: stroke .15s;
 }
+
+.icone-circle img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
  
 .icone-label {
   font-size: calc(13px * var(--a11y-escala, 1));

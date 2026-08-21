@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="light">
+<html lang="pt-BR" class="light conta-page">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -56,7 +56,7 @@
               %>
               <section class="trade-card">
                 <section class="trade-icon">
-                  <img src="<%= troca.foto %>" alt="Foto de <%= troca.doadorNome %>">
+                  <img src="<%= troca.fotoPerfil %>" alt="Foto de perfil de <%= troca.doadorNome %>">
                 </section>
                 <section class="trade-info">
                   <p class="trade-type"><%= dataFormatada %></p>
@@ -75,39 +75,26 @@
        
         <section class="trades-section">
           <h2>Ofertas Ativas</h2>
-         
-          <section class="trade-card">
-            <section class="trade-icon">
+          <% if (meusAnuncios && meusAnuncios.length > 0) { %>
+            <% meusAnuncios.slice(0, 3).forEach(anuncio => { %>
+              <% const dataAnuncio = new Date(anuncio.dataCriacao); %>
+              <section class="trade-card">
+                <section class="trade-icon">
+                  <img src="<%= usuario?.foto || '/img/img perfil-white.png' %>" alt="Foto de perfil de <%= usuario?.nome || anuncio.doadorNome %>">
+                </section>
+                <section class="trade-info">
+                  <p class="trade-type"><%= dataAnuncio.toLocaleDateString('pt-BR') %></p>
+                  <p class="trade-type"><%= anuncio.categoria %></p>
+                  <p class="trade-name"><%= anuncio.titulo %></p>
+                </section>
+                <section class="trade-status status-badge status-ativa">ATIVA</section>
+              </section>
+            <% }) %>
+          <% } else { %>
+            <section style="padding: 20px; text-align: center; color: #999;">
+              <p>Nenhum anúncio ativo ainda</p>
             </section>
-            <section class="trade-info">
-              <p class="trade-type">07/05/2026</p>
-              <p class="trade-type">Marcos Vinicius</p>
-              <p class="trade-name">Limpeza</p>
-            </section>
-            <section class="trade-status status-badge status-inativa">INATIVA</section>
-          </section>
- 
-          <section class="trade-card">
-            <section class="trade-icon">
-            </section>
-            <section class="trade-info">
-              <p class="trade-type">05/05/2026</p>
-              <p class="trade-type">Matheus Barbosa</p>
-              <p class="trade-name">Limpeza</p>
-            </section>
-            <section class="trade-status status-badge status-ativa">ATIVA</section>
-          </section>
- 
-          <section class="trade-card">
-            <section class="trade-icon">
-            </section>
-            <section class="trade-info">
-              <p class="trade-type">04/05/2026</p>
-              <p class="trade-type">Gibson Leonesio</p>
-              <p class="trade-name">Limpeza</p>
-            </section>
-            <section class="trade-status status-badge status-ativa">ATIVA</section>
-          </section>
+          <% } %>
         </section>
   </main>
  

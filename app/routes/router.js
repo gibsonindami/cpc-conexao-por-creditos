@@ -40,10 +40,28 @@ router.get("/", (req, res) => {
   }
 });
 
-const listarAnuncios = (categoria, pagina) => (req, res) => {
+const prepararAnuncio = async (anuncio, usuariosPorId = new Map()) => {
+  if (!anuncio) return null;
+  if (anuncio.doadorNome === "Malcolm Eliseu Ribeiro" || !anuncio.doadorId) {
+    return { ...anuncio, fotoExibicao: anuncio.foto || "/img/img malcon.png" };
+  }
+
+  if (!usuariosPorId.has(anuncio.doadorId)) {
+    usuariosPorId.set(anuncio.doadorId, await usuariosModel.findById(anuncio.doadorId));
+  }
+  const anunciante = usuariosPorId.get(anuncio.doadorId);
+  return {
+    ...anuncio,
+    fotoExibicao: anunciante?.foto || "/img/img perfil-white.png",
+  };
+};
+
+const listarAnuncios = (categoria, pagina) => async (req, res) => {
   const busca = req.query.busca || "";
   const anuncios = anunciosModel.findAll({ categoria, busca });
-  res.render(`pages/${pagina}`, { anuncios, busca });
+  const usuariosPorId = new Map();
+  const anunciosComFoto = await Promise.all(anuncios.map((anuncio) => prepararAnuncio(anuncio, usuariosPorId)));
+  res.render(`pages/${pagina}`, { anuncios: anunciosComFoto, busca });
 };
 
 router.get("/todos", listarAnuncios(undefined, "todos"));
@@ -51,26 +69,27 @@ router.get("/kids", listarAnuncios("infantil", "infantil"));
 router.get("/alimentos", listarAnuncios("alimentos", "alimentos"));
 router.get("/profissionais", listarAnuncios("profissionais", "profissionais"));
 
-router.get("/contato/:id", (req, res) => {
+router.get("/contato/:id", async (req, res) => {
   const anuncio = anunciosModel.findById(req.params.id);
   if (!anuncio) return res.redirect("/todos");
-  res.render("pages/contato-troca", { anuncio });
+  res.render("pages/contato-troca", { anuncio: await prepararAnuncio(anuncio) });
 });
 
-router.get("/contato", (req, res) => {
+router.get("/contato", async (req, res) => {
   const anuncio = anunciosModel.findAll()[0] || null;
-  res.render("pages/contato-troca", { anuncio });
+  res.render("pages/contato-troca", { anuncio: await prepararAnuncio(anuncio) });
 });
 
-router.get("/resumo/:anuncioId", (req, res) => {
+router.get("/resumo/:anuncioId", async (req, res) => {
   const anuncio = anunciosModel.findById(req.params.anuncioId);
   if (!anuncio) return res.redirect("/todos");
   req.session.anuncioPendente = anuncio;
-  res.render("pages/resumo-troca", { anuncio });
+  res.render("pages/resumo-troca", { anuncio: await prepararAnuncio(anuncio) });
 });
 
-router.get("/resumo", (req, res) => {
-  res.render("pages/resumo-troca", { anuncio: req.session.anuncioPendente || null });
+router.get("/resumo", async (req, res) => {
+  const anuncio = await prepararAnuncio(req.session.anuncioPendente || null);
+  res.render("pages/resumo-troca", { anuncio });
 });
 
 router.post("/confirmar-troca", (req, res) => {
@@ -133,7 +152,36 @@ router.get("/api/anuncios", (req, res) => {
 
 router.post("/api/chat", responderDuvida);
 
-router.get("/avaliacao", (req, res) => res.render("pages/avaliacao"));
+router.get("/avaliacao", autenticado, async (req, res) => {
+  try {
+    const usuario = await usuariosModel.findById(req.session.usuario.id);
+    if (!usuario) return res.redirect("/login");
+
+    const trocas = trocasModel.findAll()
+      .filter((troca) => troca.solicitanteEmail === usuario.email)
+      .slice(0, 5);
+
+    return res.render("pages/avaliacao", {
+      trocas,
+      sucesso: req.query.sucesso === "1",
+      erro: req.query.erro === "1",
+    });
+  } catch (err) {
+    console.error("Erro ao carregar avaliações:", err);
+    return res.redirect("/conta");
+  }
+});
+
+router.post("/avaliacao/:id", autenticado, async (req, res) => {
+  try {
+    const usuario = await usuariosModel.findById(req.session.usuario.id);
+    const avaliacao = usuario && trocasModel.avaliar(req.params.id, usuario.email, req.body.nota);
+    return res.redirect(`/avaliacao?${avaliacao ? "sucesso=1" : "erro=1"}`);
+  } catch (err) {
+    console.error("Erro ao salvar avaliação:", err);
+    return res.redirect("/avaliacao?erro=1");
+  }
+});
 router.get("/saibamais", (req, res) => res.render("pages/saibamais"));
 router.get("/servicos", (req, res) => res.render("pages/servicos"));
 router.get("/noticia", (req, res) => res.render("pages/noticia"));

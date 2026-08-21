@@ -95,6 +95,22 @@ const trocasModel = {
     return trocas[idx];
   },
 
+  avaliar: (id, email, nota) => {
+    const notaNumerica = Number(nota);
+    if (!Number.isInteger(notaNumerica) || notaNumerica < 1 || notaNumerica > 5) return null;
+
+    const trocas = lerTrocas();
+    const idx = trocas.findIndex(
+      (troca) => troca.id === parseInt(id) && troca.solicitanteEmail === email
+    );
+    if (idx === -1) return null;
+
+    trocas[idx].avaliacaoNota = notaNumerica;
+    trocas[idx].avaliacaoData = new Date().toISOString();
+    salvarTrocas(trocas);
+    return trocas[idx];
+  },
+
   getStats: () => {
     const stats = lerStats();
     const trocas = lerTrocas();

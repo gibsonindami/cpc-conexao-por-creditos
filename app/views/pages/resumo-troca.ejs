@@ -51,11 +51,7 @@
     <p class="rt-card-label">Você está trocando com</p>
     <section class="rt-doador">
       <section class="rt-avatar">
-        <% if (anuncio.foto && !anuncio.foto.includes('malcolm')) { %>
-          <img src="<%= anuncio.foto %>" alt="Foto de <%= anuncio.doadorNome %>">
-        <% } else { %>
-          <%= inicial %>
-        <% } %>
+        <img src="<%= anuncio.fotoExibicao %>" alt="Foto de <%= anuncio.doadorNome %>">
       </section>
       <section>
         <section class="rt-doador-nome"><%= anuncio.doadorNome %></section>
