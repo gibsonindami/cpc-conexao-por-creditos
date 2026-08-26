@@ -79,7 +79,7 @@ html, body {
   display: none;
 }
  
-/* ÍCONES DESKTOP — escondido no mobile */
+/* ÍCONES: a mesma marcação SVG é usada em desktop e mobile */
 .icones {
   display: none;
 }
@@ -145,25 +145,6 @@ html, body {
   color: #888;
   text-align: center;
   line-height: 1.4;
-}
- 
-/* ÍCONES MOBILE (antigo) */
-.icones-mobile {
-  display: flex;
-  justify-content: space-around;
-  padding: 15px;
-  flex-wrap: wrap;
-  gap: 10px;
-}
- 
-.icone {
-  text-align: center;
-  flex: 1 1 70px;
-}
- 
-.icone img {
-  width: 50px;
-  height: 50px;
 }
  
 /* ABAS */
@@ -324,7 +305,6 @@ footer img {
   .side-menu { width: 180px; padding: 15px; }
   .boas-vindas h2 { font-size: calc(18px * var(--a11y-escala, 1)); }
   .boas-vindas p { font-size: calc(12px * var(--a11y-escala, 1)); }
-  .icone img { width: 50px; height: 50px; }
   footer { padding: 10px; }
   .footer-links a { font-size: calc(12px * var(--a11y-escala, 1)); }
   .card { width: 100%; }
@@ -340,6 +320,20 @@ footer img {
  
 /* ── TABLET ── */
 @media (max-width: 768px) {
+  .icones {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+    flex-wrap: wrap;
+  }
+
+  .icone-card {
+    flex: 1 1 calc(50% - 10px);
+    max-width: 150px;
+    min-width: 0;
+  }
+
   .fique-por-dentro { padding: 25px 20px; text-align: center; }
   .fique-por-dentro form { display: flex; flex-direction: column; gap: 10px; }
   .fique-por-dentro input {

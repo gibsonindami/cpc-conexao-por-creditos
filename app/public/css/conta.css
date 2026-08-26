@@ -551,6 +551,22 @@ body::after {
   }
 }
 
+@media (min-width: 481px) and (max-width: 600px) {
+  .photo-trigger img {
+    width: 104px;
+    height: 104px;
+  }
+
+  .trade-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .trade-info {
+    min-width: 0;
+  }
+}
+
 /* Ajustes visuais da conta */
 :root {
   --conta-verde: #184c3b;
