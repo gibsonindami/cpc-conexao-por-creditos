@@ -234,6 +234,23 @@ const usuariosModel = {
         return usuario;
       }
     );
+  },
+
+  updateFoto: async (id, foto) => {
+    return await withFallback(
+      async () => {
+        await pool.query("UPDATE usuarios SET foto = ? WHERE id = ?", [foto, id]);
+        return true;
+      },
+      () => {
+        const usuarios = lerUsuarios();
+        const usuario = usuarios.find(u => u.id == id);
+        if (!usuario) return false;
+        usuario.foto = foto;
+        salvarUsuarios(usuarios);
+        return true;
+      }
+    );
   }
 };
 

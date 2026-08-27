@@ -42,14 +42,33 @@ body {
 }
  
  
-.profile-image img {
+.profile-image {
+  margin-top: 40px;
+}
+
+.photo-trigger {
+  display: block;
+  cursor: pointer;
+  border-radius: 50%;
+  outline: none;
+}
+
+.photo-trigger img {
   width: 128px;
   height: 128px;
   border-radius: 50%;
   border: 4px solid white;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   margin-bottom: 16px;
-  margin-top: 40px;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.photo-trigger:hover img,
+.photo-trigger:focus-visible img {
+  transform: scale(1.04);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
 }
  
  
@@ -167,8 +186,11 @@ body {
 /* Card de histórico de troca (redesenhado): mostra o quê, com quem,
    quando e quantos créditos, de forma clara e legível */
 .historico-secao h2 {
-  font-size: calc(22px * var(--a11y-escala, 1));
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 32px;
   font-weight: 700;
+  color: #184c3b;
+  line-height: 1.25;
   margin-bottom: 16px;
   text-align: left;
   padding-left: 4px;
@@ -296,9 +318,11 @@ body {
  
  
 .trades-section h2, .proposals-section h2, .history-section h2 {
-  font-size: calc(24px * var(--a11y-escala, 1));
-  font-weight: 600;
-  line-height: 1.3;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #184c3b;
+  line-height: 1.25;
   letter-spacing: -0.01em;
   margin-bottom: 8px;
   padding-left: 8px;
@@ -521,7 +545,7 @@ body::after {
     padding-top: 24px;
   }
  
-  .profile-image img {
+  .photo-trigger img {
     width: 96px;
     height: 96px;
   }
@@ -530,4 +554,206 @@ body::after {
   .amount {
     font-size: calc(24px * var(--a11y-escala, 1));
   }
+}
+
+@media (min-width: 481px) and (max-width: 600px) {
+  .photo-trigger img {
+    width: 104px;
+    height: 104px;
+  }
+
+  .trade-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .trade-info {
+    min-width: 0;
+  }
+}
+
+/* Ajustes visuais da conta */
+:root {
+  --conta-verde: #184c3b;
+  --conta-verde-claro: #e8f1eb;
+  --conta-borda: #dce7df;
+  --conta-texto-suave: #647269;
+}
+
+body {
+  background: #f3f7f4;
+}
+
+.container {
+  padding-top: 48px;
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: 152px 1fr;
+  align-items: center;
+  gap: 24px;
+  max-width: 860px;
+  margin: 0 auto 28px;
+  padding: 28px 32px;
+  text-align: left;
+  background: #fff;
+  border: 1px solid var(--conta-borda);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(24, 76, 59, 0.07);
+}
+
+.profile-image {
+  margin: 0;
+  justify-self: center;
+}
+
+.photo-trigger img {
+  margin: 0;
+  border-color: var(--conta-verde-claro);
+}
+
+.profile-header h1 {
+  margin-bottom: 6px;
+  color: var(--conta-verde);
+}
+
+.profile-header > p:not(.profile-eyebrow) {
+  color: var(--conta-texto-suave);
+  opacity: 1;
+}
+
+.profile-eyebrow {
+  margin-bottom: 4px;
+  color: #b57900 !important;
+  font-size: calc(12px * var(--a11y-escala, 1)) !important;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 1 !important;
+}
+
+.provider-label {
+  display: inline-flex;
+  margin-top: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--conta-verde-claro);
+  color: var(--conta-verde);
+  font-size: calc(11px * var(--a11y-escala, 1));
+  font-weight: 700;
+}
+
+.profile-message {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: calc(13px * var(--a11y-escala, 1));
+}
+
+.profile-message.success { background: #e7f5eb; color: #257344; }
+.profile-message.error { background: #fff0ee; color: #b63c32; }
+
+.balance-card {
+  width: fit-content;
+  margin-top: 16px;
+  padding: 8px 12px 8px 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #dce7df;
+  border-radius: 10px;
+  background: #f8fbf8;
+  color: var(--conta-verde);
+  box-shadow: none;
+}
+
+.balance-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--conta-verde-claro);
+  border: 1px solid #cfe0d3;
+  color: var(--conta-verde);
+  font-size: 19px;
+}
+
+.balance-copy {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+}
+
+.balance-label {
+  font-size: calc(11px * var(--a11y-escala, 1));
+  font-weight: 700;
+  color: var(--conta-texto-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.amount {
+  font-size: calc(19px * var(--a11y-escala, 1));
+  line-height: 1;
+  color: var(--conta-verde);
+}
+
+.balance-unit {
+  color: var(--conta-texto-suave);
+  font-size: calc(11px * var(--a11y-escala, 1));
+}
+
+.bento-grid {
+  max-width: 860px;
+  margin: 0 auto 32px;
+  gap: 24px;
+}
+
+.trades-section {
+  gap: 10px;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid var(--conta-borda);
+  border-radius: 16px;
+}
+
+.trades-section h2 {
+  margin-bottom: 6px;
+  padding-left: 0;
+  color: #184c3b;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: left;
+}
+
+.trade-card {
+  border-color: var(--conta-borda);
+  box-shadow: none;
+}
+
+.logout-section {
+  max-width: 860px;
+  margin: 0 auto;
+  padding-top: 20px;
+  border-top-color: var(--conta-borda);
+}
+
+@media (max-width: 600px) {
+  .container { padding-top: 24px; }
+  .profile {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 24px 18px;
+    text-align: center;
+  }
+  .profile-header { width: 100%; }
+  .profile-eyebrow { margin-top: 2px; }
+  .trades-section { padding: 16px; }
+  .balance-card { margin-top: 14px; }
 }

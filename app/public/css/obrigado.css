@@ -126,8 +126,11 @@ body {
   top: 0;
 }
 .content h2 {
-  font-size: calc(16px * var(--a11y-escala, 1));
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 32px;
   font-weight: 600;
+  color: #184c3b;
+  line-height: 1.25;
   margin-bottom: 45px;
 }
 

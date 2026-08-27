@@ -51,6 +51,16 @@ h1 {
   color: var(--color-text-dark);
 }
 
+.feedback,
+.empty-state {
+  text-align: center;
+  margin: 18px auto;
+}
+
+.feedback-success { color: #218838; }
+.feedback-error { color: #c0392b; }
+.empty-state { grid-column: 1 / -1; color: #666; }
+
 .card-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -121,6 +131,25 @@ h1 {
 .rating input:checked ~ label {
     color: gold;
 }
+
+.save-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin-top: 8px;
+  border: 1px solid #218838;
+  border-radius: 50%;
+  background: #fff;
+  color: #218838;
+  cursor: pointer;
+}
+
+.save-rating:hover { background: #e8f5e9; }
+.save-rating:disabled { cursor: default; opacity: 0.75; }
+.save-rating svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.saved-rating { color: #218838; margin-top: 5px; }
 
 /* == RESPONSIVIDADE  */
 

@@ -1,42 +1,43 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="light">
+<html lang="pt-BR" class="light conta-page">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Perfil</title>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap%22 rel="stylesheet">
-  <link rel="stylesheet" href="../css/conta.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Material+Symbols+Outlined:wght@100..700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/conta.css" />
 </head>
 <%- include('../partials/header.ejs') %>
  
 <body>
   <main class="container">
-    <!-- Profile Section -->
     <section class="profile">
-      <section class="profile-image">
-        <img src="<%= usuario?.foto || '/img/img perfil-white.png' %>" alt="Foto de perfil de <%= usuario?.nome || 'usuário' %>" loading="lazy" />
-      </section>
+      <form class="profile-image" action="/conta/foto" method="POST" enctype="multipart/form-data">
+        <label class="photo-trigger" for="fotoInput" title="Alterar foto de perfil">
+          <img src="<%= usuario?.foto || '/img/img perfil-white.png' %>" alt="Foto de perfil de <%= usuario?.nome || 'usuário' %>" loading="lazy" id="fotoPerfil" />
+        </label>
+        <input id="fotoInput" name="foto" type="file" accept="image/jpeg,image/png,image/webp" hidden />
+      </form>
       <section class="profile-header">
+        <p class="profile-eyebrow">Minha conta</p>
         <h1><%= usuario?.nome || 'Usuário' %></h1>
+        <p><%= usuario?.email || 'Sem e-mail cadastrado' %></p>
         <% if (usuario?.provider) { %>
           <span class="provider-label"><%= usuario.provider === 'google' ? 'Entrou com Google' : usuario.provider === 'local' ? 'Login local' : 'Entrou com ' + usuario.provider %></span>
         <% } %>
-      </section>
-      <p><%= usuario?.email || 'Sem e-mail cadastrado' %></p>
-    </section>
-
-    <!-- <form action="/upload" method="POST" enctype="multipart/form-data"><label>Escolha uma foto (JPG ou PNG):</label>
-    <input type="file" name="minhaImagem" accept="img/*" required><button type="submit">Subir e Converter</button></form>
-
-    <form action="/enviar-foto" method="POST" enctype="multipart/form-data"><input type="file" name="imagemUsuario" accept="img/*">
-    <button type="submit">Upload Inteligente</button></form> -->
- 
-    <!-- Credit Balance -->
-    <section class="balance-card">
-        <section class="balance-amount">
-          <span class="amount">Você acumulou 100 créditos<!-- <img src="/img/img-creditos.png" alt="Ícone de créditos">--></span>
+        <section class="balance-card" aria-label="Saldo de créditos">
+          <span class="balance-icon material-symbols-outlined" aria-hidden="true"></span>
+          <span class="balance-copy">
+            <strong class="amount"><%= usuario?.creditos ?? 100 %></strong>
+            <span class="balance-label">CRÉDITOS CPC</span>
+          </span>
         </section>
       </section>
+      <% if (locals.querySucesso) { %><p class="profile-message success">Foto atualizada com sucesso.</p><% } %>
+      <% if (locals.queryErro) { %><p class="profile-message error">Não foi possível atualizar a foto. Use JPG, PNG ou WebP de até 5 MB.</p><% } %>
+    </section>
  
       <!-- Bento Grid -->
       <section class="bento-grid">
@@ -57,7 +58,7 @@
               %>
               <section class="trade-card">
                 <section class="trade-icon">
-                  <img src="<%= troca.foto %>" alt="Foto de <%= troca.doadorNome %>">
+                  <img src="<%= troca.fotoPerfil %>" alt="Foto de perfil de <%= troca.doadorNome %>">
                 </section>
                 <section class="trade-info">
                   <p class="trade-type"><%= dataFormatada %></p>
@@ -76,39 +77,26 @@
        
         <section class="trades-section">
           <h2>Ofertas Ativas</h2>
-         
-          <section class="trade-card">
-            <section class="trade-icon">
+          <% if (meusAnuncios && meusAnuncios.length > 0) { %>
+            <% meusAnuncios.slice(0, 3).forEach(anuncio => { %>
+              <% const dataAnuncio = new Date(anuncio.dataCriacao); %>
+              <section class="trade-card">
+                <section class="trade-icon">
+                  <img src="<%= usuario?.foto || '/img/img perfil-white.png' %>" alt="Foto de perfil de <%= usuario?.nome || anuncio.doadorNome %>">
+                </section>
+                <section class="trade-info">
+                  <p class="trade-type"><%= dataAnuncio.toLocaleDateString('pt-BR') %></p>
+                  <p class="trade-type"><%= anuncio.categoria %></p>
+                  <p class="trade-name"><%= anuncio.titulo %></p>
+                </section>
+                <section class="trade-status status-badge status-ativa">ATIVA</section>
+              </section>
+            <% }) %>
+          <% } else { %>
+            <section style="padding: 20px; text-align: center; color: #999;">
+              <p>Nenhum anúncio ativo ainda</p>
             </section>
-            <section class="trade-info">
-              <p class="trade-type">07/05/2026</p>
-              <p class="trade-type">Marcos Vinicius</p>
-              <p class="trade-name">Limpeza</p>
-            </section>
-            <section class="trade-status status-badge status-inativa">INATIVA</section>
-          </section>
- 
-          <section class="trade-card">
-            <section class="trade-icon">
-            </section>
-            <section class="trade-info">
-              <p class="trade-type">05/05/2026</p>
-              <p class="trade-type">Matheus Barbosa</p>
-              <p class="trade-name">Limpeza</p>
-            </section>
-            <section class="trade-status status-badge status-ativa">ATIVA</section>
-          </section>
- 
-          <section class="trade-card">
-            <section class="trade-icon">
-            </section>
-            <section class="trade-info">
-              <p class="trade-type">04/05/2026</p>
-              <p class="trade-type">Gibson Leonesio</p>
-              <p class="trade-name">Limpeza</p>
-            </section>
-            <section class="trade-status status-badge status-ativa">ATIVA</section>
-          </section>
+          <% } %>
         </section>
   </main>
  
@@ -118,5 +106,24 @@
     </section>
  
     <%- include('../partials/footer.ejs') %>
+    <script>
+      (function () {
+        var input = document.getElementById('fotoInput');
+        var preview = document.getElementById('fotoPerfil');
+        var formulario = input && input.form;
+        if (!input || !preview || !formulario) return;
+        input.addEventListener('change', function () {
+          var arquivo = input.files && input.files[0];
+          if (!arquivo) return;
+          if (!arquivo.type.startsWith('image/') || arquivo.size > 5 * 1024 * 1024) {
+            input.value = '';
+            alert('Escolha uma imagem de até 5 MB.');
+            return;
+          }
+          preview.src = URL.createObjectURL(arquivo);
+          formulario.submit();
+        });
+      })();
+    </script>
 </body>
 </html>

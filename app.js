@@ -1,10 +1,8 @@
 const express = require("express");
 const session = require("express-session");
 const app = express();
-const multer = require("multer");
-const sharp = require("sharp");
-const path = require("path");
-const fs = require("fs");
+const upload = require("./app/middlewares/upload");
+const { uploadImagem } = require("./app/controllers/uploadController");
 require("dotenv").config();
 
 app.use(express.urlencoded({ extended: true }));
@@ -24,20 +22,7 @@ app.use(session({
   },
 }));
 
-const upload = multer({ dest: 'uploads/' });
-app.post('/upload', upload.single('minhaImagem'), async (req, res) => {
-    try {
-        const { path: tempPath, originalname } = req.file;
-        const nomeArquivo = path.parse(originalname).name + '-' + Date.now() + '.webp';
-        const destinoFinal = path.join(__dirname, 'public/images', nomeArquivo);
-        await sharp(tempPath).webp({ quality: 80 }).toFile(destinoFinal);
-        fs.unlinkSync(tempPath);
-        res.send(`Imagem convertida com sucesso: ${nomeArquivo}`);
-    } catch (error) {
-        console.error(error);
-        res.status(500).send("Erro ao processar imagem.");
-    }
-});
+app.post("/upload", upload.single("minhaImagem"), uploadImagem);
 
 app.use(passport.initialize());
 app.use(passport.session());

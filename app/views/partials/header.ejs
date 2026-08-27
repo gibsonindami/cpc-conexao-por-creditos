@@ -7,7 +7,7 @@
         <% if (!usuarioLogado) { %>
             <a href="/login" class="login mobile-login">LOGIN</a>
         <% } else { %>
-            <a href="/conta" class="login mobile-login"><img src="/img/img perfil-white.png" alt="Perfil" class="perfil-img"></a>
+            <a href="/conta" class="login mobile-login"><img src="<%= usuarioLogado.foto || '/img/img perfil-white.png' %>" alt="Perfil" class="perfil-img"></a>
         <% } %>
 
         <!-- LOGO -->
@@ -35,7 +35,7 @@
             <% if (!usuarioLogado) { %>
                 <a href="/login" class="login">LOGIN</a>
             <% } else { %>
-                <a href="/conta" class="perfil-icon" title="Meu Perfil"><img src="/img/img perfil-white.png" alt="Perfil" class="perfil-img"></a>
+                <a href="/conta" class="perfil-icon" title="Meu Perfil"><img src="<%= usuarioLogado.foto || '/img/img perfil-white.png' %>" alt="Perfil" class="perfil-img"></a>
             <% } %>
         </section>
  

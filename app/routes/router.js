@@ -1,35 +1,28 @@
 const express = require("express");
-const router = express.Router();
-const { body, validationResult } = require("express-validator");
+const { body } = require("express-validator");
 const usuariosModel = require("../models/models");
 const anunciosModel = require("../models/anunciosModel");
 const trocasModel = require("../models/trocasModel");
-const aiService = require("../ai/aiService");
-const historyManager = require("../ai/historyManager");
-const multer = require("multer");
-const sharp = require("sharp");
-const fs = require("fs");
-const path = require("path");
+const upload = require("../middlewares/upload");
+const { criarAnuncio } = require("../controllers/anunciosController");
+const { exibirConta, atualizarFoto } = require("../controllers/usuariosController");
+const { responderDuvida } = require("../controllers/iaController");
+const { cadastroController, loginController } = require("../controllers/controllers");
 
-const upload = multer({
-    dest: "uploads/",
-    limits: {
-        fileSize: 5 * 1024 * 1024
-    }
-});
+const router = express.Router();
 
 const autenticado = (req, res, next) => {
-  if (req.session && req.session.usuario) return next();
+  if (req.session?.usuario) return next();
   res.redirect("/login");
 };
 
 router.get("/login", (req, res) => {
-  if (req.session && req.session.usuario) return res.redirect("/");
+  if (req.session?.usuario) return res.redirect("/");
   res.render("pages/login", { erro: null, sucesso: null, valores: {}, erroValidacao: {}, msgErro: {} });
 });
 
 router.get("/cadastro", (req, res) => {
-  if (req.session && req.session.usuario) return res.redirect("/");
+  if (req.session?.usuario) return res.redirect("/");
   res.render("pages/login", { erro: null, sucesso: null, valores: {}, erroValidacao: {}, msgErro: {} });
 });
 
@@ -37,8 +30,8 @@ router.get("/", (req, res) => {
   try {
     const stats = trocasModel.getStats();
     res.render("pages/home", {
-      membrosAtivos: stats.membrosAtivos.toLocaleString('pt-BR'),
-      trocasRealizadas: stats.trocasRealizadas.toLocaleString('pt-BR'),
+      membrosAtivos: stats.membrosAtivos.toLocaleString("pt-BR"),
+      trocasRealizadas: stats.trocasRealizadas.toLocaleString("pt-BR"),
       totalDoacoes: trocasModel.formatarValor(stats.totalDoacoesReais * 100),
     });
   } catch (err) {
@@ -47,201 +40,104 @@ router.get("/", (req, res) => {
   }
 });
 
-router.get("/todos", (req, res) => {
-  const busca = req.query.busca || '';
-  const anuncios = anunciosModel.findAll({ busca });
-  res.render("pages/todos", { anuncios, busca });
-});
+const prepararAnuncio = async (anuncio, usuariosPorId = new Map()) => {
+  if (!anuncio) return null;
+  if (anuncio.doadorNome === "Malcolm Eliseu Ribeiro" || !anuncio.doadorId) {
+    return { ...anuncio, fotoExibicao: anuncio.foto || "/img/img malcon.png" };
+  }
 
-router.get("/kids", (req, res) => {
-  const busca = req.query.busca || '';
-  const anuncios = anunciosModel.findAll({ categoria: 'infantil', busca });
-  res.render("pages/infantil", { anuncios, busca });
-});
+  if (!usuariosPorId.has(anuncio.doadorId)) {
+    usuariosPorId.set(anuncio.doadorId, await usuariosModel.findById(anuncio.doadorId));
+  }
+  const anunciante = usuariosPorId.get(anuncio.doadorId);
+  return {
+    ...anuncio,
+    fotoExibicao: anunciante?.foto || "/img/img perfil-white.png",
+  };
+};
 
-router.get("/alimentos", (req, res) => {
-  const busca = req.query.busca || '';
-  const anuncios = anunciosModel.findAll({ categoria: 'alimentos', busca });
-  res.render("pages/alimentos", { anuncios, busca });
-});
+const listarAnuncios = (categoria, pagina) => async (req, res) => {
+  const busca = req.query.busca || "";
+  const anuncios = anunciosModel.findAll({ categoria, busca });
+  const usuariosPorId = new Map();
+  const anunciosComFoto = await Promise.all(anuncios.map((anuncio) => prepararAnuncio(anuncio, usuariosPorId)));
+  res.render(`pages/${pagina}`, { anuncios: anunciosComFoto, busca });
+};
 
-router.get("/profissionais", (req, res) => {
-  const busca = req.query.busca || '';
-  const anuncios = anunciosModel.findAll({ categoria: 'profissionais', busca });
-  res.render("pages/profissionais", { anuncios, busca });
-});
+router.get("/todos", listarAnuncios(undefined, "todos"));
+router.get("/kids", listarAnuncios("infantil", "infantil"));
+router.get("/alimentos", listarAnuncios("alimentos", "alimentos"));
+router.get("/profissionais", listarAnuncios("profissionais", "profissionais"));
 
-router.get("/contato/:id", (req, res) => {
+router.get("/contato/:id", async (req, res) => {
   const anuncio = anunciosModel.findById(req.params.id);
   if (!anuncio) return res.redirect("/todos");
-  res.render("pages/contato-troca", { anuncio });
+  res.render("pages/contato-troca", { anuncio: await prepararAnuncio(anuncio) });
 });
 
-router.get("/contato", (req, res) => {
-  const anuncios = anunciosModel.findAll();
-  const anuncio = anuncios[0] || null;
-  res.render("pages/contato-troca", { anuncio });
+router.get("/contato", async (req, res) => {
+  const anuncio = anunciosModel.findAll()[0] || null;
+  res.render("pages/contato-troca", { anuncio: await prepararAnuncio(anuncio) });
 });
 
-router.get("/resumo/:anuncioId", (req, res) => {
+router.get("/resumo/:anuncioId", async (req, res) => {
   const anuncio = anunciosModel.findById(req.params.anuncioId);
   if (!anuncio) return res.redirect("/todos");
+  if (!req.session?.usuario) req.session.redirectAfterLogin = `/resumo/${req.params.anuncioId}`;
   req.session.anuncioPendente = anuncio;
+  res.render("pages/resumo-troca", { anuncio: await prepararAnuncio(anuncio) });
+});
+
+router.get("/resumo", async (req, res) => {
+  const anuncio = await prepararAnuncio(req.session.anuncioPendente || null);
+  if (anuncio && !req.session?.usuario) req.session.redirectAfterLogin = "/resumo";
   res.render("pages/resumo-troca", { anuncio });
 });
 
-router.get("/resumo", (req, res) => {
-  const anuncio = req.session.anuncioPendente || null;
-  res.render("pages/resumo-troca", { anuncio });
-});
-
-router.post("/confirmar-troca", (req, res) => {
+router.post("/confirmar-troca", autenticado, (req, res) => {
   try {
     const { anuncioId, anuncioTitulo, mensagem } = req.body;
     const usuario = req.session.usuario;
     const anuncio = anunciosModel.findById(anuncioId);
     trocasModel.create({
       anuncioId,
-      anuncioTitulo: anuncioTitulo || 'Anúncio CPC',
-      doadorNome: anuncio ? anuncio.doadorNome : 'Doador CPC',
-      foto: anuncio ? anuncio.foto : '../img/img malcon.png',
-      solicitanteNome: usuario ? usuario.nome : (req.body.nome || 'Visitante'),
-      solicitanteEmail: usuario ? usuario.email : (req.body.email || ''),
-      mensagem: mensagem || '',
+      anuncioTitulo: anuncioTitulo || "Anúncio CPC",
+      doadorNome: anuncio?.doadorNome || "Doador CPC",
+      foto: anuncio?.foto || "../img/img malcon.png",
+      solicitanteNome: usuario?.nome || req.body.nome || "Visitante",
+      solicitanteEmail: usuario?.email || req.body.email || "",
+      mensagem: mensagem || "",
     });
     delete req.session.anuncioPendente;
-    res.redirect("/obrigado");
   } catch (err) {
     console.error("Erro confirmar troca:", err);
-    res.redirect("/obrigado");
   }
+  res.redirect("/obrigado");
 });
 
 router.get("/novo-anuncio", (req, res) => {
-
-    // Usuário não está logado
-    if (!req.session.usuario) {
-
-        // guarda a página que ele queria acessar
-        req.session.redirectAfterLogin = "/novo-anuncio";
-
-        return res.redirect("/login");
-    }
-
-    // Usuário logado
-    res.render("pages/novo-anuncio", {
-        erro: null,
-        sucesso: null,
-        valores: {}
-    });
-
+  if (!req.session?.usuario) {
+    req.session.redirectAfterLogin = "/novo-anuncio";
+    return res.redirect("/login");
+  }
+  res.render("pages/novo-anuncio", { erro: null, sucesso: null, valores: {} });
 });
 
 router.post(
-    "/novo-anuncio",
-
-    upload.array("imagens", 3),
-
-    (req, res, next) => {
-
-        if (!req.session.usuario) {
-            req.session.redirectAfterLogin = "/novo-anuncio";
-            return res.redirect("/login");
-        }
-
-        next();
-
-    },
-
-    body("titulo").trim().notEmpty().withMessage("Título é obrigatório"),
-    body("descricao").trim().notEmpty().withMessage("Descrição é obrigatória"),
-    body("categoria").notEmpty().withMessage("Categoria é obrigatória"),
-
-    async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.render("pages/novo-anuncio", {
-        erro: errors.array().map(e => e.msg).join(' | '),
-        sucesso: null,
-        valores: req.body,
-      });
+  "/novo-anuncio",
+  (req, res, next) => {
+    if (!req.session?.usuario) {
+      req.session.redirectAfterLogin = "/novo-anuncio";
+      return res.redirect("/login");
     }
-    try {
-      const usuario = req.session.usuario;
-      const imagens = [];
-
-if (req.files && req.files.length) {
-
-    const pastaDestino = path.join(
-        __dirname,
-        "../public/img/anuncios"
-    );
-
-    if (!fs.existsSync(pastaDestino)) {
-        fs.mkdirSync(pastaDestino, { recursive: true });
-    }
-
-    for (const arquivo of req.files) {
-
-        const nome =
-            Date.now() +
-            "-" +
-            Math.round(Math.random() * 1000000) +
-            ".webp";
-
-        const destino = path.join(
-    pastaDestino,
-    nome
+    next();
+  },
+  upload.array("imagens", 3),
+  body("titulo").trim().notEmpty().withMessage("Título é obrigatório"),
+  body("descricao").trim().notEmpty().withMessage("Descrição é obrigatória"),
+  body("categoria").notEmpty().withMessage("Categoria é obrigatória"),
+  criarAnuncio
 );
-
-await sharp(arquivo.path)
-    .resize({
-        width: 1200,
-        withoutEnlargement: true
-    })
-    .webp({
-        quality: 80
-    })
-    .toFile(destino);
-
-fs.unlinkSync(arquivo.path);
-
-imagens.push(
-    "/img/anuncios/" + nome
-);
-    }
-
-}
-      anunciosModel.create({
-
-    titulo: req.body.titulo,
-
-    descricao: req.body.descricao,
-
-    categoria: req.body.categoria,
-
-    tipo: req.body.tipo,
-
-    doadorId: usuario.id,
-
-    doadorNome: usuario.nome,
-
-    doadorLocal: req.body.doadorLocal,
-
-    imagens,
-
-    foto: imagens[0] || "/img/img malcon.png"
-
-});
-      res.render("pages/novo-anuncio", { erro: null, sucesso: "Anúncio cadastrado com sucesso!", valores: {} });
-    } catch (err) {
-         res.render("pages/novo-anuncio", {
-        erro: "Erro ao cadastrar. Tente novamente.",
-        sucesso: null,
-        valores: req.body
-      });
-    }
-});
 
 router.get("/api/stats", (req, res) => {
   const stats = trocasModel.getStats();
@@ -253,101 +149,41 @@ router.get("/api/stats", (req, res) => {
 });
 
 router.get("/api/anuncios", (req, res) => {
-  const { categoria, busca } = req.query;
-  res.json(anunciosModel.findAll({ categoria, busca }));
+  res.json(anunciosModel.findAll({ categoria: req.query.categoria, busca: req.query.busca }));
 });
 
-// ==========================
-// CHAT IA (Gemini)
-// ==========================
+router.post("/api/chat", responderDuvida);
 
-router.post("/api/chat", async (req, res) => {
+router.get("/avaliacao", autenticado, async (req, res) => {
+  try {
+    const usuario = await usuariosModel.findById(req.session.usuario.id);
+    if (!usuario) return res.redirect("/login");
 
-    try {
+    const trocas = trocasModel.findAll()
+      .filter((troca) => troca.solicitanteEmail === usuario.email)
+      .slice(0, 5);
 
-        const mensagem = String(
-
-            req.body.mensagem || ""
-
-        ).trim();
-
-        if (!mensagem) {
-
-            return res.status(400).json({
-
-                resposta: "Digite uma pergunta."
-
-            });
-
-        }
-
-        const conversationId =
-
-            req.session?.usuario?.id ||
-
-            req.sessionID ||
-
-            req.ip;
-
-        const historico = historyManager.get(
-
-            conversationId
-
-        );
-
-        const resposta = await aiService.answer(
-
-            mensagem,
-
-            historico
-
-        );
-
-        historyManager.add(
-
-            conversationId,
-
-            "user",
-
-            mensagem
-
-        );
-
-        historyManager.add(
-
-            conversationId,
-
-            "assistant",
-
-            resposta
-
-        );
-
-        return res.json({
-
-            resposta
-
-        });
-
-    }
-
-    catch (erro) {
-
-        console.error("Erro IA:", erro);
-
-        return res.status(500).json({
-
-            resposta:
-
-            "Desculpe, ocorreu um erro ao consultar o assistente."
-
-        });
-
-    }
-
+    return res.render("pages/avaliacao", {
+      trocas,
+      sucesso: req.query.sucesso === "1",
+      erro: req.query.erro === "1",
+    });
+  } catch (err) {
+    console.error("Erro ao carregar avaliações:", err);
+    return res.redirect("/conta");
+  }
 });
 
-router.get("/avaliacao", (req, res) => res.render("pages/avaliacao"));
+router.post("/avaliacao/:id", autenticado, async (req, res) => {
+  try {
+    const usuario = await usuariosModel.findById(req.session.usuario.id);
+    const avaliacao = usuario && trocasModel.avaliar(req.params.id, usuario.email, req.body.nota);
+    return res.redirect(`/avaliacao?${avaliacao ? "sucesso=1" : "erro=1"}`);
+  } catch (err) {
+    console.error("Erro ao salvar avaliação:", err);
+    return res.redirect("/avaliacao?erro=1");
+  }
+});
 router.get("/saibamais", (req, res) => res.render("pages/saibamais"));
 router.get("/servicos", (req, res) => res.render("pages/servicos"));
 router.get("/noticia", (req, res) => res.render("pages/noticia"));
@@ -356,111 +192,30 @@ router.get("/comofunciona", (req, res) => res.render("pages/comofunciona"));
 router.get("/doe", (req, res) => res.render("pages/doe"));
 router.get("/obrigado", (req, res) => res.render("pages/obrigado"));
 
-router.get("/conta", autenticado, async (req, res) => {
-  // ✅ Admin vai para o painel, não para a conta de usuário
-  if (req.session.usuario.perfil === "admin") return res.redirect("/adm");
-  try {
-    const usuario = await usuariosModel.findById(req.session.usuario.id);
-    if (!usuario) return res.redirect("/login");
-    const meusTrocas = trocasModel.findAll().filter(t => t.solicitanteEmail === usuario.email);
-    res.render("pages/conta", { usuario, meusTrocas, totalTrocas: meusTrocas.length });
-  } catch (err) {
-    res.redirect("/login");
-  }
-});
+router.get("/conta", autenticado, exibirConta);
+router.post("/conta/foto", autenticado, upload.single("foto"), atualizarFoto);
 
 router.get("/logout", (req, res) => {
   req.session.destroy(() => res.redirect("/"));
 });
 
-router.post("/cadastro",
+router.post(
+  "/cadastro",
   body("nome").trim().notEmpty().withMessage("*Campo obrigatório!").isLength({ min: 3 }).withMessage("*Mínimo 3 caracteres!"),
   body("email").trim().notEmpty().withMessage("*Campo obrigatório!").isEmail().withMessage("*Email inválido!"),
   body("senha").notEmpty().withMessage("*Campo obrigatório!").isLength({ min: 6 }).withMessage("*Mínimo 8 caracteres!"),
-  body("confirmarSenha").notEmpty().withMessage("*Campo obrigatório!").custom((v, { req }) => {
-    if (v !== req.body.senha) throw new Error("Senhas não coincidem!");
+  body("confirmarSenha").notEmpty().withMessage("*Campo obrigatório!").custom((valor, { req }) => {
+    if (valor !== req.body.senha) throw new Error("Senhas não coincidem!");
     return true;
   }),
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      const erroValidacao = {}, msgErro = {};
-      errors.array().forEach(e => { erroValidacao[e.path] = "input-error"; msgErro[e.path] = e.msg; });
-      return res.render("pages/login", { valores: req.body, erroValidacao, msgErro, erro: null, sucesso: false });
-    }
-    try {
-      const existe = await usuariosModel.findByEmail(req.body.email);
-      if (existe) return res.render("pages/login", { valores: req.body, erroValidacao: { email: "input-error" }, msgErro: { email: "*Email já cadastrado!" }, erro: null, sucesso: false });
-      await usuariosModel.create({ nome: req.body.nome.trim(), email: req.body.email.toLowerCase(), senha: req.body.senha });
-      trocasModel.incrementarMembro();
-      await usuariosModel.create({
-    nome: req.body.nome.trim(),
-    email: req.body.email.toLowerCase(),
-    senha: req.body.senha
-});
-
-trocasModel.incrementarMembro();
-
-// faz login automaticamente
-const usuario = await usuariosModel.findByEmail(req.body.email);
-
-req.session.usuario = {
-    id: usuario.id,
-    nome: usuario.nome,
-    email: usuario.email,
-    perfil: usuario.perfil || "user"
-};
-
-req.session.usuarioId = usuario.id;
-
-const destino = req.session.redirectAfterLogin || "/";
-
-delete req.session.redirectAfterLogin;
-
-return res.redirect(destino);
-    } catch (err) {
-      return res.render("pages/login", { erro: "Erro ao cadastrar. Tente novamente.", sucesso: false, valores: req.body, erroValidacao: {}, msgErro: {} });
-    }
-  }
+  cadastroController
 );
 
-// LOGIN
-router.post("/login",
+router.post(
+  "/login",
   body("usuarioDigitado").notEmpty().withMessage("*Informe o usuário/email!"),
   body("senhaDigitada").notEmpty().withMessage("*Informe a senha!"),
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      const erroValidacao = {}, msgErro = {};
-      errors.array().forEach(e => { erroValidacao[e.path] = "input-error"; msgErro[e.path] = e.msg; });
-      return res.render("pages/login", { erro: "*Preencha todos os campos!", sucesso: false, valores: req.body, erroValidacao, msgErro });
-    }
-    try {
-      const u = req.body.usuarioDigitado.toLowerCase();
-      const usuario = await usuariosModel.findByCredentials(u, req.body.senhaDigitada);
-      if (usuario) {
-        req.session.usuarioId = usuario.id;
-        // ✅ CORRIGIDO: inclui perfil na sessão
-        req.session.usuario = { id: usuario.id, nome: usuario.nome, email: usuario.email, foto: usuario.foto || null, perfil: usuario.perfil || "user" };
-
-        // ✅ NOVO: redireciona admin direto para o painel
-    if (usuario.perfil === "admin") {
-    return res.redirect("/adm");
-}
-
-const destino = req.session.redirectAfterLogin || "/";
-
-delete req.session.redirectAfterLogin;
-
-return res.redirect(destino);
-      }
-      const existe = await usuariosModel.findByUsuarioOuEmail(u);
-      if (existe) return res.render("pages/login", { erro: null, sucesso: false, valores: req.body, erroValidacao: { senhaDigitada: "input-error" }, msgErro: { senhaDigitada: "*Senha incorreta!" } });
-      return res.render("pages/login", { erro: null, sucesso: false, valores: req.body, erroValidacao: { usuarioDigitado: "input-error" }, msgErro: { usuarioDigitado: "Usuário não encontrado!" } });
-    } catch (err) {
-      return res.render("pages/login", { erro: "Erro ao fazer login.", sucesso: false, valores: req.body, erroValidacao: {}, msgErro: {} });
-    }
-  }
+  loginController
 );
 
 module.exports = router;

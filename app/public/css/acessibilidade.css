@@ -8,12 +8,26 @@
 }
 
 /* ---------- Botão flutuante ---------- */
+#a11y-btn,
+#a11y-panel,
+#a11y-panel *,
+#a11y-panel *::before,
+#a11y-panel *::after {
+  box-sizing: border-box;
+}
+
 #a11y-btn {
   position: fixed;
   bottom: 24px;
   right: 24px;
   width: 56px;
   height: 56px;
+  min-width: 56px;
+  min-height: 56px;
+  max-width: 56px;
+  max-height: 56px;
+  padding: 0;
+  margin: 0;
   border-radius: 50%;
   background: #184c3b;
   color: #fff;
@@ -248,7 +262,17 @@ html.a11y-contraste.a11y-font-3 { --a11y-escala: 1.43; font-size: 143%; }
 html.a11y-contraste.a11y-font-4 { --a11y-escala: 1.56; font-size: 156%; }
 html.a11y-contraste.a11y-font-5 { --a11y-escala: 1.70; font-size: 170%; }
 
-@media (max-width: 480px) {
-  #a11y-panel { right: 16px; bottom: 84px; width: calc(100vw - 32px); }
-  #a11y-btn { right: 16px; bottom: 16px; }
+@media (max-width: 600px) {
+  #a11y-panel {
+    right: 16px;
+    bottom: 84px;
+    width: calc(100vw - 32px);
+    max-height: calc(100vh - 108px);
+    overflow-y: auto;
+  }
+
+  #a11y-btn {
+    right: 16px;
+    bottom: 16px;
+  }
 }

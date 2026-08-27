@@ -174,7 +174,11 @@ input[name="slider"] {
 }
 
 .description-section h2 {
-  font-size: 2rem;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #184c3b;
+  line-height: 1.25;
   margin-bottom: var(--spacing-small);
   text-align: left; /* Alinhamento mais natural para títulos de seção */
 }
@@ -257,7 +261,7 @@ input[name="slider"] {
   }
 
   .description-section h2 {
-    font-size: 1.3rem;
+    font-size: 32px;
   }
 
   .description-section p {

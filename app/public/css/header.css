@@ -139,8 +139,10 @@
 }
 
 .perfil-img {
+    width: 32px;
     height: 32px;
-    width: auto;
+    border-radius: 50%;
+    object-fit: cover;
     transition: all 0.3s;
 }
 

@@ -1,121 +1,81 @@
 const usuariosModel = require("../models/models");
+const trocasModel = require("../models/trocasModel");
+const { validationResult } = require("express-validator");
 
-// ============================================
-// 📝 CADASTRO - POST
-// ============================================
 const cadastroController = async (req, res) => {
-    const { nome, email, senha } = req.body;
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const erroValidacao = {}, msgErro = {};
+    errors.array().forEach((erro) => {
+      erroValidacao[erro.path] = "input-error";
+      msgErro[erro.path] = erro.msg;
+    });
+    return res.render("pages/login", { valores: req.body, erroValidacao, msgErro, erro: null, sucesso: false });
+  }
 
-    if (!nome || !email || !senha) {
-        return res.render("pages/login", {
-            erro: "Todos os campos são obrigatórios",
-            sucesso: false,
-            valores: req.body,
-            erroValidacao: { nome: !nome ? "input-error" : "", email: !email ? "input-error" : "", senha: !senha ? "input-error" : "" },
-            msgErro: { nome: !nome ? "*Campo obrigatório!" : "", email: !email ? "*Campo obrigatório!" : "", senha: !senha ? "*Campo obrigatório!" : "" },
-        });
+  try {
+    const existe = await usuariosModel.findByEmail(req.body.email);
+    if (existe) {
+      return res.render("pages/login", {
+        valores: req.body,
+        erroValidacao: { email: "input-error" },
+        msgErro: { email: "*Email já cadastrado!" },
+        erro: null,
+        sucesso: false,
+      });
     }
 
-    try {
-        const usuarioExistente = await usuariosModel.findByEmail(email);
-        if (usuarioExistente) {
-            return res.render("pages/login", {
-                valores: req.body,
-                erroValidacao: { email: "input-error" },
-                msgErro: { email: "*Email já cadastrado!" },
-                erro: null,
-                sucesso: false,
-            });
-        }
-
-        await usuariosModel.create({
-            nome: nome.trim(),
-            email: email.toLowerCase(),
-            senha: senha
-        });
-
-        return res.render("pages/login", {
-            sucesso: "Cadastro realizado com sucesso!",
-            erro: null,
-            valores: {},
-            erroValidacao: {},
-            msgErro: {},
-        });
-    } catch (err) {
-        console.error("Erro ao cadastrar:", err);
-        return res.render("pages/login", {
-            erro: "Erro ao cadastrar. Tente novamente.",
-            sucesso: false,
-            valores: req.body,
-            erroValidacao: {},
-            msgErro: {},
-        });
-    }
+    const usuarioCriado = await usuariosModel.create({
+      nome: req.body.nome.trim(),
+      email: req.body.email.toLowerCase(),
+      senha: req.body.senha,
+    });
+    const usuario = usuarioCriado.id
+      ? usuarioCriado
+      : await usuariosModel.findById(usuarioCriado.insertId);
+    if (!usuario) throw new Error("Usuário criado, mas não localizado");
+    trocasModel.incrementarMembro();
+    req.session.usuario = { id: usuario.id, nome: usuario.nome, email: usuario.email, perfil: usuario.perfil || "user" };
+    req.session.usuarioId = usuario.id;
+    const destino = req.session.redirectAfterLogin || "/";
+    delete req.session.redirectAfterLogin;
+    return res.redirect(destino);
+  } catch (err) {
+    console.error("Erro ao cadastrar:", err);
+    return res.render("pages/login", { erro: "Erro ao cadastrar. Tente novamente.", sucesso: false, valores: req.body, erroValidacao: {}, msgErro: {} });
+  }
 };
 
-// ============================================
-// 🔑 LOGIN - POST
-// ============================================
 const loginController = async (req, res) => {
-    const { usuarioDigitado, senhaDigitada } = req.body;
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const erroValidacao = {}, msgErro = {};
+    errors.array().forEach((erro) => {
+      erroValidacao[erro.path] = "input-error";
+      msgErro[erro.path] = erro.msg;
+    });
+    return res.render("pages/login", { erro: "*Preencha todos os campos!", sucesso: false, valores: req.body, erroValidacao, msgErro });
+  }
 
-    if (!usuarioDigitado || !senhaDigitada) {
-        return res.render("pages/login", {
-            erro: "*Preencha todos os campos!",
-            sucesso: false,
-            valores: req.body,
-            erroValidacao: {
-                usuarioDigitado: !usuarioDigitado ? "input-error" : "",
-                senhaDigitada: !senhaDigitada ? "input-error" : "",
-            },
-            msgErro: {
-                usuarioDigitado: !usuarioDigitado ? "*Campo obrigatório!" : "",
-                senhaDigitada: !senhaDigitada ? "*Campo obrigatório!" : "",
-            },
-        });
+  try {
+    const usuarioDigitado = req.body.usuarioDigitado.toLowerCase();
+    const usuario = await usuariosModel.findByCredentials(usuarioDigitado, req.body.senhaDigitada);
+    if (usuario) {
+      req.session.usuarioId = usuario.id;
+      req.session.usuario = { id: usuario.id, nome: usuario.nome, email: usuario.email, foto: usuario.foto || null, perfil: usuario.perfil || "user" };
+      if (usuario.perfil === "admin") return res.redirect("/adm");
+      const destino = req.session.redirectAfterLogin || "/";
+      delete req.session.redirectAfterLogin;
+      return res.redirect(destino);
     }
 
-    try {
-        const usuario = await usuariosModel.findByCredentials(usuarioDigitado, senhaDigitada);
-        if (usuario) {
-            // ✅ ALTERADO: salva objeto completo com perfil na sessão
-            req.session.usuario = {
-                id: usuario.id,
-                nome: usuario.nome,
-                email: usuario.email,
-                perfil: usuario.perfil || "user"
-            };
-
-            console.log("✅ Login bem-sucedido:", usuario.nome, "| perfil:", usuario.perfil || "user");
-
-            // ✅ NOVO: redireciona admin direto para o painel
-            if (usuario.perfil === "admin") {
-                return res.redirect("/adm");
-            }
-
-            return res.redirect("/");
-        }
-
-        return res.render("pages/login", {
-            erro: "Usuário ou senha incorretos!",
-            sucesso: false,
-            valores: req.body,
-            erroValidacao: { usuarioDigitado: "input-error", senhaDigitada: "input-error" },
-            msgErro: { usuarioDigitado: "", senhaDigitada: "" },
-        });
-    } catch (err) {
-        console.error("Erro ao fazer login:", err);
-        return res.render("pages/login", {
-            erro: "Erro ao fazer login. Tente novamente.",
-            sucesso: false,
-            valores: req.body,
-            erroValidacao: {},
-            msgErro: {},
-        });
-    }
+    const existe = await usuariosModel.findByUsuarioOuEmail(usuarioDigitado);
+    if (existe) return res.render("pages/login", { erro: null, sucesso: false, valores: req.body, erroValidacao: { senhaDigitada: "input-error" }, msgErro: { senhaDigitada: "*Senha incorreta!" } });
+    return res.render("pages/login", { erro: null, sucesso: false, valores: req.body, erroValidacao: { usuarioDigitado: "input-error" }, msgErro: { usuarioDigitado: "Usuário não encontrado!" } });
+  } catch (err) {
+    console.error("Erro ao fazer login:", err);
+    return res.render("pages/login", { erro: "Erro ao fazer login.", sucesso: false, valores: req.body, erroValidacao: {}, msgErro: {} });
+  }
 };
 
-module.exports = {
-    cadastroController,
-    loginController
-};
+module.exports = { cadastroController, loginController };
