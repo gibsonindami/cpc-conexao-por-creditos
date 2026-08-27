@@ -6,6 +6,8 @@
   <title>Página Inicial - CPC</title>
   <link rel="stylesheet" href="../css/home.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 
 <%- include('../partials/header.ejs') %>
@@ -23,20 +25,47 @@
   </section>
 </section>
 
-<!-- CAMINHOS PRINCIPAIS: O QUE VOCÊ QUER FAZER? -->
-<section class="acao-principal">
-  <h2 class="acao-principal__titulo">Comece sua jornada no CPC.</h2>
-  <section class="acao-principal__cards">
-    <a href="/doe" class="acao-card acao-card--doar">
-      <span class="acao-card__icone">🎁</span>
-      <span class="acao-card__titulo">Quero doar</span>
-      <span class="acao-card__desc">Doe um item, um serviço ou seu tempo para quem precisa, sem esperar nada em troca.</span>
-    </a>
-    <a href="/servicos" class="acao-card acao-card--trocar">
-      <span class="acao-card__icone">🔄</span>
-      <span class="acao-card__titulo">Quero trocar</span>
-      <span class="acao-card__desc">Ofereça um produto ou serviço, ganhe créditos e troque por algo que você precisa.</span>
-    </a>
+<section id="como-funciona" class="secao">
+  <section class="secao-head">
+    <p class="eyebrow">O sistema de créditos</p>
+
+    <h2>
+      Antes de escolher o que fazer, entenda como o ciclo funciona.
+    </h2>
+
+    <p>
+      Não é preciso ter dinheiro nem algo específico para dar em troca no
+      mesmo instante. O crédito é o que conecta uma doação de hoje a uma necessidade de amanhã.
+    </p>
+  </section>
+
+  <section class="steps">
+    <section class="step">
+      <section class="step-num">Passo 01</section>
+      <h3>Ofereça algo</h3>
+      <p>
+        Um item que não usa mais, uma habilidade ou um pouco do seu tempo.
+        Leva menos de 5 minutos para anunciar.
+      </p>
+    </section>
+
+    <section class="step">
+      <section class="step-num">Passo 02</section>
+      <h3>Acumule créditos</h3>
+      <p>
+        Cada oferta concluída gera créditos na sua conta. Eles ficam guardados
+        até você precisar usar.
+      </p>
+    </section>
+
+    <section class="step">
+      <section class="step-num">Passo 03</section>
+      <h3>Troque quando precisar</h3>
+      <p>
+        Use os créditos para conseguir produtos ou serviços de outras pessoas
+        da comunidade, sem gastar dinheiro.
+      </p>
+    </section>
   </section>
 </section>
 
@@ -72,6 +101,9 @@
   </a>
 </section>
 
+<!-- ═══════════════════════════════════════════════
+     DOAR X TROCAR
+     ═══════════════════════════════════════════════ -->
 <section id="caminhos" class="secao">
   <section class="secao-head secao-head--centralizada">
     <p class="eyebrow">Duas formas de participar</p>
@@ -84,16 +116,33 @@
       <span class="path-tag">Sem retorno esperado</span>
       <h3>Quero doar</h3>
       <p>Dê um item, um serviço ou seu tempo para quem precisa, de graça — sem receber créditos em troca. Ideal se você só quer ajudar.</p>
-      <span class="path-cta">Doar agora →</span>
+      <span class="path-cta">Doar agora</span>
     </a>
     <a href="/servicos" class="path-card path-card--trocar">
       <span class="path-tag">Você ganha créditos</span>
       <h3>Quero trocar</h3>
       <p>Ofereça um produto ou serviço, acumule créditos e use para conseguir algo que você precisa de volta.</p>
-      <span class="path-cta">Ver itens disponíveis →</span>
+      <span class="path-cta">Ver itens disponíveis</span>
     </a>
   </section>
 </section>
+
+<!-- ═══════════════════════════════════════════════
+     CTA DE CADASTRO
+     ═══════════════════════════════════════════════ -->
+<% if (!usuarioLogado) { %>
+<section id="cadastro" class="secao">
+  <section class="cta-band">
+    <p class="eyebrow eyebrow--claro">Comece agora</p>
+    <h2>Crie sua conta e faça sua primeira oferta hoje.</h2>
+    <p>Leva menos de 2 minutos. Você pode entrar com e-mail ou com uma conta que já tem.</p>
+    <section class="hero-actions" style="justify-content:center;">
+      <a href="/login" class="btn btn-primary">Criar conta grátis</a>
+      <a href="/login" class="btn btn-ghost">Já tenho conta</a>
+    </section>
+  </section>
+</section>
+<% } %>
 
 <!-- ABAS -->
 <section class="abas">
@@ -118,17 +167,7 @@
   </section>
 </section>
 
-<section id="cadastro" class="secao">
-  <section class="cta-band">
-    <p class="eyebrow eyebrow--claro">Comece agora</p>
-    <h2>Crie sua conta e faça sua primeira oferta hoje.</h2>
-    <p>Leva menos de 2 minutos. Você pode entrar com e-mail ou com uma conta que já tem.</p>
-    <section class="hero-actions" style="justify-content:center;">
-      <a href="/login" class="btn btn-primary">Criar conta grátis →</a>
-      <a href="/login" class="btn btn-ghost">Já tenho conta</a>
-    </section>
-  </section>
-</section>
+
 
 <!-- Conteúdos Home Mobile -->
 <section class="mobile-only">

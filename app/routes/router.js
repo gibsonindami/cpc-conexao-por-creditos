@@ -83,16 +83,18 @@ router.get("/contato", async (req, res) => {
 router.get("/resumo/:anuncioId", async (req, res) => {
   const anuncio = anunciosModel.findById(req.params.anuncioId);
   if (!anuncio) return res.redirect("/todos");
+  if (!req.session?.usuario) req.session.redirectAfterLogin = `/resumo/${req.params.anuncioId}`;
   req.session.anuncioPendente = anuncio;
   res.render("pages/resumo-troca", { anuncio: await prepararAnuncio(anuncio) });
 });
 
 router.get("/resumo", async (req, res) => {
   const anuncio = await prepararAnuncio(req.session.anuncioPendente || null);
+  if (anuncio && !req.session?.usuario) req.session.redirectAfterLogin = "/resumo";
   res.render("pages/resumo-troca", { anuncio });
 });
 
-router.post("/confirmar-troca", (req, res) => {
+router.post("/confirmar-troca", autenticado, (req, res) => {
   try {
     const { anuncioId, anuncioTitulo, mensagem } = req.body;
     const usuario = req.session.usuario;

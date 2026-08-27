@@ -23,6 +23,14 @@ h2, h3 {
   margin: 20px 0;
 }
 
+h2 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #184c3b;
+  line-height: 1.25;
+}
+
 p {
   line-height: 1.6;
   text-align: justify;

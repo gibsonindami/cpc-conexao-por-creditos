@@ -46,6 +46,19 @@ html.a11y-dark .slider-img { background-color: #282726 !important; }
 html.a11y-dark body { background-color: #2a2a2d !important; color: #e8e8e8 !important; }
 html.a11y-dark .card { background-color: #202020 !important; }
 html.a11y-dark .hero-meta { color: #acadb0 !important; }
+html.a11y-dark body { background: #202020 !important; color: #e9e7e7 !important; }
+html.a11y-dark .secao { background-color: #202020 !important; color: #e9e7e7 !important; }
+html.a11y-dark .secao-head h2,
+html.a11y-dark .step h3,
+html.a11y-dark .path-card h3,
+html.a11y-dark .boas-vindas h2,
+html.a11y-dark .card h3,
+html.a11y-dark #conteudo-aba h3 { color: #f0f0f0 !important; }
+html.a11y-dark .secao-head p,
+html.a11y-dark .step p { color: #d2d2d2 !important; }
+html.a11y-dark .step { background-color: #292929 !important; border-color: #454545 !important; }
+html.a11y-dark .path-card--doar { background-color: #292929 !important; }
+html.a11y-dark .path-card--doar p { color: #e1e1e1 !important; }
 html.a11y-dark .stat-value { color: #e8e8e8 !important; }
 html.a11y-dark .sec-title { color: #e8e8e8 !important; }
 html.a11y-dark .bar-peak strong { color: #e8e8e8 !important; }

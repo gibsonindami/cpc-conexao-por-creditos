@@ -45,7 +45,11 @@ body {
 }
 
 .funciona h2 {
-  font-size: 1.4em;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #184c3b;
+  line-height: 1.25;
   margin-bottom: 10px;
 }
 

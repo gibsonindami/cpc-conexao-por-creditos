@@ -1,15 +1,52 @@
+:root {
+  --primary-color: #184c3b;
+  --bg-color: #ffffff;
+  --card-bg: #ffffff;
+  --text-main: #111827;
+  --text-muted: #4b5563;
+  --border-color: #e5e7eb;
+  --paper: #ffffff;
+  --ink: #111111;
+  --ink-soft: #000000;
+  --amber: #FFB703;
+  --amber-deep: #F97316;
+  --teal: #4C7967;
+  --teal-deep: #0F6E56;
+  --line: #8B8B8B;
+  --white: #FFFFFF;
+  --radius: 18px;
+}
+
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
- 
-html, body {
-  margin: 0;
-  padding: 0;
+
+html,
+body {
   width: 100%;
   overflow-x: hidden;
-  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Work Sans', sans-serif;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
  
 /* MENU LATERAL */
@@ -300,6 +337,292 @@ footer img {
   line-height: 1.5;
 }
 
+/* Seções */
+.secao-head {
+  max-width: 700px;
+  margin: 0 auto 45px;
+  text-align: center;
+}
+
+.secao {
+  padding: 60px 20px;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+}
+
+.secao-head h2 {
+  margin-bottom: 16px;
+  color: var(--primary-color);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.secao-head p {
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.eyebrow {
+  margin-bottom: 12px;
+  color: var(--primary-color);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* Botões */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border: 1px solid transparent;
+  border-radius: 100px;
+  cursor: pointer;
+  font-size: calc(16px * var(--a11y-escala, 1));
+  font-weight: 600;
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--amber);
+  color: var(--ink);
+}
+
+.btn-primary:hover {
+  background: var(--amber-deep);
+  color: var(--white);
+}
+
+.btn-ghost {
+  border-color: var(--ink);
+  background: transparent;
+  color: var(--ink);
+}
+
+.btn-ghost:hover {
+  background: var(--ink);
+  color: var(--white);
+}
+
+/* Doar x Trocar */
+.paths {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.path-card {
+  display: block;
+  padding: 24px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  text-align: center;
+  transition: transform 0.15s ease;
+}
+
+.path-card:hover {
+  transform: translateY(-2px);
+}
+
+.path-card--doar {
+  background: var(--white);
+}
+
+.path-card--trocar {
+  background: var(--teal-deep);
+  color: var(--white);
+}
+
+.path-tag {
+  display: inline-block;
+  padding: 4px 11px;
+  border-radius: 100px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: calc(11px * var(--a11y-escala, 1));
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.path-card--doar .path-tag {
+  background: #E1F5EE;
+  color: var(--teal-deep);
+}
+
+.path-card--trocar .path-tag {
+  background: rgba(226, 153, 47, 0.18);
+  color: var(--amber);
+}
+
+.path-card h3 {
+  margin-top: 14px;
+  font-size: calc(26px * var(--a11y-escala, 1));
+}
+
+.path-card p {
+  max-width: 38ch;
+  margin: 10px auto 0;
+  color: var(--ink-soft);
+  font-size: calc(16px * var(--a11y-escala, 1));
+}
+
+.path-card--trocar p {
+  color: #F1F9F6;
+}
+
+.path-cta {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 18px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: calc(14px * var(--a11y-escala, 1));
+  font-weight: 600;
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease;
+}
+
+.path-cta:hover {
+  transform: translateY(-1px);
+}
+
+.path-card--doar .path-cta {
+  background: var(--teal);
+  color: var(--white);
+}
+
+.path-card--doar .path-cta:hover {
+  background: var(--teal-deep);
+}
+
+.path-card--trocar .path-cta {
+  background: var(--amber);
+  color: var(--ink);
+}
+
+.path-card--trocar .path-cta:hover {
+  background: var(--amber-deep);
+  color: var(--white);
+}
+
+/* Sistema de créditos */
+.steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.step {
+  padding: 28px 24px;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  background: var(--card-bg);
+  transition: border-color 0.2s ease;
+}
+
+.step:hover {
+  border-color: var(--primary-color);
+}
+
+.step-num {
+  margin-bottom: 12px;
+  color: var(--primary-color);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.step h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--text-main);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.step p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* CTA de cadastro */
+.cta-band {
+  padding: clamp(28px, 5vw, 48px);
+  border-radius: 24px;
+  background: var(--ink);
+  color: var(--white);
+  text-align: center;
+}
+
+.cta-band h2 {
+  margin-top: 12px;
+  color: var(--white);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.cta-band p {
+  max-width: 48ch;
+  margin: 12px auto 0;
+  color: #CCCCCC;
+  font-size: calc(15px * var(--a11y-escala, 1));
+}
+
+.cta-band .btn-ghost {
+  border-color: #CCCCCC;
+  color: var(--white);
+}
+
+.cta-band .btn-ghost:hover {
+  background: var(--white);
+  color: var(--ink);
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+  .paths {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .secao {
+    padding-right: 155px;
+    padding-left: 155px;
+  }
+}
+
 /* ── CELULARES PEQUENOS ── */
 @media screen and (max-width: 480px) {
   .side-menu { width: 180px; padding: 15px; }
@@ -468,10 +791,11 @@ footer img {
 }
 
 .impact__title {
-  font-size: clamp(1.6rem, 4.5vw, 2.5rem);
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
   font-weight: 700;
-  color: #000000;
-  line-height: 1.15;
+  color: var(--primary-color);
+  line-height: 1.25;
 }
 
 .impact__subtitle {
@@ -713,7 +1037,7 @@ footer img {
   }
 
   .impact__title {
-    font-size: 1.5rem;
+    font-size: 32px;
   }
 }
 
