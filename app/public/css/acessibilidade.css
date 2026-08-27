@@ -146,21 +146,21 @@ html.a11y-font-5 { --a11y-escala: 1.48; font-size: 148%; }
    pelo arquivo gerado */
 html.a11y-dark,
 html.a11y-dark body {
-  background-color: #101010;
-  color: #e5e5e5;
+  background-color: #0d0d0d;
+  color: #f3f3f3;
 }
 
 /* O próprio widget de acessibilidade e o chat mantêm suas cores de marca
    (verde), só trocando o painel branco por um painel escuro legível */
 html.a11y-dark #a11y-panel {
-  background: #1b1b1b;
-  color: #e5e5e5;
+  background: #171717;
+  color: #f3f3f3;
 }
 html.a11y-dark #a11y-panel h2 { color: #6fd7ae; }
-html.a11y-dark #a11y-panel p { color: #cfcfcf; }
+html.a11y-dark #a11y-panel p { color: #d8d8d8; }
 html.a11y-dark .a11y-linha button,
 html.a11y-dark .a11y-toggle {
-  background: #1b1b1b;
+  background: #171717;
   color: #6fd7ae;
   border-color: #2a7d63;
 }
@@ -170,16 +170,53 @@ html.a11y-dark .a11y-toggle[aria-pressed="true"] {
   background: #2a7d63;
   color: #fff;
 }
-html.a11y-dark #a11y-reset { color: #aaaaaa; border-color: #555; }
-html.a11y-dark #a11y-close { color: #cfcfcf; }
+html.a11y-dark #a11y-reset { color: #d1d1d1; border-color: #555; }
+html.a11y-dark #a11y-close { color: #d8d8d8; }
 
-html.a11y-dark #chatia-panel { background: #1b1b1b; color: #e5e5e5; }
+html.a11y-dark #chatia-panel { background: #171717; color: #f3f3f3; }
 html.a11y-dark #chatia-mensagens { background: #141414; }
-html.a11y-dark .chatia-msg.bot { background: #22332c; color: #e5e5e5; }
+html.a11y-dark .chatia-msg.bot { background: #22332c; color: #f3f3f3; }
 html.a11y-dark .chatia-sugestoes { background: #141414; }
-html.a11y-dark .chatia-sugestao { background: #1b1b1b; color: #6fd7ae; border-color: #2a7d63; }
-html.a11y-dark #chatia-form { background: #1b1b1b; border-top-color: #333; }
-html.a11y-dark #chatia-input { background: #101010; color: #e5e5e5; border-color: #444; }
+html.a11y-dark .chatia-sugestao { background: #171717; color: #6fd7ae; border-color: #2a7d63; }
+html.a11y-dark #chatia-form { background: #171717; border-top-color: #333; }
+html.a11y-dark #chatia-input { background: #101010; color: #f3f3f3; border-color: #444; }
+
+/* Ajustes específicos da HOME no modo escuro */
+html.a11y-dark .step,
+html.a11y-dark .cat-tile,
+html.a11y-dark .path-card--doar,
+html.a11y-dark .stat-card,
+html.a11y-dark .impact-info-card,
+html.a11y-dark .secao--sobre {
+  background: #171717;
+  border-color: #2d2d2d;
+  color: #f5f5f5;
+}
+html.a11y-dark .path-card--trocar p { color: #ffffff; }
+html.a11y-dark .sobre-grid h2 { color: #ffffff; }
+html.a11y-dark .sobre-grid p:not(.eyebrow) { color: #ffffff; }
+html.a11y-dark .eyebrow { color: #ffffff; }
+html.a11y-dark .eyebrow::before { background: #ffffff; }
+html.a11y-dark .step p,
+html.a11y-dark .cat-sub,
+html.a11y-dark .path-card p,
+html.a11y-dark .secao-head p,
+html.a11y-dark .impact__subtitle,
+html.a11y-dark .stat-card__label { color: #ffffff; }
+html.a11y-dark .impact { background: #101010; }
+html.a11y-dark .cta-band { background: #0b0b0b; border: 1px solid #2d2d2d; }
+/* Botoes principais permanecem amarelos em qualquer modo */
+html .btn-primary,
+html a.btn.btn-primary:hover,
+html a.btn.btn-primary:focus,
+html a.btn.btn-primary:active,
+html.a11y-dark a.btn.btn-primary,
+html.a11y-dark a.btn.btn-primary:hover,
+html.a11y-dark a.btn.btn-primary:focus,
+html.a11y-dark a.btn.btn-primary:active {
+  background: #ffb703 !important;
+  color: #111111 !important;
+}
 
 /* =====================================================================
    ALTO CONTRASTE
