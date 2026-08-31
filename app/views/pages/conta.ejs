@@ -27,6 +27,22 @@
         <% if (usuario?.provider) { %>
           <span class="provider-label"><%= usuario.provider === 'google' ? 'Entrou com Google' : usuario.provider === 'local' ? 'Login local' : 'Entrou com ' + usuario.provider %></span>
         <% } %>
+        <section class="passkey-panel" aria-labelledby="passkey-titulo">
+          <section class="passkey-panel-header">
+            <span class="passkey-icon material-symbols-outlined" aria-hidden="true">fingerprint</span>
+            <span>
+              <strong id="passkey-titulo">Acesso por biometria</strong>
+              <span class="passkey-status <%= passkeys?.length ? 'is-active' : '' %>">
+                <%= passkeys?.length ? `${passkeys.length} dispositivo${passkeys.length > 1 ? 's' : ''} ativo${passkeys.length > 1 ? 's' : ''}` : 'Ainda não ativado' %>
+              </span>
+            </span>
+          </section>
+          <p>Use a digital ou o Face ID para entrar sem digitar sua senha.</p>
+          <button type="button" class="passkey-button" id="cadastrarBiometria" data-passkey-existente="<%= passkeys?.length ? 'true' : 'false' %>">
+            <span id="textoCadastroBiometria"><%= passkeys?.length ? 'Alterar chave de acesso' : 'Ativar Face ID ou biometria digital' %></span>
+          </button>
+          <p class="passkey-message" id="mensagemBiometria" role="status"></p>
+        </section>
         <section class="balance-card" aria-label="Saldo de créditos">
           <span class="balance-icon material-symbols-outlined" aria-hidden="true"></span>
           <span class="balance-copy">
@@ -125,5 +141,6 @@
         });
       })();
     </script>
+    <script src="/js/passkeys.js"></script>
 </body>
 </html>

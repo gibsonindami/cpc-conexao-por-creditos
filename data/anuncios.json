@@ -312,5 +312,24 @@
     "tipo": "servico",
     "ativo": true,
     "dataCriacao": "2026-08-03T00:30:17.178Z"
+  },
+  {
+    "id": 23,
+    "titulo": "Arroz 1kg",
+    "descricao": "arroz camil \r\nVal 09/03/2027",
+    "categoria": "alimentos",
+    "pontos": 10,
+    "doadorId": 6,
+    "doadorNome": "U@mak0903",
+    "doadorLocal": "Carapicuíba- SP",
+    "foto": "/img/anuncios/1787956120530-0-725378.webp",
+    "imagens": [
+      "/img/anuncios/1787956120530-0-725378.webp",
+      "/img/anuncios/1787956120695-1-857378.webp",
+      "/img/anuncios/1787956121028-2-82439.webp"
+    ],
+    "tipo": "produto",
+    "ativo": true,
+    "dataCriacao": "2026-08-28T22:28:41.127Z"
   }
 ]

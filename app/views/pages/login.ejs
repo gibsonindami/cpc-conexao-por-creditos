@@ -54,6 +54,8 @@
       <a href="#">Esqueceu a senha?</a>
 
       <button type="submit">Entrar</button>
+      <button type="button" class="passkey-button" id="entrarBiometria"><span id="textoLoginBiometria">Entrar com Face ID ou biometria digital</span></button>
+      <p class="passkey-message" id="mensagemBiometria" role="status"></p>
 
       <p>ou entre com</p>
 
@@ -115,7 +117,18 @@
         type="password" 
         name="senha" 
         placeholder="Senha"
+        minlength="6"
+        aria-describedby="forca-senha"
         class="<%= erroValidacao?.senha ? 'input-error' : '' %>">
+
+      <section class="password-strength" id="forca-senha" aria-live="polite">
+        <section class="password-strength__track" aria-hidden="true">
+          <span class="password-strength__bar"></span>
+          <span class="password-strength__bar"></span>
+          <span class="password-strength__bar"></span>
+        </section>
+        <span class="password-strength__label">Digite uma senha</span>
+      </section>
 
       <% if (msgErro?.senha) { %>
         <p class="msg-erro"><%= msgErro.senha %></p>
@@ -183,6 +196,7 @@
 </section>
 
 <script src="../js/login.js"></script>
+<script src="../js/passkeys.js"></script>
 
 <%- include('../partials/acessibilidade.ejs') %>
 <%- include('../partials/chat-ia.ejs') %>

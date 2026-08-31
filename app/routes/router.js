@@ -8,6 +8,7 @@ const { criarAnuncio } = require("../controllers/anunciosController");
 const { exibirConta, atualizarFoto } = require("../controllers/usuariosController");
 const { responderDuvida } = require("../controllers/iaController");
 const { cadastroController, loginController } = require("../controllers/controllers");
+const { obterOpcoesRegistro, verificarRegistro, obterOpcoesLogin, verificarLogin } = require("../controllers/passkeyController");
 
 const router = express.Router();
 
@@ -42,17 +43,12 @@ router.get("/", (req, res) => {
 
 const prepararAnuncio = async (anuncio, usuariosPorId = new Map()) => {
   if (!anuncio) return null;
-  if (anuncio.doadorNome === "Malcolm Eliseu Ribeiro" || !anuncio.doadorId) {
-    return { ...anuncio, fotoExibicao: anuncio.foto || "/img/img malcon.png" };
-  }
 
-  if (!usuariosPorId.has(anuncio.doadorId)) {
-    usuariosPorId.set(anuncio.doadorId, await usuariosModel.findById(anuncio.doadorId));
-  }
-  const anunciante = usuariosPorId.get(anuncio.doadorId);
+  const fotoDoItem = anuncio.foto || (Array.isArray(anuncio.imagens) ? anuncio.imagens[0] : null) || "/img/img malcon.png";
+
   return {
     ...anuncio,
-    fotoExibicao: anunciante?.foto || "/img/img perfil-white.png",
+    fotoExibicao: fotoDoItem,
   };
 };
 
@@ -123,6 +119,17 @@ router.get("/novo-anuncio", (req, res) => {
   res.render("pages/novo-anuncio", { erro: null, sucesso: null, valores: {} });
 });
 
+const validarImagensDoAnuncio = (req, res, next) => {
+  if (!req.files || req.files.length !== 3) {
+    return res.render("pages/novo-anuncio", {
+      erro: "É obrigatório enviar exatamente 3 fotos do item que será doado.",
+      sucesso: null,
+      valores: req.body,
+    });
+  }
+  return next();
+};
+
 router.post(
   "/novo-anuncio",
   (req, res, next) => {
@@ -133,6 +140,7 @@ router.post(
     next();
   },
   upload.array("imagens", 3),
+  validarImagensDoAnuncio,
   body("titulo").trim().notEmpty().withMessage("Título é obrigatório"),
   body("descricao").trim().notEmpty().withMessage("Descrição é obrigatória"),
   body("categoria").notEmpty().withMessage("Categoria é obrigatória"),
@@ -194,6 +202,15 @@ router.get("/obrigado", (req, res) => res.render("pages/obrigado"));
 
 router.get("/conta", autenticado, exibirConta);
 router.post("/conta/foto", autenticado, upload.single("foto"), atualizarFoto);
+router.post("/api/passkeys/registro/opcoes", autenticado, (req, res, next) => {
+  req.session.passkeyRegistrationReplace = req.body?.substituir === true
+    || req.body?.substituir === "true"
+    || req.body?.substituir === 1;
+  next();
+}, obterOpcoesRegistro);
+router.post("/api/passkeys/registro/verificar", autenticado, verificarRegistro);
+router.post("/api/passkeys/login/opcoes", obterOpcoesLogin);
+router.post("/api/passkeys/login/verificar", verificarLogin);
 
 router.get("/logout", (req, res) => {
   req.session.destroy(() => res.redirect("/"));
@@ -201,9 +218,24 @@ router.get("/logout", (req, res) => {
 
 router.post(
   "/cadastro",
-  body("nome").trim().notEmpty().withMessage("*Campo obrigatório!").isLength({ min: 3 }).withMessage("*Mínimo 3 caracteres!"),
+  body("nome")
+    .trim()
+    .notEmpty().withMessage("*Campo obrigatório!")
+    .custom((valor) => {
+      const nome = valor.trim();
+      const partes = nome.split(/\s+/).filter(Boolean);
+      if (partes.length < 2) {
+        throw new Error("*Informe o nome completo da pessoa (nome e sobrenome).");
+      }
+      const nomeValido = /^[A-Za-zÀ-ÖØ-öø-ÿ'`´.-]+(?:\s+[A-Za-zÀ-ÖØ-öø-ÿ'`´.-]+)+$/;
+      if (!nomeValido.test(nome)) {
+        throw new Error("*Use um nome real, sem apelidos ou nickname.");
+      }
+      return true;
+    })
+    .isLength({ min: 3 }).withMessage("*Mínimo 3 caracteres!"),
   body("email").trim().notEmpty().withMessage("*Campo obrigatório!").isEmail().withMessage("*Email inválido!"),
-  body("senha").notEmpty().withMessage("*Campo obrigatório!").isLength({ min: 6 }).withMessage("*Mínimo 8 caracteres!"),
+  body("senha").notEmpty().withMessage("*Campo obrigatório!").isLength({ min: 6 }).withMessage("*Mínimo 6 caracteres!"),
   body("confirmarSenha").notEmpty().withMessage("*Campo obrigatório!").custom((valor, { req }) => {
     if (valor !== req.body.senha) throw new Error("Senhas não coincidem!");
     return true;

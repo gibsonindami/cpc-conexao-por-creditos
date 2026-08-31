@@ -101,7 +101,7 @@ main {
 .rt-avatar img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 50%;
 }
 .rt-doador-nome {
@@ -148,7 +148,7 @@ main {
 .rt-troca-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 12px;
 }
 .rt-troca-nome {

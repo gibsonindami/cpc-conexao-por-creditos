@@ -111,10 +111,9 @@
       <small style="font-size: calc(11px * var(--a11y-escala, 1));color:#888;margin-top:2px;display:block">O cliente usará este número para combinar a troca</small>
 
 <section class="campo-imagens">
-        <label for="imagens">Fotos do produto/serviço (até 3)</label>
-        <input type="file" id="imagens" name="imagens" accept="image/*" multiple>
-        <small style="font-size: calc(11px * var(--a11y-escala, 1));color:#888;margin-top:2px;display:block">JPG ou PNG, até 5MB cada. Elas aparecerão no carrossel da página do anúncio.</small>
-        <section class="campo-imagens-preview" id="previewImagens"></section>
+        <label for="imagens">Fotos do produto/serviço (obrigatório: 3 imagens)</label>
+        <input type="file" id="imagens" name="imagens" accept="image/*" multiple required>
+        <small style="font-size: calc(11px * var(--a11y-escala, 1));color:#888;margin-top:2px;display:block">É obrigatório enviar exatamente 3 fotos do item que será doado.</small>
       </section>
 
       <button type="submit">Publicar Anúncio</button>
@@ -136,8 +135,8 @@
         preview.innerHTML = '';
         var arquivos = Array.from(input.files || []);
 
-        if (arquivos.length > 3) {
-          alert('Selecione no máximo 3 imagens.');
+        if (arquivos.length !== 3) {
+          alert('Você deve selecionar exatamente 3 imagens do item para concluir o anúncio.');
           input.value = '';
           return;
         }
@@ -149,6 +148,14 @@
           img.alt = arquivo.name;
           preview.appendChild(img);
         });
+      });
+
+      document.querySelector('form[action="/novo-anuncio"]').addEventListener('submit', function (event) {
+        var arquivos = Array.from(document.getElementById('imagens').files || []);
+        if (arquivos.length !== 3) {
+          event.preventDefault();
+          alert('É obrigatório enviar exatamente 3 fotos do item antes de publicar o anúncio.');
+        }
       });
     })();
   </script>

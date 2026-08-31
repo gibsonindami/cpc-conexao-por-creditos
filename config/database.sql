@@ -20,6 +20,20 @@ CREATE INDEX idx_email ON usuarios(email);
 -- Índice para busca por provedor social
 CREATE INDEX idx_provider_id ON usuarios(provider, provider_id);
 
+-- Credenciais WebAuthn vinculadas a contas já cadastradas
+CREATE TABLE IF NOT EXISTS passkeys (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  usuario_id INT NOT NULL,
+  credential_id VARCHAR(512) UNIQUE NOT NULL,
+  public_key TEXT NOT NULL,
+  counter BIGINT UNSIGNED NOT NULL DEFAULT 0,
+  transports JSON DEFAULT NULL,
+  criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  ultimo_uso TIMESTAMP NULL DEFAULT NULL,
+  CONSTRAINT fk_passkeys_usuario FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE,
+  INDEX idx_passkeys_usuario (usuario_id)
+);
+
 -- ============================================
 -- Dados de exemplo
 -- ============================================

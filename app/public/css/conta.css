@@ -61,7 +61,7 @@ body {
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   margin-bottom: 16px;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -85,6 +85,86 @@ body {
   font-size: calc(16px * var(--a11y-escala, 1));
   color: #424842;
   opacity: 0.7;
+}
+
+.passkey-button {
+  border: 0;
+  border-radius: 20px;
+  background: #2764a5;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: calc(13px * var(--a11y-escala, 1));
+  margin-top: 18px;
+  padding: 10px 18px;
+}
+
+.passkey-panel {
+  width: min(100%, 430px);
+  margin-top: 22px;
+  padding: 18px 20px;
+  border: 1px solid #dce7df;
+  border-radius: 16px;
+  background: #ffffff;
+  text-align: left;
+  box-shadow: 0 8px 24px rgba(25, 28, 27, 0.06);
+}
+
+.passkey-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.passkey-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 12px;
+  background: #e8f1eb;
+  color: #184c3b;
+}
+
+.passkey-panel-header strong,
+.passkey-status {
+  display: block;
+}
+
+.passkey-status {
+  margin-top: 3px;
+  color: #69746d;
+  font-size: calc(12px * var(--a11y-escala, 1));
+}
+
+.passkey-status.is-active {
+  color: #16704d;
+}
+
+.passkey-panel > p {
+  margin-top: 12px;
+  font-size: calc(13px * var(--a11y-escala, 1));
+  line-height: 1.5;
+}
+
+.passkey-panel .passkey-button {
+  margin-top: 14px;
+}
+
+@media (min-width: 769px) {
+  .passkey-panel {
+    display: none;
+  }
+}
+
+.passkey-message {
+  color: #2764a5 !important;
+  font-size: calc(13px * var(--a11y-escala, 1)) !important;
+  margin-top: 8px;
+}
+
+.passkey-message.error {
+  color: #b42318 !important;
 }
  
  
@@ -231,7 +311,7 @@ body {
 .historico-card__foto img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .historico-card__info {
@@ -365,7 +445,7 @@ body {
 .trade-icon img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 8px;
 }
  

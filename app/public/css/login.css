@@ -99,6 +99,53 @@ input {
   border-radius: 9px;
 }
 
+.password-strength {
+  width: 100%;
+  margin: -2px 0 6px;
+  text-align: left;
+}
+
+.password-strength__track {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+}
+
+.password-strength__bar {
+  flex: 1;
+  height: 5px;
+  background: #f3c4c2;
+  border-radius: 3px;
+  transition: background-color 180ms ease;
+}
+
+.password-strength__bar:nth-child(2) {
+  background: #f5e1a8;
+}
+
+.password-strength__bar:nth-child(3) {
+  background: #b9e3ca;
+}
+
+.password-strength.weak .password-strength__bar:nth-child(1).is-active {
+  background: #d9534f;
+}
+
+.password-strength.medium .password-strength__bar:nth-child(2).is-active {
+  background: #e0a800;
+}
+
+.password-strength.strong .password-strength__bar:nth-child(3).is-active {
+  background: #14b162;
+}
+
+.password-strength__label {
+  display: block;
+  margin-top: 4px;
+  color: #687078;
+  font-size: calc(11px * var(--a11y-escala, 1));
+}
+
 button {
   border-radius: 20px;
   border: 1px solid #14b162;
@@ -112,6 +159,32 @@ button {
   transition: transform 80ms ease-in;
   cursor: pointer;
   margin-top: 10px;
+}
+
+.passkey-button {
+  border-color: #2764a5;
+  background-color: #2764a5;
+  font-size: calc(11px * var(--a11y-escala, 1));
+  padding: 9px 18px;
+  margin-top: 4px;
+}
+
+.passkey-message {
+  min-height: 16px;
+  color: #2764a5;
+  font-size: calc(11px * var(--a11y-escala, 1));
+  margin: 4px 0;
+}
+
+.passkey-message.error {
+  color: #b42318;
+}
+
+@media (min-width: 769px) {
+  .passkey-button,
+  .passkey-message {
+    display: none;
+  }
 }
 
 button:active {

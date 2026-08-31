@@ -2,6 +2,7 @@ const path = require("path");
 const usuariosModel = require("../models/models");
 const trocasModel = require("../models/trocasModel");
 const anunciosModel = require("../models/anunciosModel");
+const passkeysModel = require("../models/passkeysModel");
 const imageService = require("../services/imageService");
 
 const anuncianteBase = "Malcolm Eliseu Ribeiro";
@@ -12,6 +13,7 @@ const exibirConta = async (req, res) => {
   try {
     const usuario = await usuariosModel.findById(req.session.usuario.id);
     if (!usuario) return res.redirect("/login");
+    const passkeys = await passkeysModel.findByUserId(usuario.id);
 
     const meusTrocas = trocasModel.findAll().filter(
       (troca) => troca.solicitanteEmail === usuario.email
@@ -40,6 +42,7 @@ const exibirConta = async (req, res) => {
 
     return res.render("pages/conta", {
       usuario,
+      passkeys,
       meusTrocas: meusTrocasComPerfil,
       meusAnuncios,
       totalTrocas: meusTrocasComPerfil.length,
@@ -59,7 +62,8 @@ const atualizarFoto = async (req, res) => {
     const pastaDestino = path.join(__dirname, "../public/img/perfis");
     const nome = `perfil-${req.session.usuario.id}-${Date.now()}.webp`;
     await imageService.converterImagem(req.file, pastaDestino, nome, {
-      resize: { width: 600, height: 600, fit: "cover" },
+      resize: { width: 600, height: 600, fit: "contain" },
+      autoOrientar: true,
       quality: 82,
     });
 
