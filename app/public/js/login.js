@@ -127,6 +127,33 @@ const usuarioCad = cadastroForm.querySelector('input[name="nome"]');
 const emailCad = cadastroForm.querySelector('input[name="email"]');
 const senhaCad = cadastroForm.querySelector('input[name="senha"]');
 const confirmarCad = cadastroForm.querySelector('input[name="confirmarSenha"]');
+const forcaSenha = document.querySelector('#forca-senha');
+const barrasSenha = [...forcaSenha.querySelectorAll('.password-strength__bar')];
+const rotuloForcaSenha = forcaSenha.querySelector('.password-strength__label');
+
+function avaliarForcaSenha(senha) {
+  if (!senha) return { classe: '', texto: 'Digite uma senha', preenchidos: 0 };
+
+  let pontos = 0;
+  if (senha.length >= 6) pontos += 1;
+  if (senha.length >= 10) pontos += 1;
+  if (/[a-z]/.test(senha) && /[A-Z]/.test(senha)) pontos += 1;
+  if (/\d/.test(senha)) pontos += 1;
+  if (/[^A-Za-z0-9]/.test(senha)) pontos += 1;
+
+  if (pontos <= 2) return { classe: 'weak', texto: 'Senha fraca', preenchidos: 1 };
+  if (pontos <= 4) return { classe: 'medium', texto: 'Senha razoável', preenchidos: 2 };
+  return { classe: 'strong', texto: 'Senha forte', preenchidos: 3 };
+}
+
+function atualizarForcaSenha() {
+  const avaliacao = avaliarForcaSenha(senhaCad.value);
+  forcaSenha.className = `password-strength ${avaliacao.classe}`;
+  barrasSenha.forEach((barra, indice) => {
+    barra.classList.toggle('is-active', indice < avaliacao.preenchidos);
+  });
+  rotuloForcaSenha.textContent = avaliacao.texto;
+}
 
 // validação em tempo real
 usuarioCad.addEventListener('input', () => {
@@ -144,9 +171,12 @@ emailCad.addEventListener('input', () => {
 });
 
 senhaCad.addEventListener('input', () => {
+  atualizarForcaSenha();
   if (senhaCad.value.length >= 6) {
     limparErro(senhaCad);
     marcarSucesso(senhaCad);
+  } else {
+    senhaCad.classList.remove('input-success');
   }
 });
 

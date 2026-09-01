@@ -19,6 +19,14 @@ const criarAnuncio = async (req, res) => {
     const imagens = [];
     const pastaDestino = path.join(__dirname, "../public/img/anuncios");
 
+    if (!req.files || req.files.length !== 3) {
+      return res.render("pages/novo-anuncio", {
+        erro: "É obrigatório enviar exatamente 3 fotos do item que será doado.",
+        sucesso: null,
+        valores: req.body,
+      });
+    }
+
     for (const [indice, arquivo] of (req.files || []).entries()) {
       const nome = `${Date.now()}-${indice}-${Math.round(Math.random() * 1000000)}.webp`;
       await imageService.converterImagem(arquivo, pastaDestino, nome, {

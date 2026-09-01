@@ -175,5 +175,53 @@
     "status": "pendente",
     "dataSolicitacao": "2026-08-27T22:36:19.237Z",
     "dataConclusao": null
+  },
+  {
+    "id": 15,
+    "anuncioId": 22,
+    "anuncioTitulo": "professor 2",
+    "doadorNome": "Igor Andrade",
+    "foto": "../img/img malcon.png",
+    "solicitanteNome": "U@mak0903",
+    "solicitanteEmail": "kamau.santana@icloud.com",
+    "pontos": 0,
+    "mensagem": "",
+    "status": "pendente",
+    "dataSolicitacao": "2026-08-28T22:29:32.999Z",
+    "dataConclusao": null,
+    "avaliacaoNota": 3,
+    "avaliacaoData": "2026-08-28T22:34:28.563Z"
+  },
+  {
+    "id": 16,
+    "anuncioId": 23,
+    "anuncioTitulo": "Arroz 1kg",
+    "doadorNome": "U@mak0903",
+    "foto": "/img/anuncios/1787956120530-0-725378.webp",
+    "solicitanteNome": "U@mak0903",
+    "solicitanteEmail": "kamau.santana@icloud.com",
+    "pontos": 0,
+    "mensagem": "",
+    "status": "pendente",
+    "dataSolicitacao": "2026-08-28T22:33:28.515Z",
+    "dataConclusao": null,
+    "avaliacaoNota": 4,
+    "avaliacaoData": "2026-08-28T22:34:23.323Z"
+  },
+  {
+    "id": 17,
+    "anuncioId": 24,
+    "anuncioTitulo": "Torta de maçã",
+    "doadorNome": "Igor Andrade",
+    "foto": "/img/anuncios/1788037127760-0-295892.webp",
+    "solicitanteNome": "Igor Andrade",
+    "solicitanteEmail": "rm94917@estudante.fieb.edu.br",
+    "pontos": 0,
+    "mensagem": "",
+    "status": "pendente",
+    "dataSolicitacao": "2026-08-29T21:01:57.890Z",
+    "dataConclusao": null,
+    "avaliacaoNota": 4,
+    "avaliacaoData": "2026-08-29T21:02:24.676Z"
   }
 ]

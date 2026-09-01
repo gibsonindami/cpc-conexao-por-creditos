@@ -17,6 +17,7 @@ const converterImagem = async (arquivo, diretorio, nome, opcoes = {}) => {
 
   const destino = path.join(diretorio, nome);
   const imagem = sharp(arquivo.path);
+  if (opcoes.autoOrientar) imagem.rotate();
 
   if (opcoes.resize) {
     imagem.resize(opcoes.resize);
