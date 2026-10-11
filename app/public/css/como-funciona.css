@@ -82,7 +82,7 @@ body {
 .passo img {
   width: 55px;
   height: 55px;
-  background-color: #c8ece8;
+  background-color: var(--cpc-mint-pale);
   border-radius: 50%;
   padding: 10px;
   margin-bottom: 10px;
@@ -158,12 +158,12 @@ body {
 .btn.amarelo {
   width: 100%; 
   font-size: 0.95rem;
-  background-color: orange;
+  background-color: var(--cpc-gold);
 }
 
 .btn.laranja {
   font-size: 0.95rem;
-  background-color: orange;
+  background-color: var(--cpc-gold);
 }
 
 /* ===== RODAPÉ ===== */
@@ -171,7 +171,7 @@ body {
   background-color: #fff;
   text-align: center;
   padding: 25px 20px;
-  border-top: 5px solid #c8ece8;
+  border-top: 5px solid var(--cpc-mint-pale);
 }
 
 .logo-footer {
@@ -180,7 +180,7 @@ body {
 }
 
 .institucional h4 {
-  color: #7ea99b;
+  color: var(--cpc-sage);
   font-weight: bold;
   margin-bottom: 8px;
 }
@@ -213,7 +213,7 @@ body {
   .btn.amarelo {
   max-width: 100%;
   align-self: center;
-  background: orange;
+  background: var(--cpc-gold);
   color: black;
   font-weight: bold;
   border: none;
@@ -224,7 +224,7 @@ body {
 .btn.laranja {
   width: 100%;
   align-self: center;
-  background: orange;
+  background: var(--cpc-gold);
   color: black;
   font-weight: medium;
   border: none;
@@ -238,7 +238,7 @@ body {
 .btn.amarelo {
   width: 40%;
   align-self: center;
-  background: orange;
+  background: var(--cpc-gold);
   color: black;
   font-weight: bold;
   border: none;
@@ -249,7 +249,7 @@ body {
 .btn.laranja {
   width: 40%;
   align-self: center;
-  background: orange;
+  background: var(--cpc-gold);
   color: black;
   font-weight: bold;
   border: none;

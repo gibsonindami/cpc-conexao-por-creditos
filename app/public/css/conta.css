@@ -90,7 +90,7 @@ body {
 .passkey-button {
   border: 0;
   border-radius: 20px;
-  background: #2764a5;
+  background: var(--cpc-primary);
   color: #fff;
   cursor: pointer;
   font: inherit;
@@ -122,7 +122,7 @@ body {
   height: 42px;
   place-items: center;
   border-radius: 12px;
-  background: #e8f1eb;
+  background: var(--cpc-mint-pale);
   color: #184c3b;
 }
 
@@ -138,7 +138,7 @@ body {
 }
 
 .passkey-status.is-active {
-  color: #16704d;
+  color: var(--cpc-primary-light);
 }
 
 .passkey-panel > p {
@@ -158,7 +158,7 @@ body {
 }
 
 .passkey-message {
-  color: #2764a5 !important;
+  color: var(--cpc-primary) !important;
   font-size: calc(13px * var(--a11y-escala, 1)) !important;
   margin-top: 8px;
 }
@@ -170,7 +170,7 @@ body {
  
 /* Balance Card */
 .balance-card {
-  background: linear-gradient(135deg, #F8A700 0%, #f8a700 100%);
+  background: linear-gradient(135deg, var(--cpc-gold) 0%, var(--cpc-gold) 100%);
   color: #000000;
   padding: 10px;
   border-radius: 35px;
@@ -250,12 +250,12 @@ body {
 }
 
 .resumo-creditos__valor.destaque {
-  color: #F8A700;
+  color: var(--cpc-gold);
 }
 
 .resumo-creditos__label {
   font-size: calc(11.5px * var(--a11y-escala, 1));
-  color: #546756;
+  color: var(--cpc-primary);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -329,7 +329,7 @@ body {
 
 .historico-card__com-quem {
   font-size: calc(13px * var(--a11y-escala, 1));
-  color: #546756;
+  color: var(--cpc-primary);
   margin-top: 2px;
 }
 
@@ -355,8 +355,8 @@ body {
 .historico-card__creditos {
   font-size: calc(13px * var(--a11y-escala, 1));
   font-weight: 800;
-  color: #b8860b;
-  background: #fff6e0;
+  color: var(--cpc-primary);
+  background: rgba(255, 183, 3, 0.18);
   padding: 4px 10px;
   border-radius: 999px;
   white-space: nowrap;
@@ -460,7 +460,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #546756;
+  color: var(--cpc-primary);
   margin-bottom: 4px;
 }
  
@@ -472,8 +472,8 @@ body {
  
  
 .trade-status {
-  background: #9ce4b4;
-  color: #394b3b;
+  background: var(--cpc-mint);
+  color: var(--cpc-primary);
   font-size: calc(11px * var(--a11y-escala, 1));
   font-weight: 700;
   padding: 12px 9px;
@@ -482,7 +482,7 @@ body {
  
  
 .trade-status.status-andamento{
-  background: #FFC107;
+  background: var(--cpc-gold);
   color: #000000;
   font-size: calc(11px * var(--a11y-escala, 1));
   font-weight: 700;
@@ -492,7 +492,7 @@ body {
  
  
 .trade-status.status-concluido{
-  background: #4CAF50;
+  background: var(--cpc-primary-light);
   color: #ffffff;
   font-size: calc(11px * var(--a11y-escala, 1));
   font-weight: 700;
@@ -512,7 +512,7 @@ body {
  
  
 .trade-status.status-ativa{
-  background: #33A8E2;
+  background: var(--cpc-primary-light);
   color: #ffffff;
   font-size: calc(11px * var(--a11y-escala, 1));
   font-weight: 700;
@@ -655,7 +655,7 @@ body::after {
 /* Ajustes visuais da conta */
 :root {
   --conta-verde: #184c3b;
-  --conta-verde-claro: #e8f1eb;
+  --conta-verde-claro: var(--cpc-mint-pale);
   --conta-borda: #dce7df;
   --conta-texto-suave: #647269;
 }
@@ -705,7 +705,7 @@ body {
 
 .profile-eyebrow {
   margin-bottom: 4px;
-  color: #b57900 !important;
+  color: var(--cpc-primary) !important;
   font-size: calc(12px * var(--a11y-escala, 1)) !important;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -732,7 +732,7 @@ body {
   font-size: calc(13px * var(--a11y-escala, 1));
 }
 
-.profile-message.success { background: #e7f5eb; color: #257344; }
+.profile-message.success { background: var(--cpc-mint-pale); color: var(--cpc-primary); }
 .profile-message.error { background: #fff0ee; color: #b63c32; }
 
 .balance-card {

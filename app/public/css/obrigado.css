@@ -52,7 +52,7 @@ body {
   text-align: start;
   position: fixed;
   right: -100%;
-  background: #155a37;
+  background: var(--cpc-primary);
   width: 200px;
   height: 100%;
   padding: 200px;
@@ -63,7 +63,7 @@ body {
 }
 
 .side-menu.open {
-  background-color: #87B79F;
+  background-color: var(--cpc-sage);
   margin-top: 10px;
 }
 
@@ -135,7 +135,7 @@ body {
 }
 
 .btn {
-  background-color: #f5af00;
+  background-color: var(--cpc-gold);
   color: #000;
   border: none;
   padding: 12px 25px;
@@ -147,7 +147,7 @@ body {
 }
 
 .btn:hover {
-  background-color: #e59c00;
+  background-color: var(--cpc-gold-hover);
 }
 
 /* ===== RESPONSIVIDADE ===== */

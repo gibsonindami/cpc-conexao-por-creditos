@@ -7,7 +7,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(120deg, #d7e1ec, #e3ebf3);
+  background: linear-gradient(120deg, var(--cpc-mint-pale), #f5f7f6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -124,7 +124,7 @@ input {
 }
 
 .password-strength__bar:nth-child(3) {
-  background: #b9e3ca;
+  background: var(--cpc-mint);
 }
 
 .password-strength.weak .password-strength__bar:nth-child(1).is-active {
@@ -132,11 +132,11 @@ input {
 }
 
 .password-strength.medium .password-strength__bar:nth-child(2).is-active {
-  background: #e0a800;
+  background: var(--cpc-gold);
 }
 
 .password-strength.strong .password-strength__bar:nth-child(3).is-active {
-  background: #14b162;
+  background: var(--cpc-primary-light);
 }
 
 .password-strength__label {
@@ -148,8 +148,8 @@ input {
 
 button {
   border-radius: 20px;
-  border: 1px solid #14b162;
-  background-color: #14b162;
+  border: 1px solid var(--cpc-primary-light);
+  background-color: var(--cpc-primary-light);
   color: #fff;
   font-size: calc(14px * var(--a11y-escala, 1));
   font-weight: bold;
@@ -162,8 +162,8 @@ button {
 }
 
 .passkey-button {
-  border-color: #2764a5;
-  background-color: #2764a5;
+  border-color: var(--cpc-primary);
+  background-color: var(--cpc-primary);
   font-size: calc(11px * var(--a11y-escala, 1));
   padding: 9px 18px;
   margin-top: 4px;
@@ -171,7 +171,7 @@ button {
 
 .passkey-message {
   min-height: 16px;
-  color: #2764a5;
+  color: var(--cpc-primary);
   font-size: calc(11px * var(--a11y-escala, 1));
   margin: 4px 0;
 }
@@ -223,8 +223,8 @@ a {
 }
 
 .social-container a:hover {
-  border-color: #2cd687;
-  color: #2cd687;
+  border-color: var(--cpc-sage);
+  color: var(--cpc-primary);
 }
 
 /* --- Overlay --- */
@@ -335,8 +335,8 @@ a {
 
 /* Sucesso (verde) */
 form.success {
-  border: 2px solid #00c851;
-  box-shadow: 0 0 15px rgba(0, 200, 81, 0.6);
+  border: 2px solid var(--cpc-primary-light);
+  box-shadow: 0 0 15px rgba(42, 125, 99, 0.25);
   animation: sucessoPiscar 0.4s ease-in-out;
 }
 
@@ -362,8 +362,8 @@ form.error {
 
 /* ====== INPUT SUCESSO (verde individual) ====== */
 .input-success {
-  border: 2px solid #00c851 !important;
-  box-shadow: 0 0 0 4px rgba(0, 200, 81, 0.08);
+  border: 2px solid var(--cpc-primary-light) !important;
+  box-shadow: 0 0 0 4px rgba(42, 125, 99, 0.12);
 }
 
 /* remover erro quando corrigir */
@@ -374,7 +374,7 @@ input:focus {
 /* mensagem de sucesso opcional (se quiser usar depois) */
 .msgSucesso {
   display: block;
-  color: #00c851;
+  color: var(--cpc-primary-light);
   font-size: calc(12px * var(--a11y-escala, 1));
   margin-top: 6px;
   text-align: left;
@@ -479,8 +479,8 @@ input:focus {
 
   button.ghost {
   background-color: transparent;
-  border-color: #14b162;
-  color: #14b162;
+  border-color: var(--cpc-primary-light);
+  color: var(--cpc-primary-light);
 }
 }
 
@@ -493,7 +493,7 @@ input:focus {
 
 /* Mensagem informativa (ex.: "faça login para continuar seu anúncio") */
 .msg-info {
-  background-color: #e6f3ee;
+  background-color: var(--cpc-mint-pale);
   color: #184c3b;
   border: 1px solid #2a7d63;
   border-radius: 8px;

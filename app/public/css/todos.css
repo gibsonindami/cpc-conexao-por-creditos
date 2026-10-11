@@ -88,9 +88,9 @@ nav {
 }
 
 .filter-btn.active {
-  background-color: #94bfa9;
+  background-color: var(--cpc-primary);
   color: white;
-  border-color: #94bfa9;
+  border-color: var(--cpc-primary);
 }
 
 /* Lista de serviços */
@@ -142,7 +142,7 @@ nav {
 }
 
 .btn-contato:hover {
-  background: #ffa500;
+  background: var(--cpc-gold);
 }
 
 /* Responsividade */

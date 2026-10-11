@@ -1,7 +1,8 @@
 :root{
     --paper:#FFFFFF; --paper-2:#E1F5EE; --ink:#111111; --ink-soft:#4B5563;
-    --amber:#FFB703; --amber-deep:#F97316; --teal:#4C7967; --teal-deep:#184C3B;
-    --clay:#B2E5D9; --line:#8B8B8B; --white:#FFFFFF; --radius:16px;
+    --amber:var(--cpc-gold); --amber-deep:var(--cpc-gold-hover);
+    --teal:var(--cpc-sage); --teal-deep:var(--cpc-primary);
+    --clay:var(--cpc-mint); --line:#8B8B8B; --white:#FFFFFF; --radius:16px;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   footer{ font-family:Arial, Helvetica, sans-serif; line-height:1.5; -webkit-font-smoothing:antialiased; }
@@ -15,7 +16,7 @@
   .demo-page p{ font-family:'IBM Plex Mono', monospace; font-size:0.8rem; }
 
   /* ================= RODAPÉ ================= */
-  footer{ background:linear-gradient(135deg, #184c3b, #1f5d49, #2a7d63, #1f5d49, #184c3b); color:#F2F7F4; }
+  footer{ background:linear-gradient(135deg, var(--cpc-primary), var(--cpc-primary-dark), var(--cpc-primary-light), var(--cpc-primary-dark), var(--cpc-primary)); color:#F2F7F4; }
 
   .footer-top{ padding:clamp(40px,6vw,64px) 0 clamp(28px,4vw,40px); }
   .footer-grid{
@@ -47,7 +48,7 @@
     font-size:0.72rem;
     text-transform:uppercase;
     letter-spacing:0.1em;
-    color:#87B79F;
+    color:var(--cpc-sage);
     margin-bottom:14px;
     font-weight:500;
   }
@@ -56,7 +57,7 @@
   .footer-col a:hover{ color:var(--amber); }
 
   /* newsletter */
-  .footer-news h4{ font-family:'IBM Plex Mono', monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:#87B79F; margin-bottom:10px; font-weight:500; }
+  .footer-news h4{ font-family:'IBM Plex Mono', monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--cpc-sage); margin-bottom:10px; font-weight:500; }
   .footer-news p{ font-size:0.88rem; color:#D7E8DE; margin-bottom:14px; }
   .news-form{ display:flex; gap:8px; }
   .news-form input{

@@ -23,7 +23,7 @@
   position: fixed;
   right: -100%;
   top: 0;
-  background: #87B79F;
+  background: var(--cpc-sage);
   width: 200px;
   height: 100%;
   padding: 20px;
@@ -57,7 +57,7 @@ h1 {
   margin: 18px auto;
 }
 
-.feedback-success { color: #218838; }
+.feedback-success { color: var(--cpc-primary-light); }
 .feedback-error { color: #c0392b; }
 .empty-state { grid-column: 1 / -1; color: #666; }
 
@@ -139,17 +139,17 @@ h1 {
   width: 34px;
   height: 34px;
   margin-top: 8px;
-  border: 1px solid #218838;
+  border: 1px solid var(--cpc-primary-light);
   border-radius: 50%;
   background: #fff;
-  color: #218838;
+  color: var(--cpc-primary-light);
   cursor: pointer;
 }
 
-.save-rating:hover { background: #e8f5e9; }
+.save-rating:hover { background: var(--cpc-mint-pale); }
 .save-rating:disabled { cursor: default; opacity: 0.75; }
 .save-rating svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-.saved-rating { color: #218838; margin-top: 5px; }
+.saved-rating { color: var(--cpc-primary-light); margin-top: 5px; }
 
 /* == RESPONSIVIDADE  */
 
@@ -263,7 +263,7 @@ h1 {
   .fique-por-dentro button {
     width: 100%;
     align-self: center;
-    background: orange;
+    background: var(--cpc-gold);
     color: black;
     font-weight: bold;
     border: none;

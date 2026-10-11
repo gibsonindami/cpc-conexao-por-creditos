@@ -70,7 +70,7 @@ body {
 .btn-doe {
   display: inline-block;
   max-width: 100%;
-  background: #109e57;
+  background: var(--cpc-primary-light);
   color: #fff;
   text-decoration: none;
   font-weight: 600;
@@ -81,7 +81,7 @@ body {
   transition: background 0.2s ease;
 }
 
-.btn-doe:hover { background: #0c7f45; }
+.btn-doe:hover { background: var(--cpc-primary); }
 
 .beneficios{
     max-width:1100px;
@@ -125,7 +125,7 @@ body {
 }
 
 .beneficios h3{
-    color:#0f4d44;
+    color:var(--cpc-primary);
     margin-bottom:10px;
 }
 

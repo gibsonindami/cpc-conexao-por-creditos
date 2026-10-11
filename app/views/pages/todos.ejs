@@ -40,7 +40,7 @@
         <section class="service-info">
           <h3><%= anuncio.titulo %></h3>
           <p><%= anuncio.doadorNome %>, <%= anuncio.doadorLocal %></p>
-          <small style="color:#4caf50;font-weight:600"><%= anuncio.pontos %> pontos &nbsp;|&nbsp; <%= anuncio.categoria %></small><br>
+          <small style="color:var(--cpc-primary-light);font-weight:600"><%= anuncio.pontos %> pontos &nbsp;|&nbsp; <%= anuncio.categoria %></small><br>
           <a href="/contato/<%= anuncio.id %>"><button class="btn-contato">Contato</button></a>
         </section>
       </section>
@@ -48,7 +48,7 @@
   </section><br>
 
   <section style="text-align:center;padding:20px">
-    <a href="/novo-anuncio" style="background:#4caf50;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:600">+ Cadastrar Anúncio</a>
+    <a href="/novo-anuncio" style="background:var(--cpc-primary-light);color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:600">+ Cadastrar Anúncio</a>
   </section><br>
 
   <script src="../js/menu.js"></script>

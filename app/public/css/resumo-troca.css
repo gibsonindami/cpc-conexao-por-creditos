@@ -1,12 +1,12 @@
 :root {
-  --green-dark:   #1b6e3a;
-  --green-main:   #3c9e5a;
-  --green-mid:    #5ab97a;
-  --green-light:  #e6f5ec;
-  --green-border: #a8d9bb;
-  --yellow-main:  #F8A700;
-  --yellow-hover: #e09500;
-  --yellow-dark:  #7a5200;
+  --green-dark:   var(--cpc-primary);
+  --green-main:   var(--cpc-primary-light);
+  --green-mid:    var(--cpc-sage);
+  --green-light:  var(--cpc-mint-pale);
+  --green-border: var(--cpc-mint);
+  --yellow-main:  var(--cpc-gold);
+  --yellow-hover: var(--cpc-gold-hover);
+  --yellow-dark:  var(--cpc-primary);
   --wa-green:     #25d366;
   --wa-hover:     #1ebe5d;
   --text-dark:    #1a1a1a;
@@ -326,7 +326,7 @@ main {
 
 /* ── AVISO ────────────────────────────── */
 .rt-aviso {
-  background: #e6f5ec;
+  background: var(--cpc-mint-pale);
   border: 1px solid var(--green-border);
   border-radius: var(--radius-sm);
   padding: 12px 14px;

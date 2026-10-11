@@ -1,7 +1,7 @@
 /* Variáveis CSS para facilitar a manutenção */
 :root {
-  --color-primary: #B2E5D9; /* Cor principal do carrossel */
-  --color-secondary: orange; /* Cor do botão Iniciar Troca */
+  --color-primary: var(--cpc-mint); /* Cor principal do carrossel */
+  --color-secondary: var(--cpc-gold); /* Cor do botão Iniciar Troca */
   --color-text-dark: #333;
   --color-text-light: #000;
   --font-family-poppins: 'Poppins', sans-serif;
@@ -214,7 +214,7 @@ input[name="slider"] {
 }
 
 .start-trade-button:hover {
-  background: #e59c00; /* Um tom mais escuro de laranja no hover */
+  background: var(--cpc-gold-hover);
 }
 
 /* =================================================================

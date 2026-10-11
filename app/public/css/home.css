@@ -1,5 +1,9 @@
 :root {
-  --primary-color: #184c3b;
+  --primary-color: var(--cpc-primary);
+  --brand-green: var(--cpc-primary-light);
+  --brand-mint: var(--cpc-sage);
+  --brand-soft: var(--cpc-mint-pale);
+  --brand-gold: var(--cpc-gold);
   --bg-color: #ffffff;
   --card-bg: #ffffff;
   --text-main: #111827;
@@ -8,10 +12,10 @@
   --paper: #ffffff;
   --ink: #111111;
   --ink-soft: #000000;
-  --amber: #FFB703;
-  --amber-deep: #F97316;
-  --teal: #4C7967;
-  --teal-deep: #0F6E56;
+  --amber: var(--brand-gold);
+  --amber-deep: var(--cpc-gold-hover);
+  --teal: var(--brand-mint);
+  --teal-deep: var(--primary-color);
   --line: #8B8B8B;
   --white: #FFFFFF;
   --radius: 18px;
@@ -56,7 +60,7 @@ a {
   right: -250px;
   width: 250px;
   height: 100%;
-  background-color: #B2E5D9;
+  background-color: var(--brand-soft);
   padding: 30px 20px;
   transition: right 0.3s ease;
   z-index: 1001;
@@ -136,12 +140,12 @@ a {
 }
  
 .icone-card:hover {
-  border-color: #6be7c8;
-  background: #e1f5ee;
+  border-color: var(--brand-mint);
+  background: var(--brand-soft);
 }
  
 .icone-card:hover .icone-circle {
-  background: #0f6e56;
+  background: var(--brand-green);
 }
  
 .icone-card:hover .icone-circle svg {
@@ -152,7 +156,7 @@ a {
   width: 56px;
   height: 56px;
   border-radius: 14px;
-  background: #e1f5ee;
+  background: var(--brand-soft);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -160,7 +164,7 @@ a {
 }
  
 .icone-circle svg {
-  stroke: #0f6e56;
+  stroke: var(--primary-color);
   transition: stroke .15s;
 }
 
@@ -201,13 +205,13 @@ a {
 }
  
 .aba.ativa {
-  color: orange;
-  border-bottom: 2px solid orange;
+  color: var(--brand-gold);
+  border-bottom: 2px solid var(--brand-gold);
 }
  
 /* CONTEÚDO Sobre o CPC */
 #conteudo-aba {
-  background: #e2f1ee;
+  background: var(--brand-soft);
   padding: 7px;
 }
  
@@ -317,7 +321,7 @@ footer img {
 }
 
 .acao-card--doar:hover { border-color: #ffb703; }
-.acao-card--trocar:hover { border-color: #2a7d63; }
+.acao-card--trocar:hover { border-color: var(--brand-green); }
 
 .acao-card__icone {
   font-size: calc(34px * var(--a11y-escala, 1));
@@ -465,12 +469,12 @@ footer img {
 }
 
 .path-card--doar .path-tag {
-  background: #E1F5EE;
+  background: var(--brand-soft);
   color: var(--teal-deep);
 }
 
 .path-card--trocar .path-tag {
-  background: rgba(226, 153, 47, 0.18);
+  background: rgba(255, 183, 3, 0.18);
   color: var(--amber);
 }
 
@@ -665,7 +669,7 @@ footer img {
   }
   .fique-por-dentro button {
     width: 100%; align-self: center;
-    background: orange; color: black; font-weight: bold;
+    background: var(--brand-gold); color: var(--ink); font-weight: bold;
     border: none; padding: 10px; border-radius: 20px; cursor: pointer;
   }
   #conteudo-aba img {
@@ -730,7 +734,7 @@ footer img {
     margin-top: 20px;
     padding: 11px 29px;
     background: #fff;
-    color: #065f46;
+    color: var(--primary-color);
     border-radius: 20px;
     text-decoration: none;
     font-size: calc(13px * var(--a11y-escala, 1));
@@ -740,8 +744,8 @@ footer img {
   }
  
   .btn-banner:hover {
-    background: #e1f5ee;
-    color: #065f46;
+    background: var(--brand-soft);
+    color: var(--primary-color);
   }
  
   .icones {
@@ -786,7 +790,7 @@ footer img {
   font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: 0.14em;
-  color: #22c55e;
+  color: var(--brand-green);
   text-transform: uppercase;
 }
 
@@ -835,8 +839,8 @@ footer img {
   width: 38px;
   height: 38px;
   border-radius: 10px;
-  background: #f0fdf4;
-  color: #16a34a;
+  background: var(--brand-soft);
+  color: var(--brand-green);
   margin-bottom: 6px;
 }
 
@@ -863,8 +867,8 @@ footer img {
   font-size: 0.7rem;
   font-weight: 600;
   width: fit-content;
-  background: #f0fdf4;
-  color: #15803d;
+  background: var(--brand-soft);
+  color: var(--primary-color);
 }
 
 /* Grade inferior */
@@ -939,8 +943,8 @@ footer img {
   border-radius: 99px;
 }
 
-.impact-bar-fill--orange { background: #f97316; }
-.impact-bar-fill--green  { background: #22c55e; }
+.impact-bar-fill--gold { background: var(--brand-gold); }
+.impact-bar-fill--green  { background: var(--brand-green); }
 
 .impact-info-card__source {
   font-size: 0.7rem;
@@ -950,7 +954,7 @@ footer img {
 
 /* Card CTA */
 .impact-cta-card {
-  background: #166534;
+  background: var(--primary-color);
   border-radius: 16px;
   padding: clamp(18px, 3.5vw, 32px);
   display: flex;
@@ -960,7 +964,7 @@ footer img {
 
 .impact-cta-card__badge {
   display: inline-block;
-  background: #22c55e;
+  background: var(--brand-green);
   color: #fff;
   font-size: 0.62rem;
   font-weight: 700;
@@ -980,7 +984,7 @@ footer img {
 
 .impact-cta-card__text {
   font-size: 0.85rem;
-  color: #bbf7d0;
+  color: #D7E8DE;
   line-height: 1.65;
 }
 

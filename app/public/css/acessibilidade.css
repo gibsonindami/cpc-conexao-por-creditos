@@ -109,7 +109,7 @@
 }
 
 .a11y-linha button:hover,
-.a11y-toggle:hover { background: #e6f3ee; }
+.a11y-toggle:hover { background: var(--cpc-mint-pale); }
 
 .a11y-toggle[aria-pressed="true"] {
   background: #184c3b;

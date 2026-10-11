@@ -12,11 +12,11 @@
     height: 90px;
     background: linear-gradient(
         135deg,
-        #184c3b,
-        #1f5d49,
-        #2a7d63,
-        #1f5d49,
-        #184c3b
+        var(--cpc-primary),
+        var(--cpc-primary-dark),
+        var(--cpc-primary-light),
+        var(--cpc-primary-dark),
+        var(--cpc-primary)
     );
     display: flex;
     align-items: center;
@@ -61,7 +61,7 @@
     content: "";
     width: 0;
     height: 2px;
-    background: #87B79F;
+    background: var(--cpc-sage);
     position: absolute;
     bottom: -8px;
     left: 0;
@@ -102,7 +102,7 @@
 
 .login {
     text-decoration: none;
-    color: #87B79F;
+    color: var(--cpc-sage);
     font-size: calc(13px * var(--a11y-escala, 1));
     letter-spacing: 1px;
     font-weight: 600;
@@ -110,7 +110,7 @@
 }
 
 .login:hover {
-    color: #a8d5b8;
+    color: var(--cpc-mint);
 }
 
 .perfil {
@@ -121,7 +121,7 @@
 
 .perfil-icon {
     text-decoration: none;
-    color: #87B79F;
+    color: var(--cpc-sage);
     font-size: calc(13px * var(--a11y-escala, 1));
     letter-spacing: 1px;
     font-weight: 600;
@@ -134,7 +134,7 @@
 }
 
 .perfil-icon:hover {
-    color: #a8d5b8;
+    color: var(--cpc-mint);
     background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -178,7 +178,7 @@
     position: fixed;
     top: 0;
     right: -100%;
-    background: #87B79F;
+    background: var(--cpc-sage);
     width: 250px;
     height: 100vh;
     padding: 120px 20px 20px 20px;
@@ -192,7 +192,7 @@
 
 .side-menu.open {
     right: 0;
-    background-color: #268a69;
+    background-color: var(--cpc-primary-light);
 }
 
 .side-menu ul {
@@ -240,10 +240,10 @@
     gap: 22px;
     width: min(420px, calc(100vw - 32px));
     padding: 18px 18px 18px 20px;
-    color: #17352b;
-    background: #f7f4ed;
-    border: 2px solid #184c3b;
-    border-left: 5px solid #268a69;
+    color: var(--cpc-primary);
+    background: var(--cpc-mint-pale);
+    border: 2px solid var(--cpc-primary);
+    border-left: 5px solid var(--cpc-primary-light);
     box-shadow: 0 14px 35px rgba(11, 40, 29, 0.24);
     animation: pwa-install-in 240ms ease-out;
 }
@@ -264,7 +264,7 @@
 
 .pwa-install__content p {
     margin: 0;
-    color: #4d6258;
+    color: var(--cpc-primary);
     font-size: 13px;
     line-height: 1.45;
 }
@@ -287,7 +287,7 @@
 
 .pwa-install__close {
     padding: 2px 4px;
-    color: #557065;
+    color: var(--cpc-sage);
     background: transparent;
     border: 0;
     cursor: pointer;
@@ -326,7 +326,7 @@
     .mobile-login {
         display: block;
         font-size: calc(14px * var(--a11y-escala, 1));
-        color: #87B79F;
+        color: var(--cpc-sage);
         font-weight: 600;
         text-decoration: none;
     }

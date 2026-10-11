@@ -67,7 +67,7 @@
 }
 
 .cadastro-link {
-  color: #008b75;
+  color: var(--cpc-primary);
   font-weight: bold;
   text-decoration: none;
 }
@@ -77,7 +77,7 @@
 }
 
 .acessibilidade-btn:hover {
-  background: #9ed2c2;
+  background: var(--cpc-sage);
 }
 
 /* Responsividade */
